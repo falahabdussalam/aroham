@@ -870,6 +870,9 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
   object-position: center top;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  filter: contrast(1.02) brightness(1.01);
   transition: transform 0.35s ease;
 }
 

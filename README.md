@@ -22,16 +22,12 @@ A modern, minimal, human-crafted alumni portal built for **Aroham Foundation** (
 
 ## 📂 Core Content & Architecture
 
-### 1. Guided Mentors, Academic Advisors & Support Team (`#advisors`)
+### 1. Guided Mentors & Academic Advisors (`#advisors`)
 - Positioned directly after "About & Roots".
 - **Academic Mentors**:
   - **Dr. Shahul Nurani** — Guided Mentor & Academic Advisor [`dr-shahul-nurani.svg`]
   - **Dr. K. C. Mujeeb** — Guided Mentor & Strategic Advisor [`dr-kc-mujeeb.svg`]
   - **Mr. Jalal Rahman** — Guided Mentor & Institutional Guide [`mr-jalal-rahman.svg`]
-- **Coordination & Technical Team**:
-  - **Mr. Muhammad Hussain** (Mentorship & Program Coordination) [`muhammad-hussain.svg`]
-  - **Mr. Shafeeq** (Technical Support & Infrastructure) [`shafeeq.svg`]
-  - **Mr. Vasih** (Creative & Media Communications) [`vasih.svg`]
 
 ### 2. Leadership & Executive Committee (`#committee`)
 - Positioned directly after "Advisory & Mentorship Support" with unified 9-member official portrait cards (proportioned 1:1.08 framing, zero degrees shown):

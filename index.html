@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aroham Foundation · Women-Led Alumni Initiative | Bolster Girls Campus</title>
+  <meta name="description" content="Aroham Foundation is a women-led alumni initiative bridging the gap between students and opportunity through education, mentorship, and community development. Founded by Bolster Girls Campus alumni.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <!-- Primary Typeface: TG Pilgrima Office (with Helvetica Neue fallback) -->
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-nav" id="top">
+    <div class="container nav-inner">
+      <a href="#top" class="nav-brand" aria-label="Aroham Foundation Home">
+        <img src="assets/images/aroham-emblem-transparent.png" alt="Aroham Emblem" class="brand-emblem-img">
+        <div class="brand-text-block">
+          <span class="brand-name">Aroham</span>
+          <span class="brand-sub">FOUNDATION</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">ABOUT</a></li>
+          <li><a href="#advisors" class="nav-link">ADVISORS & TRAINERS</a></li>
+          <li><a href="#committee" class="nav-link">EXECUTIVE COMMITTEE</a></li>
+          <li><a href="#alumni" class="nav-link">EXCELLENCE ALUMNI</a></li>
+          <li><a href="#initiatives" class="nav-link">INITIATIVES</a></li>
+          <li><a href="#timeline" class="nav-link">OUR JOURNEY</a></li>
+          <li><a href="#impact" class="nav-link">IMPACT & GOALS</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <button class="btn btn-outline btn-sm" data-open-modal="volunteer-modal">Join 123+ Volunteers</button>
+        <button class="btn btn-primary btn-sm" data-open-modal="unimate-modal">Request UniMate</button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section with Campus Video Showcase -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="badge badge-pine">WOMEN-LED ALUMNI INITIATIVE</span>
+            <span class="badge badge-ochre">ESTD. 2025</span>
+          </div>
+          <h1 class="hero-title">
+            Bridging the gap between students and opportunity.
+          </h1>
+          <p class="hero-lead">
+            Founded by <strong>Bolster Girls Campus</strong> alumni to guide, mentor, and empower young minds across Kerala and abroad. We connect students with personalized mentorship, career clarity, and community development.
+          </p>
+          <div class="hero-actions">
+            <a href="#alumni" class="btn btn-primary">
+              <span>Meet Excellence Alumni</span>
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </a>
+            <button class="btn btn-outline" data-open-modal="report-modal">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span>Annual Report 2025–26</span>
+            </button>
+          </div>
+
+          <div class="hero-highlights-bar">
+            <div class="hero-stat">
+              <span class="hero-stat-num">123</span>
+              <span class="hero-stat-lbl">Alumni Volunteers</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">10</span>
+              <span class="hero-stat-lbl">UniMates Mentors</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">83+</span>
+              <span class="hero-stat-lbl">Summit Registrations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Space: HD Campus Video Showcase with White 85% Opacity Shape Cover -->
+        <div class="hero-visual">
+          <div class="hero-video-frame" id="hero-video-container">
+            <video 
+              id="hero-main-video"
+              class="hero-showcase-video" 
+              autoplay 
+              muted 
+              loop 
+              playsinline 
+              preload="auto">
+              <source src="assets/videos/bolster-campus.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+
+            <!-- White 85% Opacity Shape Cover -->
+            <div class="video-shape-cover" aria-hidden="true"></div>
+
+            <!-- Video Top Header Bar -->
+            <div class="video-top-bar">
+              <div class="video-live-pill">
+                <span class="live-pulse"></span>
+                <span>Campus Life & Aroham</span>
+              </div>
+              <div class="video-source-pill">
+                <span>Bolster Girls Campus</span>
+              </div>
+            </div>
+
+            <!-- Floating Video Playback & Sound Controls -->
+            <div class="video-player-controls">
+              <button id="video-play-toggle" class="vid-ctrl-btn" title="Play / Pause" aria-label="Play / Pause">
+                <svg class="icon-pause" width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                </svg>
+                <svg class="icon-play" style="display: none;" width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+
+              <button id="video-sound-toggle" class="vid-ctrl-btn" title="Toggle Sound" aria-label="Toggle Sound">
+                <svg class="icon-muted" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                </svg>
+                <svg class="icon-unmuted" style="display: none;" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
+                <span class="vid-ctrl-label">Muted</span>
+              </button>
+
+              <button id="video-fullscreen-btn" class="vid-ctrl-btn vid-ctrl-icon-only" title="Full Screen" aria-label="Full Screen">
+                <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foundations / The Three Pillars -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header-block">
+          <span class="section-label">Identity & Foundation</span>
+          <h2 class="section-heading">Rooted in sisterhood, built for impact.</h2>
+          <p class="section-desc">
+            Aroham Foundation is an independent alumni initiative that bridges educational guidance and career empowerment through grassroots collaboration.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon-wrap">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Our Roots</h3>
+            <p class="pillar-desc">
+              Founded by the alumni of <strong>Bolster Girls Campus</strong> (Parappur, Malappuram). Built on a deep culture of mutual upliftment, academic pursuit, and social responsibility.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-wrap">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Our Mission</h3>
+            <p class="pillar-desc">
+              Connecting students with mentors, guidance, and real-world opportunities through structured education, career counseling, and long-term community engagement.
+            </p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-wrap">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </div>
+            <h3 class="pillar-title">Our Vision</h3>
+            <p class="pillar-desc">
+              Helping every student make informed academic and career decisions, breaking geographical and informational barriers for young women across Kerala and beyond.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Trainers & Advisory Mentors -->
+    <section class="section section-alt" id="advisors">
+      <div class="container">
+        <div class="section-header-block">
+          <span class="section-label">Advisory & Mentorship Support</span>
+          <h2 class="section-heading">Guided Mentors & Academic Advisors</h2>
+          <p class="section-desc">
+            "Our Foundation's journey has been shaped by the wisdom and guidance of exceptional mentors who believed in our vision from the beginning."
+          </p>
+        </div>
+
+        <div class="advisors-grid">
+          <!-- Mentor 1 -->
+          <article class="advisor-card">
+            <div class="advisor-photo-frame">
+              <img src="assets/images/office-bearers/dr-shahul-nurani.svg" alt="Dr. Shahul Nurani - Guided Mentor" class="advisor-photo-img" loading="lazy">
+            </div>
+            <div class="advisor-body">
+              <span class="advisor-role">Guided Mentor · Academic Advisor</span>
+              <h4 class="advisor-name">Dr. Shahul Nurani</h4>
+              <p class="advisor-note">
+                Provided invaluable direction and higher education pedagogy frameworks, helping structure the foundation's academic outreach programs and student workshops.
+              </p>
+              <div class="advisor-footer">
+                <span>Advisory Council</span>
+                <span class="badge badge-pine">Academic Guide</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mentor 2 -->
+          <article class="advisor-card">
+            <div class="advisor-photo-frame">
+              <img src="assets/images/office-bearers/dr-kc-mujeeb.svg" alt="Dr. K. C. Mujeeb - Strategic Advisor" class="advisor-photo-img" loading="lazy">
+            </div>
+            <div class="advisor-body">
+              <span class="advisor-role">Guided Mentor · Strategic Advisor</span>
+              <h4 class="advisor-name">Dr. K. C. Mujeeb</h4>
+              <p class="advisor-note">
+                Instrumental in strategic roadmapping, institutional linkages, and advising on sustainable non-profit educational leadership and community engagement.
+              </p>
+              <div class="advisor-footer">
+                <span>Advisory Council</span>
+                <span class="badge badge-ochre">Strategic Guide</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mentor 3 -->
+          <article class="advisor-card">
+            <div class="advisor-photo-frame">
+              <img src="assets/images/office-bearers/mr-jalal-rahman.svg" alt="Mr. Jalal Rahman - Institutional Guide" class="advisor-photo-img" loading="lazy">
+            </div>
+            <div class="advisor-body">
+              <span class="advisor-role">Guided Mentor · Institutional Guide</span>
+              <h4 class="advisor-name">Mr. Jalal Rahman</h4>
+              <p class="advisor-note">
+                Offered continuous encouragement and guidance on institutional excellence, career summits, student counseling methodology, and youth empowerment.
+              </p>
+              <div class="advisor-footer">
+                <span>Advisory Council</span>
+                <span class="badge badge-pine">Institutional Guide</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Supporting Operations & Coordination Team -->
+        <div style="margin-top: 48px;">
+          <h3 class="committee-role-heading">Program Coordination & Technical Support</h3>
+          <div class="support-team-grid">
+            <div class="support-team-card">
+              <img src="assets/images/office-bearers/muhammad-hussain.svg" alt="Mr. Muhammad Hussain" class="support-photo-thumb" loading="lazy">
+              <div>
+                <div class="support-name">Mr. Muhammad Hussain</div>
+                <div class="support-portfolio">Mentorship & Program Coordination</div>
+              </div>
+            </div>
+
+            <div class="support-team-card">
+              <img src="assets/images/office-bearers/shafeeq.svg" alt="Mr. Shafeeq" class="support-photo-thumb" loading="lazy">
+              <div>
+                <div class="support-name">Mr. Shafeeq</div>
+                <div class="support-portfolio">Technical Support & Infrastructure</div>
+              </div>
+            </div>
+
+            <div class="support-team-card">
+              <img src="assets/images/office-bearers/vasih.svg" alt="Mr. Vasih" class="support-photo-thumb" loading="lazy">
+              <div>
+                <div class="support-name">Mr. Vasih</div>
+                <div class="support-portfolio">Creative, Media & Campaign Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Committee Section -->
+    <section class="section" id="committee">
+      <div class="container">
+        <div class="section-header-block">
+          <span class="section-label">Governance & Leadership</span>
+          <h2 class="section-heading">Executive Committee</h2>
+          <p class="section-desc">
+            Formed during the Bolster Girls Campus Alumni Meet on 12–13 July 2025, our leadership team directs strategy, manages programs, and mobilizes 123+ alumni volunteers.
+          </p>
+        </div>
+
+        <!-- Unified Executive Committee Profile Cards -->
+        <div class="committee-grid">
+          <!-- Member 1: President -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge president">President</span>
+              <img src="assets/images/office-bearers/fathimath-mufeedha.svg" alt="Fathimath Mufeedha - President" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">President</span>
+              <h4 class="committee-card-name">Fathimath Mufeedha</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-pine">Founding Executive</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member 2: General Secretary -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge president">General Secretary</span>
+              <img src="assets/images/office-bearers/afifa-ma.svg" alt="Afifa M.A. - General Secretary" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">General Secretary</span>
+              <h4 class="committee-card-name">Afifa M.A.</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-pine">Founding Executive</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member 3: Finance Secretary -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge gold">Finance Secretary</span>
+              <img src="assets/images/office-bearers/nishfa-mariya.svg" alt="Nishfa Mariya V - Finance Secretary" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">Finance Secretary</span>
+              <h4 class="committee-card-name">Nishfa Mariya V</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-ochre">Financial Governance</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member 4: Trustee -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge">Trustee</span>
+              <img src="assets/images/office-bearers/diya-fathima.svg" alt="Diya Fathima M.N. - Trustee" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">Trustee</span>
+              <h4 class="committee-card-name">Diya Fathima M.N.</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-neutral">Executive Board</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member 5: Trustee -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge">Trustee</span>
+              <img src="assets/images/office-bearers/khadeeja-misba.svg" alt="Khadeeja Misba P.M. - Trustee" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">Trustee</span>
+              <h4 class="committee-card-name">Khadeeja Misba P.M.</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-neutral">Executive Board</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member 6: Trustee -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge">Trustee</span>
+              <img src="assets/images/office-bearers/fathima-hija.svg" alt="Fathima Hija T. - Trustee" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">Trustee</span>
+              <h4 class="committee-card-name">Fathima Hija T.</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-neutral">Executive Board</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member 7: Trustee -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge">Trustee</span>
+              <img src="assets/images/office-bearers/fathima-minha.svg" alt="Fathima Minha P.M. - Trustee" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">Trustee</span>
+              <h4 class="committee-card-name">Fathima Minha P.M.</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-neutral">Executive Board</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member 8: Trustee -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge">Trustee</span>
+              <img src="assets/images/office-bearers/shana.svg" alt="Shana - Trustee" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">Trustee</span>
+              <h4 class="committee-card-name">Shana</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-neutral">Executive Board</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Member 9: Trustee -->
+          <article class="committee-member-card">
+            <div class="committee-photo-frame">
+              <span class="committee-photo-badge">Trustee</span>
+              <img src="assets/images/office-bearers/aysha-huda.svg" alt="Aysha Huda A.P. - Trustee" class="committee-photo-img" loading="lazy">
+            </div>
+            <div class="committee-card-body">
+              <span class="committee-card-role">Trustee</span>
+              <h4 class="committee-card-name">Aysha Huda A.P.</h4>
+              <div class="committee-card-footer">
+                <span class="badge badge-neutral">Executive Board</span>
+                <span>Tenure: 2025–Present</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Excellence Alumni Students & EduWay Mentors -->
+    <section class="section section-alt" id="alumni">
+      <div class="container">
+        <div class="section-header-block">
+          <span class="section-label">Alumni Network & Mentors</span>
+          <h2 class="section-heading">Excellence Alumni & EduWay Mentors</h2>
+          <p class="section-desc">
+            Our alumni mentors across medicine, engineering, architecture, design, pure sciences, and humanities.
+          </p>
+        </div>
+
+        <!-- Directory Controls: Search & Domain Filters -->
+        <div class="directory-controls">
+          <div class="search-and-sort">
+            <div class="search-box">
+              <svg class="search-icon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+              <input type="text" id="alumni-search-input" class="search-input" placeholder="Search alumni by name or academic stream (MBBS, B.Tech, Physics)...">
+            </div>
+            <div class="directory-stats-counter" id="directory-count">
+              Showing 9 of 9 mentors & achievers
+            </div>
+          </div>
+
+          <div class="filter-tabs" role="tablist">
+            <button class="filter-btn active" data-filter="all">All Disciplines</button>
+            <button class="filter-btn" data-filter="medicine">Medicine & Healthcare</button>
+            <button class="filter-btn" data-filter="sciences">Pure & Applied Sciences</button>
+            <button class="filter-btn" data-filter="engineering">Engineering & Tech</button>
+            <button class="filter-btn" data-filter="design">Architecture & Design</button>
+            <button class="filter-btn" data-filter="humanities">Humanities & Languages</button>
+          </div>
+        </div>
+
+        <!-- Alumni Cards Dynamic Grid -->
+        <div class="alumni-grid" id="alumni-grid">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Flagship Programmes & Initiatives -->
+    <section class="section" id="initiatives">
+      <div class="container">
+        <div class="section-header-block">
+          <span class="section-label">Impact in Action</span>
+          <h2 class="section-heading">Programmes & Initiatives</h2>
+          <p class="section-desc">
+            From interactive webinars to on-ground career summits and one-to-one mentorship, our initiatives create direct pathways to higher education.
+          </p>
+        </div>
+
+        <div class="initiatives-grid">
+          <!-- UniMates Mentorship -->
+          <div class="initiative-card" style="border-top: 3px solid var(--pine-800);">
+            <div class="initiative-header">
+              <span class="badge badge-pine">ONE-TO-ONE MENTORSHIP</span>
+              <span style="font-size: 0.78rem; color: var(--slate-400);">Launched May 4, 2026</span>
+            </div>
+            <h3 class="initiative-title">Aroham UniMates</h3>
+            <p class="initiative-desc">
+              Our flagship one-to-one mentorship programme matching higher secondary students directly with registered university mentors from the alumni network. Offers personalized guidance, entrance advice, and sustained peer encouragement.
+            </p>
+            <div class="initiative-metrics">
+              <div class="metric-item">
+                <span class="metric-num">17</span>
+                <span class="metric-label">Student Mentees</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-num">10</span>
+                <span class="metric-label">Registered Mentors</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-num">100%</span>
+                <span class="metric-label">Direct Matching</span>
+              </div>
+            </div>
+            <div style="margin-top: auto;">
+              <button class="btn btn-primary btn-sm" data-open-modal="unimate-modal">Apply for UniMate Mentorship</button>
+            </div>
+          </div>
+
+          <!-- EduWay 2026 -->
+          <div class="initiative-card" style="border-top: 3px solid var(--ochre-500);">
+            <div class="initiative-header">
+              <span class="badge badge-ochre">CAREER SUMMIT</span>
+              <span style="font-size: 0.78rem; color: var(--slate-400);">May 23, 2026</span>
+            </div>
+            <h3 class="initiative-title">EduWay 2026 · Future Skills Summit</h3>
+            <p class="initiative-desc">
+              Aroham Foundation served as official Career Mentors at Rose Lounge, Malappuram. A dedicated delegation of 9 mentors guided students of Classes 10–12 across varied academic disciplines and provided one-to-one career mapping.
+            </p>
+            <div class="initiative-metrics">
+              <div class="metric-item">
+                <span class="metric-num">9</span>
+                <span class="metric-label">Mentors On-Site</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-num">9</span>
+                <span class="metric-label">Academic Streams</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-num">Rose Lounge</span>
+                <span class="metric-label">Malappuram, Kerala</span>
+              </div>
+            </div>
+            <div class="initiative-speakers">
+              <strong>Disciplines:</strong> MBBS, Pharm.D, Spanish Hons, B.Tech, Physics, B.Des, B.Arch, Biotechnology.
+            </div>
+          </div>
+
+          <!-- GCC Higher Education Guidance -->
+          <div class="initiative-card">
+            <div class="initiative-header">
+              <span class="badge badge-neutral">GLOBAL EDUCATION</span>
+              <span style="font-size: 0.78rem; color: var(--slate-400);">April 18, 2026</span>
+            </div>
+            <h3 class="initiative-title">GCC Higher Education Guidance Session</h3>
+            <p class="initiative-desc">
+              Our inaugural major online webinar illuminated pathways for study across Gulf Cooperation Council nations. Addressed admissions, scholarship protocols, and living abroad.
+            </p>
+            <div class="initiative-metrics">
+              <div class="metric-item">
+                <span class="metric-num">63</span>
+                <span class="metric-label">Registrations</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-num">50–55</span>
+                <span class="metric-label">Live Attendees</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-num">Zoom</span>
+                <span class="metric-label">Global Webinar</span>
+              </div>
+            </div>
+            <div class="initiative-speakers">
+              <strong>Speakers:</strong> Nuha Kadija, Ayishathul Fibha Fabhina, Fathima Afiya.
+            </div>
+          </div>
+
+          <!-- UK Higher Education Guidance -->
+          <div class="initiative-card">
+            <div class="initiative-header">
+              <span class="badge badge-neutral">GLOBAL EDUCATION</span>
+              <span style="font-size: 0.78rem; color: var(--slate-400);">May 10, 2026</span>
+            </div>
+            <h3 class="initiative-title">UK Higher Education Guidance Session</h3>
+            <p class="initiative-desc">
+              Demystified the United Kingdom application landscape through authentic firsthand insights. Focused on the UCAS process, scholarships, visa procedures, and British student life.
+            </p>
+            <div class="initiative-metrics">
+              <div class="metric-item">
+                <span class="metric-num">20</span>
+                <span class="metric-label">Registrations</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-num">12–15</span>
+                <span class="metric-label">Live Participants</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-num">Interactive</span>
+                <span class="metric-label">Q&A Breakdown</span>
+              </div>
+            </div>
+            <div class="initiative-speakers">
+              <strong>Speaker:</strong> Fida Haneef.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Journey Timeline -->
+    <section class="section section-alt" id="timeline">
+      <div class="container">
+        <div class="section-header-block center">
+          <span class="section-label">Milestones</span>
+          <h2 class="section-heading">Our First-Year Journey</h2>
+          <p class="section-desc">
+            From the initial alumni spark in July 2025 to international guidance summits and future expansion.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">12–13 July 2025</span>
+                <span class="badge badge-pine">The Beginning</span>
+              </div>
+              <h3 class="timeline-title">Envisioned at Bolster Girls Campus Alumni Meet</h3>
+              <p class="timeline-desc">
+                Aroham Foundation was conceived during the annual alumni gathering. The Executive Committee was officially constituted, and initial brainstorming sessions began.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">29 July 2025</span>
+                <span class="badge badge-neutral">Digital Outreach</span>
+              </div>
+              <h3 class="timeline-title">Official Digital Presence Established</h3>
+              <p class="timeline-desc">
+                Launch of the official Aroham Foundation Instagram channel, marking the beginning of our public communications and student engagement journey.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">August – October 2025</span>
+                <span class="badge badge-neutral">Planning & Development</span>
+              </div>
+              <h3 class="timeline-title">Foundational Branding & Governance Meetings</h3>
+              <p class="timeline-desc">
+                Regular online committee sessions to finalize the foundation name, emblem/logo, vision, mission, and long-term awareness campaigns.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">22 October 2025</span>
+                <span class="badge badge-neutral">Public Launch</span>
+              </div>
+              <h3 class="timeline-title">Official Campaign Launch</h3>
+              <p class="timeline-desc">
+                Broad public introduction to Aroham Foundation's purpose, inviting alumni and students to connect for mentorship and educational assistance.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">25–29 December 2025</span>
+                <span class="badge badge-ochre">Strategic Alignment</span>
+              </div>
+              <h3 class="timeline-title">HiLite Mall Strategic Session, Kozhikode</h3>
+              <p class="timeline-desc">
+                Strategic planning meeting held in Kozhikode. Planned future initiatives, structured the UniMates mentorship framework, and officially introduced the foundation's executive roadmap.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">18 April 2026</span>
+                <span class="badge badge-pine">Action Phase</span>
+              </div>
+              <h3 class="timeline-title">GCC Higher Education Guidance Session</h3>
+              <p class="timeline-desc">
+                63 registrations, 50–55 active participants. International student speakers from the UAE and GCC.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">4 May 2026</span>
+                <span class="badge badge-pine">Flagship Launch</span>
+              </div>
+              <h3 class="timeline-title">Official Launch of Aroham UniMates</h3>
+              <p class="timeline-desc">
+                Rollout of one-to-one mentorship matching. 17 initial student registrations paired with 10 registered alumni mentors.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">10 May 2026</span>
+                <span class="badge badge-neutral">International</span>
+              </div>
+              <h3 class="timeline-title">UK Higher Education Guidance Session</h3>
+              <p class="timeline-desc">
+                Conducted with Fida Haneef, guiding students on UCAS admissions, funding, and campus acclimatization.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 9 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">23 May 2026</span>
+                <span class="badge badge-ochre">On-Ground Summit</span>
+              </div>
+              <h3 class="timeline-title">EduWay 2026 · Rose Lounge, Malappuram</h3>
+              <p class="timeline-desc">
+                9 alumni mentors represented Aroham Foundation at the Future Skills & Career Summit, counseling Class 10–12 students across 9 disciplines.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 10 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">25–26 July 2026</span>
+                <span class="badge badge-pine">Inaugural Annual Summit</span>
+              </div>
+              <h3 class="timeline-title">Bolster Girls Campus Alumni Meet 2026</h3>
+              <p class="timeline-desc">
+                Formal presentation of the 2025–2026 Inaugural Annual Report, reflection on our first-year milestones, and adoption of the 2026–2027 roadmap.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact & Transparency Section -->
+    <section class="section" id="impact">
+      <div class="container">
+        <div class="section-header-block center">
+          <span class="section-label">Year at a Glance</span>
+          <h2 class="section-heading">Measurable Impact & Reflections</h2>
+          <p class="section-desc">
+            A trusted platform for mentorship and educational guidance — established in our very first year.
+          </p>
+        </div>
+
+        <div class="impact-summary-strip">
+          <div class="impact-stat-card">
+            <div class="impact-stat-num">123</div>
+            <div class="impact-stat-label">Alumni Volunteers</div>
+            <div class="impact-stat-sub">Across diverse career fields</div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-num">10</div>
+            <div class="impact-stat-label">UniMates Mentors</div>
+            <div class="impact-stat-sub">Dedicated 1-on-1 guides</div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-num">83</div>
+            <div class="impact-stat-label">Total Registrations</div>
+            <div class="impact-stat-sub">Across webinars & summits</div>
+          </div>
+
+          <div class="impact-stat-card">
+            <div class="impact-stat-num">70+</div>
+            <div class="impact-stat-label">Live Active Participants</div>
+            <div class="impact-stat-sub">Engaged in real-time guidance</div>
+          </div>
+        </div>
+
+        <!-- Honest Reflections & Learnings -->
+        <div class="reflections-grid">
+          <div class="reflection-panel">
+            <h3 class="reflection-panel-title">
+              <svg width="20" height="20" style="color: var(--ochre-500);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <span>Challenges Encountered</span>
+            </h3>
+            <ul class="reflection-list">
+              <li class="reflection-item">
+                <span class="reflection-check">&bull;</span>
+                <div><strong>Building from the Ground Up:</strong> Creating institutional governance, processes, and volunteer workflows without prior organizational blueprints.</div>
+              </li>
+              <li class="reflection-item">
+                <span class="reflection-check">&bull;</span>
+                <div><strong>Coordinating Across Districts:</strong> Mobilizing alumni working and studying across multiple districts in Kerala and internationally.</div>
+              </li>
+              <li class="reflection-item">
+                <span class="reflection-check">&bull;</span>
+                <div><strong>Virtual-First Operations:</strong> Maintaining high engagement and seamless coordination over online platforms before on-ground summits.</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reflection-panel">
+            <h3 class="reflection-panel-title">
+              <svg width="20" height="20" style="color: var(--pine-800);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Core Learnings</span>
+            </h3>
+            <ul class="reflection-list">
+              <li class="reflection-item">
+                <svg class="reflection-check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div><strong>Strong Teamwork Drives Outcomes:</strong> Dedicated volunteers and transparent communication overcome structural constraints.</div>
+              </li>
+              <li class="reflection-item">
+                <svg class="reflection-check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div><strong>Virtual Collaboration Works:</strong> High-quality mentorship can be delivered digitally to students in remote panchayats.</div>
+              </li>
+              <li class="reflection-item">
+                <svg class="reflection-check" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div><strong>Every Program Builds Confidence:</strong> Positive participant response validates the immense need for accessible guidance.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Road Ahead 2026-2027 -->
+        <div style="margin-top: 56px;">
+          <h3 class="committee-role-heading">Looking Ahead · Strategic Goals for 2026–2027</h3>
+          <div class="road-ahead-grid">
+            <div class="goal-card">
+              <div class="goal-card-num">Objective 01</div>
+              <h4 class="goal-card-title">Expand UniMates</h4>
+              <p class="goal-card-desc">Grow the mentor network across new colleges, reaching more school students across Kerala districts.</p>
+            </div>
+
+            <div class="goal-card">
+              <div class="goal-card-num">Objective 02</div>
+              <h4 class="goal-card-title">Scholarship Cell</h4>
+              <p class="goal-card-desc">Help students identify and access state, central, and private financial aid opportunities to support higher education.</p>
+            </div>
+
+            <div class="goal-card">
+              <div class="goal-card-num">Objective 03</div>
+              <h4 class="goal-card-title">Strategic Partnerships</h4>
+              <p class="goal-card-desc">Build formalized collaborations with academic institutions, NGOs, and education professionals.</p>
+            </div>
+
+            <div class="goal-card">
+              <div class="goal-card-num">Objective 04</div>
+              <h4 class="goal-card-title">Regional Workshops</h4>
+              <p class="goal-card-desc">Organize interactive online and offline career guidance workshops across diverse high schools in Kerala.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acknowledgements & Gratitude -->
+        <div class="gratitude-box">
+          <h3 class="gratitude-title">Heartfelt Gratitude</h3>
+          <p class="gratitude-lead">
+            We extend our sincere thanks to everyone who shaped Aroham Foundation's inaugural year into a milestone of purpose and sisterhood.
+          </p>
+          <div class="gratitude-tags-row">
+            <span class="gratitude-tag">Dr. Shahul Nurani</span>
+            <span class="gratitude-tag">Dr. K. C. Mujeeb</span>
+            <span class="gratitude-tag">Mr. Jalal Rahman</span>
+            <span class="gratitude-tag">Executive Committee</span>
+            <span class="gratitude-tag">123 Alumni Volunteers</span>
+            <span class="gratitude-tag">Session Speakers</span>
+            <span class="gratitude-tag">Student Participants</span>
+            <span class="gratitude-tag">Bolster Girls Campus</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#top" class="nav-brand" style="margin-bottom: 16px; display: inline-flex;" aria-label="Aroham Foundation">
+            <img src="assets/images/aroham-emblem-transparent.png" alt="Aroham Emblem" class="brand-emblem-img">
+            <div class="brand-text-block">
+              <span class="brand-name">Aroham</span>
+              <span class="brand-sub">FOUNDATION</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            A women-led alumni initiative bridging the gap between students and opportunity through education, mentorship, and community development. Founded by Bolster Girls Campus alumni.
+          </p>
+          <div style="margin-top: 16px; font-size: 0.8rem; color: var(--slate-600);">
+            <strong>Campus Roots:</strong> Parappur, Kottakkal, Malappuram District, Kerala.
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Initiatives</h4>
+          <ul class="footer-links-list">
+            <li><a href="#initiatives" class="footer-link">Aroham UniMates</a></li>
+            <li><a href="#initiatives" class="footer-link">EduWay 2026 Summit</a></li>
+            <li><a href="#initiatives" class="footer-link">GCC Higher Education</a></li>
+            <li><a href="#initiatives" class="footer-link">UK Guidance Session</a></li>
+            <li><a href="#timeline" class="footer-link">Bolster Alumni Meet 2026</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Organization</h4>
+          <ul class="footer-links-list">
+            <li><a href="#about" class="footer-link">About & Roots</a></li>
+            <li><a href="#advisors" class="footer-link">Advisory Mentors</a></li>
+            <li><a href="#committee" class="footer-link">Executive Committee</a></li>
+            <li><a href="#alumni" class="footer-link">Excellence Directory</a></li>
+            <li><a href="#impact" class="footer-link">Impact & Reflections</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Connect & Engage</h4>
+          <p style="font-size: 0.84rem; color: var(--slate-600); margin-bottom: 14px; line-height: 1.5;">
+            Join our 123-strong volunteer network or request guidance from a UniMate mentor today.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <button class="btn btn-primary btn-sm" data-open-modal="unimate-modal" style="width: 100%;">Request Mentorship</button>
+            <button class="btn btn-outline btn-sm" data-open-modal="volunteer-modal" style="width: 100%;">Join as Volunteer</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2025–2026 Aroham Foundation · Bolster Girls Campus Alumni. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 18px;">
+          <span>Inaugural Annual Report · President Fathimath Mufeedha</span>
+          <a href="#top" style="color: var(--pine-800); font-weight: 500;">Back to top &uarr;</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Excellence Alumni Detail -->
+  <div class="modal-overlay" id="alumni-modal" role="dialog" aria-modal="true" aria-labelledby="alumni-modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="alumni-modal-title">Alumna Profile</h3>
+        <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+      </div>
+      <div class="modal-body" id="alumni-modal-content">
+        <!-- Rendered via app.js -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm modal-dismiss-btn">Close</button>
+        <button class="btn btn-primary btn-sm" id="modal-request-guidance-btn">Request Guidance with Mentor</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Request UniMate Mentorship -->
+  <div class="modal-overlay" id="unimate-modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Request Aroham UniMate Mentorship</h3>
+          <div style="font-size: 0.78rem; color: var(--slate-600);">One-to-One Academic & Career Guidance for Students</div>
+        </div>
+        <button class="modal-close-btn" aria-label="Close">&times;</button>
+      </div>
+      <form id="unimate-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="student-name">Student Full Name *</label>
+            <input type="text" id="student-name" class="form-control" required placeholder="e.g. Fathima R.">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="student-class">Current Class / Level *</label>
+            <select id="student-class" class="form-control" required>
+              <option value="">Select your academic level</option>
+              <option value="Class 10">Class 10 (Secondary School)</option>
+              <option value="Class 11">Class 11 (Higher Secondary +1)</option>
+              <option value="Class 12">Class 12 (Higher Secondary +2)</option>
+              <option value="Repeater / Entrance Aspirant">Repeater / Entrance Aspirant (NEET / JEE / KEAM / CUET)</option>
+              <option value="Undergraduate">College / Undergraduate Student</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mentor-preference-input">Preferred Mentor or Stream *</label>
+            <input type="text" id="mentor-preference-input" class="form-control" required placeholder="e.g. MBBS, Physics, Architecture, UK / GCC Studies">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="student-contact">WhatsApp / Phone Number *</label>
+            <input type="tel" id="student-contact" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="student-queries">What guidance do you seek?</label>
+            <textarea id="student-queries" class="form-control" rows="3" placeholder="Tell us about the courses, universities, or entrance exams you are preparing for..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm modal-dismiss-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Submit Mentorship Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Volunteer Network Sign-Up -->
+  <div class="modal-overlay" id="volunteer-modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Join Aroham Volunteer Network</h3>
+          <div style="font-size: 0.78rem; color: var(--slate-600);">Join 123+ Bolster Girls Campus Alumni in Empowering Students</div>
+        </div>
+        <button class="modal-close-btn" aria-label="Close">&times;</button>
+      </div>
+      <form id="volunteer-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="vol-name">Full Name *</label>
+            <input type="text" id="vol-name" class="form-control" required placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vol-bgc-batch">Bolster Girls Campus Batch / Year *</label>
+            <input type="text" id="vol-bgc-batch" class="form-control" required placeholder="e.g. Batch 2021–2023">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vol-profession">Current Course / University / Profession *</label>
+            <input type="text" id="vol-profession" class="form-control" required placeholder="e.g. B.Tech Computer Science / APJ KTU">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vol-interest">Area of Contribution *</label>
+            <select id="vol-interest" class="form-control" required>
+              <option value="">Select contribution area</option>
+              <option value="UniMates Mentorship">UniMates 1-on-1 Student Mentoring</option>
+              <option value="Webinar / Workshop Speaker">Session / Webinar Speaker</option>
+              <option value="Event Logistics & Summits">Event Coordination & On-Ground Summits</option>
+              <option value="Creative & Media Communications">Creative, Media & Social Outreach</option>
+              <option value="Scholarship Research">Scholarship Information Research</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="vol-contact">Phone / WhatsApp Number *</label>
+            <input type="tel" id="vol-contact" class="form-control" required placeholder="+91 98765 43210">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline btn-sm modal-dismiss-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Register as Volunteer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Full Annual Report Viewer -->
+  <div class="modal-overlay" id="report-modal" role="dialog" aria-modal="true">
+    <div class="modal-box" style="max-width: 720px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">Inaugural Annual Report · 2025–2026</h3>
+          <div style="font-size: 0.78rem; color: var(--ochre-600); font-weight: 500;">Presented by Fathimath Mufeedha, President</div>
+        </div>
+        <button class="modal-close-btn" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body" style="font-size: 0.9rem; color: var(--slate-700); line-height: 1.65;">
+        <div style="padding: 16px; background-color: var(--pine-50); border-radius: var(--radius-sm); margin-bottom: 20px; border-left: 3px solid var(--pine-800);">
+          <strong style="color: var(--pine-900);">About Aroham Foundation:</strong>
+          <p style="margin-top: 4px; font-size: 0.88rem;">
+            A women-led alumni initiative that bridges the gap between students and opportunity through education, mentorship, and community development. Founded by Bolster Girls Campus alumni.
+          </p>
+        </div>
+
+        <h4 style="font-size: 1rem; color: var(--pine-900); margin-bottom: 8px;">Executive Governance</h4>
+        <p style="margin-bottom: 14px;">
+          <strong>President:</strong> Fathimath Mufeedha · <strong>General Secretary:</strong> Afifa M.A. · <strong>Finance Secretary:</strong> Nishfa Mariya V<br>
+          <strong>Trustees:</strong> Diya Fathima M.N., Khadeeja Misba P.M., Fathima Hija T., Fathima Minha P.M., Shana, Aysha Huda A.P.
+        </p>
+
+        <h4 style="font-size: 1rem; color: var(--pine-900); margin-bottom: 8px;">Volunteer & Mentorship Network</h4>
+        <ul style="padding-left: 20px; margin-bottom: 14px;">
+          <li><strong>123</strong> Alumni Volunteers mobilized</li>
+          <li><strong>10</strong> Registered UniMates Mentors</li>
+          <li><strong>17</strong> Students actively matched in one-to-one mentorship</li>
+        </ul>
+
+        <h4 style="font-size: 1rem; color: var(--pine-900); margin-bottom: 8px;">Year 1 Flagship Programs</h4>
+        <ul style="padding-left: 20px; margin-bottom: 14px;">
+          <li><strong>GCC Higher Education Guidance (18 April 2026):</strong> 63 registrations, 50–55 participants. International student speakers from the UAE and GCC.</li>
+          <li><strong>Aroham UniMates Launch (4 May 2026):</strong> One-to-one structured mentoring program.</li>
+          <li><strong>UK Higher Education Guidance (10 May 2026):</strong> 20 registrations, 12–15 attendees with Fida Haneef.</li>
+          <li><strong>EduWay 2026 (23 May 2026):</strong> Future Skills & Career Summit at Rose Lounge, Malappuram. 9 alumni mentors guided students across MBBS, Pharm.D, Spanish, B.Tech, Physics, Design, B.Arch, and Biotechnology.</li>
+        </ul>
+
+        <h4 style="font-size: 1rem; color: var(--pine-900); margin-bottom: 8px;">Guided Mentors & Support</h4>
+        <p style="margin-bottom: 14px;">
+          Shaped by the wisdom of <strong>Dr. Shahul Nurani</strong>, <strong>Dr. K. C. Mujeeb</strong>, and <strong>Mr. Jalal Rahman</strong>. Supported by <strong>Mr. Muhammad Hussain</strong> (Mentorship & Coordination), <strong>Mr. Shafeeq</strong> (Technical Support), and <strong>Mr. Vasih</strong> (Creative & Media).
+        </p>
+
+        <blockquote style="font-style: italic; color: var(--pine-800); border-left: 2px solid var(--ochre-500); padding-left: 14px; margin-top: 16px;">
+          "Our first year was not about perfection — it was about taking the first step with purpose. Every program, every volunteer, every mentor, and every student became part of Aroham Foundation's journey."
+        </blockquote>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-sm modal-dismiss-btn">Close</button>
+        <button class="btn btn-primary btn-sm" onclick="window.print()">Print Report Summary</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-notice" id="toast-notice" role="alert">
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--ochre-400); flex-shrink: 0;">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+    <div class="toast-message" style="font-size: 0.88rem;">Action completed successfully.</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

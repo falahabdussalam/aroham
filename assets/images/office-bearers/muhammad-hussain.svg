@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad-MrMuhammadHussain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFF5F2"/>
+      <stop offset="100%" stop-color="#D5E2DC"/>
+    </linearGradient>
+    <linearGradient id="suit-grad-MrMuhammadHussain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#213E35"/>
+      <stop offset="100%" stop-color="#12251F"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="460" fill="url(#bg-grad-MrMuhammadHussain)"/>
+  <path d="M 60 460 L 60 200 C 60 110, 340 110, 340 200 L 340 460 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.6"/>
+  <circle cx="200" cy="90" r="4" fill="#1D7863" opacity="0.8"/>
+  <g>
+    <path d="M 60 460 C 60 350, 110 315, 155 305 L 245 305 C 290 315, 340 350, 340 460 Z" fill="url(#suit-grad-MrMuhammadHussain)"/>
+    <path d="M 165 305 L 200 375 L 235 305 Z" fill="#FFFFFF"/>
+    <path d="M 194 305 L 200 375 L 206 305 Z" fill="#1D7863"/>
+    <rect x="180" y="260" width="40" height="50" fill="#E8CAAF"/>
+    <ellipse cx="200" cy="205" rx="48" ry="62" fill="#F5DBC4"/>
+    <path d="M 150 195 C 150 140, 250 140, 250 195 C 240 150, 160 150, 150 195 Z" fill="#2A2826"/>
+    <path d="M 168 190 Q 178 185 188 190" stroke="#2A2826" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    <path d="M 212 190 Q 222 185 232 190" stroke="#2A2826" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    <circle cx="178" cy="198" r="3.5" fill="#2A2826"/>
+    <circle cx="222" cy="198" r="3.5" fill="#2A2826"/>
+    <path d="M 198 202 L 195 218 L 205 218" stroke="#C99A7B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <path d="M 188 236 Q 200 244 212 236" stroke="#9E4D38" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+  <rect x="24" y="396" width="352" height="46" rx="8" fill="#FFFFFF" opacity="0.95"/>
+  <rect x="24" y="396" width="352" height="46" rx="8" fill="none" stroke="#D1DDD7" stroke-width="1"/>
+  <text x="40" y="420" font-family="'Poppins', sans-serif" font-weight="600" font-size="13" fill="#0D483A">Mr. Muhammad Hussain</text>
+  <text x="40" y="433" font-family="'Poppins', sans-serif" font-weight="500" font-size="9.5" fill="#1D7863" letter-spacing="0.08em">MENTORSHIP & COORDINATION LEAD</text>
+  <circle cx="354" cy="419" r="6" fill="#0D483A"/>
+  <path d="M 351 419 L 353 421 L 357 417" stroke="#FFFFFF" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+</svg>

@@ -2260,3 +2260,220 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ==========================================================================
+   Digital Page & Section Animation Effects
+   Aesthetic: Cyber-Editorial Precision, Glowing Scan Beams & Fluid Reveals
+   ========================================================================== */
+
+/* Top Digital Page Transition Laser Beam */
+.digital-page-beam {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  pointer-events: none;
+  z-index: 99999;
+  background: transparent;
+  overflow: hidden;
+}
+
+.digital-page-beam::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(223, 156, 44, 0.4) 20%, 
+    #DF9C2C 50%, 
+    #154840 80%, 
+    transparent 100%);
+  box-shadow: 0 0 10px rgba(223, 156, 44, 0.8), 0 0 20px rgba(21, 72, 64, 0.5);
+  opacity: 0;
+}
+
+.digital-page-beam.active::before {
+  opacity: 1;
+  animation: digitalBeamSweep 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes digitalBeamSweep {
+  0% {
+    left: -100%;
+    transform: scaleX(0.3);
+  }
+  45% {
+    transform: scaleX(1.3);
+  }
+  100% {
+    left: 100%;
+    transform: scaleX(0.3);
+  }
+}
+
+/* Digital Scan Sweep Across Entering Sections */
+.section-digital-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 6;
+}
+
+.section-digital-sweep::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -100px;
+  height: 100px;
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    rgba(223, 156, 44, 0.05) 40%, 
+    rgba(21, 72, 64, 0.08) 80%, 
+    rgba(223, 156, 44, 0.4) 98%, 
+    rgba(223, 156, 44, 0.85) 100%);
+  box-shadow: 0 2px 14px rgba(223, 156, 44, 0.3);
+  opacity: 0;
+}
+
+.section.digital-entered .section-digital-sweep::after {
+  animation: digitalSectionSweep 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes digitalSectionSweep {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Section Header Digital Entrance */
+.digital-reveal-header {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(4px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.section.digital-entered .digital-reveal-header,
+.hero-section.digital-entered .digital-reveal-header {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Cards Staggered Digital Entrance */
+.digital-reveal-card {
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+  filter: blur(3px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color var(--transition-fast), 
+              box-shadow var(--transition-fast);
+  will-change: opacity, transform, filter;
+}
+
+.section.digital-entered .digital-reveal-card,
+.hero-section.digital-entered .digital-reveal-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Subtle Digital Shimmer on Card Landing */
+@keyframes digitalCardShimmer {
+  0% {
+    box-shadow: 0 0 0 0 rgba(223, 156, 44, 0);
+  }
+  45% {
+    box-shadow: 0 0 16px -2px rgba(223, 156, 44, 0.28), 0 6px 18px rgba(21, 72, 64, 0.12);
+  }
+  100% {
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.section.digital-entered .digital-reveal-card {
+  animation: digitalCardShimmer 0.85s ease-out forwards;
+}
+
+/* Digital Grid Transition for Alumni Directory Filtering */
+.alumni-grid.digital-filter-transition {
+  opacity: 0.25;
+  transform: scale(0.985);
+  filter: blur(3px);
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+
+.alumni-grid {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Digital Indicator in Header Navigation */
+.nav-links .nav-link {
+  position: relative;
+}
+
+.nav-links .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ochre-500);
+  box-shadow: 0 0 8px rgba(223, 156, 44, 0.7);
+  animation: digitalNavGlow 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes digitalNavGlow {
+  0% {
+    box-shadow: 0 0 4px rgba(223, 156, 44, 0.5);
+    opacity: 0.85;
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(223, 156, 44, 0.95);
+    opacity: 1;
+  }
+}
+
+/* Respect User Motion Accessibility Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .digital-page-beam,
+  .section-digital-sweep {
+    display: none !important;
+  }
+  .digital-reveal-header,
+  .digital-reveal-card {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+

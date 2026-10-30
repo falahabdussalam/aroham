@@ -150,50 +150,59 @@ document.addEventListener('DOMContentLoaded', () => {
       directoryCounter.textContent = `Showing ${filtered.length} of ${ALUMNI_DATA.length} mentors & achievers`;
     }
 
-    if (filtered.length === 0) {
-      alumniGrid.innerHTML = `
-        <div class="alumni-empty-state">
-          <svg style="margin: 0 auto 12px; width: 36px; height: 36px; color: var(--slate-400);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-          <h4 style="font-size: 1.1rem; color: var(--pine-900); margin-bottom: 4px;">No alumni found</h4>
-          <p style="font-size: 0.85rem; color: var(--slate-600);">Try searching for a different name or academic stream (e.g. MBBS, Physics, Design, B.Arch).</p>
-        </div>
-      `;
-      return;
-    }
+    // Digital filter transition animation
+    alumniGrid.classList.add('digital-filter-transition');
 
-    alumniGrid.innerHTML = filtered.map(person => {
-      const initials = person.name.split(' ').map(n => n[0]).join('').substring(0, 2);
-      return `
-        <article class="alumni-card" data-id="${person.id}">
-          <div class="alumni-top">
-            <span class="alumni-badge-pill ${person.badgeClass}">${person.categoryLabel}</span>
-            <div class="alumni-avatar-circle">${initials}</div>
+    setTimeout(() => {
+      if (filtered.length === 0) {
+        alumniGrid.innerHTML = `
+          <div class="alumni-empty-state">
+            <svg style="margin: 0 auto 12px; width: 36px; height: 36px; color: var(--slate-400);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <h4 style="font-size: 1.1rem; color: var(--pine-900); margin-bottom: 4px;">No alumni found</h4>
+            <p style="font-size: 0.85rem; color: var(--slate-600);">Try searching for a different name or academic stream (e.g. MBBS, Physics, Design, B.Arch).</p>
           </div>
-          <h3 class="alumni-name">${person.name}</h3>
-          <div class="alumni-degree">${person.degree}</div>
-          <div class="alumni-footer-meta">
-            <span>${person.summitRole}</span>
-            <span class="alumni-action-link">
-              View Profile
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </span>
-          </div>
-        </article>
-      `;
-    }).join('');
+        `;
+        alumniGrid.classList.remove('digital-filter-transition');
+        return;
+      }
 
-    // Attach click events
-    alumniGrid.querySelectorAll('.alumni-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const id = card.getAttribute('data-id');
-        openAlumniDetailModal(id);
+      alumniGrid.innerHTML = filtered.map(person => {
+        const initials = person.name.split(' ').map(n => n[0]).join('').substring(0, 2);
+        return `
+          <article class="alumni-card digital-reveal-card" data-id="${person.id}">
+            <div class="alumni-top">
+              <span class="alumni-badge-pill ${person.badgeClass}">${person.categoryLabel}</span>
+              <div class="alumni-avatar-circle">${initials}</div>
+            </div>
+            <h3 class="alumni-name">${person.name}</h3>
+            <div class="alumni-degree">${person.degree}</div>
+            <div class="alumni-footer-meta">
+              <span>${person.summitRole}</span>
+              <span class="alumni-action-link">
+                View Profile
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Attach click events and digital stagger
+      alumniGrid.querySelectorAll('.alumni-card').forEach((card, idx) => {
+        card.style.transitionDelay = `${(idx % 6) * 55}ms`;
+        card.addEventListener('click', () => {
+          const id = card.getAttribute('data-id');
+          openAlumniDetailModal(id);
+        });
       });
-    });
+
+      alumniGrid.classList.remove('digital-filter-transition');
+    }, 90);
   }
 
   // ---------------- Modal Handling ----------------
@@ -371,27 +380,99 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ---------------- Smooth Scroll Navigation with Tap Pull Animation ----------------
-  document.querySelectorAll('.site-nav a[href^="#"]').forEach(link => {
+  // ==========================================================================
+  // Digital Page & Section Animation Engine
+  // ==========================================================================
+  const digitalBeam = document.getElementById('digital-page-beam');
+
+  function triggerDigitalPageBeam() {
+    if (!digitalBeam) return;
+    digitalBeam.classList.remove('active');
+    void digitalBeam.offsetWidth; // Force reflow to replay CSS keyframe
+    digitalBeam.classList.add('active');
+    setTimeout(() => {
+      digitalBeam.classList.remove('active');
+    }, 850);
+  }
+
+  // Inject digital scan sweeps and setup entrance classes for each section
+  const allSections = document.querySelectorAll('section');
+  allSections.forEach(section => {
+    if (!section.querySelector('.section-digital-sweep')) {
+      const sweep = document.createElement('div');
+      sweep.className = 'section-digital-sweep';
+      sweep.setAttribute('aria-hidden', 'true');
+      section.prepend(sweep);
+    }
+
+    const header = section.querySelector('.section-header-block');
+    if (header) {
+      header.classList.add('digital-reveal-header');
+    }
+
+    const cards = section.querySelectorAll(
+      '.committee-member-card, .advisor-card, .alumni-card, .initiative-card, .timeline-card, .goal-card, .pillar-card'
+    );
+    cards.forEach((card, idx) => {
+      card.classList.add('digital-reveal-card');
+      card.style.transitionDelay = `${(idx % 6) * 65}ms`;
+    });
+  });
+
+  // IntersectionObserver: Triggers digital entrance when scrolling into any section
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('digital-entered');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    allSections.forEach(sec => sectionObserver.observe(sec));
+  } else {
+    allSections.forEach(sec => sec.classList.add('digital-entered'));
+  }
+
+  // Smooth Scroll Navigation with Digital Beam Sweep and Section Refresh
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
       if (!targetId || targetId === '#') return;
+
+      if (targetId === '#top') {
+        e.preventDefault();
+        triggerDigitalPageBeam();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
 
       const targetSection = document.querySelector(targetId);
       if (targetSection) {
         e.preventDefault();
 
-        // Visual tap animation feedback
+        // 1. Digital laser beam transition
+        triggerDigitalPageBeam();
+
+        // 2. Visual tap feedback
         this.classList.add('nav-link-tapped');
         setTimeout(() => this.classList.remove('nav-link-tapped'), 280);
 
-        // Immediate active class update
+        // 3. Immediate active class update
         document.querySelectorAll('.nav-links .nav-link').forEach(l => l.classList.remove('active'));
         if (this.classList.contains('nav-link')) {
           this.classList.add('active');
         }
 
-        // Close mobile drawer smoothly if open
+        // 4. Re-arm digital entrance effect for the target section
+        targetSection.classList.remove('digital-entered');
+        void targetSection.offsetWidth;
+        targetSection.classList.add('digital-entered');
+
+        // 5. Close mobile drawer smoothly if open
         if (navLinksList && navLinksList.classList.contains('open')) {
           setTimeout(() => {
             navLinksList.classList.remove('open');
@@ -399,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 150);
         }
 
-        // Calculate smooth scroll offset (navbar height: 72px + 12px buffer = 84px)
+        // 6. Calculate smooth scroll offset (navbar height: 72px + 12px buffer = 84px)
         const headerOffset = 84;
         const elementPosition = targetSection.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;

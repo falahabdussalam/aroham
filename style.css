@@ -2261,11 +2261,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Digital Page & Section Animation Effects
-   Aesthetic: Cyber-Editorial Precision, Glowing Scan Beams & Fluid Reveals
+   Cinematic Slow-Motion Page & Section Transition Engine
+   Aesthetic: Velvety Slow-Motion Depth, Ethereal Atmospheric Veil & Lens Focus
    ========================================================================== */
 
-/* Top Digital Page Transition Laser Beam */
+/* Top Slow-Motion Ambient Luminous Ribbon */
 .digital-page-beam {
   position: fixed;
   top: 0;
@@ -2287,34 +2287,40 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(223, 156, 44, 0.4) 20%, 
+    rgba(223, 156, 44, 0.2) 20%, 
     #DF9C2C 50%, 
     #154840 80%, 
     transparent 100%);
-  box-shadow: 0 0 10px rgba(223, 156, 44, 0.8), 0 0 20px rgba(21, 72, 64, 0.5);
+  box-shadow: 0 0 16px rgba(223, 156, 44, 0.7), 0 0 30px rgba(21, 72, 64, 0.4);
   opacity: 0;
 }
 
 .digital-page-beam.active::before {
   opacity: 1;
-  animation: digitalBeamSweep 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: slowMoBeamSweep 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes digitalBeamSweep {
+@keyframes slowMoBeamSweep {
   0% {
     left: -100%;
-    transform: scaleX(0.3);
+    transform: scaleX(0.4);
+    opacity: 0;
   }
-  45% {
-    transform: scaleX(1.3);
+  25% {
+    opacity: 1;
+  }
+  65% {
+    transform: scaleX(1.15);
+    opacity: 0.9;
   }
   100% {
     left: 100%;
-    transform: scaleX(0.3);
+    transform: scaleX(0.4);
+    opacity: 0;
   }
 }
 
-/* Digital Scan Sweep Across Entering Sections */
+/* Atmospheric Slow-Motion Ambient Light Veil Across Entering Sections */
 .section-digital-sweep {
   position: absolute;
   top: 0;
@@ -2323,55 +2329,52 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   pointer-events: none;
   overflow: hidden;
-  z-index: 6;
+  z-index: 2;
 }
 
 .section-digital-sweep::after {
   content: '';
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  top: -100px;
-  height: 100px;
-  background: linear-gradient(180deg, 
-    transparent 0%, 
-    rgba(223, 156, 44, 0.05) 40%, 
-    rgba(21, 72, 64, 0.08) 80%, 
-    rgba(223, 156, 44, 0.4) 98%, 
-    rgba(223, 156, 44, 0.85) 100%);
-  box-shadow: 0 2px 14px rgba(223, 156, 44, 0.3);
+  height: 100%;
+  background: radial-gradient(ellipse 90% 50% at 50% -10%, rgba(223, 156, 44, 0.16) 0%, rgba(21, 72, 64, 0.08) 50%, transparent 80%);
   opacity: 0;
+  transform: translateY(-40px) scale(1.04);
 }
 
-.section.digital-entered .section-digital-sweep::after {
-  animation: digitalSectionSweep 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.section.digital-entered .section-digital-sweep::after,
+.hero-section.digital-entered .section-digital-sweep::after {
+  animation: slowMoAtmosphericVeil 2.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes digitalSectionSweep {
+@keyframes slowMoAtmosphericVeil {
   0% {
-    top: -100px;
     opacity: 0;
+    transform: translateY(-40px) scale(1.04);
   }
-  15% {
+  28% {
     opacity: 1;
+    transform: translateY(0) scale(1);
   }
-  85% {
-    opacity: 0.8;
+  75% {
+    opacity: 0.55;
   }
   100% {
-    top: 100%;
     opacity: 0;
+    transform: translateY(40px) scale(0.98);
   }
 }
 
-/* Section Header Digital Entrance */
+/* Section Header Slow-Motion Reveal */
 .digital-reveal-header {
   opacity: 0;
-  transform: translateY(22px);
-  filter: blur(4px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(36px);
+  filter: blur(8px);
+  transition: opacity 1.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.25s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.25s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 
@@ -2382,16 +2385,16 @@ h1, h2, h3, h4, h5, h6 {
   filter: blur(0);
 }
 
-/* Cards Staggered Digital Entrance */
+/* Cards Slow-Motion Staggered Float & Bloom */
 .digital-reveal-card {
   opacity: 0;
-  transform: translateY(28px) scale(0.97);
-  filter: blur(3px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color var(--transition-fast), 
-              box-shadow var(--transition-fast);
+  transform: translateY(42px) scale(0.95);
+  filter: blur(6px);
+  transition: opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color var(--transition-normal), 
+              box-shadow var(--transition-normal);
   will-change: opacity, transform, filter;
 }
 
@@ -2402,13 +2405,34 @@ h1, h2, h3, h4, h5, h6 {
   filter: blur(0);
 }
 
-/* Subtle Digital Shimmer on Card Landing */
-@keyframes digitalCardShimmer {
+/* Slow-Motion Lens Focus for Portraits */
+.committee-photo-img,
+.advisor-avatar-img,
+.alumni-avatar-img {
+  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1), filter 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section:not(.digital-entered) .committee-photo-img,
+.section:not(.digital-entered) .advisor-avatar-img,
+.section:not(.digital-entered) .alumni-avatar-img {
+  transform: scale(1.08);
+  filter: brightness(0.92);
+}
+
+.section.digital-entered .committee-photo-img,
+.section.digital-entered .advisor-avatar-img,
+.section.digital-entered .alumni-avatar-img {
+  transform: scale(1);
+  filter: brightness(1);
+}
+
+/* Gentle Slow-Motion Ambient Shimmer on Card Arrival */
+@keyframes slowMoCardGlow {
   0% {
     box-shadow: 0 0 0 0 rgba(223, 156, 44, 0);
   }
-  45% {
-    box-shadow: 0 0 16px -2px rgba(223, 156, 44, 0.28), 0 6px 18px rgba(21, 72, 64, 0.12);
+  40% {
+    box-shadow: 0 0 20px -2px rgba(223, 156, 44, 0.22), 0 8px 24px rgba(21, 72, 64, 0.1);
   }
   100% {
     box-shadow: var(--shadow-sm);
@@ -2417,26 +2441,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .section.digital-entered .digital-reveal-card,
 .hero-section.digital-entered .digital-reveal-card {
-  animation: digitalCardShimmer 0.85s ease-out forwards;
+  animation: slowMoCardGlow 1.4s ease-out forwards;
 }
 
-/* Digital Grid Transition for Alumni Directory Filtering */
+/* Slow-Motion Grid Transition for Alumni Directory Filtering */
 .alumni-grid.digital-filter-transition {
-  opacity: 0.25;
-  transform: scale(0.985);
-  filter: blur(3px);
-  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+  opacity: 0.3;
+  transform: translateY(16px) scale(0.985);
+  filter: blur(4px);
+  transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
 }
 
 .alumni-grid {
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Digital Indicator in Header Navigation */
+/* Slow-Motion Indicator in Header Navigation */
 .nav-links .nav-link {
   position: relative;
+  transition: color 0.4s ease;
 }
 
 .nav-links .nav-link.active::after {
@@ -2447,41 +2472,45 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   height: 2px;
   background: var(--ochre-500);
-  box-shadow: 0 0 8px rgba(223, 156, 44, 0.7);
-  animation: digitalNavGlow 1.5s infinite alternate ease-in-out;
+  box-shadow: 0 0 10px rgba(223, 156, 44, 0.8);
+  animation: slowMoNavGlow 2.8s infinite alternate ease-in-out;
 }
 
-@keyframes digitalNavGlow {
+@keyframes slowMoNavGlow {
   0% {
     box-shadow: 0 0 4px rgba(223, 156, 44, 0.5);
-    opacity: 0.85;
+    opacity: 0.8;
   }
   100% {
-    box-shadow: 0 0 10px rgba(223, 156, 44, 0.95);
+    box-shadow: 0 0 12px rgba(223, 156, 44, 1);
     opacity: 1;
   }
 }
 
-/* Fluid Digital Section Scroll Transitions */
+/* Fluid Slow-Motion Section Scroll Depth & Focus */
 .section,
 .hero-section {
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
+  transition: transform 1.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 1.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, filter;
 }
 
 .section:not(.digital-entered),
 .hero-section:not(.digital-entered) {
-  opacity: 0.85;
-  transform: translateY(22px);
+  opacity: 0.65;
+  transform: translateY(34px) scale(0.98);
+  filter: blur(2.5px);
 }
 
 .section.digital-entered,
 .hero-section.digital-entered {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
-/* Floating Digital Scroll HUD (Right Side) */
+/* Floating Slow-Motion Scroll HUD (Right Side) */
 .digital-scroll-hud {
   position: fixed;
   right: 22px;
@@ -2502,6 +2531,7 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   cursor: pointer;
   padding: 4px 0;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hud-dot-label {
@@ -2519,7 +2549,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   opacity: 0;
   transform: translateX(12px);
-  transition: all var(--transition-fast);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
   white-space: nowrap;
 }
@@ -2536,7 +2566,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   background-color: rgba(21, 72, 64, 0.28);
   border: 1.5px solid transparent;
-  transition: all var(--transition-fast);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hud-dot-item:hover .hud-dot-circle {
@@ -2547,8 +2577,20 @@ h1, h2, h3, h4, h5, h6 {
 .hud-dot-item.active .hud-dot-circle {
   background-color: var(--ochre-500);
   border-color: var(--pine-800);
-  box-shadow: 0 0 10px rgba(223, 156, 44, 0.85), 0 0 2px var(--pine-800);
+  box-shadow: 0 0 12px rgba(223, 156, 44, 0.85), 0 0 3px var(--pine-800);
   transform: scale(1.4);
+  animation: slowMoHudPulse 3.2s infinite ease-in-out;
+}
+
+@keyframes slowMoHudPulse {
+  0%, 100% {
+    transform: scale(1.4);
+    box-shadow: 0 0 10px rgba(223, 156, 44, 0.7);
+  }
+  50% {
+    transform: scale(1.6);
+    box-shadow: 0 0 20px rgba(223, 156, 44, 0.95), 0 0 4px var(--pine-800);
+  }
 }
 
 @media (max-width: 1100px) {

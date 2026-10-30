@@ -192,9 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }).join('');
 
-      // Attach click events and digital stagger
+      // Attach click events and slow-motion stagger
       alumniGrid.querySelectorAll('.alumni-card').forEach((card, idx) => {
-        card.style.transitionDelay = `${(idx % 6) * 55}ms`;
+        card.style.transitionDelay = `${(idx % 6) * 90}ms`;
         card.addEventListener('click', () => {
           const id = card.getAttribute('data-id');
           openAlumniDetailModal(id);
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       alumniGrid.classList.remove('digital-filter-transition');
-    }, 90);
+    }, 140);
   }
 
   // ---------------- Modal Handling ----------------
@@ -392,10 +392,10 @@ document.addEventListener('DOMContentLoaded', () => {
     digitalBeam.classList.add('active');
     setTimeout(() => {
       digitalBeam.classList.remove('active');
-    }, 850);
+    }, 1650);
   }
 
-  // Inject digital scan sweeps and setup entrance classes for each section
+  // Inject slow-motion atmospheric veils and setup entrance classes for each section
   const allSections = document.querySelectorAll('section');
   allSections.forEach(section => {
     if (!section.querySelector('.section-digital-sweep')) {
@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     cards.forEach((card, idx) => {
       card.classList.add('digital-reveal-card');
-      card.style.transitionDelay = `${(idx % 6) * 65}ms`;
+      card.style.transitionDelay = `${(idx % 6) * 110}ms`;
     });
   });
 

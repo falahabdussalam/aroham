@@ -34,16 +34,16 @@ A modern, minimal, human-crafted alumni portal built for **Aroham Foundation** (
   - **Mr. Vasih** (Creative & Media Communications) [`vasih.svg`]
 
 ### 2. Leadership & Executive Committee (`#committee`)
-- Positioned directly after "Advisory & Mentorship Support" with unified 9-member profile photo cards (uniform 1:1 aspect ratio, zero degrees shown):
-  - **Fathimath Mufeedha** — President [`assets/images/office-bearers/fathimath-mufeedha.svg`]
-  - **Afifa M.A.** — General Secretary [`assets/images/office-bearers/afifa-ma.svg`]
-  - **Nishfa Mariya V** — Finance Secretary [`assets/images/office-bearers/nishfa-mariya.svg`]
-  - **Diya Fathima M.N.** — Trustee [`assets/images/office-bearers/diya-fathima.svg`]
-  - **Khadeeja Misba P.M.** — Trustee [`assets/images/office-bearers/khadeeja-misba.svg`]
-  - **Fathima Hija T.** — Trustee [`assets/images/office-bearers/fathima-hija.svg`]
-  - **Fathima Minha P.M.** — Trustee [`assets/images/office-bearers/fathima-minha.svg`]
-  - **Shana** — Trustee [`assets/images/office-bearers/shana.svg`]
-  - **Aysha Huda A.P.** — Trustee [`assets/images/office-bearers/aysha-huda.svg`]
+- Positioned directly after "Advisory & Mentorship Support" with unified 9-member official portrait cards (proportioned 1:1.08 framing, zero degrees shown):
+  - **Fathimath Mufeedha** — President [`assets/images/office-bearers/fathimath-mufeedha.png`]
+  - **Afifa M.A.** — General Secretary [`assets/images/office-bearers/afifa-ma.png`]
+  - **Nishfa Mariya V** — Finance Secretary [`assets/images/office-bearers/nishfa-mariya.png`]
+  - **Diya Fathima M.N.** — Trustee [`assets/images/office-bearers/diya-fathima.png`]
+  - **Khadeeja Misba P.M.** — Trustee [`assets/images/office-bearers/khadeeja-misba.png`]
+  - **Fathima Hija T.** — Trustee [`assets/images/office-bearers/fathima-hija.png`]
+  - **Fathima Minha P.M.** — Trustee [`assets/images/office-bearers/fathima-minha.png`]
+  - **Shana** — Trustee [`assets/images/office-bearers/shana.png`]
+  - **Aysha Huda A.P.** — Trustee [`assets/images/office-bearers/aysha-huda.png`]
 
 > 💡 **Customizing Photos**: You can simply replace any `.svg` in `assets/images/office-bearers/` with your actual `.jpg` or `.png` photographs (or update the file extension in `index.html`). The CSS automatically crops, centers, and maintains perfect geometrical alignment with `object-fit: cover` and fixed aspect ratios.
 

@@ -425,17 +425,26 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('digital-entered');
+        } else {
+          // Re-arm when scrolled significantly out of view
+          const rect = entry.target.getBoundingClientRect();
+          if (rect.top > window.innerHeight * 1.15 || rect.bottom < -window.innerHeight * 0.15) {
+            entry.target.classList.remove('digital-entered');
+          }
         }
       });
     }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -8% 0px'
+      threshold: [0.08, 0.25],
+      rootMargin: '0px 0px -6% 0px'
     });
 
     allSections.forEach(sec => sectionObserver.observe(sec));
   } else {
     allSections.forEach(sec => sec.classList.add('digital-entered'));
   }
+
+  const heroSec = document.getElementById('hero');
+  if (heroSec) heroSec.classList.add('digital-entered');
 
   // Smooth Scroll Navigation with Digital Beam Sweep and Section Refresh
   document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -601,29 +610,122 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ---------------- Scroll Spy for Navigation Active State ----------------
+  // ---------------- Floating Digital Scroll HUD ----------------
+  const hudSections = [
+    { id: 'hero', label: '01 · Home' },
+    { id: 'about', label: '02 · About' },
+    { id: 'advisors', label: '03 · Advisors' },
+    { id: 'committee', label: '04 · Executive' },
+    { id: 'alumni', label: '05 · Alumni' },
+    { id: 'initiatives', label: '06 · Programs' },
+    { id: 'timeline', label: '07 · Journey' },
+    { id: 'impact', label: '08 · Goals' }
+  ];
+
+  let hudContainer = document.getElementById('digital-scroll-hud');
+  if (!hudContainer) {
+    hudContainer = document.createElement('nav');
+    hudContainer.className = 'digital-scroll-hud';
+    hudContainer.id = 'digital-scroll-hud';
+    hudContainer.setAttribute('aria-label', 'Section Quick Jump');
+    hudContainer.innerHTML = hudSections.map(item => `
+      <a href="#${item.id}" class="hud-dot-item" data-section="${item.id}" aria-label="Go to ${item.label}">
+        <span class="hud-dot-label">${item.label}</span>
+        <span class="hud-dot-circle"></span>
+      </a>
+    `).join('');
+    document.body.appendChild(hudContainer);
+
+    hudContainer.querySelectorAll('.hud-dot-item').forEach(dotLink => {
+      dotLink.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId) return;
+        const targetSec = document.querySelector(targetId);
+        if (targetSec) {
+          e.preventDefault();
+          triggerDigitalPageBeam();
+          targetSec.classList.remove('digital-entered');
+          void targetSec.offsetWidth;
+          targetSec.classList.add('digital-entered');
+          const headerOffset = 84;
+          const offsetPos = targetSec.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPos, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  function updateScrollHUD(activeId) {
+    if (!hudContainer) return;
+    const hudDots = hudContainer.querySelectorAll('.hud-dot-item');
+    hudDots.forEach(dot => {
+      if (dot.getAttribute('data-section') === activeId) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  // ---------------- Scroll Spy & Dynamic Page Transition ----------------
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links .nav-link');
+  let lastActiveSection = 'hero';
+  let isInitialScroll = true;
 
-  window.addEventListener('scroll', () => {
+  const handleScrollTransitions = () => {
     let current = '';
     const scrollY = window.pageYOffset;
 
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
+      const sectionTop = section.offsetTop - 140;
       const sectionHeight = section.offsetHeight;
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         current = section.getAttribute('id');
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+    if (current && current !== lastActiveSection) {
+      lastActiveSection = current;
+
+      // Update HUD and Navbar active indicators
+      updateScrollHUD(current);
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+
+      // Avoid firing on immediate page load
+      if (!isInitialScroll) {
+        // Trigger top digital laser beam
+        triggerDigitalPageBeam();
+
+        // Trigger digital reveal transition for entered section
+        const activeSectionEl = document.getElementById(current);
+        if (activeSectionEl) {
+          activeSectionEl.classList.remove('digital-entered');
+          void activeSectionEl.offsetWidth;
+          activeSectionEl.classList.add('digital-entered');
+        }
       }
-    });
-  });
+    } else if (current) {
+      updateScrollHUD(current);
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    isInitialScroll = false;
+  };
+
+  window.addEventListener('scroll', handleScrollTransitions, { passive: true });
+  // Initial check
+  handleScrollTransitions();
 
   // Initial Render
   renderAlumni();

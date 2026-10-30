@@ -1932,6 +1932,18 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
 }
 
+.footer-powered-link {
+  color: var(--pine-800);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-powered-link:hover {
+  color: var(--ochre-600);
+  text-decoration: underline;
+}
+
 /* ---------------- Modals ---------------- */
 .modal-overlay {
   position: fixed;

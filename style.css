@@ -392,14 +392,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ---------------- Site Navigation ---------------- */
+/* ---------------- Floating Capsule Navigation Bar (LUMI-Style Pill) ---------------- */
 .site-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-subtle);
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 36px);
+  max-width: 1040px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  box-shadow: 0 10px 32px -4px rgba(21, 72, 64, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 6px 8px 6px 20px;
   transition: all var(--transition-fast);
 }
 
@@ -407,8 +415,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
-  gap: 20px;
+  height: 48px;
+  gap: 16px;
+  width: 100%;
 }
 
 .nav-brand {
@@ -420,17 +429,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-emblem-img {
-  height: 42px; /* Perfectly proportioned to the 72px header and logo lockup */
+  height: 32px;
   width: auto;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(21, 72, 64, 0.1));
   transition: transform var(--transition-fast);
 }
 
 .nav-brand:hover .brand-emblem-img {
-  transform: translateY(-1px) scale(1.02);
+  transform: scale(1.04);
 }
 
 .brand-text-block {
@@ -441,11 +449,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-name {
-  font-family: var(--font-sans);
-  font-size: 1.28rem; /* Refined, decreased size matching official logo ratio */
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--pine-800); /* Official Deep Teal #154840 */
-  letter-spacing: -0.02em;
+  color: var(--pine-900);
+  letter-spacing: -0.01em;
   line-height: 1.05;
   margin: 0;
   padding: 0;
@@ -453,26 +461,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .brand-sub {
   font-family: var(--font-sans);
-  font-size: 0.56rem; /* Refined proportioned subtext */
+  font-size: 0.52rem;
   font-weight: 600;
-  color: var(--ochre-600); /* Official Warm Amber Gold #DF9C2C */
-  letter-spacing: 0.28em;
+  color: var(--ochre-600);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-top: 2px;
-  padding-left: 1px;
   line-height: 1;
-}
-
-.nav-logo-svg {
-  height: 42px;
-  width: auto;
-  display: block;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 4px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -480,73 +481,69 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link {
   font-family: var(--font-sans);
-  font-size: 0.76rem; /* Clean uppercase proportion */
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 500;
   color: var(--slate-700);
-  text-transform: uppercase;
-  letter-spacing: 0.075em;
+  text-transform: none;
+  letter-spacing: 0.01em;
   position: relative;
-  padding: 8px 2px;
+  padding: 6px 12px;
+  border-radius: 9999px;
   white-space: nowrap;
   display: inline-block;
   cursor: pointer;
-  transition: color var(--transition-fast), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all var(--transition-fast);
+  text-decoration: none;
 }
 
 .nav-link:hover {
-  color: var(--pine-800);
-}
-
-.nav-link:active,
-.nav-link.nav-link-tapped {
-  transform: scale(0.92);
   color: var(--pine-900);
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2.5px;
-  background: linear-gradient(90deg, var(--pine-800), var(--ochre-500));
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
-  opacity: 0;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  transform: scaleX(1);
-  opacity: 1;
+  background-color: rgba(21, 72, 64, 0.05);
 }
 
 .nav-link.active {
-  color: var(--pine-800);
-  font-weight: 700;
+  color: var(--pine-900);
+  font-weight: 600;
+  background-color: rgba(21, 72, 64, 0.08);
 }
 
 .nav-cta {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
-.nav-cta .btn-sm {
-  padding: 6px 12px;
-  font-size: 0.78rem;
+.btn-nav-pill {
+  background-color: #1a1a1a;
+  color: #ffffff !important;
+  border-radius: 9999px;
+  padding: 9px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
   white-space: nowrap;
+  transition: all var(--transition-fast);
+  line-height: 1.2;
+}
+
+.btn-nav-pill:hover {
+  background-color: #000000;
+  transform: scale(1.02);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.26);
+}
+
+.btn-nav-pill:active {
+  transform: scale(0.98);
 }
 
 .mobile-toggle {
   display: none;
   background: none;
   border: none;
-  padding: 8px;
+  padding: 6px;
   cursor: pointer;
   color: var(--pine-900);
 }
@@ -555,7 +552,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-section {
   position: relative;
   overflow: hidden;
-  padding: 68px 0 58px;
+  padding: 96px 0 58px;
   background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%);
   border-bottom: 1px solid var(--border-subtle);
   min-height: 520px;
@@ -2316,66 +2313,78 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1081px) and (max-width: 1260px) {
   .nav-links {
-    gap: 12px;
+    gap: 2px;
   }
   .nav-link {
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
+    font-size: 0.8rem;
+    padding: 6px 8px;
   }
-  .nav-cta {
-    gap: 8px;
-  }
-  .nav-cta .btn-sm {
-    padding: 5px 10px;
-    font-size: 0.74rem;
+  .btn-nav-pill {
+    padding: 8px 16px;
+    font-size: 0.78rem;
   }
 }
 
 @media (max-width: 1080px) {
-  .nav-inner {
-    position: relative;
-    height: 72px;
+  .site-nav {
+    top: 12px;
+    width: calc(100% - 24px);
+    max-width: 680px;
+    padding: 6px 8px 6px 16px;
   }
 
-  /* Smooth Pull-Down Navigation Drawer */
+  .nav-inner {
+    height: 44px;
+    position: relative;
+  }
+
+  /* Smooth Floating Dropdown Menu from Floating Capsule */
   .site-nav .nav-links {
     display: flex;
     position: absolute;
-    top: 72px;
+    top: calc(100% + 12px);
     left: 0;
     right: 0;
     background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     flex-direction: column;
-    padding: 20px 24px 28px;
-    border-bottom: 2px solid var(--border-subtle);
-    box-shadow: 0 16px 36px rgba(21, 72, 64, 0.12);
-    gap: 8px;
+    padding: 14px 14px 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    gap: 4px;
     z-index: 99;
     
-    /* Pull animation: Starts pulled up & hidden */
-    transform: translateY(-16px);
+    /* Pull animation */
+    transform: translateY(-10px) scale(0.98);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s;
   }
 
   .site-nav .nav-links.open {
-    /* Pulled down smoothly into view */
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
   }
 
-  .site-nav .nav-cta .btn:not(.btn-accent) {
-    display: none;
+  .site-nav .nav-links .nav-link {
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 12px;
+    width: 100%;
+    text-align: left;
+    border: none;
   }
 
   .mobile-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform var(--transition-fast), color var(--transition-fast);
   }
 
@@ -2383,13 +2392,32 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(0.92) rotate(90deg);
     color: var(--pine-800);
   }
+}
 
-  .nav-link {
-    font-size: 0.88rem;
-    padding: 12px 6px;
-    border-bottom: 1px solid rgba(21, 72, 64, 0.08);
-    width: 100%;
-    letter-spacing: 0.08em;
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 86px;
+  }
+}
+
+@media (max-width: 540px) {
+  .site-nav {
+    top: 10px;
+    width: calc(100% - 16px);
+    padding: 5px 6px 5px 12px;
+  }
+
+  .brand-emblem-img {
+    height: 28px;
+  }
+
+  .brand-name {
+    font-size: 1.08rem;
+  }
+
+  .btn-nav-pill {
+    padding: 7px 14px;
+    font-size: 0.74rem;
   }
 }
 

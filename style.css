@@ -1362,6 +1362,103 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--slate-400);
 }
 
+/* Responsive 3-per-line (3 Columns in 1 Line) Layout for Advisors on Mobile */
+@media (max-width: 900px) {
+  .advisors-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  #advisors .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .advisors-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+  }
+  .advisor-card {
+    border-radius: var(--radius-sm);
+  }
+  .advisor-photo-frame {
+    aspect-ratio: 1 / 1.05;
+    max-height: none;
+  }
+  .advisor-body {
+    padding: 8px 5px 6px;
+    text-align: center;
+  }
+  .advisor-role {
+    font-size: 0.54rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+  }
+  .advisor-name {
+    font-size: 0.74rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 3px;
+    word-break: break-word;
+  }
+  .advisor-note {
+    display: none; /* Hide long paragraph on mobile so cards match committee height */
+  }
+  .advisor-footer {
+    padding-top: 4px;
+    font-size: 0.52rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--slate-600);
+    text-align: center;
+  }
+  .advisor-footer .badge {
+    display: none !important;
+  }
+  .advisor-footer span {
+    font-size: 0.52rem;
+    font-weight: 500;
+    color: var(--slate-600);
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #advisors .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .advisors-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 5px !important;
+  }
+  .advisor-body {
+    padding: 6px 3px 5px;
+  }
+  .advisor-role {
+    font-size: 0.48rem;
+    letter-spacing: 0.02em;
+  }
+  .advisor-name {
+    font-size: 0.65rem;
+    line-height: 1.18;
+  }
+  .advisor-footer {
+    font-size: 0.48rem;
+    padding-top: 3px;
+  }
+  .advisor-footer span {
+    font-size: 0.48rem;
+  }
+}
+
 .support-team-wrapper {
   margin-top: 24px;
   max-width: 900px;
@@ -2198,8 +2295,7 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 280px;
   }
   .alumni-grid,
-  .exec-officers-grid,
-  .advisors-grid {
+  .exec-officers-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .pillars-grid,
@@ -2307,7 +2403,6 @@ h1, h2, h3, h4, h5, h6 {
   
   .alumni-grid,
   .exec-officers-grid,
-  .advisors-grid,
   .pillars-grid,
   .trustees-grid,
   .trustees-portrait-grid,

@@ -63,7 +63,7 @@ Features real-time search and filter tabs across disciplines (only the 9 officia
 - **Bolster Girls Campus Alumni Meet 2026**: First-year milestone and annual report release.
 
 ### 5. Interactive Features
-- **Hero Campus Video Player with White 85% Opacity Shape Cover**: Features the official Bolster Girls Campus video (`assets/videos/bolster-campus.mp4`) prominently showcased in the right hero grid space with a clean white 85% opacity shape cover, rounded frame, top campus badge, and floating playback controls (Play/Pause, Sound/Mute toggle, and Fullscreen mode).
+- **Hero Campus Video Player**: Features the official Bolster Girls Campus video (`assets/videos/bolster-campus.mp4`) prominently showcased in the right hero grid space with high-definition clarity, rounded frame, top campus badge, and floating playback controls (Play/Pause, Sound/Mute toggle, and Fullscreen mode).
 - **Alumni Detail Modal**: Click on any card to view detailed bio, academic focus areas, and direct mentorship booking.
 - **UniMates Mentorship Request Modal**: Interactive application form for students of Classes 10–12 and entrance repeaters.
 - **Volunteer Network Registration Modal**: Join the 123+ Bolster alumni volunteer team.

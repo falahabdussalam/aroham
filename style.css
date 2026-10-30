@@ -640,9 +640,9 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 380px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background-color: #FFFFFF;
-  border: 1.5px solid rgba(21, 72, 64, 0.16);
-  box-shadow: 0 20px 40px -12px rgba(21, 72, 64, 0.22), 0 4px 14px rgba(0, 0, 0, 0.05);
+  background-color: var(--pine-900);
+  border: 1.5px solid rgba(21, 72, 64, 0.2);
+  box-shadow: 0 20px 40px -12px rgba(21, 72, 64, 0.25), 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .hero-showcase-video {
@@ -653,27 +653,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
   filter: none;
   cursor: pointer;
-}
-
-/* White 85% Opacity Shape Cover */
-.video-shape-cover {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(255, 255, 255, 0.85); /* 85% opacity white shape cover */
-  z-index: 2;
-  pointer-events: none;
-  border-radius: inherit;
-  transition: background-color var(--transition-normal), opacity var(--transition-normal);
-}
-
-.hero-video-frame:hover .video-shape-cover {
-  background-color: rgba(255, 255, 255, 0.72); /* Smooth clarity reveal on hover */
-}
-
-/* Fade shape cover in fullscreen mode for immersive viewing */
-.hero-video-frame:fullscreen .video-shape-cover,
-.hero-video-frame:-webkit-full-screen .video-shape-cover {
-  opacity: 0;
 }
 
 /* Video Top Info Bar */

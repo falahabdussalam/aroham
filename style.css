@@ -392,7 +392,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ---------------- Site Navigation ---------------- */
-/* ---------------- Floating Capsule Navigation Bar (LUMI-Style Pill) ---------------- */
+/* ---------------- Floating Capsule Navigation Bar (Liquid Glassmorphism) ---------------- */
 .site-nav {
   position: fixed;
   top: 16px;
@@ -401,12 +401,15 @@ h1, h2, h3, h4, h5, h6 {
   width: calc(100% - 36px);
   max-width: 1040px;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.52) 0%, rgba(255, 255, 255, 0.30) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 9999px;
-  box-shadow: 0 10px 32px -4px rgba(21, 72, 64, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 14px 38px -6px rgba(21, 72, 64, 0.12), 
+              0 2px 10px rgba(0, 0, 0, 0.04), 
+              inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.9),
+              inset 0 -1px 1px 0 rgba(21, 72, 64, 0.04);
   padding: 6px 8px 6px 20px;
   transition: all var(--transition-fast);
 }
@@ -483,7 +486,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-size: 0.84rem;
   font-weight: 500;
-  color: var(--slate-700);
+  color: var(--pine-900);
   text-transform: none;
   letter-spacing: 0.01em;
   position: relative;
@@ -498,13 +501,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link:hover {
   color: var(--pine-900);
-  background-color: rgba(21, 72, 64, 0.05);
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 2px 8px rgba(21, 72, 64, 0.06);
 }
 
 .nav-link.active {
   color: var(--pine-900);
   font-weight: 600;
-  background-color: rgba(21, 72, 64, 0.08);
+  background-color: rgba(255, 255, 255, 0.65);
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.95), 0 2px 10px rgba(21, 72, 64, 0.08);
 }
 
 .nav-cta {
@@ -515,14 +520,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-nav-pill {
-  background-color: #1a1a1a;
+  background-color: #111827;
   color: #ffffff !important;
   border-radius: 9999px;
   padding: 9px 20px;
   font-size: 0.82rem;
   font-weight: 600;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.24), inset 0 1px 1px rgba(255, 255, 255, 0.25);
   cursor: pointer;
   white-space: nowrap;
   transition: all var(--transition-fast);
@@ -532,7 +537,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-nav-pill:hover {
   background-color: #000000;
   transform: scale(1.02);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
 }
 
 .btn-nav-pill:active {
@@ -2338,21 +2343,21 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
   }
 
-  /* Smooth Floating Dropdown Menu from Floating Capsule */
+  /* Smooth Floating Dropdown Menu from Floating Glass Capsule */
   .site-nav .nav-links {
     display: flex;
     position: absolute;
     top: calc(100% + 12px);
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.58) 100%);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
     flex-direction: column;
     padding: 14px 14px 18px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.75);
     border-radius: 24px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 20px 48px rgba(21, 72, 64, 0.14), inset 0 1px 1.5px rgba(255, 255, 255, 0.95);
     gap: 4px;
     z-index: 99;
     

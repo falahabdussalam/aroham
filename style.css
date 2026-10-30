@@ -957,19 +957,100 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--slate-600);
 }
 
+/* Responsive 3-per-line (3x3) Layout for Executive Committee across Mobile */
 @media (max-width: 900px) {
   .committee-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 580px;
-    gap: 14px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 100%;
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
+  #committee .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
   .committee-grid {
-    grid-template-columns: 1fr;
-    max-width: 300px;
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+  }
+  .committee-member-card {
+    border-radius: var(--radius-sm);
+  }
+  .committee-photo-frame {
+    aspect-ratio: 1 / 1.05;
+    max-height: none;
+  }
+  .committee-photo-badge {
+    display: none; /* Hide bulky corner badge so portrait photo is 100% visible */
+  }
+  .committee-card-body {
+    padding: 8px 5px 6px;
+    text-align: center;
+  }
+  .committee-card-role {
+    font-size: 0.54rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+  }
+  .committee-card-name {
+    font-size: 0.74rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 3px;
+    word-break: break-word;
+  }
+  .committee-card-footer {
+    padding-top: 4px;
+    font-size: 0.52rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--slate-600);
+    text-align: center;
+  }
+  .committee-card-footer .badge {
+    display: none !important;
+  }
+  .committee-card-footer span {
+    font-size: 0.52rem;
+    font-weight: 500;
+    color: var(--slate-600);
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #committee .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .committee-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 5px !important;
+  }
+  .committee-card-body {
+    padding: 6px 3px 5px;
+  }
+  .committee-card-role {
+    font-size: 0.48rem;
+    letter-spacing: 0.02em;
+  }
+  .committee-card-name {
+    font-size: 0.65rem;
+    line-height: 1.18;
+  }
+  .committee-card-footer {
+    font-size: 0.48rem;
+    padding-top: 3px;
+  }
+  .committee-card-footer span {
+    font-size: 0.48rem;
   }
 }
 
@@ -2118,7 +2199,6 @@ h1, h2, h3, h4, h5, h6 {
   }
   .alumni-grid,
   .exec-officers-grid,
-  .committee-grid,
   .advisors-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2227,7 +2307,6 @@ h1, h2, h3, h4, h5, h6 {
   
   .alumni-grid,
   .exec-officers-grid,
-  .committee-grid,
   .advisors-grid,
   .pillars-grid,
   .trustees-grid,

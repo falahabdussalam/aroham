@@ -150,8 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
       directoryCounter.textContent = `Showing ${filtered.length} of ${ALUMNI_DATA.length} mentors & achievers`;
     }
 
-    // Digital filter transition animation
-    alumniGrid.classList.add('digital-filter-transition');
+    // Filter transition
+    alumniGrid.style.opacity = '0.6';
 
     setTimeout(() => {
       if (filtered.length === 0) {
@@ -164,14 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <p style="font-size: 0.85rem; color: var(--slate-600);">Try searching for a different name or academic stream (e.g. MBBS, Physics, Design, B.Arch).</p>
           </div>
         `;
-        alumniGrid.classList.remove('digital-filter-transition');
+        alumniGrid.style.opacity = '1';
         return;
       }
 
       alumniGrid.innerHTML = filtered.map(person => {
         const initials = person.name.split(' ').map(n => n[0]).join('').substring(0, 2);
         return `
-          <article class="alumni-card digital-reveal-card" data-id="${person.id}">
+          <article class="alumni-card" data-id="${person.id}">
             <div class="alumni-top">
               <span class="alumni-badge-pill ${person.badgeClass}">${person.categoryLabel}</span>
               <div class="alumni-avatar-circle">${initials}</div>
@@ -192,17 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }).join('');
 
-      // Attach click events and slow-motion stagger
-      alumniGrid.querySelectorAll('.alumni-card').forEach((card, idx) => {
-        card.style.transitionDelay = `${(idx % 6) * 90}ms`;
+      // Attach click events
+      alumniGrid.querySelectorAll('.alumni-card').forEach(card => {
         card.addEventListener('click', () => {
           const id = card.getAttribute('data-id');
           openAlumniDetailModal(id);
         });
       });
 
-      alumniGrid.classList.remove('digital-filter-transition');
-    }, 140);
+      alumniGrid.style.opacity = '1';
+    }, 120);
   }
 
   // ---------------- Modal Handling ----------------
@@ -381,72 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // Digital Page & Section Animation Engine
+  // Standard Smooth Scroll Navigation
   // ==========================================================================
-  const digitalBeam = document.getElementById('digital-page-beam');
-
-  function triggerDigitalPageBeam() {
-    if (!digitalBeam) return;
-    digitalBeam.classList.remove('active');
-    void digitalBeam.offsetWidth; // Force reflow to replay CSS keyframe
-    digitalBeam.classList.add('active');
-    setTimeout(() => {
-      digitalBeam.classList.remove('active');
-    }, 1650);
-  }
-
-  // Inject slow-motion atmospheric veils and setup entrance classes for each section
-  const allSections = document.querySelectorAll('section');
-  allSections.forEach(section => {
-    if (!section.querySelector('.section-digital-sweep')) {
-      const sweep = document.createElement('div');
-      sweep.className = 'section-digital-sweep';
-      sweep.setAttribute('aria-hidden', 'true');
-      section.prepend(sweep);
-    }
-
-    const header = section.querySelector('.section-header-block');
-    if (header) {
-      header.classList.add('digital-reveal-header');
-    }
-
-    const cards = section.querySelectorAll(
-      '.committee-member-card, .advisor-card, .alumni-card, .initiative-card, .timeline-card, .goal-card, .pillar-card'
-    );
-    cards.forEach((card, idx) => {
-      card.classList.add('digital-reveal-card');
-      card.style.transitionDelay = `${(idx % 6) * 110}ms`;
-    });
-  });
-
-  // IntersectionObserver: Triggers digital entrance when scrolling into any section
-  if ('IntersectionObserver' in window) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('digital-entered');
-        } else {
-          // Re-arm when scrolled significantly out of view
-          const rect = entry.target.getBoundingClientRect();
-          if (rect.top > window.innerHeight * 1.15 || rect.bottom < -window.innerHeight * 0.15) {
-            entry.target.classList.remove('digital-entered');
-          }
-        }
-      });
-    }, {
-      threshold: [0.08, 0.25],
-      rootMargin: '0px 0px -6% 0px'
-    });
-
-    allSections.forEach(sec => sectionObserver.observe(sec));
-  } else {
-    allSections.forEach(sec => sec.classList.add('digital-entered'));
-  }
-
-  const heroSec = document.getElementById('hero');
-  if (heroSec) heroSec.classList.add('digital-entered');
-
-  // Smooth Scroll Navigation with Digital Beam Sweep and Section Refresh
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -454,7 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (targetId === '#top') {
         e.preventDefault();
-        triggerDigitalPageBeam();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
@@ -463,33 +397,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetSection) {
         e.preventDefault();
 
-        // 1. Digital laser beam transition
-        triggerDigitalPageBeam();
-
-        // 2. Visual tap feedback
-        this.classList.add('nav-link-tapped');
-        setTimeout(() => this.classList.remove('nav-link-tapped'), 280);
-
-        // 3. Immediate active class update
+        // Immediate active class update
         document.querySelectorAll('.nav-links .nav-link').forEach(l => l.classList.remove('active'));
         if (this.classList.contains('nav-link')) {
           this.classList.add('active');
         }
 
-        // 4. Re-arm digital entrance effect for the target section
-        targetSection.classList.remove('digital-entered');
-        void targetSection.offsetWidth;
-        targetSection.classList.add('digital-entered');
-
-        // 5. Close mobile drawer smoothly if open
+        // Close mobile drawer if open
         if (navLinksList && navLinksList.classList.contains('open')) {
-          setTimeout(() => {
-            navLinksList.classList.remove('open');
-            if (mobileToggle) mobileToggle.classList.remove('active');
-          }, 150);
+          navLinksList.classList.remove('open');
+          if (mobileToggle) mobileToggle.classList.remove('active');
         }
 
-        // 6. Calculate smooth scroll offset (navbar height: 72px + 12px buffer = 84px)
+        // Calculate smooth scroll offset (navbar height: 60px + 24px buffer = 84px)
         const headerOffset = 84;
         const elementPosition = targetSection.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -610,13 +530,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ---------------- Scroll Spy & Dynamic Page Transition ----------------
+  // ---------------- Standard Scroll Spy for Header Navigation ----------------
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links .nav-link');
-  let lastActiveSection = 'hero';
-  let isInitialScroll = true;
 
-  const handleScrollTransitions = () => {
+  const updateActiveNavOnScroll = () => {
     let current = '';
     const scrollY = window.pageYOffset;
 
@@ -628,45 +546,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    if (current && current !== lastActiveSection) {
-      lastActiveSection = current;
-
-      // Update Navbar active indicators
+    if (current) {
       navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-
-      // Avoid firing on immediate page load
-      if (!isInitialScroll) {
-        // Trigger top ambient ribbon
-        triggerDigitalPageBeam();
-
-        // Trigger reveal transition for entered section
-        const activeSectionEl = document.getElementById(current);
-        if (activeSectionEl) {
-          activeSectionEl.classList.remove('digital-entered');
-          void activeSectionEl.offsetWidth;
-          activeSectionEl.classList.add('digital-entered');
-        }
-      }
-    } else if (current) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
+        const isMatch = link.getAttribute('href') === `#${current}`;
+        link.classList.toggle('active', isMatch);
       });
     }
-
-    isInitialScroll = false;
   };
 
-  window.addEventListener('scroll', handleScrollTransitions, { passive: true });
-  // Initial check
-  handleScrollTransitions();
+  window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
+  updateActiveNavOnScroll();
 
   // Initial Render
   renderAlumni();

@@ -2402,30 +2402,7 @@ h1, h2, h3, h4, h5, h6 {
   .hero-section {
     padding-top: 86px;
   }
-}
 
-@media (max-width: 540px) {
-  .site-nav {
-    top: 10px;
-    width: calc(100% - 16px);
-    padding: 5px 6px 5px 12px;
-  }
-
-  .brand-emblem-img {
-    height: 28px;
-  }
-
-  .brand-name {
-    font-size: 1.08rem;
-  }
-
-  .btn-nav-pill {
-    padding: 7px 14px;
-    font-size: 0.74rem;
-  }
-}
-
-@media (max-width: 768px) {
   .hero-title {
     font-size: 2.15rem;
   }
@@ -2448,7 +2425,8 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .hero-highlights-bar {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
   
   .footer-top {
@@ -2464,6 +2442,56 @@ h1, h2, h3, h4, h5, h6 {
   }
   .timeline-item {
     padding-left: 44px;
+  }
+}
+
+@media (max-width: 540px) {
+  .site-nav {
+    top: 10px;
+    width: calc(100% - 16px);
+    padding: 5px 6px 5px 12px;
+  }
+
+  .brand-emblem-img {
+    height: 28px;
+  }
+
+  .brand-name {
+    font-size: 1.08rem;
+  }
+
+  .btn-nav-pill {
+    padding: 7px 14px;
+    font-size: 0.74rem;
+  }
+
+  .hero-highlights-bar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .hero-stat-num {
+    font-size: 1.35rem;
+  }
+
+  .hero-stat-lbl {
+    font-size: 0.68rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-highlights-bar {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .hero-stat-num {
+    font-size: 1.2rem;
+  }
+
+  .hero-stat-lbl {
+    font-size: 0.62rem;
   }
 }
 

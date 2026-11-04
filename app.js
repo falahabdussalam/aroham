@@ -371,20 +371,43 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------- Mobile Menu Navigation (Pull-Down & Toggle) ----------------
+  const navBackdrop = document.getElementById('nav-mobile-backdrop');
+
+  const closeMobileMenu = () => {
+    if (navLinksList && navLinksList.classList.contains('open')) {
+      navLinksList.classList.remove('open');
+      if (mobileToggle) mobileToggle.classList.remove('active');
+      if (navBackdrop) navBackdrop.classList.remove('open');
+    }
+  };
+
+  const openMobileMenu = () => {
+    if (navLinksList) {
+      navLinksList.classList.add('open');
+      if (mobileToggle) mobileToggle.classList.add('active');
+      if (navBackdrop) navBackdrop.classList.add('open');
+    }
+  };
+
   if (mobileToggle && navLinksList) {
     mobileToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isOpen = navLinksList.classList.toggle('open');
-      mobileToggle.classList.toggle('active', isOpen);
+      const willOpen = !navLinksList.classList.contains('open');
+      if (willOpen) {
+        openMobileMenu();
+      } else {
+        closeMobileMenu();
+      }
     });
+
+    if (navBackdrop) {
+      navBackdrop.addEventListener('click', closeMobileMenu);
+    }
 
     // Close on click outside
     document.addEventListener('click', (e) => {
       if (!navLinksList.contains(e.target) && !mobileToggle.contains(e.target)) {
-        if (navLinksList.classList.contains('open')) {
-          navLinksList.classList.remove('open');
-          mobileToggle.classList.remove('active');
-        }
+        closeMobileMenu();
       }
     });
   }
@@ -406,10 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (homeLink) homeLink.classList.add('active');
 
         // Close mobile drawer if open
-        if (navLinksList && navLinksList.classList.contains('open')) {
-          navLinksList.classList.remove('open');
-          if (mobileToggle) mobileToggle.classList.remove('active');
-        }
+        closeMobileMenu();
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
@@ -426,10 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Close mobile drawer if open
-        if (navLinksList && navLinksList.classList.contains('open')) {
-          navLinksList.classList.remove('open');
-          if (mobileToggle) mobileToggle.classList.remove('active');
-        }
+        closeMobileMenu();
 
         // Calculate smooth scroll offset (navbar height: 60px + 24px buffer = 84px)
         const headerOffset = 84;

@@ -18,3 +18,10 @@ ehthumbs_vista.db
 # Logs and databases
 *.log
 
+# Dependencies
+node_modules/
+backend/node_modules/
+package-lock.json
+backend/package-lock.json
+.env
+

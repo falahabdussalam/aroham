@@ -129,25 +129,47 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentCategory = 'all';
   let searchQuery = '';
 
+  // ---------------- API Configuration & Live Sync ----------------
+  const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? (window.location.port === '5000' ? '/api' : 'http://localhost:5000/api')
+    : '/api';
+
+  let liveAlumniData = [...ALUMNI_DATA];
+
+  async function fetchLiveMentors() {
+    try {
+      const res = await fetch(`${API_BASE}/mentors`);
+      if (res.ok) {
+        const json = await res.json();
+        if (json && json.mentors && json.mentors.length > 0) {
+          liveAlumniData = json.mentors;
+          renderAlumni();
+        }
+      }
+    } catch (e) {
+      // Offline fallback: retains initial ALUMNI_DATA
+    }
+  }
+
   // ---------------- Render Alumni Cards ----------------
   function renderAlumni() {
     if (!alumniGrid) return;
 
-    const filtered = ALUMNI_DATA.filter(person => {
+    const filtered = liveAlumniData.filter(person => {
       const matchesCategory = currentCategory === 'all' || person.category === currentCategory;
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch = !q || 
         person.name.toLowerCase().includes(q) ||
         person.degree.toLowerCase().includes(q) ||
-        person.categoryLabel.toLowerCase().includes(q) ||
-        person.focusAreas.some(area => area.toLowerCase().includes(q));
+        (person.categoryLabel && person.categoryLabel.toLowerCase().includes(q)) ||
+        (person.focusAreas && person.focusAreas.some(area => area.toLowerCase().includes(q)));
       
       return matchesCategory && matchesSearch;
     });
 
     // Update Counter
     if (directoryCounter) {
-      directoryCounter.textContent = `Showing ${filtered.length} of ${ALUMNI_DATA.length} mentors & achievers`;
+      directoryCounter.textContent = `Showing ${filtered.length} of ${liveAlumniData.length} mentors & achievers`;
     }
 
     // Filter transition
@@ -173,13 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
           <article class="alumni-card" data-id="${person.id}">
             <div class="alumni-top">
-              <span class="alumni-badge-pill ${person.badgeClass}">${person.categoryLabel}</span>
+              <span class="alumni-badge-pill ${person.badgeClass || 'badge-pine'}">${person.categoryLabel || 'Excellence Alumna'}</span>
               <div class="alumni-avatar-circle">${initials}</div>
             </div>
             <h3 class="alumni-name">${person.name}</h3>
             <div class="alumni-degree">${person.degree}</div>
             <div class="alumni-footer-meta">
-              <span>${person.summitRole}</span>
+              <span>${person.summitRole || 'EduWay Career Mentor'}</span>
               <span class="alumni-action-link">
                 View Profile
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -206,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------------- Modal Handling ----------------
   function openAlumniDetailModal(id) {
-    const person = ALUMNI_DATA.find(p => p.id === id);
+    const person = liveAlumniData.find(p => p.id === id);
     if (!person || !alumniModal) return;
 
     const modalBody = alumniModal.querySelector('#alumni-modal-content');
@@ -326,23 +348,86 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------------- Form Submissions (Simulated Client Handling) ----------------
+  // ---------------- Form Submissions & Live Backend Sync ----------------
   const unimateForm = document.getElementById('unimate-form');
   if (unimateForm) {
-    unimateForm.addEventListener('submit', (e) => {
+    unimateForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const studentName = document.getElementById('student-name')?.value || 'Student';
-      closeModal(unimateModal);
-      unimateForm.reset();
-      showToast(`Thank you, ${studentName}! Your mentorship request has been received. Our UniMates coordinator will connect with you.`);
+      const studentClass = document.getElementById('student-class')?.value || 'Class 12';
+      const mentorPreference = document.getElementById('mentor-preference-input')?.value || 'General Mentorship';
+      const studentContact = document.getElementById('student-contact')?.value || '';
+      const studentQueries = document.getElementById('student-queries')?.value || '';
+
+      const submitBtn = unimateForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      }
+
+      const payload = {
+        studentName,
+        studentClass,
+        mentorPreference,
+        studentContact,
+        studentQueries
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/unimates/request`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          const json = await res.json();
+          showToast(json.message || `Thank you, ${studentName}! Your mentorship request has been received.`);
+        } else {
+          showToast(`Thank you, ${studentName}! Your mentorship request has been received. Our UniMates coordinator will connect with you.`);
+        }
+      } catch (err) {
+        // Fallback: save to localStorage for offline resilience
+        try {
+          const offlineRequests = JSON.parse(localStorage.getItem('aroham_offline_requests') || '[]');
+          offlineRequests.push({ ...payload, id: 'req-' + Date.now(), createdAt: new Date().toISOString() });
+          localStorage.setItem('aroham_offline_requests', JSON.stringify(offlineRequests));
+        } catch (e) {}
+        showToast(`Thank you, ${studentName}! Your mentorship request has been received. Our UniMates coordinator will connect with you.`);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Mentorship Request';
+        }
+        closeModal(unimateModal);
+        unimateForm.reset();
+      }
     });
   }
 
   const volunteerForm = document.getElementById('volunteer-form');
   if (volunteerForm) {
-    volunteerForm.addEventListener('submit', (e) => {
+    volunteerForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const alumnaName = document.getElementById('vol-name')?.value || 'Alumna';
+      const volBatch = document.getElementById('vol-batch')?.value || '';
+      const volProfession = document.getElementById('vol-profession')?.value || '';
+      const volContact = document.getElementById('vol-contact')?.value || '';
+      const volInterest = document.getElementById('vol-interest')?.value || '';
+
+      try {
+        await fetch(`${API_BASE}/volunteers`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: alumnaName,
+            batchYear: volBatch,
+            currentProfession: volProfession,
+            contact: volContact,
+            interest: volInterest
+          })
+        });
+      } catch (err) {}
+
       closeModal(volunteerModal);
       volunteerForm.reset();
       showToast(`Welcome to the Aroham Volunteer Network, ${alumnaName}! The Executive Committee will be in touch shortly.`);
@@ -351,9 +436,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const senderName = document.getElementById('contact-name')?.value || 'Friend';
+      const senderEmail = document.getElementById('contact-email')?.value || '';
+      const senderPhone = document.getElementById('contact-phone')?.value || '';
+      const senderPurpose = document.getElementById('contact-category')?.value || '';
+      const senderMessage = document.getElementById('contact-message')?.value || '';
+
+      try {
+        await fetch(`${API_BASE}/contact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: senderName,
+            email: senderEmail,
+            phone: senderPhone,
+            purpose: senderPurpose,
+            message: senderMessage
+          })
+        });
+      } catch (err) {}
+
       contactForm.reset();
       showToast(`Thank you, ${senderName}! Your message has been sent to Aroham Foundation. We will respond shortly.`);
     });
@@ -601,7 +705,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
   updateActiveNavOnScroll();
 
-  // Initial Render
+  // Initial Render & Live Sync
   renderAlumni();
+  fetchLiveMentors();
 });
 

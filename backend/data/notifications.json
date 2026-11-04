@@ -1,0 +1,30 @@
+[
+  {
+    "id": "notif-001",
+    "type": "unimate_request",
+    "title": "New UniMate Mentorship Request",
+    "message": "Rinsha Mariyam (Repeater / Entrance Aspirant) submitted a request for Pure Sciences / Central Universities (CUET).",
+    "targetId": "req-103",
+    "unread": true,
+    "createdAt": "2026-05-18T09:15:00.000Z"
+  },
+  {
+    "id": "notif-002",
+    "type": "unimate_matched",
+    "title": "Mentor Successfully Assigned",
+    "message": "Amina Shaza was matched with Niya Fathima (B.Arch).",
+    "targetId": "req-102",
+    "unread": false,
+    "createdAt": "2026-05-09T10:00:00.000Z"
+  },
+  {
+    "id": "notif-003",
+    "type": "system",
+    "title": "Aroham Foundation Admin Initialized",
+    "message": "Executive Dashboard and backend server connected successfully.",
+    "targetId": null,
+    "unread": false,
+    "createdAt": "2026-05-01T08:00:00.000Z"
+  }
+]
+

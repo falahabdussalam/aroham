@@ -784,61 +784,249 @@ h1, h2, h3, h4, h5, h6 {
   user-select: none;
   overflow: hidden;
   z-index: 0;
+  contain: layout style paint;
 }
 
 .bg-art-item {
   position: absolute;
   pointer-events: none;
   color: var(--pine-800);
-  opacity: 0.042;
+  opacity: 0.046;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+  shape-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
   transition: opacity var(--transition-normal);
 }
 
 .bg-art-item.ochre {
   color: var(--ochre-500);
-  opacity: 0.052;
+  opacity: 0.056;
 }
 
 .bg-art-item.pine-rich {
   color: var(--pine-900);
-  opacity: 0.048;
+  opacity: 0.052;
 }
 
-/* Subtle organic ambient float for background artwork */
-@keyframes bgArtFloat {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(1deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+/* 1. Ultra-Smooth Multi-Axis High-Resolution Floating Curves (60/120fps GPU Composited) */
+@keyframes bgArtFloatUltra {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate3d(10px, -14px, 0) rotate(1.2deg) scale(1.012);
+  }
+  50% {
+    transform: translate3d(-8px, -22px, 0) rotate(-0.8deg) scale(1.02);
+  }
+  75% {
+    transform: translate3d(-14px, -10px, 0) rotate(-1.5deg) scale(1.008);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
 }
 
-@keyframes bgArtFloatRev {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(10px) rotate(-1deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+@keyframes bgArtFloatUltraRev {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate3d(-12px, 12px, 0) rotate(-1.2deg) scale(1.015);
+  }
+  50% {
+    transform: translate3d(10px, 22px, 0) rotate(0.9deg) scale(1.025);
+  }
+  75% {
+    transform: translate3d(14px, 8px, 0) rotate(1.4deg) scale(1.01);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes bgArtFloatDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(14px, -16px, 0) rotate(1.6deg);
+  }
+  66% {
+    transform: translate3d(-12px, 10px, 0) rotate(-1.2deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
 }
 
 .bg-art-float {
-  animation: bgArtFloat 24s ease-in-out infinite alternate;
+  animation: bgArtFloatUltra 26s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 
 .bg-art-float-rev {
-  animation: bgArtFloatRev 28s ease-in-out infinite alternate;
+  animation: bgArtFloatUltraRev 32s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+.bg-art-drift {
+  animation: bgArtFloatDrift 28s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* 2. High-Resolution Internal Micro-Motif Animations */
+
+/* Rotating Celestial, Astrolabe & Compass Rings */
+@keyframes artSpinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes artSpinSlowRev {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.art-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: artSpinSlow 80s linear infinite;
+  will-change: transform;
+}
+
+.art-spin-rev {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: artSpinSlowRev 95s linear infinite;
+  will-change: transform;
+}
+
+/* Precision Pulsing Knowledge Nodes & Constellation Stars */
+@keyframes artPulseBeacon {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+.art-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: artPulseBeacon 5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.art-pulse-delay-1 {
+  animation-delay: 1.6s;
+}
+
+.art-pulse-delay-2 {
+  animation-delay: 3.2s;
+}
+
+/* Dashed Pathway Flow / Alumni Energy Stream */
+@keyframes artDashStream {
+  to {
+    stroke-dashoffset: -120px;
+  }
+}
+
+@keyframes artDashStreamRev {
+  to {
+    stroke-dashoffset: 120px;
+  }
+}
+
+.art-dash {
+  animation: artDashStream 40s linear infinite;
+}
+
+.art-dash-rev {
+  animation: artDashStreamRev 45s linear infinite;
+}
+
+/* Weightless Graduation Caps & Flight Glyphs */
+@keyframes artSubDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-6px, -12px, 0) rotate(3deg);
+  }
+}
+
+@keyframes artSubDriftRev {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(8px, -10px, 0) rotate(-4deg);
+  }
+}
+
+.art-cap-1 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: artSubDrift 8.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.art-cap-2 {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: artSubDriftRev 10.5s ease-in-out infinite 1.5s;
+  will-change: transform;
+}
+
+/* Shimmer & Radiance for Beacons, Porticos & Waves */
+@keyframes artShimmerGleam {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.art-shimmer {
+  animation: artShimmerGleam 5.5s ease-in-out infinite;
 }
 
 @media (max-width: 768px) {
   .bg-art-item {
-    opacity: 0.032;
+    opacity: 0.034;
     max-width: 65vw;
     height: auto;
   }
   .bg-art-item.ochre {
-    opacity: 0.038;
+    opacity: 0.040;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bg-art-float,
-  .bg-art-float-rev {
+  .bg-art-float-rev,
+  .bg-art-drift,
+  .art-spin,
+  .art-spin-rev,
+  .art-pulse,
+  .art-dash,
+  .art-dash-rev,
+  .art-cap-1,
+  .art-cap-2,
+  .art-shimmer {
     animation: none !important;
   }
 }

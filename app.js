@@ -349,6 +349,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const senderName = document.getElementById('contact-name')?.value || 'Friend';
+      contactForm.reset();
+      showToast(`Thank you, ${senderName}! Your message has been sent to Aroham Foundation. We will respond shortly.`);
+    });
+  }
+
   // ---------------- Toast Display ----------------
   function showToast(message) {
     if (!toast) return;

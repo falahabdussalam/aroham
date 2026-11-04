@@ -760,6 +760,87 @@ h1, h2, h3, h4, h5, h6 {
 .section {
   padding: 80px 0;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.section > .container,
+.hero-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------- Education & Alumni Background Illustrations ---------------- */
+.section-bg-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bg-art-item {
+  position: absolute;
+  pointer-events: none;
+  color: var(--pine-800);
+  opacity: 0.042;
+  transition: opacity var(--transition-normal);
+}
+
+.bg-art-item.ochre {
+  color: var(--ochre-500);
+  opacity: 0.052;
+}
+
+.bg-art-item.pine-rich {
+  color: var(--pine-900);
+  opacity: 0.048;
+}
+
+/* Subtle organic ambient float for background artwork */
+@keyframes bgArtFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes bgArtFloatRev {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.bg-art-float {
+  animation: bgArtFloat 24s ease-in-out infinite alternate;
+}
+
+.bg-art-float-rev {
+  animation: bgArtFloatRev 28s ease-in-out infinite alternate;
+}
+
+@media (max-width: 768px) {
+  .bg-art-item {
+    opacity: 0.032;
+    max-width: 65vw;
+    height: auto;
+  }
+  .bg-art-item.ochre {
+    opacity: 0.038;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-art-float,
+  .bg-art-float-rev {
+    animation: none !important;
+  }
 }
 
 .section-alt {

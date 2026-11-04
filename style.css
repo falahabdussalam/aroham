@@ -791,7 +791,8 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   pointer-events: none;
   color: var(--pine-800);
-  opacity: 0.046;
+  opacity: 0.19;
+  filter: drop-shadow(0 3px 10px rgba(21, 72, 64, 0.08));
   backface-visibility: hidden;
   transform-style: preserve-3d;
   will-change: transform;
@@ -802,27 +803,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-art-item.ochre {
   color: var(--ochre-500);
-  opacity: 0.056;
+  opacity: 0.28;
+  filter: drop-shadow(0 3px 10px rgba(223, 156, 44, 0.12));
 }
 
 .bg-art-item.pine-rich {
   color: var(--pine-900);
-  opacity: 0.052;
+  opacity: 0.24;
+  filter: drop-shadow(0 3px 10px rgba(11, 46, 41, 0.10));
 }
 
-/* 1. Ultra-Smooth Multi-Axis High-Resolution Floating Curves (60/120fps GPU Composited) */
+/* 1. Dynamic Multi-Axis Floating Curves (Visibly Floating, 60/120fps GPU Composited) */
 @keyframes bgArtFloatUltra {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
   25% {
-    transform: translate3d(10px, -14px, 0) rotate(1.2deg) scale(1.012);
+    transform: translate3d(18px, -22px, 0) rotate(2.2deg) scale(1.025);
   }
   50% {
-    transform: translate3d(-8px, -22px, 0) rotate(-0.8deg) scale(1.02);
+    transform: translate3d(-14px, -36px, 0) rotate(-1.8deg) scale(1.04);
   }
   75% {
-    transform: translate3d(-14px, -10px, 0) rotate(-1.5deg) scale(1.008);
+    transform: translate3d(-24px, -16px, 0) rotate(-2.8deg) scale(1.018);
   }
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
@@ -834,13 +837,13 @@ h1, h2, h3, h4, h5, h6 {
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
   25% {
-    transform: translate3d(-12px, 12px, 0) rotate(-1.2deg) scale(1.015);
+    transform: translate3d(-20px, 20px, 0) rotate(-2.2deg) scale(1.03);
   }
   50% {
-    transform: translate3d(10px, 22px, 0) rotate(0.9deg) scale(1.025);
+    transform: translate3d(16px, 34px, 0) rotate(1.8deg) scale(1.045);
   }
   75% {
-    transform: translate3d(14px, 8px, 0) rotate(1.4deg) scale(1.01);
+    transform: translate3d(24px, 14px, 0) rotate(2.6deg) scale(1.02);
   }
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
@@ -852,10 +855,10 @@ h1, h2, h3, h4, h5, h6 {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
   33% {
-    transform: translate3d(14px, -16px, 0) rotate(1.6deg);
+    transform: translate3d(22px, -26px, 0) rotate(2.8deg);
   }
   66% {
-    transform: translate3d(-12px, 10px, 0) rotate(-1.2deg);
+    transform: translate3d(-18px, 16px, 0) rotate(-2.2deg);
   }
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
@@ -863,15 +866,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-art-float {
-  animation: bgArtFloatUltra 26s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation: bgArtFloatUltra 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 
 .bg-art-float-rev {
-  animation: bgArtFloatUltraRev 32s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation: bgArtFloatUltraRev 15s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 
 .bg-art-drift {
-  animation: bgArtFloatDrift 28s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation: bgArtFloatDrift 13s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 
 /* 2. High-Resolution Internal Micro-Motif Animations */
@@ -898,14 +901,14 @@ h1, h2, h3, h4, h5, h6 {
 .art-spin {
   transform-box: fill-box;
   transform-origin: center;
-  animation: artSpinSlow 80s linear infinite;
+  animation: artSpinSlow 18s linear infinite;
   will-change: transform;
 }
 
 .art-spin-rev {
   transform-box: fill-box;
   transform-origin: center;
-  animation: artSpinSlowRev 95s linear infinite;
+  animation: artSpinSlowRev 24s linear infinite;
   will-change: transform;
 }
 
@@ -913,10 +916,10 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes artPulseBeacon {
   0%, 100% {
     transform: scale(1);
-    opacity: 0.65;
+    opacity: 0.5;
   }
   50% {
-    transform: scale(1.35);
+    transform: scale(1.5);
     opacity: 1;
   }
 }
@@ -924,37 +927,37 @@ h1, h2, h3, h4, h5, h6 {
 .art-pulse {
   transform-box: fill-box;
   transform-origin: center;
-  animation: artPulseBeacon 5s ease-in-out infinite;
+  animation: artPulseBeacon 2.4s ease-in-out infinite;
   will-change: transform, opacity;
 }
 
 .art-pulse-delay-1 {
-  animation-delay: 1.6s;
+  animation-delay: 0.8s;
 }
 
 .art-pulse-delay-2 {
-  animation-delay: 3.2s;
+  animation-delay: 1.6s;
 }
 
 /* Dashed Pathway Flow / Alumni Energy Stream */
 @keyframes artDashStream {
   to {
-    stroke-dashoffset: -120px;
+    stroke-dashoffset: -160px;
   }
 }
 
 @keyframes artDashStreamRev {
   to {
-    stroke-dashoffset: 120px;
+    stroke-dashoffset: 160px;
   }
 }
 
 .art-dash {
-  animation: artDashStream 40s linear infinite;
+  animation: artDashStream 6s linear infinite;
 }
 
 .art-dash-rev {
-  animation: artDashStreamRev 45s linear infinite;
+  animation: artDashStreamRev 7s linear infinite;
 }
 
 /* Weightless Graduation Caps & Flight Glyphs */
@@ -963,7 +966,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
   50% {
-    transform: translate3d(-6px, -12px, 0) rotate(3deg);
+    transform: translate3d(-10px, -20px, 0) rotate(5deg);
   }
 }
 
@@ -972,46 +975,49 @@ h1, h2, h3, h4, h5, h6 {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
   50% {
-    transform: translate3d(8px, -10px, 0) rotate(-4deg);
+    transform: translate3d(12px, -18px, 0) rotate(-6deg);
   }
 }
 
 .art-cap-1 {
   transform-box: fill-box;
   transform-origin: center;
-  animation: artSubDrift 8.5s ease-in-out infinite;
+  animation: artSubDrift 4.5s ease-in-out infinite;
   will-change: transform;
 }
 
 .art-cap-2 {
   transform-box: fill-box;
   transform-origin: center;
-  animation: artSubDriftRev 10.5s ease-in-out infinite 1.5s;
+  animation: artSubDriftRev 5.5s ease-in-out infinite 0.8s;
   will-change: transform;
 }
 
 /* Shimmer & Radiance for Beacons, Porticos & Waves */
 @keyframes artShimmerGleam {
   0%, 100% {
-    opacity: 0.45;
+    opacity: 0.35;
   }
   50% {
-    opacity: 0.95;
+    opacity: 1;
   }
 }
 
 .art-shimmer {
-  animation: artShimmerGleam 5.5s ease-in-out infinite;
+  animation: artShimmerGleam 3s ease-in-out infinite;
 }
 
 @media (max-width: 768px) {
   .bg-art-item {
-    opacity: 0.034;
-    max-width: 65vw;
+    opacity: 0.14;
+    max-width: 75vw;
     height: auto;
   }
   .bg-art-item.ochre {
-    opacity: 0.040;
+    opacity: 0.20;
+  }
+  .bg-art-item.pine-rich {
+    opacity: 0.16;
   }
 }
 

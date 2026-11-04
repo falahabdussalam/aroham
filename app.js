@@ -387,8 +387,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetId = this.getAttribute('href');
       if (!targetId || targetId === '#') return;
 
-      if (targetId === '#top') {
+      if (targetId === '#top' || targetId === '#hero') {
         e.preventDefault();
+
+        // Immediate active class update
+        document.querySelectorAll('.nav-links .nav-link').forEach(l => l.classList.remove('active'));
+        const homeLink = document.querySelector('.nav-links a[href="#hero"]') || document.querySelector('.nav-links a[href="#top"]');
+        if (homeLink) homeLink.classList.add('active');
+
+        // Close mobile drawer if open
+        if (navLinksList && navLinksList.classList.contains('open')) {
+          navLinksList.classList.remove('open');
+          if (mobileToggle) mobileToggle.classList.remove('active');
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
@@ -538,17 +550,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let current = '';
     const scrollY = window.pageYOffset;
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 140;
-      const sectionHeight = section.offsetHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
+    if (scrollY < 180) {
+      current = 'hero';
+    } else {
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+    }
 
     if (current) {
       navLinks.forEach(link => {
-        const isMatch = link.getAttribute('href') === `#${current}`;
+        const href = link.getAttribute('href');
+        const isMatch = href === `#${current}` || (current === 'hero' && (href === '#hero' || href === '#top'));
         link.classList.toggle('active', isMatch);
       });
     }

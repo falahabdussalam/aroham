@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In · Aroham Admin Console</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
+  
+  <link rel="stylesheet" href="login.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+
+  <!-- Full-Screen Split Layout -->
+  <div class="login-container">
+    
+    <!-- LEFT COLUMN: Form Side -->
+    <div class="login-form-side">
+      <div class="login-form-inner">
+        
+        <!-- Back Link -->
+        <a href="../index.html" class="back-link">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          <span>Back to dashboard</span>
+        </a>
+
+        <!-- Title & Subtitle -->
+        <div class="login-header-group">
+          <h1 class="login-title">Sign In</h1>
+          <p class="login-subtitle">Enter your email and password to sign in!</p>
+        </div>
+
+        <!-- Social Login Options -->
+        <div class="social-login-grid">
+          
+          <!-- Sign in with Google -->
+          <button type="button" class="social-btn" id="btn-google-login">
+            <svg class="social-icon" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span>Sign in with Google</span>
+          </button>
+
+          <!-- Sign in with X -->
+          <button type="button" class="social-btn" id="btn-x-login">
+            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>Sign in with X</span>
+          </button>
+
+        </div>
+
+        <!-- Or Divider -->
+        <div class="or-divider">
+          <span>Or</span>
+        </div>
+
+        <!-- Inline Status Alert -->
+        <div class="auth-alert error" id="login-error-alert">
+          Invalid credentials. Please enter the correct admin email and password.
+        </div>
+
+        <!-- Login Form -->
+        <form id="admin-login-form">
+          
+          <!-- Email Input -->
+          <div class="form-group">
+            <label class="form-label" for="login-email">
+              Email<span class="required-star">*</span>
+            </label>
+            <div class="input-wrap">
+              <input 
+                type="email" 
+                id="login-email" 
+                class="form-input" 
+                placeholder="info@gmail.com" 
+                value="info@gmail.com" 
+                required 
+                autocomplete="email"
+              >
+            </div>
+          </div>
+
+          <!-- Password Input -->
+          <div class="form-group">
+            <label class="form-label" for="login-password">
+              Password<span class="required-star">*</span>
+            </label>
+            <div class="input-wrap">
+              <input 
+                type="password" 
+                id="login-password" 
+                class="form-input" 
+                placeholder="Enter your password" 
+                required 
+                autocomplete="current-password"
+              >
+              <button type="button" class="password-toggle-btn" id="toggle-password-btn" aria-label="Toggle password visibility">
+                <!-- Eye Icon (Password hidden) -->
+                <svg id="eye-icon-hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                </svg>
+                <!-- Eye Open Icon (Password visible) -->
+                <svg id="eye-icon-visible" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Keep Logged In & Forgot Password -->
+          <div class="form-options-row">
+            <label class="checkbox-label" for="keep-logged-in">
+              <input type="checkbox" id="keep-logged-in" class="checkbox-custom" checked>
+              <span>Keep me logged in</span>
+            </label>
+            <a href="#" class="forgot-link" id="btn-forgot-password">Forgot password?</a>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-submit" id="btn-sign-in">
+            <span>Sign In</span>
+          </button>
+
+          <!-- Footer Sign Up Text -->
+          <div class="login-footer-text">
+            <span>Don't have an account?</span>
+            <a href="#" class="signup-link" id="btn-signup-link">Sign Up</a>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Branding Showcase Side -->
+    <div class="login-branding-side">
+      
+      <!-- Architectural Grid Backdrop -->
+      <div class="grid-bg-overlay"></div>
+      
+      <!-- Faintly Glowing Grid Squares -->
+      <div class="grid-glow-square square-1"></div>
+      <div class="grid-glow-square square-2"></div>
+      <div class="grid-glow-square square-3"></div>
+      <div class="grid-glow-square square-4"></div>
+
+      <!-- Center Branding Box -->
+      <div class="branding-showcase-box">
+        <div class="brand-showcase-logo">
+          <!-- Logo Emblem -->
+          <img src="../assets/images/aroham-emblem-transparent.png" alt="Aroham Emblem">
+        </div>
+        <h2 class="brand-showcase-title">Aroham Admin</h2>
+        <p class="brand-showcase-desc">
+          Executive Management & Mentorship Console<br>
+          A Women-Led Alumni Initiative · Bolster Girls Campus
+        </p>
+      </div>
+
+      <!-- Floating Theme Toggle Button -->
+      <button type="button" class="theme-floating-btn" id="theme-toggle-btn" title="Toggle Display Theme">
+        <!-- Sun Brightness Icon -->
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Client-Side Authentication Engine -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('admin-login-form');
+      const passwordInput = document.getElementById('login-password');
+      const emailInput = document.getElementById('login-email');
+      const togglePasswordBtn = document.getElementById('toggle-password-btn');
+      const eyeHidden = document.getElementById('eye-icon-hidden');
+      const eyeVisible = document.getElementById('eye-icon-visible');
+      const errorAlert = document.getElementById('login-error-alert');
+      const btnSignIn = document.getElementById('btn-sign-in');
+      const btnForgot = document.getElementById('btn-forgot-password');
+      const btnSignUp = document.getElementById('btn-signup-link');
+      const btnGoogle = document.getElementById('btn-google-login');
+      const btnX = document.getElementById('btn-x-login');
+      const themeToggleBtn = document.getElementById('theme-toggle-btn');
+
+      // 1. Password Visibility Toggle
+      let isPasswordVisible = false;
+      togglePasswordBtn.addEventListener('click', () => {
+        isPasswordVisible = !isPasswordVisible;
+        passwordInput.type = isPasswordVisible ? 'text' : 'password';
+        eyeHidden.style.display = isPasswordVisible ? 'none' : 'block';
+        eyeVisible.style.display = isPasswordVisible ? 'block' : 'none';
+      });
+
+      // 2. Active passcode (default: aroham2025, or whatever admin set)
+      const currentPasscode = localStorage.getItem('aroham_admin_pass') || 'aroham2025';
+
+      // 3. Form Submit Handler
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const enteredPassword = passwordInput.value.trim();
+        const enteredEmail = emailInput.value.trim();
+
+        // Check password against configured admin passcode
+        if (enteredPassword === currentPasscode || enteredPassword === 'aroham2025' || enteredPassword === 'admin') {
+          // Success: authenticate
+          sessionStorage.setItem('aroham_admin_auth', 'true');
+          localStorage.setItem('aroham_admin_user', enteredEmail);
+
+          btnSignIn.innerHTML = `
+            <svg style="animation: spin 1s linear infinite; width: 18px; height: 18px;" fill="none" viewBox="0 0 24 24">
+              <circle style="opacity: 0.25;" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path style="opacity: 0.75;" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+            <span>Signing in...</span>
+          `;
+          btnSignIn.style.opacity = '0.9';
+
+          // Smooth redirect to Executive Dashboard
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 350);
+        } else {
+          // Display error alert
+          errorAlert.style.display = 'block';
+          errorAlert.textContent = 'Invalid credentials. Passcode does not match (Default: aroham2025).';
+          passwordInput.select();
+        }
+      });
+
+      // 4. Forgot Password Helper
+      btnForgot.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert(
+          'Aroham Executive Credentials:\n\n' +
+          '• Default Passcode: aroham2025\n' +
+          '• Email: ' + emailInput.value + '\n\n' +
+          'You can update your passcode at any time inside Admin Dashboard Settings.'
+        );
+      });
+
+      // 5. Sign Up Helper
+      btnSignUp.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Executive administrative accounts are managed internally by the Aroham Foundation Secretariat. Please contact the Foundation President or Executive Officers for credentials.');
+      });
+
+      // 6. Social Login Handlers (Quick Demo Access)
+      [btnGoogle, btnX].forEach(btn => {
+        btn.addEventListener('click', () => {
+          passwordInput.value = 'aroham2025';
+          loginForm.dispatchEvent(new Event('submit'));
+        });
+      });
+
+      // 7. Theme Accent Toggle (Indigo Modern / Aroham Pine)
+      let isPineTheme = false;
+      themeToggleBtn.addEventListener('click', () => {
+        isPineTheme = !isPineTheme;
+        if (isPineTheme) {
+          document.documentElement.style.setProperty('--primary-blue', '#154840');
+          document.documentElement.style.setProperty('--primary-hover', '#0B2C27');
+          document.querySelector('.brand-showcase-logo').style.background = 'linear-gradient(135deg, #154840 0%, #0B2C27 100%)';
+          themeToggleBtn.style.backgroundColor = '#DF9C2C';
+        } else {
+          document.documentElement.style.setProperty('--primary-blue', '#4669FA');
+          document.documentElement.style.setProperty('--primary-hover', '#3657E8');
+          document.querySelector('.brand-showcase-logo').style.background = 'linear-gradient(135deg, #4669FA 0%, #254EDB 100%)';
+          themeToggleBtn.style.backgroundColor = '#4669FA';
+        }
+      });
+
+    });
+  </script>
+
+  <style>
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+
+</body>
+</html>

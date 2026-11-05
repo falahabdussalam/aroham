@@ -502,6 +502,11 @@ app.post('/api/contact', (req, res) => {
 // Serves the standalone admin panel at /admin
 app.use('/admin', express.static(path.join(__dirname, '..', 'admin')));
 
+// Direct route for admin login
+app.get('/admin/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'admin', 'login.html'));
+});
+
 // Optionally serve the public site as well
 app.use(express.static(path.join(__dirname, '..')));
 

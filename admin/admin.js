@@ -348,9 +348,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function checkAuth() {
     const isAuthed = sessionStorage.getItem('aroham_admin_auth') === 'true';
     if (!isAuthed) {
-      authGate.style.display = 'flex';
+      window.location.href = 'login.html';
     } else {
-      authGate.style.display = 'none';
+      if (authGate) authGate.style.display = 'none';
+      const adminUser = localStorage.getItem('aroham_admin_user');
+      const adminUserNameEl = document.querySelector('.admin-user-name');
+      if (adminUser && adminUserNameEl) {
+        const displayName = adminUser.split('@')[0];
+        adminUserNameEl.textContent = displayName.charAt(0).toUpperCase() + displayName.slice(1);
+      }
       initDashboard();
     }
   }
@@ -374,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       sessionStorage.removeItem('aroham_admin_auth');
-      window.location.reload();
+      window.location.href = 'login.html';
     });
   }
 

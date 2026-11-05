@@ -1421,6 +1421,598 @@ textarea.form-control {
   }
 }
 
+/* ==========================================================================
+   QURTUBIKS EXECUTIVE DESIGN SYSTEM EXTENSION
+   Aesthetic: Dark Slate (#111927), Clean Crisp Cards, Warm Coral (#EA6D4B) Active Highlights
+   ========================================================================== */
+
+/* ---------------- Qurtubiks Sidebar Adjustments ---------------- */
+.admin-sidebar {
+  background: #111927 !important;
+  border-right: 1px solid #1F2937 !important;
+}
+
+.sidebar-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+.qurtubiks-logo-mark {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.qurtubiks-brand-text {
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.qurtubiks-brand-sub {
+  font-size: 0.65rem;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-top: 2px;
+}
+
+.admin-sidebar .admin-nav-item {
+  color: #9CA3AF !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  font-weight: 400 !important;
+  border-left: none !important;
+  transition: all 0.16s ease !important;
+}
+
+.admin-sidebar .admin-nav-item:hover {
+  background-color: #1E2638 !important;
+  color: #FFFFFF !important;
+}
+
+.admin-sidebar .admin-nav-item.active {
+  background-color: #1E2638 !important;
+  color: #FFFFFF !important;
+  font-weight: 500 !important;
+}
+
+.admin-sidebar .admin-nav-item.active .nav-icon {
+  color: #EA6D4B !important;
+}
+
+.nav-badge-pill {
+  margin-left: auto;
+  background-color: #EA6D4B;
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.sidebar-logout-link {
+  background: none;
+  border: none;
+  color: #6B7280;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.sidebar-logout-link:hover {
+  color: #FFFFFF;
+}
+
+/* ---------------- Qurtubiks Minimalist Header ---------------- */
+.admin-header.qurtubiks-header {
+  background: #F8F9FD !important;
+  border-bottom: 1px solid transparent !important;
+  box-shadow: none !important;
+  padding: 0 36px !important;
+  height: 68px !important;
+}
+
+.header-icon-btn {
+  background: #FFFFFF;
+  border: 1px solid #ECEEF3;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+.header-icon-btn:hover {
+  background: #F3F4F6;
+  color: #111827;
+  border-color: #D1D5DB;
+}
+
+.qurtubiks-dot-badge {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #EF4444;
+  display: none;
+}
+
+.qurtubiks-dot-badge.show {
+  display: block;
+}
+
+.qurtubiks-user-avatar {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #E5E7EB;
+  cursor: pointer;
+  margin-left: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.qurtubiks-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-status-dot {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #10B981;
+  border: 2px solid #FFFFFF;
+}
+
+/* ---------------- Qurtubiks Main Content Area ---------------- */
+.admin-main {
+  background-color: #F8F9FD !important;
+}
+
+.admin-content {
+  padding: 8px 36px 40px !important;
+}
+
+.qurtubiks-hero-head {
+  margin-bottom: 22px;
+}
+
+.qurtubiks-hero-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------------- Top 3 KPI Stat Cards Row ---------------- */
+.qurtubiks-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 26px;
+}
+
+.qurtubiks-stat-card {
+  background: #FFFFFF;
+  border: 1px solid #ECEEF3;
+  border-radius: 16px;
+  padding: 22px 24px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.qurtubiks-stat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.stat-card-title {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #4B5563;
+  margin-top: 2px;
+}
+
+.stat-card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-card-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.1;
+  margin: 12px 0 14px;
+  letter-spacing: -0.02em;
+}
+
+.stat-card-bottom {
+  margin-top: auto;
+}
+
+.stat-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #9CA3AF;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.stat-card-link:hover {
+  color: #111827;
+}
+
+/* ---------------- Lower Two-Column Section (~58% / ~42%) ---------------- */
+.qurtubiks-main-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.qurtubiks-card {
+  background: #FFFFFF;
+  border: 1px solid #ECEEF3;
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card-head-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Left Card: My tasks List */
+.qurtubiks-tasks-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.qurtubiks-task-row {
+  display: grid;
+  grid-template-columns: 36px 1.25fr 1.6fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 4px;
+  border-bottom: 1px solid #F3F4F6;
+  transition: background-color 0.15s;
+}
+
+.qurtubiks-task-row:last-child {
+  border-bottom: none;
+}
+
+.task-avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.task-user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.task-user-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-user-code {
+  font-size: 11.5px;
+  color: #9CA3AF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-subject {
+  font-size: 13px;
+  color: #4B5563;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-timestamp {
+  font-size: 12px;
+  color: #9CA3AF;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.card-foot {
+  padding-top: 18px;
+  display: flex;
+}
+
+.card-foot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #9CA3AF;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.card-foot-link:hover {
+  color: #111827;
+}
+
+/* Right Card: Schedule Timeline */
+.schedule-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.schedule-nav-arrows {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sched-arrow-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid #ECEEF3;
+  background: #FFFFFF;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.sched-arrow-btn:hover {
+  background: #F3F4F6;
+  color: #111827;
+  border-color: #D1D5DB;
+}
+
+.qurtubiks-schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sched-item {
+  border-radius: 12px;
+  padding: 13px 18px;
+  border: 1px solid #ECEEF3;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: relative;
+}
+
+.sched-item:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* SIGNATURE WARM CORAL ACTIVE HIGHLIGHT */
+.sched-item.active {
+  background: #EA6D4B !important;
+  border-color: #EA6D4B !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 18px rgba(234, 109, 75, 0.28);
+}
+
+.sched-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sched-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sched-item.active .sched-item-title {
+  color: #FFFFFF;
+}
+
+.sched-code-tag {
+  font-size: 11px;
+  color: #9CA3AF;
+  font-family: inherit;
+}
+
+.sched-item.active .sched-code-tag {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.22);
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 500;
+}
+
+.sched-item-time {
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-top: 1px;
+}
+
+.sched-item.active .sched-item-time {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.sched-rec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #6B7280;
+  background: #F3F4F6;
+  padding: 3px 8px;
+  border-radius: 6px;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+/* ---------------- Responsive Rules ---------------- */
+@media (max-width: 1024px) {
+  .qurtubiks-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-header.qurtubiks-header {
+    padding: 0 16px !important;
+  }
+  .admin-content {
+    padding: 8px 16px 30px !important;
+  }
+  .qurtubiks-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- MODAL VIEWPORT RESILIENCE (Resolves Form Cutoff Image 1) ---------------- */
+.admin-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background-color: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 500 !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+}
+
+.admin-modal {
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  width: 100% !important;
+  max-width: 580px !important;
+  max-height: 85vh !important;
+  max-height: 85dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2) !important;
+  overflow: hidden !important;
+  margin: auto !important;
+}
+
+.admin-modal form {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.admin-modal-body {
+  padding: 22px 24px !important;
+  overflow-y: auto !important;
+  flex: 1 1 auto !important;
+  max-height: calc(85vh - 130px) !important;
+  overscroll-behavior: contain !important;
+}
+
+.admin-modal-footer {
+  padding: 14px 24px !important;
+  border-top: 1px solid #ECEEF3 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  background-color: #F9FAFB !important;
+  flex-shrink: 0 !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 10 !important;
+}
+
+
 @media (max-width: 600px) {
   .admin-modal-overlay {
     padding: 10px;

@@ -425,6 +425,53 @@ body {
   border: 1px solid var(--border-subtle);
 }
 
+/* Server Connectivity Pill */
+.server-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-page);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.server-status-pill .status-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #94A3B8;
+  display: inline-block;
+  transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+.server-status-pill.online {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #065F46;
+}
+
+.server-status-pill.online .status-indicator-dot {
+  background-color: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.server-status-pill.offline {
+  background: #FFFBEB;
+  border-color: #FDE68A;
+  color: #92400E;
+}
+
+.server-status-pill.offline .status-indicator-dot {
+  background-color: #F59E0B;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
 .admin-avatar {
   width: 28px;
   height: 28px;
@@ -837,8 +884,9 @@ body {
 .admin-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(12, 45, 39, 0.6);
+  background-color: rgba(12, 45, 39, 0.65);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -846,7 +894,8 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
-  padding: 20px;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .admin-modal-overlay.open {
@@ -859,11 +908,12 @@ body {
   border-radius: var(--radius-md);
   width: 100%;
   max-width: 580px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 40px -15px rgba(12, 45, 39, 0.35), 0 0 0 1px rgba(21, 72, 64, 0.08);
   overflow: hidden;
   transform: translateY(20px);
-  transition: transform 0.25s ease;
-  max-height: 90vh;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
   display: flex;
   flex-direction: column;
 }
@@ -873,18 +923,20 @@ body {
 }
 
 .admin-modal-header {
-  padding: 18px 24px;
+  padding: 16px 22px;
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--bg-page);
+  flex-shrink: 0;
 }
 
 .admin-modal-header h3 {
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--pine-900);
+  margin: 0;
 }
 
 .modal-close {
@@ -894,21 +946,63 @@ body {
   cursor: pointer;
   color: var(--text-muted);
   line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.modal-close:hover {
+  background-color: rgba(21, 72, 64, 0.08);
+  color: var(--pine-900);
+}
+
+.admin-modal form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .admin-modal-body {
-  padding: 24px;
+  padding: 20px 22px;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.admin-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-modal-body::-webkit-scrollbar-track {
+  background: #F4F7F6;
+}
+
+.admin-modal-body::-webkit-scrollbar-thumb {
+  background-color: #C3D1CD;
+  border-radius: 4px;
+}
+
+.admin-modal-body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--pine-800);
 }
 
 .admin-modal-footer {
-  padding: 16px 24px;
+  padding: 14px 22px;
   border-top: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
   background-color: var(--bg-page);
+  flex-shrink: 0;
 }
 
 /* Form Styles */
@@ -1045,6 +1139,34 @@ body {
   .notif-dropdown {
     width: 320px;
     right: -60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-modal-overlay {
+    padding: 10px;
+  }
+  .admin-modal {
+    max-height: calc(100vh - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 12px;
+  }
+  .admin-modal-header {
+    padding: 14px 16px;
+  }
+  .admin-modal-body {
+    padding: 16px;
+  }
+  .admin-modal-footer {
+    padding: 12px 16px;
+  }
+  .admin-modal-footer .btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .server-status-pill {
+    padding: 4px 10px;
+    font-size: 0.72rem;
   }
 }
 

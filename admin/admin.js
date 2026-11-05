@@ -2,9 +2,216 @@
  * AROHAM FOUNDATION · EXECUTIVE ADMIN CONSOLE
  * Real-time notification engine, student requests manager,
  * mentor profile CRUD, and volunteer tracking.
+ * Features automatic offline local-first fallback & synchronization.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ---------------- Default Initial Seed Data (Offline Resilience) ----------------
+  const DEFAULT_MENTORS = [
+    {
+      id: "mufeedha",
+      name: "Fathimath Mufeedha",
+      degree: "MBBS",
+      category: "medicine",
+      categoryLabel: "Medicine & Healthcare",
+      badgeClass: "badge-med",
+      summitRole: "President, Aroham Foundation · EduWay 2026 Mentor",
+      focusAreas: ["NEET-UG Preparation Strategy", "MBBS Course Curriculum & Clinical Rotations", "Medical Career Pathways & Leadership"],
+      bio: "Founding President of Aroham Foundation and MBBS scholar. Spearheads foundation initiatives, bridging the gap between higher secondary students and professional medical education.",
+      status: "active",
+      createdAt: "2025-07-13T10:00:00.000Z"
+    },
+    {
+      id: "hija",
+      name: "Fathima Hija T",
+      degree: "B.Sc. Physics",
+      category: "sciences",
+      categoryLabel: "Pure & Applied Sciences",
+      badgeClass: "badge-sci",
+      summitRole: "Trustee, Aroham Foundation · EduWay 2026 Mentor",
+      focusAreas: ["Pure Science Research & Academic Careers", "Physics Specializations & Higher Studies", "Higher Secondary Science Stream Mastery"],
+      bio: "Executive Trustee and Physics scholar dedicated to promoting pure sciences. Guides students passionate about fundamental research, space physics, and academic fellowships.",
+      status: "active",
+      createdAt: "2025-07-13T10:00:00.000Z"
+    },
+    {
+      id: "afifa",
+      name: "Afifa M.A",
+      degree: "B.Sc. (Hons.) Biotechnology",
+      category: "sciences",
+      categoryLabel: "Pure & Applied Sciences",
+      badgeClass: "badge-sci",
+      summitRole: "General Secretary, Aroham Foundation · EduWay Mentor",
+      focusAreas: ["Molecular Biology, Genetics & Biotechnology", "Higher Secondary Science Stream Planning", "Academic Leadership & Community Organizing"],
+      bio: "General Secretary of Aroham Foundation and Biotechnology scholar. Coordinates foundation operations, alumni mobilization, and one-on-one mentorship matching for school students.",
+      status: "active",
+      createdAt: "2025-07-13T10:00:00.000Z"
+    },
+    {
+      id: "farsana",
+      name: "Farsana",
+      degree: "Pharm.D",
+      category: "medicine",
+      categoryLabel: "Medicine & Healthcare",
+      badgeClass: "badge-med",
+      summitRole: "EduWay 2026 Career Mentor",
+      focusAreas: ["Clinical Pharmacy & Hospital Practice", "Doctor of Pharmacy Curriculum & Career Options", "Pharmaceutical Research & Patient Care"],
+      bio: "Graduated from Bolster Girls Campus and pursued Pharm.D (Doctor of Pharmacy). Guided Class 10–12 aspirants at EduWay 2026 on clinical pharmacy, hospital practice, and healthcare careers.",
+      status: "active",
+      createdAt: "2026-05-23T10:00:00.000Z"
+    },
+    {
+      id: "maryam",
+      name: "Maryam Beevi C.S",
+      degree: "B.Tech",
+      category: "engineering",
+      categoryLabel: "Engineering & Tech",
+      badgeClass: "badge-eng",
+      summitRole: "EduWay 2026 Career Mentor",
+      focusAreas: ["KEAM / JEE Engineering Entrances", "Core Engineering & Tech Disciplines", "Women in Engineering & Technology"],
+      bio: "Engineering alumna who represented Aroham Foundation at the EduWay 2026 Career Summit, mentoring students on engineering branches, career options, and technical opportunities.",
+      status: "active",
+      createdAt: "2026-05-23T10:00:00.000Z"
+    },
+    {
+      id: "niya",
+      name: "Niya Fathima",
+      degree: "B.Arch",
+      category: "design",
+      categoryLabel: "Architecture & Design",
+      badgeClass: "badge-design",
+      summitRole: "EduWay 2026 Career Mentor",
+      focusAreas: ["NATA & JEE Paper 2 Entrance Exams", "Architectural Design Studios & Spatial Planning", "Sustainable Built Environment & Interior Architecture"],
+      bio: "Architecture alumna demystifying NATA entrance preparation and architecture studies, helping students explore creative careers in spatial design and built environments.",
+      status: "active",
+      createdAt: "2026-05-23T10:00:00.000Z"
+    },
+    {
+      id: "hana",
+      name: "Hana Fathima",
+      degree: "B.A. (Hons.) Spanish",
+      category: "humanities",
+      categoryLabel: "Humanities & Languages",
+      badgeClass: "badge-lang",
+      summitRole: "EduWay 2026 Career Mentor",
+      focusAreas: ["Foreign Language Degrees & Linguistics", "Translation, International Relations & Diplomacy", "Undergraduate Degree Admissions & Language Programs"],
+      bio: "Pioneered foreign language studies from Bolster Girls Campus alumni network. Mentors students on unconventional career paths in European languages, global diplomacy, and translation.",
+      status: "active",
+      createdAt: "2026-05-23T10:00:00.000Z"
+    },
+    {
+      id: "naqa",
+      name: "Naqa Fathima",
+      degree: "Bachelor of Design",
+      category: "design",
+      categoryLabel: "Architecture & Design",
+      badgeClass: "badge-design",
+      summitRole: "EduWay 2026 Career Mentor",
+      focusAreas: ["Design Aptitude Tests (UCEED / NID DAT / NIFT)", "Product Design, UI/UX & Visual Communication", "Creative Portfolio Building & Studio Culture"],
+      bio: "Design graduate guiding creative students into design industries. Mentored students at Rose Lounge, Malappuram on portfolio development and entrance preparation for creative careers.",
+      status: "active",
+      createdAt: "2026-05-23T10:00:00.000Z"
+    },
+    {
+      id: "labeeba",
+      name: "Labeeba",
+      degree: "B.Sc. Physics",
+      category: "sciences",
+      categoryLabel: "Pure & Applied Sciences",
+      badgeClass: "badge-sci",
+      summitRole: "EduWay 2026 Career Mentor",
+      focusAreas: ["Pure Science Foundations & Physics Degrees", "Academic Horizons & Higher Education Guidance", "Science Curriculum Planning for Higher Secondary"],
+      bio: "Pure science scholar helping students explore career trajectories in Physics and scientific research, encouraging young women to excel in core sciences.",
+      status: "active",
+      createdAt: "2026-05-23T10:00:00.000Z"
+    }
+  ];
+
+  const DEFAULT_STUDENTS = [
+    {
+      id: "req-101",
+      studentName: "Fathima Nihala",
+      studentClass: "Class 12",
+      mentorPreference: "MBBS / NEET Strategy",
+      studentContact: "+91 94471 28910",
+      studentQueries: "Preparing for NEET-UG 2027. Need guidance on balancing State Board Plus Two syllabus with intensive physics problem practice and coaching test series.",
+      status: "matched",
+      assignedMentorId: "mufeedha",
+      assignedMentorName: "Fathimath Mufeedha (MBBS)",
+      adminNotes: "Paired with Mufeedha on 5 May 2026. Weekly phone mentoring scheduled.",
+      createdAt: "2026-05-04T11:20:00.000Z"
+    },
+    {
+      id: "req-102",
+      studentName: "Amina Shaza",
+      studentClass: "Class 11",
+      mentorPreference: "Architecture / NATA & JEE Paper 2",
+      studentContact: "+91 98952 14320",
+      studentQueries: "Interested in B.Arch admissions. Need advice on portfolio development and how to prepare for spatial perception questions in NATA.",
+      status: "matched",
+      assignedMentorId: "niya",
+      assignedMentorName: "Niya Fathima (B.Arch)",
+      adminNotes: "Shared sample sketchbook and NATA mock questions.",
+      createdAt: "2026-05-08T15:45:00.000Z"
+    },
+    {
+      id: "req-103",
+      studentName: "Rinsha Mariyam",
+      studentClass: "Repeater / Entrance Aspirant",
+      mentorPreference: "Pure Sciences / Central Universities (CUET)",
+      studentContact: "+91 97455 60123",
+      studentQueries: "Want to pursue B.Sc. Physics at IISER or central university. Seeking guidance on entrance options and research fellowships.",
+      status: "pending",
+      assignedMentorId: null,
+      assignedMentorName: null,
+      adminNotes: "Reviewing mentor availability with Hija T.",
+      createdAt: "2026-05-18T09:15:00.000Z"
+    }
+  ];
+
+  const DEFAULT_VOLUNTEERS = [
+    {
+      id: "vol-1",
+      name: "Shahana K.P",
+      batchYear: "2023",
+      currentProfession: "B.Com / CA Foundation Aspirant",
+      contact: "+91 96332 55100",
+      interest: "Event Coordination & Student Registration Desks",
+      status: "approved",
+      createdAt: "2026-05-10T14:30:00.000Z"
+    }
+  ];
+
+  const DEFAULT_NOTIFICATIONS = [
+    {
+      id: "notif-001",
+      type: "unimate_request",
+      title: "New UniMate Mentorship Request",
+      message: "Rinsha Mariyam (Repeater / Entrance Aspirant) submitted a request for Pure Sciences / Central Universities (CUET).",
+      targetId: "req-103",
+      unread: true,
+      createdAt: "2026-05-18T09:15:00.000Z"
+    },
+    {
+      id: "notif-002",
+      type: "unimate_matched",
+      title: "Mentor Successfully Assigned",
+      message: "Amina Shaza was matched with Niya Fathima (B.Arch).",
+      targetId: "req-102",
+      unread: false,
+      createdAt: "2026-05-09T10:00:00.000Z"
+    },
+    {
+      id: "notif-003",
+      type: "system",
+      title: "Aroham Foundation Admin Initialized",
+      message: "Executive Dashboard and backend server connected successfully.",
+      targetId: null,
+      unread: false,
+      createdAt: "2026-05-01T08:00:00.000Z"
+    }
+  ];
 
   // ---------------- Configuration & State ----------------
   let API_BASE = localStorage.getItem('aroham_api_base') || (
@@ -15,7 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentPasscode = localStorage.getItem('aroham_admin_pass') || 'aroham2025';
   let soundEnabled = localStorage.getItem('aroham_sound_enabled') !== 'false';
-  let lastNotificationCount = 0;
+  let isServerOnline = false;
+  let lastNotificationCount = null;
   let activeStudentFilter = 'all';
   let studentSearchQuery = '';
   let activeMentorCategory = 'all';
@@ -39,6 +247,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageTitleEl = document.getElementById('current-page-title');
   const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
   const sidebar = document.getElementById('admin-sidebar');
+
+  // Server Status Pill
+  const serverStatusPill = document.getElementById('server-status-pill');
+  const serverStatusDot = document.getElementById('server-status-dot');
+  const serverStatusText = document.getElementById('server-status-text');
 
   // Notifications
   const notifBellBtn = document.getElementById('notif-bell-btn');
@@ -75,6 +288,61 @@ document.addEventListener('DOMContentLoaded', () => {
   const settingPasscode = document.getElementById('setting-passcode');
   const btnSaveSettings = document.getElementById('btn-save-settings');
   const btnTestConnection = document.getElementById('btn-test-connection');
+
+  // ---------------- Category Helpers ----------------
+  function getCategoryLabel(cat) {
+    const map = {
+      medicine: 'Medicine & Healthcare',
+      sciences: 'Pure & Applied Sciences',
+      engineering: 'Engineering & Tech',
+      design: 'Architecture & Design',
+      humanities: 'Humanities & Languages'
+    };
+    return map[cat] || 'Academic Guidance';
+  }
+
+  function getBadgeClass(cat) {
+    const map = {
+      medicine: 'badge-med',
+      sciences: 'badge-sci',
+      engineering: 'badge-eng',
+      design: 'badge-design',
+      humanities: 'badge-lang'
+    };
+    return map[cat] || 'badge-sci';
+  }
+
+  // ---------------- Server Status Pill ----------------
+  function updateServerStatus(online) {
+    isServerOnline = online;
+    if (!serverStatusPill || !serverStatusText) return;
+    if (online) {
+      serverStatusPill.className = 'server-status-pill online';
+      serverStatusText.textContent = 'Backend Online (Port 5000)';
+      serverStatusPill.title = `Connected to API at ${API_BASE}. Real-time synchronization active.`;
+    } else {
+      serverStatusPill.className = 'server-status-pill offline';
+      serverStatusText.textContent = 'Offline Mode (Local Storage)';
+      serverStatusPill.title = `Backend server not reachable at ${API_BASE}. Changes are saved locally in your browser. Start server with "node backend/server.js" for multi-device sync.`;
+    }
+  }
+
+  if (serverStatusPill) {
+    serverStatusPill.addEventListener('click', () => {
+      if (isServerOnline) {
+        showToast('Backend Online', `Connected to ${API_BASE} on port 5000.`);
+      } else {
+        alert(
+          `Aroham Admin is running in Offline Local Mode.\n\n` +
+          `Your mentors, student pairings, and records are being saved directly in your browser's Local Storage.\n\n` +
+          `To enable the full Node.js API server & real-time network sync:\n` +
+          `1. Open terminal\n` +
+          `2. Run: node backend/server.js\n` +
+          `3. Click 'Test API Connection' in Settings`
+        );
+      }
+    });
+  }
 
   // ---------------- Authentication Gate ----------------
   function checkAuth() {
@@ -177,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
       osc1.start();
       osc1.stop(ctx.currentTime + 0.35);
     } catch (e) {
-      // Audio autoplay policy fallback
+      // Audio policy safe
     }
   }
 
@@ -211,71 +479,115 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
   }
 
-  // ---------------- API Fetch Helpers ----------------
+  // ---------------- API Fetch Helpers with Fast Timeout ----------------
+  async function fetchWithTimeout(resource, options = {}) {
+    const { timeout = 3000 } = options;
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    try {
+      const response = await fetch(resource, {
+        ...options,
+        signal: controller.signal
+      });
+      clearTimeout(id);
+      return response;
+    } catch (error) {
+      clearTimeout(id);
+      throw error;
+    }
+  }
+
   async function apiGet(endpoint) {
     try {
-      const res = await fetch(`${API_BASE}${endpoint}`);
+      const res = await fetchWithTimeout(`${API_BASE}${endpoint}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
+      const json = await res.json();
+      updateServerStatus(true);
+      return json;
     } catch (err) {
+      updateServerStatus(false);
       return null;
     }
   }
 
   async function apiPost(endpoint, data) {
     try {
-      const res = await fetch(`${API_BASE}${endpoint}`, {
+      const res = await fetchWithTimeout(`${API_BASE}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-      return await res.json();
+      const json = await res.json();
+      updateServerStatus(true);
+      return json;
     } catch (err) {
-      return { success: false, error: err.message };
+      updateServerStatus(false);
+      return { success: false, error: err.message, isNetworkError: true };
     }
   }
 
   async function apiPatch(endpoint, data) {
     try {
-      const res = await fetch(`${API_BASE}${endpoint}`, {
+      const res = await fetchWithTimeout(`${API_BASE}${endpoint}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-      return await res.json();
+      const json = await res.json();
+      updateServerStatus(true);
+      return json;
     } catch (err) {
-      return { success: false, error: err.message };
+      updateServerStatus(false);
+      return { success: false, error: err.message, isNetworkError: true };
     }
   }
 
   async function apiPut(endpoint, data) {
     try {
-      const res = await fetch(`${API_BASE}${endpoint}`, {
+      const res = await fetchWithTimeout(`${API_BASE}${endpoint}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-      return await res.json();
+      const json = await res.json();
+      updateServerStatus(true);
+      return json;
     } catch (err) {
-      return { success: false, error: err.message };
+      updateServerStatus(false);
+      return { success: false, error: err.message, isNetworkError: true };
     }
   }
 
   async function apiDelete(endpoint) {
     try {
-      const res = await fetch(`${API_BASE}${endpoint}`, {
+      const res = await fetchWithTimeout(`${API_BASE}${endpoint}`, {
         method: 'DELETE'
       });
-      return await res.json();
+      const json = await res.json();
+      updateServerStatus(true);
+      return json;
     } catch (err) {
-      return { success: false, error: err.message };
+      updateServerStatus(false);
+      return { success: false, error: err.message, isNetworkError: true };
     }
   }
 
   // ---------------- Dashboard Data Loaders ----------------
   async function loadDashboardStats() {
-    const stats = await apiGet('/stats');
-    if (!stats) return;
+    let stats = await apiGet('/stats');
+    if (!stats) {
+      // Offline calculation fallback
+      const pendingCount = studentsData.filter(s => s.status === 'pending').length;
+      const matchedCount = studentsData.filter(s => s.status === 'matched').length;
+      const unreadCount = notificationsData.filter(n => n.unread).length;
+      stats = {
+        totalRequests: studentsData.length,
+        pendingRequests: pendingCount,
+        matchedRequests: matchedCount,
+        totalMentors: mentorsData.length,
+        unreadNotifications: unreadCount
+      };
+    }
 
     const elTotalReq = document.getElementById('kpi-total-requests');
     const elPendingSub = document.getElementById('kpi-pending-sub');
@@ -297,10 +609,41 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------------- Real-time Notifications Polling ----------------
   async function pollNotifications() {
     const res = await apiGet('/notifications');
-    if (!res || !res.notifications) return;
+    let unreadCount = 0;
 
-    notificationsData = res.notifications;
-    const unreadCount = res.unreadCount || 0;
+    if (res && res.notifications) {
+      notificationsData = res.notifications;
+      unreadCount = res.unreadCount || 0;
+      localStorage.setItem('aroham_notifications', JSON.stringify(notificationsData));
+    } else {
+      // Offline fallback: check localStorage
+      try {
+        const cached = localStorage.getItem('aroham_notifications');
+        notificationsData = cached ? JSON.parse(cached) : DEFAULT_NOTIFICATIONS;
+        if (!cached) localStorage.setItem('aroham_notifications', JSON.stringify(DEFAULT_NOTIFICATIONS));
+
+        // Check for new offline requests from the user website that need a notification
+        const offRequests = JSON.parse(localStorage.getItem('aroham_offline_requests') || '[]');
+        offRequests.forEach(req => {
+          const alreadyNotified = notificationsData.some(n => n.targetId === req.id);
+          if (!alreadyNotified) {
+            notificationsData.unshift({
+              id: 'notif-' + Date.now(),
+              type: 'unimate_request',
+              title: 'New UniMate Mentorship Request',
+              message: `${req.studentName} (${req.studentClass}) requested mentorship for ${req.mentorPreference}.`,
+              targetId: req.id,
+              unread: true,
+              createdAt: req.createdAt || new Date().toISOString()
+            });
+          }
+        });
+        localStorage.setItem('aroham_notifications', JSON.stringify(notificationsData));
+      } catch (e) {
+        notificationsData = DEFAULT_NOTIFICATIONS;
+      }
+      unreadCount = notificationsData.filter(n => n.unread).length;
+    }
 
     // Update Bell Badge
     if (unreadCountBadge) {
@@ -318,7 +661,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (latest && latest.unread) {
         playAlertChime();
         showToast(latest.title, latest.message);
-        // Auto refresh students and dashboard tables
         loadStudents();
         loadDashboardStats();
       }
@@ -383,6 +725,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (markAllReadBtn) {
     markAllReadBtn.addEventListener('click', async () => {
       await apiPost('/notifications/mark-read', {});
+      // Also update local cache
+      notificationsData.forEach(n => n.unread = false);
+      localStorage.setItem('aroham_notifications', JSON.stringify(notificationsData));
       pollNotifications();
       loadDashboardStats();
     });
@@ -391,9 +736,40 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------------- Students & UniMates Applications ----------------
   async function loadStudents() {
     const res = await apiGet('/unimates');
-    if (!res || !res.requests) return;
+    if (res && res.requests) {
+      studentsData = res.requests;
+      localStorage.setItem('aroham_unimates', JSON.stringify(studentsData));
+    } else {
+      // Offline fallback: load cached data or defaults
+      try {
+        const cached = localStorage.getItem('aroham_unimates');
+        studentsData = cached ? JSON.parse(cached) : [...DEFAULT_STUDENTS];
+        if (!cached) localStorage.setItem('aroham_unimates', JSON.stringify(DEFAULT_STUDENTS));
 
-    studentsData = res.requests;
+        // Merge any new requests submitted from public website in offline mode
+        const offRequests = JSON.parse(localStorage.getItem('aroham_offline_requests') || '[]');
+        offRequests.forEach(req => {
+          if (!studentsData.some(s => s.id === req.id || (s.studentContact === req.studentContact && s.studentName === req.studentName))) {
+            studentsData.unshift({
+              id: req.id || 'req-' + Date.now(),
+              studentName: req.studentName,
+              studentClass: req.studentClass,
+              mentorPreference: req.mentorPreference,
+              studentContact: req.studentContact,
+              studentQueries: req.studentQueries,
+              status: 'pending',
+              assignedMentorId: null,
+              assignedMentorName: null,
+              createdAt: req.createdAt || new Date().toISOString()
+            });
+          }
+        });
+        localStorage.setItem('aroham_unimates', JSON.stringify(studentsData));
+      } catch (e) {
+        studentsData = [...DEFAULT_STUDENTS];
+      }
+    }
+
     renderStudentsTables();
     updateStudentCounts();
   }
@@ -457,8 +833,15 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', async () => {
         const id = btn.getAttribute('data-action-delete-student');
         if (confirm('Are you sure you want to remove this student application record?')) {
-          await apiDelete(`/unimates/${id}`);
-          showToast('Student Record Removed', 'The application was deleted.');
+          let res = await apiDelete(`/unimates/${id}`);
+          if (res && res.success) {
+            showToast('Student Record Removed', 'The application was deleted.');
+          } else {
+            // Local fallback delete
+            studentsData = studentsData.filter(s => s.id !== id);
+            localStorage.setItem('aroham_unimates', JSON.stringify(studentsData));
+            showToast('Student Record Removed', 'The application was deleted from local storage.');
+          }
           loadStudents();
           loadDashboardStats();
         }
@@ -555,7 +938,7 @@ document.addEventListener('DOMContentLoaded', () => {
       select.innerHTML = `<option value="">-- No Mentor Assigned (Pending Match) --</option>` +
         mentorsData.map(m => `
           <option value="${m.id}" ${req.assignedMentorId === m.id ? 'selected' : ''}>
-            ${m.name} (${m.degree}) — ${m.categoryLabel}
+            ${m.name} (${m.degree}) — ${m.categoryLabel || getCategoryLabel(m.category)}
           </option>
         `).join('');
     }
@@ -575,25 +958,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const id = document.getElementById('manage-student-id').value;
       const mentorSelect = document.getElementById('manage-mentor-select');
       const mentorId = mentorSelect.value || null;
-      const mentorName = mentorId ? mentorSelect.options[mentorSelect.selectedIndex].text.split(' — ')[0] : null;
+      const mentorName = mentorId ? mentorSelect.options[mentorSelect.selectedIndex].text.split(' — ')[0].trim() : null;
       const status = document.getElementById('manage-status-select').value;
       const adminNotes = document.getElementById('manage-admin-notes').value;
 
-      const res = await apiPatch(`/unimates/${id}`, {
+      const payload = {
         assignedMentorId: mentorId,
         assignedMentorName: mentorName,
         status: status,
         adminNotes: adminNotes
-      });
+      };
+
+      let res = await apiPatch(`/unimates/${id}`, payload);
 
       if (res && res.success) {
         showToast('Student Record Updated', `${mentorName ? 'Assigned to ' + mentorName : 'Status updated.'}`);
-        studentModal.classList.remove('open');
-        loadStudents();
-        loadDashboardStats();
       } else {
-        alert('Failed to update student record: ' + (res.error || 'Server error'));
+        // Local storage fallback
+        const idx = studentsData.findIndex(s => s.id === id);
+        if (idx !== -1) {
+          studentsData[idx] = { ...studentsData[idx], ...payload, updatedAt: new Date().toISOString() };
+          localStorage.setItem('aroham_unimates', JSON.stringify(studentsData));
+        }
+        showToast('Student Record Updated', `${mentorName ? 'Assigned to ' + mentorName : 'Status updated.'} (Saved locally)`);
       }
+
+      studentModal.classList.remove('open');
+      loadStudents();
+      loadDashboardStats();
     });
   }
 
@@ -623,9 +1015,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---------------- Mentors Management ----------------
   async function loadMentors() {
     const res = await apiGet('/mentors');
-    if (!res || !res.mentors) return;
+    if (res && res.mentors) {
+      mentorsData = res.mentors;
+      localStorage.setItem('aroham_mentors', JSON.stringify(mentorsData));
+    } else {
+      // Offline fallback: load cached data or defaults
+      try {
+        const cached = localStorage.getItem('aroham_mentors');
+        mentorsData = cached ? JSON.parse(cached) : [...DEFAULT_MENTORS];
+        if (!cached) localStorage.setItem('aroham_mentors', JSON.stringify(DEFAULT_MENTORS));
+      } catch (e) {
+        mentorsData = [...DEFAULT_MENTORS];
+      }
+    }
 
-    mentorsData = res.mentors;
     renderMentorsGrid();
     updateStreamCounts();
   }
@@ -677,13 +1080,14 @@ document.addEventListener('DOMContentLoaded', () => {
     container.innerHTML = filtered.map(m => {
       const initials = (m.name || 'M').split(' ').map(n => n[0]).join('').substring(0, 2);
       const tags = (m.focusAreas || []).map(t => `<span class="tag-badge">${t}</span>`).join('');
+      const catLabel = m.categoryLabel || getCategoryLabel(m.category);
       return `
         <div class="mentor-admin-card" data-mentor-id="${m.id}">
           <div class="mentor-card-top">
             <div class="mentor-avatar">${initials}</div>
             <div class="mentor-info">
               <h4>${m.name}</h4>
-              <div class="degree-tag">${m.degree} · ${m.categoryLabel || ''}</div>
+              <div class="degree-tag">${m.degree} · ${catLabel}</div>
             </div>
           </div>
           <div class="mentor-role-meta">${m.summitRole || 'EduWay Career Mentor'}</div>
@@ -710,8 +1114,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const id = btn.getAttribute('data-action-delete-mentor');
         const mentor = mentorsData.find(m => m.id === id);
         if (confirm(`Are you sure you want to delete ${mentor ? mentor.name : 'this mentor'} from the directory?`)) {
-          await apiDelete(`/mentors/${id}`);
-          showToast('Mentor Removed', `${mentor ? mentor.name : 'Mentor'} has been deleted.`);
+          let res = await apiDelete(`/mentors/${id}`);
+          if (res && res.success) {
+            showToast('Mentor Removed', `${mentor ? mentor.name : 'Mentor'} has been deleted.`);
+          } else {
+            // Local storage fallback delete
+            mentorsData = mentorsData.filter(m => m.id !== id);
+            localStorage.setItem('aroham_mentors', JSON.stringify(mentorsData));
+            showToast('Mentor Removed', `${mentor ? mentor.name : 'Mentor'} removed from local directory.`);
+          }
           loadMentors();
           loadDashboardStats();
         }
@@ -743,7 +1154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     mentorForm.reset();
     mentorIdInput.value = '';
     mentorModalTitle.textContent = 'Add New Mentor Profile';
-    document.getElementById('mentor-submit-btn').textContent = 'Add Mentor to Network';
+    const submitBtn = document.getElementById('mentor-submit-btn');
+    if (submitBtn) submitBtn.textContent = 'Add Mentor to Network';
     mentorModal.classList.add('open');
   }
 
@@ -753,14 +1165,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mentorIdInput.value = m.id;
     mentorModalTitle.textContent = `Edit Mentor: ${m.name}`;
-    document.getElementById('m-name').value = m.name;
-    document.getElementById('m-degree').value = m.degree;
-    document.getElementById('m-category').value = m.category;
+    document.getElementById('m-name').value = m.name || '';
+    document.getElementById('m-degree').value = m.degree || '';
+    document.getElementById('m-category').value = m.category || 'sciences';
     document.getElementById('m-role').value = m.summitRole || '';
     document.getElementById('m-tags').value = (m.focusAreas || []).join(', ');
     document.getElementById('m-bio').value = m.bio || '';
     document.getElementById('m-status').value = m.status || 'active';
-    document.getElementById('mentor-submit-btn').textContent = 'Update Profile';
+    const submitBtn = document.getElementById('mentor-submit-btn');
+    if (submitBtn) submitBtn.textContent = 'Update Profile';
 
     mentorModal.classList.add('open');
   }
@@ -783,37 +1196,102 @@ document.addEventListener('DOMContentLoaded', () => {
         name: document.getElementById('m-name').value.trim(),
         degree: document.getElementById('m-degree').value.trim(),
         category: document.getElementById('m-category').value,
-        summitRole: document.getElementById('m-role').value.trim(),
+        categoryLabel: getCategoryLabel(document.getElementById('m-category').value),
+        badgeClass: getBadgeClass(document.getElementById('m-category').value),
+        summitRole: document.getElementById('m-role').value.trim() || 'EduWay 2026 Career Mentor',
         focusAreas: document.getElementById('m-tags').value.split(',').map(s => s.trim()).filter(Boolean),
         bio: document.getElementById('m-bio').value.trim(),
-        status: document.getElementById('m-status').value
+        status: document.getElementById('m-status').value || 'active'
       };
 
-      let res;
-      if (id) {
-        // Update existing
-        res = await apiPut(`/mentors/${id}`, payload);
-      } else {
-        // Create new
-        res = await apiPost('/mentors', payload);
+      let res = null;
+      try {
+        if (id) {
+          res = await apiPut(`/mentors/${id}`, payload);
+        } else {
+          res = await apiPost('/mentors', payload);
+        }
+      } catch (networkErr) {
+        res = { success: false, error: networkErr.message, isNetworkError: true };
       }
 
       if (res && res.success) {
-        showToast(id ? 'Mentor Updated' : 'Mentor Added', `${payload.name} saved successfully.`);
+        showToast(id ? 'Mentor Updated' : 'Mentor Added', `${payload.name} saved to network.`);
         mentorModal.classList.remove('open');
-        loadMentors();
+        await loadMentors();
         loadDashboardStats();
       } else {
-        alert('Failed to save mentor profile: ' + (res.error || 'Server error'));
+        // Resilient Local-First Fallback: Save directly to browser storage
+        try {
+          let localMentors = JSON.parse(localStorage.getItem('aroham_mentors') || 'null');
+          if (!localMentors || !Array.isArray(localMentors)) {
+            localMentors = [...mentorsData];
+          }
+
+          if (id) {
+            const idx = localMentors.findIndex(m => m.id === id);
+            if (idx !== -1) {
+              localMentors[idx] = {
+                ...localMentors[idx],
+                ...payload,
+                updatedAt: new Date().toISOString()
+              };
+            }
+          } else {
+            const newMentor = {
+              id: 'mentor-' + Date.now(),
+              ...payload,
+              createdAt: new Date().toISOString()
+            };
+            localMentors.unshift(newMentor);
+          }
+
+          localStorage.setItem('aroham_mentors', JSON.stringify(localMentors));
+          mentorsData = localMentors;
+          renderMentorsGrid();
+          updateStreamCounts();
+          loadDashboardStats();
+          showToast(id ? 'Mentor Updated' : 'Mentor Added', `${payload.name} saved successfully (Saved in browser storage).`);
+          mentorModal.classList.remove('open');
+        } catch (storageErr) {
+          alert('Could not save mentor: ' + storageErr.message);
+        }
       }
     });
   }
 
+  // Close modals on overlay click or Escape key
+  [mentorModal, studentModal].forEach(overlay => {
+    if (!overlay) return;
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('open');
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (mentorModal) mentorModal.classList.remove('open');
+      if (studentModal) studentModal.classList.remove('open');
+      if (notifDropdown) notifDropdown.classList.remove('open');
+    }
+  });
+
   // ---------------- Volunteers View ----------------
   async function loadVolunteers() {
     const res = await apiGet('/volunteers');
-    if (!res || !res.volunteers) return;
-    volunteersData = res.volunteers;
+    if (res && res.volunteers) {
+      volunteersData = res.volunteers;
+      localStorage.setItem('aroham_volunteers', JSON.stringify(volunteersData));
+    } else {
+      try {
+        const cached = localStorage.getItem('aroham_volunteers');
+        volunteersData = cached ? JSON.parse(cached) : [...DEFAULT_VOLUNTEERS];
+      } catch (e) {
+        volunteersData = [...DEFAULT_VOLUNTEERS];
+      }
+    }
 
     const tbody = document.getElementById('volunteers-table-body');
     if (!tbody) return;
@@ -829,11 +1307,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <tr>
           <td>${dateStr}</td>
           <td><strong>${v.name}</strong></td>
-          <td>${v.batchYear || 'Alumna'}</td>
-          <td>${v.currentProfession || 'Professional'}</td>
-          <td>${v.contact}</td>
-          <td>${v.interest}</td>
-          <td><span class="status-pill matched">Active</span></td>
+          <td><span class="tag-badge">Class of ${v.batchYear || 'Alumna'}</span></td>
+          <td>${v.currentProfession || '—'}</td>
+          <td><a href="tel:${v.contact}" class="btn btn-outline btn-sm" style="padding: 2px 8px; font-size: 0.75rem;">📞 ${v.contact}</a></td>
+          <td style="max-width: 280px; font-size: 0.82rem; color: var(--slate-700); line-height: 1.4;">${v.interest || 'General summit volunteering'}</td>
+          <td><span class="status-pill completed">● ACTIVE</span></td>
         </tr>
       `;
     }).join('');
@@ -841,28 +1319,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------------- Contacts View ----------------
   async function loadContacts() {
-    const res = await apiGet('/contacts');
-    if (!res || !res.contacts) return;
-    contactsData = res.contacts;
+    const res = await apiGet('/contact');
+    if (res && res.contacts) {
+      contactsData = res.contacts;
+      localStorage.setItem('aroham_contacts', JSON.stringify(contactsData));
+    } else {
+      try {
+        const cached = localStorage.getItem('aroham_contacts');
+        contactsData = cached ? JSON.parse(cached) : [];
+      } catch (e) {
+        contactsData = [];
+      }
+    }
 
     const tbody = document.getElementById('contacts-table-body');
     if (!tbody) return;
 
     if (contactsData.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 30px; color: var(--text-muted);">No messages received yet.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 30px; color: var(--text-muted);">No messages or inquiries logged yet.</td></tr>`;
       return;
     }
 
     tbody.innerHTML = contactsData.map(c => {
-      const dateStr = c.createdAt ? new Date(c.createdAt).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recent';
+      const dateStr = c.createdAt ? new Date(c.createdAt).toLocaleDateString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Recent';
       return `
         <tr>
           <td>${dateStr}</td>
           <td><strong>${c.name}</strong></td>
           <td>${c.email || '—'}</td>
           <td>${c.phone || '—'}</td>
-          <td><span class="tag-badge">${c.purpose}</span></td>
-          <td style="max-width: 320px; font-size: 0.82rem; line-height: 1.4;">${c.message}</td>
+          <td><span class="tag-badge">${c.purpose || 'General'}</span></td>
+          <td style="max-width: 320px; font-size: 0.82rem; line-height: 1.4;">${c.message || ''}</td>
           <td><span class="status-pill ${c.status === 'new' ? 'pending' : 'completed'}">${c.status || 'Received'}</span></td>
         </tr>
       `;
@@ -889,30 +1376,39 @@ document.addEventListener('DOMContentLoaded', () => {
     btnTestConnection.addEventListener('click', async () => {
       const health = await apiGet('/health');
       if (health && health.status === 'active') {
-        alert(`Success! Connected to Aroham Foundation Backend API (Version: ${health.version})`);
+        alert(`Success! Connected to Aroham Foundation Backend API (Version: ${health.version})\nEndpoint: ${API_BASE}`);
+        updateServerStatus(true);
       } else {
-        alert(`Could not connect to ${API_BASE}. Please make sure 'node backend/server.js' is running.`);
+        alert(`Could not connect to ${API_BASE}.\n\nThe admin console will run in offline mode using browser Local Storage.\nTo start the server, open a terminal and run: node backend/server.js`);
+        updateServerStatus(false);
       }
     });
   }
 
   // ---------------- Master Initializer ----------------
-  function initDashboard() {
-    loadDashboardStats();
-    loadStudents();
-    loadMentors();
-    loadVolunteers();
-    loadContacts();
-    pollNotifications();
+  async function initDashboard() {
+    // 1. Initial health ping
+    const health = await apiGet('/health');
+    updateServerStatus(Boolean(health && health.status === 'active'));
 
-    // Start background polling for new requests every 4.5 seconds
+    // 2. Load all modules
+    await Promise.all([
+      loadMentors(),
+      loadStudents(),
+      loadVolunteers(),
+      loadContacts(),
+      pollNotifications()
+    ]);
+
+    loadDashboardStats();
+
+    // 3. Start background polling every 5 seconds
     setInterval(() => {
       pollNotifications();
       loadDashboardStats();
-    }, 4500);
+    }, 5000);
   }
 
   // Run Auth Check
   checkAuth();
 });
-

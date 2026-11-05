@@ -499,6 +499,138 @@ body {
   height: 20px;
 }
 
+/* ==========================================================================
+ * LIGHT / WHITE THEME OVERRIDES
+ * Clean, high-contrast, modern enterprise white aesthetic
+ * ========================================================================== */
+
+:root.light-theme,
+html.light-theme,
+body.light-theme,
+html.light-theme body {
+  --bg-dark: #FFFFFF;
+  --bg-panel: #FFFFFF;
+  --bg-card: #F8FAFC;
+  --bg-input: #F8FAFC;
+  --border-color: #E2E8F0;
+  --border-focus: #4669FA;
+  
+  --text-white: #0F172A;
+  --text-slate: #334155;
+  --text-muted: #64748B;
+  --text-dim: #94A3B8;
+  
+  background-color: #FFFFFF;
+  color: #334155;
+}
+
+/* Smooth Transition Across Theme Swaps */
+body,
+.login-form-side,
+.login-branding-side,
+.form-input,
+.social-btn,
+.theme-floating-btn,
+.brand-showcase-title,
+.brand-showcase-desc {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+body.light-theme .login-form-side {
+  background-color: #FFFFFF;
+}
+
+body.light-theme .social-btn {
+  background-color: #FFFFFF;
+  border-color: #E2E8F0;
+  color: #1E293B;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .social-btn:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #0F172A;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .form-input {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #0F172A;
+}
+
+body.light-theme .form-input:focus {
+  background-color: #FFFFFF;
+  border-color: #4669FA;
+  box-shadow: 0 0 0 3px rgba(70, 105, 250, 0.16);
+}
+
+body.light-theme .form-input::placeholder {
+  color: #94A3B8;
+}
+
+body.light-theme .checkbox-custom {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+}
+
+body.light-theme .login-branding-side {
+  background-color: #F8FAFC;
+  border-left: 1px solid #E2E8F0;
+}
+
+body.light-theme .grid-bg-overlay {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+}
+
+body.light-theme .grid-glow-square {
+  background-color: rgba(70, 105, 250, 0.08);
+  border-color: rgba(70, 105, 250, 0.18);
+}
+
+body.light-theme .square-2,
+body.light-theme .square-3 {
+  background-color: rgba(15, 23, 42, 0.03);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .brand-showcase-title {
+  color: #0F172A;
+}
+
+body.light-theme .brand-showcase-desc {
+  color: #64748B;
+}
+
+body.light-theme .theme-floating-btn {
+  background-color: #FFFFFF;
+  border: 3px solid #E2E8F0;
+  color: #1E293B;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+body.light-theme .theme-floating-btn:hover {
+  background-color: #F1F5F9;
+  border-color: #CBD5E1;
+  color: #0F172A;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.16);
+}
+
+body.light-theme .auth-alert.error {
+  background-color: #FEF2F2;
+  border-color: #FECACA;
+  color: #DC2626;
+}
+
+body.light-theme .auth-alert.success {
+  background-color: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #059669;
+}
+
 /* ---------------- Responsive Rules ---------------- */
 @media (max-width: 960px) {
   .login-container {

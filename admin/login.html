@@ -11,6 +11,16 @@
   
   <link rel="stylesheet" href="login.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('aroham_login_theme');
+        if (savedTheme === 'light') {
+          document.documentElement.classList.add('light-theme');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 
@@ -170,9 +180,13 @@
 
       <!-- Floating Theme Toggle Button -->
       <button type="button" class="theme-floating-btn" id="theme-toggle-btn" title="Toggle Display Theme">
-        <!-- Sun Brightness Icon -->
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <!-- Sun Brightness Icon (visible in dark mode) -->
+        <svg id="theme-icon-sun" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+        <!-- Moon Icon (visible in light mode) -->
+        <svg id="theme-icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
         </svg>
       </button>
 
@@ -267,21 +281,35 @@
         });
       });
 
-      // 7. Theme Accent Toggle (Indigo Modern / Aroham Pine)
-      let isPineTheme = false;
-      themeToggleBtn.addEventListener('click', () => {
-        isPineTheme = !isPineTheme;
-        if (isPineTheme) {
-          document.documentElement.style.setProperty('--primary-blue', '#154840');
-          document.documentElement.style.setProperty('--primary-hover', '#0B2C27');
-          document.querySelector('.brand-showcase-logo').style.background = 'linear-gradient(135deg, #154840 0%, #0B2C27 100%)';
-          themeToggleBtn.style.backgroundColor = '#DF9C2C';
+      // 7. Light / Dark Display Theme Toggle with LocalStorage Persistence
+      const iconSun = document.getElementById('theme-icon-sun');
+      const iconMoon = document.getElementById('theme-icon-moon');
+
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          document.body.classList.add('light-theme');
+          document.documentElement.classList.add('light-theme');
+          if (iconSun) iconSun.style.display = 'none';
+          if (iconMoon) iconMoon.style.display = 'block';
+          themeToggleBtn.setAttribute('title', 'Switch to Dark Theme');
         } else {
-          document.documentElement.style.setProperty('--primary-blue', '#4669FA');
-          document.documentElement.style.setProperty('--primary-hover', '#3657E8');
-          document.querySelector('.brand-showcase-logo').style.background = 'linear-gradient(135deg, #4669FA 0%, #254EDB 100%)';
-          themeToggleBtn.style.backgroundColor = '#4669FA';
+          document.body.classList.remove('light-theme');
+          document.documentElement.classList.remove('light-theme');
+          if (iconSun) iconSun.style.display = 'block';
+          if (iconMoon) iconMoon.style.display = 'none';
+          themeToggleBtn.setAttribute('title', 'Switch to White Theme');
         }
+      }
+
+      // Read saved theme from localStorage (default: dark)
+      const initialTheme = localStorage.getItem('aroham_login_theme') || 'dark';
+      applyTheme(initialTheme);
+
+      themeToggleBtn.addEventListener('click', () => {
+        const isCurrentlyLight = document.body.classList.contains('light-theme');
+        const nextTheme = isCurrentlyLight ? 'dark' : 'light';
+        applyTheme(nextTheme);
+        localStorage.setItem('aroham_login_theme', nextTheme);
       });
 
     });

@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aroham Foundation · Executive Admin Console</title>
   
-  <!-- Preconnect Fonts -->
+  <!-- Typography: TG Pilgrima Office (via local/assets) with Helvetica Neue fallback -->
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="admin.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -18,7 +20,9 @@
   <!-- Passcode Access Gate (Protects Dashboard) -->
   <div class="auth-gate-overlay" id="auth-gate" style="display: none;">
     <div class="auth-gate-box">
-      <div class="auth-logo">A</div>
+      <div class="auth-logo">
+        <img src="../assets/images/aroham-emblem-transparent.png" alt="Aroham Emblem" class="auth-emblem-img">
+      </div>
       <h2 class="auth-title">Executive Admin Console</h2>
       <p class="auth-desc">Please enter the administrative passcode to access student mentorship records and alumni management.</p>
       <form id="auth-form">
@@ -37,9 +41,11 @@
     <!-- Sidebar -->
     <aside class="admin-sidebar" id="admin-sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-logo-icon">A</div>
+        <div class="sidebar-logo-icon">
+          <img src="../assets/images/aroham-emblem-transparent.png" alt="Aroham Emblem" class="sidebar-emblem-img">
+        </div>
         <div class="sidebar-title-group">
-          <h2>Aroham Admin</h2>
+          <h2>Aroham Foundation</h2>
           <span class="sidebar-badge">Executive Console</span>
         </div>
       </div>
@@ -257,31 +263,31 @@
               <h2 class="card-section-title">Mentorship Streams Breakdown</h2>
               <button class="btn btn-secondary btn-sm" id="btn-quick-add-mentor">+ Add Mentor Profile</button>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-              <div style="background: var(--bg-page); padding: 16px; border-radius: var(--radius-sm);">
-                <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Medicine & Healthcare</div>
-                <div style="font-size: 1.4rem; font-weight: 800; color: var(--pine-900); margin-top: 4px;" id="count-med">2 Mentors</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">MBBS, Pharm.D</div>
+            <div class="stream-stat-grid">
+              <div class="stream-stat-card">
+                <div class="stream-stat-label">Medicine & Healthcare</div>
+                <div class="stream-stat-num" id="count-med">2 Mentors</div>
+                <div class="stream-stat-sub">MBBS, Pharm.D</div>
               </div>
-              <div style="background: var(--bg-page); padding: 16px; border-radius: var(--radius-sm);">
-                <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Pure & Applied Sciences</div>
-                <div style="font-size: 1.4rem; font-weight: 800; color: var(--pine-900); margin-top: 4px;" id="count-sci">3 Mentors</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Physics, Biotechnology</div>
+              <div class="stream-stat-card">
+                <div class="stream-stat-label">Pure & Applied Sciences</div>
+                <div class="stream-stat-num" id="count-sci">3 Mentors</div>
+                <div class="stream-stat-sub">Physics, Biotechnology</div>
               </div>
-              <div style="background: var(--bg-page); padding: 16px; border-radius: var(--radius-sm);">
-                <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Engineering & Tech</div>
-                <div style="font-size: 1.4rem; font-weight: 800; color: var(--pine-900); margin-top: 4px;" id="count-eng">1 Mentor</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">B.Tech, JEE/KEAM</div>
+              <div class="stream-stat-card">
+                <div class="stream-stat-label">Engineering & Tech</div>
+                <div class="stream-stat-num" id="count-eng">1 Mentor</div>
+                <div class="stream-stat-sub">B.Tech, JEE/KEAM</div>
               </div>
-              <div style="background: var(--bg-page); padding: 16px; border-radius: var(--radius-sm);">
-                <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Architecture & Design</div>
-                <div style="font-size: 1.4rem; font-weight: 800; color: var(--pine-900); margin-top: 4px;" id="count-design">2 Mentors</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">B.Arch, B.Des</div>
+              <div class="stream-stat-card">
+                <div class="stream-stat-label">Architecture & Design</div>
+                <div class="stream-stat-num" id="count-design">2 Mentors</div>
+                <div class="stream-stat-sub">B.Arch, B.Des</div>
               </div>
-              <div style="background: var(--bg-page); padding: 16px; border-radius: var(--radius-sm);">
-                <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Humanities & Languages</div>
-                <div style="font-size: 1.4rem; font-weight: 800; color: var(--pine-900); margin-top: 4px;" id="count-lang">1 Mentor</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">B.A. (Hons.) Spanish</div>
+              <div class="stream-stat-card">
+                <div class="stream-stat-label">Humanities & Languages</div>
+                <div class="stream-stat-num" id="count-lang">1 Mentor</div>
+                <div class="stream-stat-sub">B.A. (Hons.) Spanish</div>
               </div>
             </div>
           </div>

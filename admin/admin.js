@@ -1091,11 +1091,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
           <div class="mentor-role-meta">${m.summitRole || 'EduWay Career Mentor'}</div>
-          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">${m.bio || ''}</p>
+          <p style="font-size: 0.84rem; color: var(--slate-600); line-height: 1.5; margin-bottom: 12px; font-weight: 400;">${m.bio || ''}</p>
           <div class="mentor-tags">${tags}</div>
           <div class="mentor-card-actions">
             <button class="btn btn-outline btn-sm" data-action-edit-mentor="${m.id}">Edit</button>
-            <button class="btn btn-outline btn-sm" style="color: #EF4444;" data-action-delete-mentor="${m.id}">Delete</button>
+            <button class="btn btn-outline btn-sm" style="color: #EF4444; border-color: #FECACA;" data-action-delete-mentor="${m.id}">Delete</button>
           </div>
         </div>
       `;

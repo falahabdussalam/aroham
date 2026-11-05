@@ -386,11 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------------- Navigation & View Switching ----------------
   const pageTitles = {
-    'dashboard-view': 'Dashboard',
+    'dashboard-view': 'Executive Dashboard',
     'students-view': 'Manage Students · UniMates Matching',
     'mentors-view': 'Manage Mentors · Alumni Directory',
-    'calendar-view': 'Mentorship Calendar & Schedules',
-    'plans-view': 'Guidance Plans & Focus Streams',
     'volunteers-view': 'Volunteer Network Roster',
     'contacts-view': 'Institutional Inquiries',
     'settings-view': 'API & System Settings'
@@ -580,259 +578,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ---------------- Qurtubiks Schedule State & Renderer ----------------
-  const SCHEDULE_SESSIONS = [
-    {
-      subject: 'Algebra',
-      code: 'QOA_SH24_BC_09_S_A',
-      time: '10:00 am',
-      isRecording: true
-    },
-    {
-      subject: 'Geometry',
-      code: 'QOA_SH24_BC_08_S_A',
-      time: '11:00 am',
-      isRecording: false
-    },
-    {
-      subject: 'Math Review Session',
-      code: 'QOA_SH24_BC_10_S_B',
-      time: '12:00 pm',
-      isRecording: false
-    },
-    {
-      subject: 'Calculus',
-      code: 'QOA_SH24_BC_04_S_A',
-      time: '01:00 pm',
-      isRecording: false
-    },
-    {
-      subject: 'Geometry',
-      code: 'QOA_SH24_BC_09_S_A',
-      time: '03:00 pm',
-      isRecording: false
-    }
-  ];
-
-  let activeScheduleIndex = 1; // Default to Geometry (highlighted in coral in screenshot)
-  let scheduleDayOffset = 0; // 0 = Wednesday 6
-
-  const DAY_TITLES = [
-    'Today, Wednesday 6',
-    'Thursday 7',
-    'Friday 8',
-    'Saturday 9',
-    'Sunday 10',
-    'Monday 11',
-    'Tuesday 12'
-  ];
-
-  function renderQurtubiksSchedule() {
-    const listEl = document.getElementById('qurtubiks-schedule-list');
-    const calListEl = document.getElementById('calendar-full-schedule-list');
-    const titleEl = document.getElementById('schedule-day-title');
-
-    if (titleEl) {
-      const idx = (scheduleDayOffset % DAY_TITLES.length + DAY_TITLES.length) % DAY_TITLES.length;
-      titleEl.textContent = DAY_TITLES[idx];
-    }
-
-    const html = SCHEDULE_SESSIONS.map((item, index) => {
-      const isActive = index === activeScheduleIndex;
-      return `
-        <div class="sched-item ${isActive ? 'active' : ''}" data-sched-index="${index}">
-          <div class="sched-item-header">
-            <span class="sched-item-title">${item.subject}</span>
-            <span class="sched-code-tag">${item.code}</span>
-          </div>
-          <span class="sched-item-time">${item.time}</span>
-          ${item.isRecording && !isActive ? `
-            <span class="sched-rec-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <circle cx="12" cy="12" r="3" fill="currentColor"/>
-              </svg>
-              Recording
-            </span>
-          ` : ''}
-        </div>
-      `;
-    }).join('');
-
-    if (listEl) {
-      listEl.innerHTML = html;
-      listEl.querySelectorAll('.sched-item').forEach(el => {
-        el.addEventListener('click', () => {
-          const clickedIndex = parseInt(el.getAttribute('data-sched-index'), 10);
-          if (!isNaN(clickedIndex)) {
-            activeScheduleIndex = clickedIndex;
-            renderQurtubiksSchedule();
-          }
-        });
-      });
-    }
-
-    if (calListEl) {
-      calListEl.innerHTML = html;
-      calListEl.querySelectorAll('.sched-item').forEach(el => {
-        el.addEventListener('click', () => {
-          const clickedIndex = parseInt(el.getAttribute('data-sched-index'), 10);
-          if (!isNaN(clickedIndex)) {
-            activeScheduleIndex = clickedIndex;
-            renderQurtubiksSchedule();
-          }
-        });
-      });
-    }
-  }
-
-  // ---------------- Qurtubiks Tasks List Renderer ----------------
-  const BASE_TASKS = [
-    {
-      name: "Xin Yue",
-      code: "QOA_SH2...",
-      topic: "Algebra fractions quiz",
-      time: "5 Oct, 12:53 pm",
-      avatarBg: "#E0E7FF",
-      avatarEmoji: "👨‍🎓"
-    },
-    {
-      name: "Omar Farooq",
-      code: "QOA_SH2...",
-      topic: "Solving Equations",
-      time: "5 Oct, 11:15 am",
-      avatarBg: "#FFEDD5",
-      avatarEmoji: "👦"
-    },
-    {
-      name: "Aisha Khan",
-      code: "QOA_SH2...",
-      topic: "Algebra fractions pa...",
-      time: "5 Oct, 11:13 am",
-      avatarBg: "#DCFCE7",
-      avatarEmoji: "🧕"
-    },
-    {
-      name: "Leila Rahman",
-      code: "QOA_SH2 ...",
-      topic: "Solving Equations",
-      time: "5 Oct, 11:02 am",
-      avatarBg: "#FEF3C7",
-      avatarEmoji: "👧"
-    },
-    {
-      name: "Bilal Ahmed",
-      code: "QOA_SH2...",
-      topic: "Solving Equations",
-      time: "5 Oct, 11:01 am",
-      avatarBg: "#FCE7F3",
-      avatarEmoji: "👨"
-    }
-  ];
-
-  function renderQurtubiksTasks() {
-    const listEl = document.getElementById('qurtubiks-tasks-list');
-    if (!listEl) return;
-
-    let taskRows = [];
-
-    // Prioritize showing live student applications from the website
-    if (studentsData && studentsData.length > 0) {
-      const liveTasks = studentsData.slice(0, 3).map((s, idx) => {
-        const bgColors = ["#E0E7FF", "#FFEDD5", "#DCFCE7", "#FEF3C7", "#FCE7F3"];
-        const emojis = ["🧕", "👩‍🎓", "👨‍🎓", "👧", "👦"];
-        const timeStr = s.createdAt ? new Date(s.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Just now';
-        return {
-          name: s.studentName,
-          code: s.studentClass || "QOA_SH2...",
-          topic: s.mentorPreference || "Academic Mentorship",
-          time: timeStr,
-          avatarBg: bgColors[idx % bgColors.length],
-          avatarEmoji: emojis[idx % emojis.length],
-          isLive: true
-        };
-      });
-      taskRows = [...liveTasks];
-    }
-
-    // Fill remaining up to 5 rows from baseline design
-    const remaining = BASE_TASKS.slice(0, Math.max(0, 5 - taskRows.length));
-    taskRows = [...taskRows, ...remaining];
-
-    listEl.innerHTML = taskRows.map(task => `
-      <div class="qurtubiks-task-row">
-        <div class="task-avatar-circle" style="background-color: ${task.avatarBg};">
-          <span>${task.avatarEmoji}</span>
-        </div>
-        <div class="task-user-meta">
-          <span class="task-user-name">${task.name}</span>
-          <span class="task-user-code">${task.code}</span>
-        </div>
-        <span class="task-subject">${task.topic}</span>
-        <span class="task-timestamp">${task.time}</span>
-      </div>
-    `).join('');
-  }
-
-  function setupQurtubiksDashboardHandlers() {
-    // Schedule Navigation Arrows
-    const prevBtn = document.getElementById('btn-sched-prev');
-    const nextBtn = document.getElementById('btn-sched-next');
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        scheduleDayOffset--;
-        renderQurtubiksSchedule();
-      });
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        scheduleDayOffset++;
-        renderQurtubiksSchedule();
-      });
-    }
-
-    // View All links from top cards & tasks card
-    const linkMeetings = document.getElementById('link-meetings-all');
-    if (linkMeetings) {
-      linkMeetings.addEventListener('click', (e) => {
-        e.preventDefault();
-        switchView('calendar-view');
-      });
-    }
-
-    const linkPending = document.getElementById('link-pending-all');
-    if (linkPending) {
-      linkPending.addEventListener('click', (e) => {
-        e.preventDefault();
-        switchView('students-view');
-      });
-    }
-
-    const linkDone = document.getElementById('link-done-all');
-    if (linkDone) {
-      linkDone.addEventListener('click', (e) => {
-        e.preventDefault();
-        switchView('mentors-view');
-      });
-    }
-
-    const linkTasksAll = document.getElementById('link-view-all-tasks');
-    if (linkTasksAll) {
-      linkTasksAll.addEventListener('click', (e) => {
-        e.preventDefault();
-        switchView('students-view');
-      });
-    }
-
-    const btnQuickAddPlans = document.getElementById('btn-quick-add-mentor-plans');
-    if (btnQuickAddPlans) {
-      btnQuickAddPlans.addEventListener('click', () => {
-        switchView('mentors-view');
-        openAddMentorModal();
-      });
-    }
-  }
-
   // ---------------- Dashboard Data Loaders ----------------
   async function loadDashboardStats() {
     let stats = await apiGet('/stats');
@@ -850,32 +595,21 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     }
 
-    // Top 3 KPI Metric Cards
-    const elMeetingsToday = document.getElementById('metric-meetings-today');
-    const elPendingTasks = document.getElementById('metric-pending-tasks');
-    const elDoneTasks = document.getElementById('metric-done-tasks');
-    const elSidebarBadge = document.getElementById('sidebar-tasks-badge');
+    const elTotalReq = document.getElementById('kpi-total-requests');
+    const elPendingSub = document.getElementById('kpi-pending-sub');
+    const elTotalMentors = document.getElementById('kpi-total-mentors');
+    const elMatchedCount = document.getElementById('kpi-matched-count');
+    const elUnreadNotifs = document.getElementById('kpi-unread-notifs');
+    const elSideStudents = document.getElementById('sidebar-unimates-badge');
+    const elSideMentors = document.getElementById('sidebar-mentors-badge');
 
-    if (elMeetingsToday) elMeetingsToday.textContent = '3';
-    if (elPendingTasks) elPendingTasks.textContent = stats.pendingRequests !== undefined && stats.pendingRequests > 0 ? stats.pendingRequests : '24';
-    if (elDoneTasks) elDoneTasks.textContent = stats.matchedRequests !== undefined && stats.matchedRequests > 0 ? stats.matchedRequests : '2';
-    if (elSidebarBadge) elSidebarBadge.textContent = stats.pendingRequests !== undefined && stats.pendingRequests > 0 ? stats.pendingRequests : '1';
-
-    // Update plans view counts
-    const pMed = document.getElementById('plans-count-med');
-    const pSci = document.getElementById('plans-count-sci');
-    const pEng = document.getElementById('plans-count-eng');
-    const pDesign = document.getElementById('plans-count-design');
-    const pLang = document.getElementById('plans-count-lang');
-    if (pMed) pMed.textContent = `${mentorsData.filter(m => m.category === 'medicine').length} Mentors`;
-    if (pSci) pSci.textContent = `${mentorsData.filter(m => m.category === 'sciences').length} Mentors`;
-    if (pEng) pEng.textContent = `${mentorsData.filter(m => m.category === 'engineering').length} Mentors`;
-    if (pDesign) pDesign.textContent = `${mentorsData.filter(m => m.category === 'design').length} Mentors`;
-    if (pLang) pLang.textContent = `${mentorsData.filter(m => m.category === 'humanities').length} Mentors`;
-
-    // Re-render Qurtubiks dashboard components
-    renderQurtubiksTasks();
-    renderQurtubiksSchedule();
+    if (elTotalReq) elTotalReq.textContent = stats.totalRequests || 0;
+    if (elPendingSub) elPendingSub.textContent = `${stats.pendingRequests || 0} pending match`;
+    if (elTotalMentors) elTotalMentors.textContent = stats.totalMentors || 0;
+    if (elMatchedCount) elMatchedCount.textContent = stats.matchedRequests || 0;
+    if (elUnreadNotifs) elUnreadNotifs.textContent = stats.unreadNotifications || 0;
+    if (elSideStudents) elSideStudents.textContent = stats.pendingRequests || 0;
+    if (elSideMentors) elSideMentors.textContent = stats.totalMentors || 0;
   }
 
   // ---------------- Real-time Notifications Polling ----------------
@@ -1526,9 +1260,7 @@ document.addEventListener('DOMContentLoaded', () => {
           showToast(id ? 'Mentor Updated' : 'Mentor Added', `${payload.name} saved successfully (Saved in browser storage).`);
           mentorModal.classList.remove('open');
         } catch (storageErr) {
-          console.error('Storage fallback error:', storageErr);
-          showToast(id ? 'Mentor Updated' : 'Mentor Added', `${payload.name} saved locally.`);
-          mentorModal.classList.remove('open');
+          alert('Could not save mentor: ' + storageErr.message);
         }
       }
     });
@@ -1661,8 +1393,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------------- Master Initializer ----------------
   async function initDashboard() {
-    setupQurtubiksDashboardHandlers();
-
     // 1. Initial health ping
     const health = await apiGet('/health');
     updateServerStatus(Boolean(health && health.status === 'active'));
@@ -1677,8 +1407,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ]);
 
     loadDashboardStats();
-    renderQurtubiksTasks();
-    renderQurtubiksSchedule();
 
     // 3. Start background polling every 5 seconds
     setInterval(() => {

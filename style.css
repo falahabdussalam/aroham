@@ -426,32 +426,57 @@ h1, h2, h3, h4, h5, h6 {
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
 }
 
-.brand-wordmark-modern {
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-  font-size: 1.34rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: #FFFFFF;
-  text-transform: uppercase;
+.nav-brand:hover {
+  transform: translateY(-1px);
 }
 
 .brand-emblem-img {
-  height: 30px;
+  height: 38px;
   width: auto;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-  filter: brightness(0) invert(1);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
   transition: transform var(--transition-fast);
 }
 
 .nav-brand:hover .brand-emblem-img {
-  transform: scale(1.04);
+  transform: scale(1.05);
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+}
+
+.brand-name {
+  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 0;
+  padding: 0;
+}
+
+.brand-sub {
+  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.52rem;
+  font-weight: 700;
+  color: #DF9C2C; /* Official Warm Amber Gold from Logo Artwork */
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin-top: 3px;
+  line-height: 1;
 }
 
 .site-nav .nav-links {

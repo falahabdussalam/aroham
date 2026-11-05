@@ -1421,6 +1421,430 @@ textarea.form-control {
   }
 }
 
+/* ==========================================================================
+   AROHAM FOUNDATION · ELEVATED EXECUTIVE DASHBOARD SYSTEM
+   Theme: Institutional Pine Teal (#0B2C27, #154840), Warm Ochre (#DF9C2C),
+          Crisp Card Elevations, Regular Style Typography
+   ========================================================================== */
+
+/* ---------------- Executive Welcome Card ---------------- */
+.executive-welcome-card {
+  background: linear-gradient(135deg, rgba(11, 44, 39, 0.05) 0%, rgba(223, 156, 44, 0.08) 100%), #FFFFFF;
+  border: 1px solid rgba(21, 72, 64, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: 0 2px 10px rgba(11, 44, 39, 0.04);
+}
+
+.welcome-text-group {
+  max-width: 640px;
+}
+
+.welcome-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pine-800);
+  margin-bottom: 8px;
+  background: rgba(21, 72, 64, 0.08);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.welcome-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--ochre-500);
+}
+
+.welcome-title {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--pine-900);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.welcome-desc {
+  font-size: 0.85rem;
+  color: var(--slate-600);
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+}
+
+.welcome-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.hero-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--ochre-500);
+  display: inline-block;
+  margin-right: 6px;
+  box-shadow: 0 0 6px rgba(223, 156, 44, 0.6);
+}
+
+/* ---------------- Enhanced KPI Cards ---------------- */
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 22px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(21, 72, 64, 0.1);
+  background: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(11, 44, 39, 0.03);
+  transition: all 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(11, 44, 39, 0.06);
+  border-color: rgba(21, 72, 64, 0.2);
+}
+
+.kpi-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.kpi-label {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate-600);
+  font-weight: 500;
+}
+
+.kpi-num {
+  font-size: 2.15rem;
+  font-weight: 600;
+  color: var(--pine-900);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+}
+
+.kpi-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.kpi-pill {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.kpi-pill.pending {
+  background: var(--ochre-100);
+  color: var(--ochre-700);
+}
+
+.kpi-pill.pine {
+  background: var(--pine-50);
+  color: var(--pine-800);
+}
+
+.kpi-pill.emerald {
+  background: var(--emerald-50);
+  color: var(--emerald-700);
+}
+
+.kpi-pill.terracotta {
+  background: var(--terracotta-50);
+  color: var(--terracotta-700);
+}
+
+.kpi-action-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--pine-700);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.kpi-action-link:hover {
+  color: var(--pine-900);
+  text-decoration: underline;
+}
+
+/* ---------------- Executive Split Layout ---------------- */
+.dashboard-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  gap: 22px;
+  align-items: start;
+}
+
+.dashboard-main-col {
+  min-width: 0;
+}
+
+.dashboard-side-col {
+  min-width: 0;
+}
+
+.card-section-sub {
+  font-size: 0.8rem;
+  color: var(--slate-600);
+  margin-top: 3px;
+  font-weight: 400;
+}
+
+.card-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------------- Mentorship Discipline Meters ---------------- */
+.discipline-meter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.discipline-meter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meter-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.meter-name {
+  font-weight: 500;
+  color: var(--pine-900);
+}
+
+.meter-count {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--pine-700);
+  background: var(--pine-50);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+}
+
+.meter-bar-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--border-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.meter-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.meter-bar-fill.med { background-color: #059669; }
+.meter-bar-fill.sci { background-color: #0284C7; }
+.meter-bar-fill.eng { background-color: #B45309; }
+.meter-bar-fill.design { background-color: #7C3AED; }
+.meter-bar-fill.lang { background-color: #DB2777; }
+
+.meter-sub {
+  font-size: 0.72rem;
+  color: var(--slate-400);
+}
+
+/* ---------------- Live Activity Stream ---------------- */
+.live-activity-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.activity-feed-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 11px 4px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.activity-feed-row:last-child {
+  border-bottom: none;
+}
+
+.activity-feed-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--pine-600);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.activity-feed-dot.ochre {
+  background-color: var(--ochre-500);
+}
+
+.activity-feed-dot.emerald {
+  background-color: var(--emerald-500);
+}
+
+.activity-feed-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-feed-text {
+  font-size: 0.8rem;
+  color: var(--slate-700);
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.activity-feed-time {
+  font-size: 0.7rem;
+  color: var(--slate-400);
+}
+
+/* WhatsApp Direct Chat Button */
+.whatsapp-chat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #059669;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.whatsapp-chat-link:hover {
+  background: #059669;
+  color: #FFFFFF;
+}
+
+/* ---------------- Responsive Tweaks ---------------- */
+@media (max-width: 1120px) {
+  .dashboard-split-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .executive-welcome-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .welcome-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .welcome-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ---------------- MODAL VIEWPORT RESILIENCE (Resolves Form Cutoff Image 1) ---------------- */
+.admin-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background-color: rgba(11, 44, 39, 0.72) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 500 !important;
+  padding: 24px 16px !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+}
+
+.admin-modal {
+  background: #FFFFFF !important;
+  border-radius: var(--radius-md) !important;
+  width: 100% !important;
+  max-width: 580px !important;
+  box-shadow: 0 25px 50px -12px rgba(11, 44, 39, 0.4), 0 0 0 1px rgba(21, 72, 64, 0.12) !important;
+  overflow: hidden !important;
+  max-height: 86vh !important;
+  max-height: 86dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: auto !important;
+}
+
+.admin-modal form {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.admin-modal-body {
+  padding: 20px 24px !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: calc(86vh - 135px) !important;
+}
+
+.admin-modal-footer {
+  padding: 14px 24px !important;
+  border-top: 1px solid var(--border-subtle) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  background-color: #F8FAF9 !important;
+  flex-shrink: 0 !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 10 !important;
+}
+
+
 @media (max-width: 600px) {
   .admin-modal-overlay {
     padding: 10px;

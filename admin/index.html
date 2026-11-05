@@ -172,124 +172,237 @@
       <!-- Dynamic Content Pages -->
       <main class="admin-content">
 
-        <!-- 1. DASHBOARD VIEW -->
+        <!-- 1. DASHBOARD VIEW (Aroham Executive Console) -->
         <section class="page-view active" id="dashboard-view">
           
-          <!-- KPI Metrics Row -->
+          <!-- Executive Welcome Banner -->
+          <div class="executive-welcome-card">
+            <div class="welcome-text-group">
+              <div class="welcome-tag">
+                <span class="welcome-tag-dot"></span>
+                <span>Aroham Foundation · Executive Control Center</span>
+              </div>
+              <h1 class="welcome-title">Student Mentorship & Alumni Operations</h1>
+              <p class="welcome-desc">Centralized portal for UniMate higher secondary counseling, alumni mentor pairing, volunteer coordination, and real-time student outreach.</p>
+            </div>
+            <div class="welcome-actions">
+              <button class="btn btn-primary" id="btn-quick-add-mentor-hero">
+                <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 4v16m8-8H4"/>
+                </svg>
+                <span>+ Add Mentor Profile</span>
+              </button>
+              <button class="btn btn-outline" id="btn-quick-unmatched-hero">
+                <span class="hero-pulse-dot"></span>
+                <span>Review Pending Students</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- KPI Metrics Row (4 Elevated Executive Metric Cards) -->
           <div class="kpi-grid">
-            <div class="kpi-card">
-              <div class="kpi-data">
-                <h3>UniMate Applications</h3>
-                <div class="kpi-num" id="kpi-total-requests">0</div>
-                <div class="kpi-sub" id="kpi-pending-sub">0 pending match</div>
-              </div>
-              <div class="kpi-icon-wrap ochre">
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="kpi-card">
-              <div class="kpi-data">
-                <h3>Registered Mentors</h3>
-                <div class="kpi-num" id="kpi-total-mentors">9</div>
-                <div class="kpi-sub">Across 5 academic disciplines</div>
-              </div>
-              <div class="kpi-icon-wrap pine">
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="kpi-card">
-              <div class="kpi-data">
-                <h3>Matched Pairs</h3>
-                <div class="kpi-num" id="kpi-matched-count">0</div>
-                <div class="kpi-sub">Active 1-on-1 mentorship</div>
-              </div>
-              <div class="kpi-icon-wrap emerald">
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="kpi-card">
-              <div class="kpi-data">
-                <h3>Unread Alerts</h3>
-                <div class="kpi-num" id="kpi-unread-notifs" style="color: var(--terracotta);">0</div>
-                <div class="kpi-sub">Instant student & volunteer actions</div>
-              </div>
-              <div class="kpi-icon-wrap terracotta">
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Recent Applications Table Section -->
-          <div class="card-section">
-            <div class="card-section-header">
-              <h2 class="card-section-title">Recent UniMate Mentorship Requests</h2>
-              <button class="btn btn-primary btn-sm" id="btn-goto-students">Manage All Requests</button>
-            </div>
             
-            <div class="table-container">
-              <table class="admin-table">
-                <thead>
-                  <tr>
-                    <th>Student Name</th>
-                    <th>Class / Level</th>
-                    <th>Preferred Stream</th>
-                    <th>WhatsApp / Contact</th>
-                    <th>Status</th>
-                    <th>Assigned Mentor</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="dashboard-recent-table">
-                  <!-- Populated by admin.js -->
-                </tbody>
-              </table>
+            <!-- KPI 1: UniMate Applications -->
+            <div class="kpi-card" id="card-unimate-kpi">
+              <div class="kpi-card-header">
+                <span class="kpi-label">UniMate Applications</span>
+                <div class="kpi-icon-wrap ochre">
+                  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-num" id="kpi-total-requests">0</div>
+              <div class="kpi-meta-row">
+                <span class="kpi-pill pending" id="kpi-pending-sub">0 pending match</span>
+                <a href="#" class="kpi-action-link" id="link-goto-students">Manage →</a>
+              </div>
             </div>
+
+            <!-- KPI 2: Registered Mentors -->
+            <div class="kpi-card" id="card-mentors-kpi">
+              <div class="kpi-card-header">
+                <span class="kpi-label">Registered Mentors</span>
+                <div class="kpi-icon-wrap pine">
+                  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-num" id="kpi-total-mentors">9</div>
+              <div class="kpi-meta-row">
+                <span class="kpi-pill pine">Across 5 Disciplines</span>
+                <a href="#" class="kpi-action-link" id="link-goto-mentors">Directory →</a>
+              </div>
+            </div>
+
+            <!-- KPI 3: Matched Pairs -->
+            <div class="kpi-card" id="card-matched-kpi">
+              <div class="kpi-card-header">
+                <span class="kpi-label">Matched Pairs</span>
+                <div class="kpi-icon-wrap emerald">
+                  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-num" id="kpi-matched-count">0</div>
+              <div class="kpi-meta-row">
+                <span class="kpi-pill emerald">Active Mentorship</span>
+                <a href="#" class="kpi-action-link" id="link-goto-matched">View Pairs →</a>
+              </div>
+            </div>
+
+            <!-- KPI 4: System Alerts -->
+            <div class="kpi-card" id="card-alerts-kpi">
+              <div class="kpi-card-header">
+                <span class="kpi-label">Unread Alerts</span>
+                <div class="kpi-icon-wrap terracotta">
+                  <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-num" id="kpi-unread-notifs" style="color: var(--terracotta);">0</div>
+              <div class="kpi-meta-row">
+                <span class="kpi-pill terracotta">Live Notification Feed</span>
+                <a href="#" class="kpi-action-link" id="link-goto-notifs">Open →</a>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Academic Stream Distribution -->
-          <div class="card-section">
-            <div class="card-section-header">
-              <h2 class="card-section-title">Mentorship Streams Breakdown</h2>
-              <button class="btn btn-secondary btn-sm" id="btn-quick-add-mentor">+ Add Mentor Profile</button>
+          <!-- Executive Split Grid (65% Main Content / 35% Side Intelligence) -->
+          <div class="dashboard-split-layout">
+            
+            <!-- Left Main Column: Recent Student Applications -->
+            <div class="dashboard-main-col">
+              <div class="card-section">
+                <div class="card-section-header">
+                  <div>
+                    <h2 class="card-section-title">Recent UniMate Mentorship Requests</h2>
+                    <p class="card-section-sub">Incoming Class 10–12 student applications submitted via the website.</p>
+                  </div>
+                  <div class="card-header-actions">
+                    <button class="btn btn-outline btn-sm" id="btn-export-quick-csv">Export CSV</button>
+                    <button class="btn btn-primary btn-sm" id="btn-goto-students">Manage All Requests</button>
+                  </div>
+                </div>
+
+                <div class="table-container">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Student Name</th>
+                        <th>Class</th>
+                        <th>Preferred Stream</th>
+                        <th>Contact / WhatsApp</th>
+                        <th>Status</th>
+                        <th>Assigned Mentor</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="dashboard-recent-table">
+                      <!-- Populated dynamically by admin.js -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-            <div class="stream-stat-grid">
-              <div class="stream-stat-card">
-                <div class="stream-stat-label">Medicine & Healthcare</div>
-                <div class="stream-stat-num" id="count-med">2 Mentors</div>
-                <div class="stream-stat-sub">MBBS, Pharm.D</div>
+
+            <!-- Right Sidebar Column: Stream Meters & Live Activity -->
+            <div class="dashboard-side-col">
+              
+              <!-- Mentorship Stream Distribution Widget -->
+              <div class="card-section">
+                <div class="card-section-header">
+                  <div>
+                    <h2 class="card-section-title">Alumni Disciplines</h2>
+                    <p class="card-section-sub">Alumni mentor capacity across career streams.</p>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" id="btn-quick-add-mentor">+ Add Mentor</button>
+                </div>
+
+                <div class="discipline-meter-list">
+                  
+                  <!-- Medicine -->
+                  <div class="discipline-meter-item">
+                    <div class="meter-info">
+                      <span class="meter-name">Medicine & Healthcare</span>
+                      <span class="meter-count" id="count-med">2 Mentors</span>
+                    </div>
+                    <div class="meter-bar-track">
+                      <div class="meter-bar-fill med" style="width: 28%;"></div>
+                    </div>
+                    <span class="meter-sub">MBBS, Pharm.D · NEET Preparation</span>
+                  </div>
+
+                  <!-- Pure Sciences -->
+                  <div class="discipline-meter-item">
+                    <div class="meter-info">
+                      <span class="meter-name">Pure & Applied Sciences</span>
+                      <span class="meter-count" id="count-sci">3 Mentors</span>
+                    </div>
+                    <div class="meter-bar-track">
+                      <div class="meter-bar-fill sci" style="width: 38%;"></div>
+                    </div>
+                    <span class="meter-sub">Physics, Biotechnology · CUET & Research</span>
+                  </div>
+
+                  <!-- Engineering -->
+                  <div class="discipline-meter-item">
+                    <div class="meter-info">
+                      <span class="meter-name">Engineering & Technology</span>
+                      <span class="meter-count" id="count-eng">1 Mentor</span>
+                    </div>
+                    <div class="meter-bar-track">
+                      <div class="meter-bar-fill eng" style="width: 16%;"></div>
+                    </div>
+                    <span class="meter-sub">B.Tech · KEAM / JEE Engineering</span>
+                  </div>
+
+                  <!-- Architecture & Design -->
+                  <div class="discipline-meter-item">
+                    <div class="meter-info">
+                      <span class="meter-name">Architecture & Design</span>
+                      <span class="meter-count" id="count-design">2 Mentors</span>
+                    </div>
+                    <div class="meter-bar-track">
+                      <div class="meter-bar-fill design" style="width: 25%;"></div>
+                    </div>
+                    <span class="meter-sub">B.Arch, B.Des · NATA & Creative Portfolios</span>
+                  </div>
+
+                  <!-- Humanities & Languages -->
+                  <div class="discipline-meter-item">
+                    <div class="meter-info">
+                      <span class="meter-name">Humanities & Languages</span>
+                      <span class="meter-count" id="count-lang">1 Mentor</span>
+                    </div>
+                    <div class="meter-bar-track">
+                      <div class="meter-bar-fill lang" style="width: 14%;"></div>
+                    </div>
+                    <span class="meter-sub">B.A. (Hons.) Spanish · Global Diplomatic Careers</span>
+                  </div>
+
+                </div>
               </div>
-              <div class="stream-stat-card">
-                <div class="stream-stat-label">Pure & Applied Sciences</div>
-                <div class="stream-stat-num" id="count-sci">3 Mentors</div>
-                <div class="stream-stat-sub">Physics, Biotechnology</div>
+
+              <!-- Live System Activity Feed -->
+              <div class="card-section" style="margin-top: 18px;">
+                <div class="card-section-header">
+                  <div>
+                    <h2 class="card-section-title">Live Activity Feed</h2>
+                    <p class="card-section-sub">Chronological student and alumni interactions.</p>
+                  </div>
+                </div>
+                <div class="live-activity-stream" id="dashboard-activity-feed">
+                  <!-- Populated dynamically by admin.js -->
+                </div>
               </div>
-              <div class="stream-stat-card">
-                <div class="stream-stat-label">Engineering & Tech</div>
-                <div class="stream-stat-num" id="count-eng">1 Mentor</div>
-                <div class="stream-stat-sub">B.Tech, JEE/KEAM</div>
-              </div>
-              <div class="stream-stat-card">
-                <div class="stream-stat-label">Architecture & Design</div>
-                <div class="stream-stat-num" id="count-design">2 Mentors</div>
-                <div class="stream-stat-sub">B.Arch, B.Des</div>
-              </div>
-              <div class="stream-stat-card">
-                <div class="stream-stat-label">Humanities & Languages</div>
-                <div class="stream-stat-num" id="count-lang">1 Mentor</div>
-                <div class="stream-stat-sub">B.A. (Hons.) Spanish</div>
-              </div>
+
             </div>
+
           </div>
         </section>
 

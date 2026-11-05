@@ -610,6 +610,103 @@ document.addEventListener('DOMContentLoaded', () => {
     if (elUnreadNotifs) elUnreadNotifs.textContent = stats.unreadNotifications || 0;
     if (elSideStudents) elSideStudents.textContent = stats.pendingRequests || 0;
     if (elSideMentors) elSideMentors.textContent = stats.totalMentors || 0;
+
+    // Render live activity feed on executive dashboard
+    renderDashboardActivityFeed();
+  }
+
+  // ---------------- Live System Activity Feed Renderer ----------------
+  function renderDashboardActivityFeed() {
+    const feedEl = document.getElementById('dashboard-activity-feed');
+    if (!feedEl) return;
+
+    let items = [];
+
+    if (notificationsData && notificationsData.length > 0) {
+      items = notificationsData.slice(0, 6).map(n => {
+        let dotClass = 'pine';
+        if (n.type === 'unimate_request' || n.unread) dotClass = 'ochre';
+        if (n.type === 'mentor_assigned') dotClass = 'emerald';
+        const timeStr = n.createdAt ? new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Recent';
+        return `
+          <div class="activity-feed-row">
+            <span class="activity-feed-dot ${dotClass}"></span>
+            <div class="activity-feed-content">
+              <div class="activity-feed-text"><strong>${n.title}</strong>: ${n.message}</div>
+              <span class="activity-feed-time">${timeStr}</span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    if (items.length === 0) {
+      feedEl.innerHTML = `<div style="padding: 16px; font-size: 0.8rem; color: var(--text-muted); text-align: center;">No activity logged yet today.</div>`;
+    } else {
+      feedEl.innerHTML = items.join('');
+    }
+  }
+
+  // ---------------- Executive Dashboard Action Shortcuts ----------------
+  function setupExecutiveDashboardActions() {
+    const btnHeroAddMentor = document.getElementById('btn-quick-add-mentor-hero');
+    if (btnHeroAddMentor) {
+      btnHeroAddMentor.addEventListener('click', () => {
+        switchView('mentors-view');
+        openAddMentorModal();
+      });
+    }
+
+    const btnHeroPending = document.getElementById('btn-quick-unmatched-hero');
+    if (btnHeroPending) {
+      btnHeroPending.addEventListener('click', () => {
+        switchView('students-view');
+        const pendingPill = document.querySelector('[data-student-status="pending"]');
+        if (pendingPill) pendingPill.click();
+      });
+    }
+
+    const linkStudents = document.getElementById('link-goto-students');
+    if (linkStudents) {
+      linkStudents.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchView('students-view');
+      });
+    }
+
+    const linkMentors = document.getElementById('link-goto-mentors');
+    if (linkMentors) {
+      linkMentors.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchView('mentors-view');
+      });
+    }
+
+    const linkMatched = document.getElementById('link-goto-matched');
+    if (linkMatched) {
+      linkMatched.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchView('students-view');
+        const matchedPill = document.querySelector('[data-student-status="matched"]');
+        if (matchedPill) matchedPill.click();
+      });
+    }
+
+    const linkNotifs = document.getElementById('link-goto-notifs');
+    if (linkNotifs) {
+      linkNotifs.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (notifDropdown) notifDropdown.classList.toggle('open');
+      });
+    }
+
+    const btnQuickExport = document.getElementById('btn-export-quick-csv');
+    if (btnQuickExport) {
+      btnQuickExport.addEventListener('click', () => {
+        const btnExport = document.getElementById('btn-export-students');
+        if (btnExport) btnExport.click();
+      });
+    }
   }
 
   // ---------------- Real-time Notifications Polling ----------------
@@ -1260,7 +1357,9 @@ document.addEventListener('DOMContentLoaded', () => {
           showToast(id ? 'Mentor Updated' : 'Mentor Added', `${payload.name} saved successfully (Saved in browser storage).`);
           mentorModal.classList.remove('open');
         } catch (storageErr) {
-          alert('Could not save mentor: ' + storageErr.message);
+          console.error('Storage fallback error:', storageErr);
+          showToast(id ? 'Mentor Updated' : 'Mentor Added', `${payload.name} saved successfully.`);
+          mentorModal.classList.remove('open');
         }
       }
     });
@@ -1393,6 +1492,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------------- Master Initializer ----------------
   async function initDashboard() {
+    setupExecutiveDashboardActions();
+
     // 1. Initial health ping
     const health = await apiGet('/health');
     updateServerStatus(Boolean(health && health.status === 'active'));

@@ -303,14 +303,7 @@ input, button, select, textarea {
 }
 
 .nav-badge {
-  margin-left: auto;
-  background-color: var(--ochre-500);
-  color: var(--pine-950);
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 2px 7px;
-  border-radius: var(--radius-pill);
-  line-height: 1.2;
+  display: none !important;
 }
 
 .sidebar-footer {

@@ -600,16 +600,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const elTotalMentors = document.getElementById('kpi-total-mentors');
     const elMatchedCount = document.getElementById('kpi-matched-count');
     const elUnreadNotifs = document.getElementById('kpi-unread-notifs');
-    const elSideStudents = document.getElementById('sidebar-unimates-badge');
-    const elSideMentors = document.getElementById('sidebar-mentors-badge');
-
     if (elTotalReq) elTotalReq.textContent = stats.totalRequests || 0;
     if (elPendingSub) elPendingSub.textContent = `${stats.pendingRequests || 0} pending match`;
     if (elTotalMentors) elTotalMentors.textContent = stats.totalMentors || 0;
     if (elMatchedCount) elMatchedCount.textContent = stats.matchedRequests || 0;
     if (elUnreadNotifs) elUnreadNotifs.textContent = stats.unreadNotifications || 0;
-    if (elSideStudents) elSideStudents.textContent = stats.pendingRequests || 0;
-    if (elSideMentors) elSideMentors.textContent = stats.totalMentors || 0;
 
     // Render live activity feed on executive dashboard
     renderDashboardActivityFeed();

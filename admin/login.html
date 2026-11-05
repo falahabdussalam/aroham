@@ -156,6 +156,15 @@
     <!-- RIGHT COLUMN: Branding Showcase Side -->
     <div class="login-branding-side">
       
+      <!-- Ambient 3D Wireframe Wave Mesh (Landing Page Style) -->
+      <div class="login-ambient-wireframe" aria-hidden="true">
+        <img src="../assets/images/hero-wireframe-mesh.svg" alt="" class="login-wireframe-mesh">
+      </div>
+
+      <!-- Ambient Luminous Glow Orbs -->
+      <div class="branding-glow glow-teal" aria-hidden="true"></div>
+      <div class="branding-glow glow-gold" aria-hidden="true"></div>
+
       <!-- Architectural Grid Backdrop -->
       <div class="grid-bg-overlay"></div>
       
@@ -167,15 +176,50 @@
 
       <!-- Center Branding Box -->
       <div class="branding-showcase-box">
-        <div class="brand-showcase-logo">
-          <!-- Logo Emblem -->
-          <img src="../assets/images/aroham-emblem-transparent.png" alt="Aroham Emblem">
+        
+        <!-- Animated Orbital Constellation Emblem Wrapper -->
+        <div class="brand-showcase-emblem-wrap">
+          <svg class="orbital-constellation-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="orbitGradTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.85" />
+                <stop offset="50%" stop-color="#DF9C2C" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="#2DD4BF" stop-opacity="0.25" />
+              </linearGradient>
+              <linearGradient id="orbitGradInner" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#EAB24A" stop-opacity="0.75" />
+                <stop offset="100%" stop-color="#10B981" stop-opacity="0.35" />
+              </linearGradient>
+            </defs>
+            <!-- Outer dashed rotating orbit -->
+            <circle class="orbit-ring-outer" cx="80" cy="80" r="70" stroke="url(#orbitGradTeal)" stroke-width="1.6" stroke-dasharray="6 6" />
+            <!-- Inner counter-rotating ring -->
+            <circle class="orbit-ring-inner" cx="80" cy="80" r="54" stroke="url(#orbitGradInner)" stroke-width="1.2" stroke-dasharray="14 8 4 8" />
+            <!-- Constellation Satellite Nodes -->
+            <circle class="orbit-node node-1" cx="80" cy="10" r="3.5" fill="#2DD4BF" />
+            <circle class="orbit-node node-2" cx="150" cy="80" r="3" fill="#DF9C2C" />
+            <circle class="orbit-node node-3" cx="80" cy="150" r="3" fill="#10B981" />
+            <circle class="orbit-node node-4" cx="10" cy="80" r="2.5" fill="#EAB24A" />
+          </svg>
+
+          <!-- Core Emblem Icon -->
+          <div class="brand-showcase-logo">
+            <img src="../assets/images/aroham-emblem-transparent.png" alt="Aroham Emblem">
+          </div>
         </div>
+
         <h2 class="brand-showcase-title">Aroham Admin</h2>
         <p class="brand-showcase-desc">
-          Executive Management & Mentorship Console<br>
+          Executive Management &amp; Mentorship Console<br>
           A Women-Led Alumni Initiative · Bolster Girls Campus
         </p>
+
+        <!-- Feature Pills -->
+        <div class="login-feature-pills">
+          <span class="feat-pill"><span class="pill-dot"></span>Secure Mentorship</span>
+          <span class="feat-pill"><span class="pill-dot"></span>Alumni Network</span>
+          <span class="feat-pill"><span class="pill-dot"></span>Real-Time Analytics</span>
+        </div>
       </div>
 
       <!-- Floating Theme Toggle Button -->

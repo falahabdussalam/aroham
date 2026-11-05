@@ -1168,7 +1168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filtered.length === 0) {
       container.innerHTML = `
-        <div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--text-muted); background: #FFF; border-radius: var(--radius-md);">
+        <div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--text-muted); background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
           No mentors found matching your filters. Click <strong>+ Add New Mentor</strong> to register one.
         </div>
       `;

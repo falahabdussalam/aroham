@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------- Standard Scroll Spy for Header Navigation ----------------
-  const sections = document.querySelectorAll('section[id], .about-subsection[id], #upcoming-events, #past-events');
+  const sections = document.querySelectorAll('section[id], .about-subsection[id], .unimates-subsection[id], #upcoming-events, #past-events, #aroham-unimates, #unimates-mentors, #register-mentor, #register-mentee');
   const navLinks = document.querySelectorAll('.nav-links .nav-link');
 
   const updateActiveNavOnScroll = () => {
@@ -748,7 +748,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const href = link.getAttribute('href');
         const isAboutFamily = (['about', 'story', 'our-story', 'team', 'our-team', 'mission', 'vision'].includes(current)) && href === '#about';
         const isEventsFamily = (['events', 'upcoming-events', 'past-events'].includes(current)) && href === '#events';
-        const isMatch = href === `#${current}` || (current === 'hero' && (href === '#hero' || href === '#top')) || isAboutFamily || isEventsFamily;
+        const isUnimatesFamily = (['unimates', 'aroham-unimates', 'unimates-mentors', 'mentors', 'register-mentor', 'register-mentee', 'unimates-join'].includes(current)) && href === '#unimates';
+        const isMatch = href === `#${current}` || (current === 'hero' && (href === '#hero' || href === '#top')) || isAboutFamily || isEventsFamily || isUnimatesFamily;
         link.classList.toggle('active', isMatch);
       });
     }
@@ -830,7 +831,8 @@ document.addEventListener('DOMContentLoaded', () => {
       '.session-item-card',
       '.unimates-cta-card',
       '.contact-channel-card',
-      '.about-subsection'
+      '.about-subsection',
+      '.unimates-subsection'
     ].join(',');
 
     const observerOptions = {

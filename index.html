@@ -93,7 +93,40 @@
               </li>
             </ul>
           </li>
-          <li><a href="#unimates" class="nav-link">UniMates</a></li>
+          <li class="nav-dropdown-wrapper">
+            <a href="#unimates" class="nav-link nav-dropdown-toggle" id="unimatesDropdownToggle" aria-haspopup="true" aria-expanded="false">
+              <span>UniMates</span>
+              <svg class="dropdown-chevron-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <ul class="nav-dropdown-menu" aria-labelledby="unimatesDropdownToggle">
+              <li>
+                <a href="#aroham-unimates" class="nav-dropdown-link">
+                  <span class="dropdown-link-bullet"></span>
+                  <span>Aroham UniMates</span>
+                </a>
+              </li>
+              <li>
+                <a href="#unimates-mentors" class="nav-dropdown-link">
+                  <span class="dropdown-link-bullet"></span>
+                  <span>UniMates Mentors</span>
+                </a>
+              </li>
+              <li>
+                <a href="#register-mentor" class="nav-dropdown-link">
+                  <span class="dropdown-link-bullet"></span>
+                  <span>Register as a Mentor</span>
+                </a>
+              </li>
+              <li>
+                <a href="#register-mentee" class="nav-dropdown-link">
+                  <span class="dropdown-link-bullet"></span>
+                  <span>Register as a Mentee</span>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li><a href="#contact" class="nav-link">Contact Us</a></li>
         </ul>
       </nav>
@@ -939,142 +972,146 @@
     </section>
 
     <!-- ==========================================================================
-         PAGE 4: UNIMATES (PDF Pages 9 & 10)
-         - Tagline
-         - Overview narrative
-         - Our Beginning milestone
-         - Activities under Aroham UniMates
-         - Mentor Search Bar & Cards (Photo, Name, Course/Major, University/College, Availability)
-         - Be a Part of Aroham UniMates (Register as Mentor / Mentee)
+         PAGE 4: UNIMATES MENTORSHIP PROGRAMME (PDF Pages 9 & 10)
+         - Sub-page 1: Aroham UniMates (#aroham-unimates)
+         - Sub-page 2: UniMates Mentors (#unimates-mentors)
+         - Sub-page 3: Register as a Mentor (#register-mentor)
+         - Sub-page 4: Register as a Mentee (#register-mentee)
          ========================================================================== -->
     <section class="section" id="unimates">
       <div class="container">
         
-        <div class="section-header-block center scroll-popup">
-          <span class="section-label">One-to-One Student Mentorship Programme</span>
-          <h2 class="section-heading">Aroham UniMates</h2>
-          <p class="unimates-tagline-quote">
-            "Guidance from those who have been there. Support for those who are just beginning."
-          </p>
-          <p class="section-desc" style="max-width: 820px; font-size: 1.05rem; line-height: 1.7; color: #CBD5E1;">
-            Aroham UniMates is a one-to-one student mentorship programme initiated by Aroham Foundation to connect students with alumnae mentors who can guide them in their academic and career journeys.
-          </p>
-        </div>
-
-        <!-- UniMates Overview & Our Beginning (PDF Page 9 verbatim) -->
-        <div class="unimates-overview-grid scroll-popup">
-          <div class="unimates-narrative-card">
-            <h3>Personalised Academic & Career Guidance</h3>
-            <p>
-              Through personalised mentorship, students get the opportunity to interact with alumnae who share their experiences, knowledge and insights. The programme aims to help students explore different academic pathways, understand higher education opportunities and make informed decisions about their future.
+        <!-- SUB-PAGE 1: AROHAM UNIMATES (#aroham-unimates) -->
+        <div class="unimates-subsection scroll-popup" id="aroham-unimates">
+          <div class="section-header-block center scroll-popup">
+            <span class="section-label">One-to-One Student Mentorship Programme</span>
+            <h2 class="section-heading">Aroham UniMates</h2>
+            <p class="unimates-tagline-quote">
+              "Guidance from those who have been there. Support for those who are just beginning."
             </p>
-            <p>
-              Each student is connected with a mentor based on their areas of interest and the guidance they seek, creating a space where they can ask questions, gain clarity and learn from real experiences.
+            <p class="section-desc" style="max-width: 820px; font-size: 1.05rem; line-height: 1.7; color: #CBD5E1;">
+              Aroham UniMates is a one-to-one student mentorship programme initiated by Aroham Foundation to connect students with alumnae mentors who can guide them in their academic and career journeys.
             </p>
           </div>
 
-          <!-- Our Beginning (PDF Page 9 verbatim) -->
-          <div class="unimates-milestone-card">
-            <div>
-              <span class="milestone-badge">Programme Milestone</span>
-              <h3 class="milestone-date">Our Beginning</h3>
-              <p class="milestone-text">
-                Launched on 4 May 2026, Aroham UniMates began its journey with <strong>10 registered mentors</strong> and <strong>17 students</strong>. All 17 students were successfully matched with mentors, marking the beginning of a growing mentorship community.
+          <!-- UniMates Overview & Our Beginning (PDF Page 9 verbatim) -->
+          <div class="unimates-overview-grid scroll-popup">
+            <div class="unimates-narrative-card">
+              <h3>Personalised Academic & Career Guidance</h3>
+              <p>
+                Through personalised mentorship, students get the opportunity to interact with alumnae who share their experiences, knowledge and insights. The programme aims to help students explore different academic pathways, understand higher education opportunities and make informed decisions about their future.
+              </p>
+              <p>
+                Each student is connected with a mentor based on their areas of interest and the guidance they seek, creating a space where they can ask questions, gain clarity and learn from real experiences.
               </p>
             </div>
-            <div class="milestone-stats-row">
-              <div class="milestone-stat">
-                <span class="num">17</span>
-                <span class="lbl">Students Matched</span>
-              </div>
-              <div class="milestone-stat">
-                <span class="num">10</span>
-                <span class="lbl">Registered Mentors</span>
-              </div>
-              <div class="milestone-stat">
-                <span class="num">100%</span>
-                <span class="lbl">Match Success</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Activities under Aroham UniMates (PDF Page 9 verbatim) -->
-        <div class="unimates-activities-card scroll-popup">
-          <span class="badge badge-pine">Programme Activities</span>
-          <h3 class="activities-title">Activities under Aroham UniMates</h3>
-          <p class="activities-desc">
-            As part of Aroham UniMates, Aroham Foundation conducts higher education guidance sessions to help students explore international study opportunities and make informed decisions about their academic future.
-          </p>
-
-          <div class="previous-sessions-grid">
-            <div class="session-item-card">
-              <div class="session-icon-wrap">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                </svg>
-              </div>
+            <!-- Our Beginning (PDF Page 9 verbatim) -->
+            <div class="unimates-milestone-card">
               <div>
-                <div class="session-date">18 April 2026</div>
-                <h4 class="session-name">GCC Higher Education Guidance Session</h4>
-                <p class="session-detail">Admissions, scholarships, and campus life in Gulf countries.</p>
+                <span class="milestone-badge">Programme Milestone</span>
+                <h3 class="milestone-date">Our Beginning</h3>
+                <p class="milestone-text">
+                  Launched on 4 May 2026, Aroham UniMates began its journey with <strong>10 registered mentors</strong> and <strong>17 students</strong>. All 17 students were successfully matched with mentors, marking the beginning of a growing mentorship community.
+                </p>
+              </div>
+              <div class="milestone-stats-row">
+                <div class="milestone-stat">
+                  <span class="num">17</span>
+                  <span class="lbl">Students Matched</span>
+                </div>
+                <div class="milestone-stat">
+                  <span class="num">10</span>
+                  <span class="lbl">Registered Mentors</span>
+                </div>
+                <div class="milestone-stat">
+                  <span class="num">100%</span>
+                  <span class="lbl">Match Success</span>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div class="session-item-card">
-              <div class="session-icon-wrap" style="color: #DF9C2C; background: rgba(223, 156, 44, 0.12);">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          <!-- Activities under Aroham UniMates (PDF Page 9 verbatim) -->
+          <div class="unimates-activities-card scroll-popup">
+            <span class="badge badge-pine">Programme Activities</span>
+            <h3 class="activities-title">Activities under Aroham UniMates</h3>
+            <p class="activities-desc">
+              As part of Aroham UniMates, Aroham Foundation conducts higher education guidance sessions to help students explore international study opportunities and make informed decisions about their academic future.
+            </p>
+
+            <div class="previous-sessions-grid">
+              <div class="session-item-card">
+                <div class="session-icon-wrap">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="session-date">18 April 2026</div>
+                  <h4 class="session-name">GCC Higher Education Guidance Session</h4>
+                  <p class="session-detail">Admissions, scholarships, and campus life in Gulf countries.</p>
+                </div>
+              </div>
+
+              <div class="session-item-card">
+                <div class="session-icon-wrap" style="color: #DF9C2C; background: rgba(223, 156, 44, 0.12);">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="session-date">10 May 2026</div>
+                  <h4 class="session-name">UK Higher Education Guidance Session</h4>
+                  <p class="session-detail">UCAS procedures, scholarships, and study in the United Kingdom.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB-PAGE 2: UNIMATES MENTORS (#unimates-mentors) -->
+        <div class="unimates-subsection scroll-popup" id="unimates-mentors" style="margin-top: 64px;">
+          <!-- Mentors Search Bar & Directory (PDF Page 9: Photo, Name, Course/Major, University/College, Availability) -->
+          <div class="section-header-block center scroll-popup">
+            <span class="section-label">Browse Directory</span>
+            <h3 class="section-heading">UniMates Mentors</h3>
+            <p class="section-desc">
+              Use the search bar below to search mentors by name or based on course/major.
+            </p>
+          </div>
+
+          <div class="directory-controls scroll-popup">
+            <div class="search-and-sort">
+              <div class="search-box">
+                <svg class="search-icon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                 </svg>
+                <input type="text" id="alumni-search-input" class="search-input" placeholder="Search mentors by name or course/major (e.g. MBBS, Physics, Biotechnology, B.Tech, B.Arch)...">
               </div>
-              <div>
-                <div class="session-date">10 May 2026</div>
-                <h4 class="session-name">UK Higher Education Guidance Session</h4>
-                <p class="session-detail">UCAS procedures, scholarships, and study in the United Kingdom.</p>
+              <div class="directory-stats-counter" id="directory-count">
+                Showing mentors
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Mentors Search Bar & Directory (PDF Page 9: Photo, Name, Course/Major, University/College, Availability) -->
-        <div class="section-header-block center scroll-popup" style="margin-top: 56px;">
-          <span class="section-label">Browse Directory</span>
-          <h3 class="section-heading">UniMates Mentors</h3>
-          <p class="section-desc">
-            Use the search bar below to search mentors by name or based on course/major.
-          </p>
-        </div>
-
-        <div class="directory-controls scroll-popup">
-          <div class="search-and-sort">
-            <div class="search-box">
-              <svg class="search-icon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-              </svg>
-              <input type="text" id="alumni-search-input" class="search-input" placeholder="Search mentors by name or course/major (e.g. MBBS, Physics, Biotechnology, B.Tech, B.Arch)...">
-            </div>
-            <div class="directory-stats-counter" id="directory-count">
-              Showing mentors
+            <div class="filter-tabs" role="tablist">
+              <button class="filter-btn active" data-filter="all">All Disciplines</button>
+              <button class="filter-btn" data-filter="medicine">Medicine & Healthcare</button>
+              <button class="filter-btn" data-filter="sciences">Pure & Applied Sciences</button>
+              <button class="filter-btn" data-filter="engineering">Engineering & Tech</button>
+              <button class="filter-btn" data-filter="design">Architecture & Design</button>
+              <button class="filter-btn" data-filter="humanities">Humanities & Languages</button>
             </div>
           </div>
 
-          <div class="filter-tabs" role="tablist">
-            <button class="filter-btn active" data-filter="all">All Disciplines</button>
-            <button class="filter-btn" data-filter="medicine">Medicine & Healthcare</button>
-            <button class="filter-btn" data-filter="sciences">Pure & Applied Sciences</button>
-            <button class="filter-btn" data-filter="engineering">Engineering & Tech</button>
-            <button class="filter-btn" data-filter="design">Architecture & Design</button>
-            <button class="filter-btn" data-filter="humanities">Humanities & Languages</button>
+          <!-- Mentors Dynamic Cards Grid (Populated via app.js) -->
+          <div class="alumni-grid scroll-popup" id="alumni-grid">
+            <!-- Rendered dynamically with Photo, Name, Course/Major, University/College, Availability -->
           </div>
         </div>
 
-        <!-- Mentors Dynamic Cards Grid (Populated via app.js) -->
-        <div class="alumni-grid scroll-popup" id="alumni-grid">
-          <!-- Rendered dynamically with Photo, Name, Course/Major, University/College, Availability -->
-        </div>
-
-        <!-- BE A PART OF AROHAM UNIMATES (PDF Page 9 & 10 verbatim) -->
-        <div class="unimates-cta-section scroll-popup">
+        <!-- SUB-PAGE 3 & 4: BE A PART OF AROHAM UNIMATES (#register-mentor & #register-mentee) -->
+        <div class="unimates-subsection unimates-cta-section scroll-popup" id="unimates-join" style="margin-top: 64px;">
           <div class="section-header-block center">
             <span class="section-label">Get Involved</span>
             <h3 class="section-heading">Be a Part of Aroham UniMates</h3>
@@ -1082,8 +1119,8 @@
           </div>
 
           <div class="unimates-cta-grid">
-            <!-- Register as a Mentor (PDF Page 9 & 10 verbatim) -->
-            <div class="unimates-cta-card mentor-cta-card scroll-popup">
+            <!-- Sub-page 3: Register as a Mentor (PDF Page 9 & 10 verbatim) -->
+            <div class="unimates-cta-card mentor-cta-card scroll-popup" id="register-mentor">
               <span class="cta-card-badge">For Alumnae</span>
               <h4 class="cta-card-title">Register as a Mentor</h4>
               <p class="cta-card-desc">
@@ -1099,8 +1136,8 @@
               </div>
             </div>
 
-            <!-- Register as a Mentee (PDF Page 10 verbatim) -->
-            <div class="unimates-cta-card mentee-cta-card scroll-popup">
+            <!-- Sub-page 4: Register as a Mentee (PDF Page 10 verbatim) -->
+            <div class="unimates-cta-card mentee-cta-card scroll-popup" id="register-mentee">
               <span class="cta-card-badge badge-ochre">For Students</span>
               <h4 class="cta-card-title">Register as a Mentee</h4>
               <p class="cta-card-desc">
@@ -1319,6 +1356,10 @@
             <li><a href="#upcoming-events" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Upcoming Events</a></li>
             <li><a href="#past-events" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Past Events</a></li>
             <li><a href="#unimates" class="footer-link">UniMates</a></li>
+            <li><a href="#aroham-unimates" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Aroham UniMates</a></li>
+            <li><a href="#unimates-mentors" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— UniMates Mentors</a></li>
+            <li><a href="#register-mentor" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Register as a Mentor</a></li>
+            <li><a href="#register-mentee" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Register as a Mentee</a></li>
             <li><a href="#contact" class="footer-link">Contact Us</a></li>
           </ul>
         </div>
@@ -1326,9 +1367,9 @@
         <div>
           <h4 class="footer-heading">UniMates Mentorship</h4>
           <ul class="footer-links-list">
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd291LZODd-U09vR_W3AUR8AGQRs5pdTnv4IZDkSk0MVLWXCA/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="footer-link">Register as a Mentor</a></li>
-            <li><a href="https://forms.gle/JyFUEfFbERjRgUyD6" target="_blank" rel="noopener noreferrer" class="footer-link">Register as a Mentee</a></li>
-            <li><a href="#unimates" class="footer-link">Mentors Directory</a></li>
+            <li><a href="#register-mentor" class="footer-link">Register as a Mentor</a></li>
+            <li><a href="#register-mentee" class="footer-link">Register as a Mentee</a></li>
+            <li><a href="#unimates-mentors" class="footer-link">Mentors Directory</a></li>
             <li><a href="#events" class="footer-link">Higher Education Sessions</a></li>
             <li><a href="admin/login.html" class="footer-link" style="color: #DF9C2C;">Admin Console</a></li>
           </ul>

@@ -4475,3 +4475,17 @@ h1, h2, h3, h4, h5, h6 {
 #past-events {
   scroll-margin-top: 96px;
 }
+
+/* UniMates Sub-sections */
+.unimates-subsection {
+  scroll-margin-top: 90px;
+  position: relative;
+}
+
+#aroham-unimates,
+#unimates-mentors,
+#register-mentor,
+#register-mentee,
+#unimates-join {
+  scroll-margin-top: 96px;
+}

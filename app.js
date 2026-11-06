@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------- Standard Scroll Spy for Header Navigation ----------------
-  const sections = document.querySelectorAll('section[id]');
+  const sections = document.querySelectorAll('section[id], .about-subsection[id]');
   const navLinks = document.querySelectorAll('.nav-links .nav-link');
 
   const updateActiveNavOnScroll = () => {
@@ -746,7 +746,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (current) {
       navLinks.forEach(link => {
         const href = link.getAttribute('href');
-        const isMatch = href === `#${current}` || (current === 'hero' && (href === '#hero' || href === '#top'));
+        const isAboutFamily = (['about', 'story', 'our-story', 'team', 'our-team', 'mission', 'vision'].includes(current)) && href === '#about';
+        const isMatch = href === `#${current}` || (current === 'hero' && (href === '#hero' || href === '#top')) || isAboutFamily;
         link.classList.toggle('active', isMatch);
       });
     }
@@ -754,6 +755,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
   updateActiveNavOnScroll();
+
+  // ---------------- About Us Dropdown Toggle Handler (Mobile & Touch) ----------------
+  const dropdownWrapper = document.querySelector('.nav-dropdown-wrapper');
+  const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+  
+  if (dropdownToggle && dropdownWrapper) {
+    dropdownToggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 900) {
+        if (!dropdownWrapper.classList.contains('open')) {
+          e.preventDefault();
+          dropdownWrapper.classList.add('open');
+          dropdownToggle.setAttribute('aria-expanded', 'true');
+        }
+      }
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (dropdownWrapper && !dropdownWrapper.contains(e.target)) {
+      dropdownWrapper.classList.remove('open');
+      if (dropdownToggle) dropdownToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
 
   // ==========================================================================
   // SCROLL POPUP ANIMATION ENGINE (GPU Accelerated IntersectionObserver)
@@ -791,7 +815,8 @@ document.addEventListener('DOMContentLoaded', () => {
       '.unimates-activities-card',
       '.session-item-card',
       '.unimates-cta-card',
-      '.contact-channel-card'
+      '.contact-channel-card',
+      '.about-subsection'
     ].join(',');
 
     const observerOptions = {

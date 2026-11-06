@@ -30,11 +30,47 @@
         </div>
       </a>
 
-      <!-- 5 Primary Website Pages as Specified in PDF Page 1 -->
+      <!-- 5 Primary Website Pages with Dropdown as Requested -->
       <nav>
         <ul class="nav-links">
           <li><a href="#hero" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About Us</a></li>
+          
+          <!-- About Us with Dropdown Menu (Our Story, Our Team, Mission, Vision) -->
+          <li class="nav-dropdown-wrapper">
+            <a href="#about" class="nav-link nav-dropdown-toggle" id="aboutDropdownToggle" aria-haspopup="true" aria-expanded="false">
+              <span>About Us</span>
+              <svg class="dropdown-chevron-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <ul class="nav-dropdown-menu" aria-labelledby="aboutDropdownToggle">
+              <li>
+                <a href="#story" class="nav-dropdown-link">
+                  <span class="dropdown-link-bullet"></span>
+                  <span>Aroham - Our Story</span>
+                </a>
+              </li>
+              <li>
+                <a href="#team" class="nav-dropdown-link">
+                  <span class="dropdown-link-bullet"></span>
+                  <span>Our Team</span>
+                </a>
+              </li>
+              <li>
+                <a href="#mission" class="nav-dropdown-link">
+                  <span class="dropdown-link-bullet"></span>
+                  <span>Mission</span>
+                </a>
+              </li>
+              <li>
+                <a href="#vision" class="nav-dropdown-link">
+                  <span class="dropdown-link-bullet"></span>
+                  <span>Vision</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li><a href="#events" class="nav-link">Events</a></li>
           <li><a href="#unimates" class="nav-link">UniMates</a></li>
           <li><a href="#contact" class="nav-link">Contact Us</a></li>
@@ -268,292 +304,387 @@
           </p>
         </div>
 
-        <!-- Mission & Vision Cards (PDF Pages 4 & 5 verbatim) -->
-        <div class="pillars-grid scroll-popup" style="margin-bottom: 56px;">
-          <!-- Our Mission (PDF Page 4) -->
-          <div class="pillar-card">
-            <div class="pillar-icon-wrap">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
-            </div>
-            <h3 class="pillar-title">Our Mission</h3>
-            <p class="pillar-desc">
-              Connecting students with mentors, guidance, and opportunities through education, career support, and community engagement.
-            </p>
+        <!-- ==================================================================
+             SUB-SECTION 1: AROHAM - OUR STORY (#story / #our-story)
+             ================================================================== -->
+        <div class="about-subsection scroll-popup" id="story">
+          <span id="our-story" style="position: absolute; top: -100px;"></span>
+          <div class="section-header-block center">
+            <span class="section-label">Genesis & Evolution</span>
+            <h3 class="section-heading">Aroham - Our Story</h3>
+            <p class="section-desc">From initial conversations at Bolster Girls Campus to a structured women-led alumni foundation.</p>
           </div>
 
-          <!-- Our Vision (PDF Page 5) -->
-          <div class="pillar-card">
-            <div class="pillar-icon-wrap" style="color: #DF9C2C; background: rgba(223, 156, 44, 0.12);">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-              </svg>
-            </div>
-            <h3 class="pillar-title">Our Vision</h3>
-            <p class="pillar-desc">
-              Helping every student make informed academic and career decisions.
+          <div class="story-paragraphs-wrap">
+            <p class="story-paragraph">
+              Aroham Foundation began with a shared vision among the alumnae of Bolster Girls Campus to stay connected and create meaningful opportunities for the generations that follow.
             </p>
-          </div>
 
-          <!-- Our Roots Pillar -->
-          <div class="pillar-card">
-            <div class="pillar-icon-wrap">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-              </svg>
-            </div>
-            <h3 class="pillar-title">Our Roots</h3>
-            <p class="pillar-desc">
-              Founded by the alumnae of Bolster Girls Campus (Parappur, Malappuram), united to uplift, mentor, and open new doors for student generations.
+            <p class="story-paragraph">
+              The idea took shape during the Bolster Girls Campus Alumni Meet held on 12–13 July 2025. What began as conversations among alumnae gradually developed into a collective initiative. An executive committee was formed, and the initial discussions and planning to bring this vision to life began.
             </p>
-          </div>
-        </div>
 
-        <!-- Our Story (PDF Page 4 verbatim - 5 full paragraphs) -->
-        <div class="section-header-block center scroll-popup" style="margin-top: 48px;">
-          <span class="section-label">Genesis & Evolution</span>
-          <h3 class="section-heading">Our Story</h3>
-        </div>
-
-        <div class="story-paragraphs-wrap scroll-popup">
-          <p class="story-paragraph">
-            Aroham Foundation began with a shared vision among the alumnae of Bolster Girls Campus to stay connected and create meaningful opportunities for the generations that follow.
-          </p>
-
-          <p class="story-paragraph">
-            The idea took shape during the Bolster Girls Campus Alumni Meet held on 12–13 July 2025. What began as conversations among alumnae gradually developed into a collective initiative. An executive committee was formed, and the initial discussions and planning to bring this vision to life began.
-          </p>
-
-          <p class="story-paragraph">
-            As the idea evolved, efforts were made to establish a distinct identity for the organisation. Between August and October 2025, the name, logo, vision and mission of Aroham were finalised, giving direction to the initiative and shaping its purpose. The official Instagram page had already been created on 29 July 2025, providing a platform to connect with the wider alumni community.
-          </p>
-
-          <div class="story-milestone-highlight">
-            <strong style="color: #DF9C2C; display: block; margin-bottom: 6px; font-family: 'Montserrat', sans-serif;">Key Strategic Milestone · HiLite Mall Kozhikode</strong>
-            <p style="margin: 0; line-height: 1.75;">
-              On 22 October 2025, Aroham launched its awareness campaign to introduce the initiative and its vision to a wider audience. This was followed by a strategic planning meeting held from 25–29 December 2025 at HiLite Mall, Kozhikode, where further discussions and planning helped shape the organisation's future direction.
+            <p class="story-paragraph">
+              As the idea evolved, efforts were made to establish a distinct identity for the organisation. Between August and October 2025, the name, logo, vision and mission of Aroham were finalised, giving direction to the initiative and shaping its purpose. The official Instagram page had already been created on 29 July 2025, providing a platform to connect with the wider alumni community.
             </p>
-          </div>
 
-          <p class="story-paragraph">
-            From those first conversations to the formation of an organised initiative, Aroham has grown through the collective efforts and commitment of its alumnae. Today, Aroham Foundation continues to work towards its vision of helping students make informed academic and career decisions through guidance, mentorship, education and community engagement.
-          </p>
-        </div>
-
-        <!-- Our Committee / Our Team (PDF Page 4) -->
-        <div class="section-header-block center scroll-popup" style="margin-top: 72px;" id="team">
-          <span class="section-label">Leadership & Governance</span>
-          <h3 class="section-heading">Our Committee</h3>
-          <p class="section-desc">
-            The executive committee formed during the Bolster Girls Campus Alumni Meet, directing our initiatives, mentorship programs, and alumni coordination.
-          </p>
-        </div>
-
-        <div class="committee-grid scroll-popup">
-          <!-- Member 1: President -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge president">President</span>
-              <img src="assets/images/office-bearers/fathimath-mufeedha.png" alt="Fathimath Mufeedha - President" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">President</span>
-              <h4 class="committee-card-name">Fathimath Mufeedha</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-pine">Founding Executive</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Member 2: General Secretary -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge president">General Secretary</span>
-              <img src="assets/images/office-bearers/afifa-ma.png" alt="Afifa M.A. - General Secretary" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">General Secretary</span>
-              <h4 class="committee-card-name">Afifa M.A.</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-pine">Founding Executive</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Member 3: Finance Secretary -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge gold">Finance Secretary</span>
-              <img src="assets/images/office-bearers/nishfa-mariya.png" alt="Nishfa Mariya V - Finance Secretary" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">Finance Secretary</span>
-              <h4 class="committee-card-name">Nishfa Mariya V</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-ochre">Financial Governance</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Member 4: Trustee -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge">Trustee</span>
-              <img src="assets/images/office-bearers/diya-fathima.png" alt="Diya Fathima M.N. - Trustee" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">Trustee</span>
-              <h4 class="committee-card-name">Diya Fathima M.N.</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-neutral">Executive Board</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Member 5: Trustee -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge">Trustee</span>
-              <img src="assets/images/office-bearers/khadeeja-misba.png" alt="Khadeeja Misba P.M. - Trustee" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">Trustee</span>
-              <h4 class="committee-card-name">Khadeeja Misba P.M.</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-neutral">Executive Board</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Member 6: Trustee -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge">Trustee</span>
-              <img src="assets/images/office-bearers/fathima-hija.png" alt="Fathima Hija T. - Trustee" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">Trustee</span>
-              <h4 class="committee-card-name">Fathima Hija T.</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-neutral">Executive Board</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Member 7: Trustee -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge">Trustee</span>
-              <img src="assets/images/office-bearers/fathima-minha.png" alt="Fathima Minha P.M. - Trustee" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">Trustee</span>
-              <h4 class="committee-card-name">Fathima Minha P.M.</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-neutral">Executive Board</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Member 8: Trustee -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge">Trustee</span>
-              <img src="assets/images/office-bearers/shana.png" alt="Shana - Trustee" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">Trustee</span>
-              <h4 class="committee-card-name">Shana</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-neutral">Executive Board</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Member 9: Trustee -->
-          <article class="committee-member-card">
-            <div class="committee-photo-frame">
-              <span class="committee-photo-badge">Trustee</span>
-              <img src="assets/images/office-bearers/aysha-huda.png" alt="Aysha Huda A.P. - Trustee" class="committee-photo-img" loading="lazy">
-            </div>
-            <div class="committee-card-body">
-              <span class="committee-card-role">Trustee</span>
-              <h4 class="committee-card-name">Aysha Huda A.P.</h4>
-              <div class="committee-card-footer">
-                <span class="badge badge-neutral">Executive Board</span>
-                <span>Tenure: 2025–Present</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Guided Mentors & Academic Advisors -->
-        <div class="section-header-block center scroll-popup" style="margin-top: 56px;">
-          <span class="section-label">Advisory Council</span>
-          <h4 class="section-heading" style="font-size: 1.5rem;">Guided Mentors</h4>
-        </div>
-
-        <div class="advisors-grid scroll-popup">
-          <article class="advisor-card">
-            <div class="advisor-photo-frame">
-              <img src="assets/images/office-bearers/dr-shahul-nurani.svg" alt="Dr. Shahul Nurani - Guided Mentor" class="advisor-photo-img" loading="lazy">
-            </div>
-            <div class="advisor-body">
-              <span class="advisor-role">Guided Mentor · Academic Advisor</span>
-              <h4 class="advisor-name">Dr. Shahul Nurani</h4>
-              <p class="advisor-note">
-                Provided direction on higher education pedagogy frameworks and structuring academic outreach programs.
+            <div class="story-milestone-highlight">
+              <strong style="color: #DF9C2C; display: block; margin-bottom: 6px; font-family: 'Montserrat', sans-serif;">Key Strategic Milestone · HiLite Mall Kozhikode</strong>
+              <p style="margin: 0; line-height: 1.75;">
+                On 22 October 2025, Aroham launched its awareness campaign to introduce the initiative and its vision to a wider audience. This was followed by a strategic planning meeting held from 25–29 December 2025 at HiLite Mall, Kozhikode, where further discussions and planning helped shape the organisation's future direction.
               </p>
-              <div class="advisor-footer">
-                <span>Advisory Council</span>
-                <span class="badge badge-pine">Academic Guide</span>
-              </div>
             </div>
-          </article>
 
-          <article class="advisor-card">
-            <div class="advisor-photo-frame">
-              <img src="assets/images/office-bearers/dr-kc-mujeeb.svg" alt="Dr. K. C. Mujeeb - Strategic Advisor" class="advisor-photo-img" loading="lazy">
-            </div>
-            <div class="advisor-body">
-              <span class="advisor-role">Guided Mentor · Strategic Advisor</span>
-              <h4 class="advisor-name">Dr. K. C. Mujeeb</h4>
-              <p class="advisor-note">
-                Guided strategic roadmapping, institutional linkages, and sustainable non-profit educational leadership.
-              </p>
-              <div class="advisor-footer">
-                <span>Advisory Council</span>
-                <span class="badge badge-ochre">Strategic Guide</span>
-              </div>
-            </div>
-          </article>
+            <p class="story-paragraph">
+              From those first conversations to the formation of an organised initiative, Aroham has grown through the collective efforts and commitment of its alumnae. Today, Aroham Foundation continues to work towards its vision of helping students make informed academic and career decisions through guidance, mentorship, education and community engagement.
+            </p>
+          </div>
+        </div>
 
-          <article class="advisor-card">
-            <div class="advisor-photo-frame">
-              <img src="assets/images/office-bearers/mr-jalal-rahman.svg" alt="Mr. Jalal Rahman - Institutional Guide" class="advisor-photo-img" loading="lazy">
-            </div>
-            <div class="advisor-body">
-              <span class="advisor-role">Guided Mentor · Institutional Guide</span>
-              <h4 class="advisor-name">Mr. Jalal Rahman</h4>
-              <p class="advisor-note">
-                Offered continuous support on career counseling methodology, institutional excellence, and youth empowerment.
-              </p>
-              <div class="advisor-footer">
-                <span>Advisory Council</span>
-                <span class="badge badge-pine">Institutional Guide</span>
+        <!-- ==================================================================
+             SUB-SECTION 2: OUR TEAM (#team / #our-team)
+             ================================================================== -->
+        <div class="about-subsection scroll-popup" id="team">
+          <span id="our-team" style="position: absolute; top: -100px;"></span>
+          <div class="section-header-block center">
+            <span class="section-label">Leadership & Governance</span>
+            <h3 class="section-heading">Our Team</h3>
+            <p class="section-desc">
+              The executive committee formed during the Bolster Girls Campus Alumni Meet, directing our initiatives, mentorship programs, and alumni coordination alongside our Guided Mentors.
+            </p>
+          </div>
+
+          <div class="committee-grid">
+            <!-- Member 1: President -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge president">President</span>
+                <img src="assets/images/office-bearers/fathimath-mufeedha.png" alt="Fathimath Mufeedha - President" class="committee-photo-img" loading="lazy">
               </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">President</span>
+                <h4 class="committee-card-name">Fathimath Mufeedha</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-pine">Founding Executive</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member 2: General Secretary -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge president">General Secretary</span>
+                <img src="assets/images/office-bearers/afifa-ma.png" alt="Afifa M.A. - General Secretary" class="committee-photo-img" loading="lazy">
+              </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">General Secretary</span>
+                <h4 class="committee-card-name">Afifa M.A.</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-pine">Founding Executive</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member 3: Finance Secretary -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge gold">Finance Secretary</span>
+                <img src="assets/images/office-bearers/nishfa-mariya.png" alt="Nishfa Mariya V - Finance Secretary" class="committee-photo-img" loading="lazy">
+              </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">Finance Secretary</span>
+                <h4 class="committee-card-name">Nishfa Mariya V</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-ochre">Financial Governance</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member 4: Trustee -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge">Trustee</span>
+                <img src="assets/images/office-bearers/diya-fathima.png" alt="Diya Fathima M.N. - Trustee" class="committee-photo-img" loading="lazy">
+              </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">Trustee</span>
+                <h4 class="committee-card-name">Diya Fathima M.N.</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-neutral">Executive Board</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member 5: Trustee -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge">Trustee</span>
+                <img src="assets/images/office-bearers/khadeeja-misba.png" alt="Khadeeja Misba P.M. - Trustee" class="committee-photo-img" loading="lazy">
+              </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">Trustee</span>
+                <h4 class="committee-card-name">Khadeeja Misba P.M.</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-neutral">Executive Board</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member 6: Trustee -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge">Trustee</span>
+                <img src="assets/images/office-bearers/fathima-hija.png" alt="Fathima Hija T. - Trustee" class="committee-photo-img" loading="lazy">
+              </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">Trustee</span>
+                <h4 class="committee-card-name">Fathima Hija T.</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-neutral">Executive Board</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member 7: Trustee -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge">Trustee</span>
+                <img src="assets/images/office-bearers/fathima-minha.png" alt="Fathima Minha P.M. - Trustee" class="committee-photo-img" loading="lazy">
+              </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">Trustee</span>
+                <h4 class="committee-card-name">Fathima Minha P.M.</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-neutral">Executive Board</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member 8: Trustee -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge">Trustee</span>
+                <img src="assets/images/office-bearers/shana.png" alt="Shana - Trustee" class="committee-photo-img" loading="lazy">
+              </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">Trustee</span>
+                <h4 class="committee-card-name">Shana</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-neutral">Executive Board</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Member 9: Trustee -->
+            <article class="committee-member-card">
+              <div class="committee-photo-frame">
+                <span class="committee-photo-badge">Trustee</span>
+                <img src="assets/images/office-bearers/aysha-huda.png" alt="Aysha Huda A.P. - Trustee" class="committee-photo-img" loading="lazy">
+              </div>
+              <div class="committee-card-body">
+                <span class="committee-card-role">Trustee</span>
+                <h4 class="committee-card-name">Aysha Huda A.P.</h4>
+                <div class="committee-card-footer">
+                  <span class="badge badge-neutral">Executive Board</span>
+                  <span>Tenure: 2025–Present</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Guided Mentors & Academic Advisors -->
+          <div class="section-header-block center" style="margin-top: 56px;">
+            <span class="section-label">Advisory Council</span>
+            <h4 class="section-heading" style="font-size: 1.4rem;">Guided Mentors</h4>
+          </div>
+
+          <div class="advisors-grid">
+            <article class="advisor-card">
+              <div class="advisor-photo-frame">
+                <img src="assets/images/office-bearers/dr-shahul-nurani.svg" alt="Dr. Shahul Nurani - Guided Mentor" class="advisor-photo-img" loading="lazy">
+              </div>
+              <div class="advisor-body">
+                <span class="advisor-role">Guided Mentor · Academic Advisor</span>
+                <h4 class="advisor-name">Dr. Shahul Nurani</h4>
+                <p class="advisor-note">
+                  Provided direction on higher education pedagogy frameworks and structuring academic outreach programs.
+                </p>
+                <div class="advisor-footer">
+                  <span>Advisory Council</span>
+                  <span class="badge badge-pine">Academic Guide</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="advisor-card">
+              <div class="advisor-photo-frame">
+                <img src="assets/images/office-bearers/dr-kc-mujeeb.svg" alt="Dr. K. C. Mujeeb - Strategic Advisor" class="advisor-photo-img" loading="lazy">
+              </div>
+              <div class="advisor-body">
+                <span class="advisor-role">Guided Mentor · Strategic Advisor</span>
+                <h4 class="advisor-name">Dr. K. C. Mujeeb</h4>
+                <p class="advisor-note">
+                  Guided strategic roadmapping, institutional linkages, and sustainable non-profit educational leadership.
+                </p>
+                <div class="advisor-footer">
+                  <span>Advisory Council</span>
+                  <span class="badge badge-ochre">Strategic Guide</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="advisor-card">
+              <div class="advisor-photo-frame">
+                <img src="assets/images/office-bearers/mr-jalal-rahman.svg" alt="Mr. Jalal Rahman - Institutional Guide" class="advisor-photo-img" loading="lazy">
+              </div>
+              <div class="advisor-body">
+                <span class="advisor-role">Guided Mentor · Institutional Guide</span>
+                <h4 class="advisor-name">Mr. Jalal Rahman</h4>
+                <p class="advisor-note">
+                  Offered continuous support on career counseling methodology, institutional excellence, and youth empowerment.
+                </p>
+                <div class="advisor-footer">
+                  <span>Advisory Council</span>
+                  <span class="badge badge-pine">Institutional Guide</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             SUB-SECTION 3: MISSION (#mission)
+             ================================================================== -->
+        <div class="about-subsection scroll-popup" id="mission">
+          <div class="section-header-block center">
+            <span class="section-label">Core Purpose</span>
+            <h3 class="section-heading">Mission</h3>
+            <p class="section-desc" style="max-width: 820px; font-size: 1.15rem; color: #E2E8F0; font-weight: 500; line-height: 1.7;">
+              "Connecting students with mentors, guidance, and opportunities through education, career support, and community engagement."
+            </p>
+          </div>
+
+          <div class="pillars-grid" style="margin-top: 32px;">
+            <div class="pillar-card">
+              <div class="pillar-icon-wrap">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">1. Personalised Mentorship</h4>
+              <p class="pillar-desc">
+                Connecting higher secondary students with university alumnae through the UniMates one-to-one mentorship programme for tailored academic guidance.
+              </p>
             </div>
-          </article>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-wrap" style="color: #DF9C2C; background: rgba(223, 156, 44, 0.12);">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">2. Higher Education Guidance</h4>
+              <p class="pillar-desc">
+                Demystifying admissions, scholarships, and student life across national and international universities in the GCC, UK, and beyond.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-wrap">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">3. Career Pathways</h4>
+              <p class="pillar-desc">
+                Providing on-ground summit guidance (EduWay) and workshops across medicine, engineering, architecture, design, sciences, and humanities.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-wrap" style="color: #DF9C2C; background: rgba(223, 156, 44, 0.12);">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">4. Community Engagement</h4>
+              <p class="pillar-desc">
+                Mobilizing a vibrant network of 123+ alumni volunteers dedicated to educational equity and supporting young women across Kerala.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             SUB-SECTION 4: VISION (#vision)
+             ================================================================== -->
+        <div class="about-subsection scroll-popup" id="vision">
+          <div class="section-header-block center">
+            <span class="section-label">Long-Term Aspiration</span>
+            <h3 class="section-heading">Vision</h3>
+            <p class="section-desc" style="max-width: 820px; font-size: 1.15rem; color: #DF9C2C; font-weight: 600; line-height: 1.7;">
+              "Helping every student make informed academic and career decisions."
+            </p>
+          </div>
+
+          <div class="pillars-grid" style="margin-top: 32px;">
+            <div class="pillar-card">
+              <div class="pillar-icon-wrap" style="color: #DF9C2C; background: rgba(223, 156, 44, 0.12);">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">Informed Decision-Making</h4>
+              <p class="pillar-desc">
+                Eliminating ambiguity in career choices by providing direct access to authentic experiences and unbiased academic perspectives.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-wrap">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">Zero Information Barriers</h4>
+              <p class="pillar-desc">
+                Bridging the gap between students in rural panchayats and global educational opportunities through accessible virtual platforms.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-wrap" style="color: #DF9C2C; background: rgba(223, 156, 44, 0.12);">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">Empowering Women Scholars</h4>
+              <p class="pillar-desc">
+                Nurturing self-belief, leadership qualities, and academic excellence among young women stepping into higher education.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-wrap">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">Sustained Lifelong Sisterhood</h4>
+              <p class="pillar-desc">
+                Creating an enduring ecosystem where former mentees evolve into future mentors, perpetuating guidance for years to come.
+              </p>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -1159,6 +1290,10 @@
           <ul class="footer-links-list">
             <li><a href="#hero" class="footer-link">Home</a></li>
             <li><a href="#about" class="footer-link">About Us</a></li>
+            <li><a href="#story" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Our Story</a></li>
+            <li><a href="#team" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Our Team</a></li>
+            <li><a href="#mission" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Mission</a></li>
+            <li><a href="#vision" class="footer-link" style="padding-left: 10px; font-size: 0.82rem; color: #94A3B8;">— Vision</a></li>
             <li><a href="#events" class="footer-link">Events</a></li>
             <li><a href="#unimates" class="footer-link">UniMates</a></li>
             <li><a href="#contact" class="footer-link">Contact Us</a></li>

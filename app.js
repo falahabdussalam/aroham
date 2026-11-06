@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------- Standard Scroll Spy for Header Navigation ----------------
-  const sections = document.querySelectorAll('section[id], .about-subsection[id]');
+  const sections = document.querySelectorAll('section[id], .about-subsection[id], #upcoming-events, #past-events');
   const navLinks = document.querySelectorAll('.nav-links .nav-link');
 
   const updateActiveNavOnScroll = () => {
@@ -747,7 +747,8 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.forEach(link => {
         const href = link.getAttribute('href');
         const isAboutFamily = (['about', 'story', 'our-story', 'team', 'our-team', 'mission', 'vision'].includes(current)) && href === '#about';
-        const isMatch = href === `#${current}` || (current === 'hero' && (href === '#hero' || href === '#top')) || isAboutFamily;
+        const isEventsFamily = (['events', 'upcoming-events', 'past-events'].includes(current)) && href === '#events';
+        const isMatch = href === `#${current}` || (current === 'hero' && (href === '#hero' || href === '#top')) || isAboutFamily || isEventsFamily;
         link.classList.toggle('active', isMatch);
       });
     }
@@ -756,27 +757,40 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
   updateActiveNavOnScroll();
 
-  // ---------------- About Us Dropdown Toggle Handler (Mobile & Touch) ----------------
-  const dropdownWrapper = document.querySelector('.nav-dropdown-wrapper');
-  const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
-  
-  if (dropdownToggle && dropdownWrapper) {
-    dropdownToggle.addEventListener('click', (e) => {
-      if (window.innerWidth <= 900) {
-        if (!dropdownWrapper.classList.contains('open')) {
-          e.preventDefault();
-          dropdownWrapper.classList.add('open');
-          dropdownToggle.setAttribute('aria-expanded', 'true');
+  // ---------------- Dropdown Toggle Handlers (Mobile & Touch) ----------------
+  const dropdownWrappers = document.querySelectorAll('.nav-dropdown-wrapper');
+
+  dropdownWrappers.forEach(wrapper => {
+    const toggle = wrapper.querySelector('.nav-dropdown-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900) {
+          if (!wrapper.classList.contains('open')) {
+            e.preventDefault();
+            // Close other dropdowns
+            dropdownWrappers.forEach(w => {
+              if (w !== wrapper) {
+                w.classList.remove('open');
+                const t = w.querySelector('.nav-dropdown-toggle');
+                if (t) t.setAttribute('aria-expanded', 'false');
+              }
+            });
+            wrapper.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
         }
-      }
-    });
-  }
+      });
+    }
+  });
 
   document.addEventListener('click', (e) => {
-    if (dropdownWrapper && !dropdownWrapper.contains(e.target)) {
-      dropdownWrapper.classList.remove('open');
-      if (dropdownToggle) dropdownToggle.setAttribute('aria-expanded', 'false');
-    }
+    dropdownWrappers.forEach(wrapper => {
+      if (!wrapper.contains(e.target)) {
+        wrapper.classList.remove('open');
+        const toggle = wrapper.querySelector('.nav-dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
 
   // ==========================================================================

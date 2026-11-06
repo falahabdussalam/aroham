@@ -4,16 +4,18 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ---------------- Alumni Data Store ----------------
+  // ---------------- Alumni & UniMates Mentors Data Store ----------------
   const ALUMNI_DATA = [
     {
       id: 'mufeedha',
       name: 'Fathimath Mufeedha',
       degree: 'MBBS',
+      university: 'Govt. Medical College',
+      availability: 'Available for Mentorship',
       category: 'medicine',
       categoryLabel: 'Medicine & Healthcare',
       badgeClass: 'badge-med',
-      summitRole: 'President, Aroham Foundation · EduWay 2026 Mentor',
+      summitRole: 'President, Aroham Foundation · UniMates Mentor',
       focusAreas: ['NEET-UG Preparation Strategy', 'MBBS Course Curriculum & Clinical Rotations', 'Medical Career Pathways & Leadership'],
       bio: 'Founding President of Aroham Foundation and MBBS scholar. Spearheads foundation initiatives, bridging the gap between higher secondary students and professional medical education.'
     },
@@ -21,10 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'hija',
       name: 'Fathima Hija T',
       degree: 'B.Sc. Physics',
+      university: 'University of Calicut',
+      availability: 'Available for Mentorship',
       category: 'sciences',
       categoryLabel: 'Pure & Applied Sciences',
       badgeClass: 'badge-sci',
-      summitRole: 'Trustee, Aroham Foundation · EduWay 2026 Mentor',
+      summitRole: 'Trustee, Aroham Foundation · UniMates Mentor',
       focusAreas: ['Pure Science Research & Academic Careers', 'Physics Specializations & Higher Studies', 'Higher Secondary Science Stream Mastery'],
       bio: 'Executive Trustee and Physics scholar dedicated to promoting pure sciences. Guides students passionate about fundamental research, space physics, and academic fellowships.'
     },
@@ -32,43 +36,51 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'afifa',
       name: 'Afifa M.A',
       degree: 'B.Sc. (Hons.) Biotechnology',
+      university: 'University of Calicut',
+      availability: 'Available for Mentorship',
       category: 'sciences',
       categoryLabel: 'Pure & Applied Sciences',
       badgeClass: 'badge-sci',
-      summitRole: 'General Secretary, Aroham Foundation · EduWay Mentor',
+      summitRole: 'General Secretary, Aroham Foundation · UniMates Mentor',
       focusAreas: ['Molecular Biology, Genetics & Biotechnology', 'Higher Secondary Science Stream Planning', 'Academic Leadership & Community Organizing'],
       bio: 'General Secretary of Aroham Foundation and Biotechnology scholar. Coordinates foundation operations, alumni mobilization, and one-on-one mentorship matching for school students.'
     },
     {
       id: 'farsana',
       name: 'Farsana',
-      degree: 'Pharm.D',
+      degree: 'Pharm.D (Doctor of Pharmacy)',
+      university: 'Al Shifa College of Pharmacy',
+      availability: 'Available for Mentorship',
       category: 'medicine',
       categoryLabel: 'Medicine & Healthcare',
       badgeClass: 'badge-med',
-      summitRole: 'EduWay 2026 Career Mentor',
+      summitRole: 'EduWay Career Mentor · UniMates Mentor',
       focusAreas: ['Clinical Pharmacy & Hospital Practice', 'Doctor of Pharmacy Curriculum & Career Options', 'Pharmaceutical Research & Patient Care'],
       bio: 'Graduated from Bolster Girls Campus and pursued Pharm.D (Doctor of Pharmacy). Guided Class 10–12 aspirants at EduWay 2026 on clinical pharmacy, hospital practice, and healthcare careers.'
     },
     {
       id: 'maryam',
       name: 'Maryam Beevi C.S',
-      degree: 'B.Tech',
+      degree: 'B.Tech Computer Science',
+      university: 'APJ Abdul Kalam Technological University',
+      availability: 'Available for Mentorship',
       category: 'engineering',
       categoryLabel: 'Engineering & Tech',
       badgeClass: 'badge-eng',
-      summitRole: 'EduWay 2026 Career Mentor',
+      summitRole: 'EduWay Career Mentor · UniMates Mentor',
       focusAreas: ['KEAM / JEE Engineering Entrances', 'Core Engineering & Tech Disciplines', 'Women in Engineering & Technology'],
       bio: 'Engineering alumna who represented Aroham Foundation at the EduWay 2026 Career Summit, mentoring students on engineering branches, career options, and technical opportunities.'
     },
     {
       id: 'niya',
       name: 'Niya Fathima',
-      degree: 'B.Arch',
+      degree: 'B.Arch (Architecture)',
+      university: 'School of Architecture',
+      availability: 'Available for Mentorship',
       category: 'design',
       categoryLabel: 'Architecture & Design',
       badgeClass: 'badge-design',
-      summitRole: 'EduWay 2026 Career Mentor',
+      summitRole: 'EduWay Career Mentor · UniMates Mentor',
       focusAreas: ['NATA & JEE Paper 2 Entrance Exams', 'Architectural Design Studios & Spatial Planning', 'Sustainable Built Environment & Interior Architecture'],
       bio: 'Architecture alumna demystifying NATA entrance preparation and architecture studies, helping students explore creative careers in spatial design and built environments.'
     },
@@ -76,21 +88,25 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'hana',
       name: 'Hana Fathima',
       degree: 'B.A. (Hons.) Spanish',
+      university: 'English and Foreign Languages University (EFLU)',
+      availability: 'Available for Mentorship',
       category: 'humanities',
       categoryLabel: 'Humanities & Languages',
       badgeClass: 'badge-lang',
-      summitRole: 'EduWay 2026 Career Mentor',
+      summitRole: 'EduWay Career Mentor · UniMates Mentor',
       focusAreas: ['Foreign Language Degrees & Linguistics', 'Translation, International Relations & Diplomacy', 'Undergraduate Degree Admissions & Language Programs'],
       bio: 'Pioneered foreign language studies from Bolster Girls Campus alumni network. Mentors students on unconventional career paths in European languages, global diplomacy, and translation.'
     },
     {
       id: 'naqa',
       name: 'Naqa Fathima',
-      degree: 'Bachelor of Design',
+      degree: 'Bachelor of Design (B.Des)',
+      university: 'National Institute of Design (NID)',
+      availability: 'Available for Mentorship',
       category: 'design',
       categoryLabel: 'Architecture & Design',
       badgeClass: 'badge-design',
-      summitRole: 'EduWay 2026 Career Mentor',
+      summitRole: 'EduWay Career Mentor · UniMates Mentor',
       focusAreas: ['Design Aptitude Tests (UCEED / NID DAT / NIFT)', 'Product Design, UI/UX & Visual Communication', 'Creative Portfolio Building & Studio Culture'],
       bio: 'Design graduate guiding creative students into design industries. Mentored students at Rose Lounge, Malappuram on portfolio development and entrance preparation for creative careers.'
     },
@@ -98,12 +114,27 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'labeeba',
       name: 'Labeeba',
       degree: 'B.Sc. Physics',
+      university: 'University of Calicut',
+      availability: 'Available for Mentorship',
       category: 'sciences',
       categoryLabel: 'Pure & Applied Sciences',
       badgeClass: 'badge-sci',
-      summitRole: 'EduWay 2026 Career Mentor',
+      summitRole: 'EduWay Career Mentor · UniMates Mentor',
       focusAreas: ['Pure Science Foundations & Physics Degrees', 'Academic Horizons & Higher Education Guidance', 'Science Curriculum Planning for Higher Secondary'],
       bio: 'Pure science scholar helping students explore career trajectories in Physics and scientific research, encouraging young women to excel in core sciences.'
+    },
+    {
+      id: 'nuha',
+      name: 'Nuha Kadija',
+      degree: 'International Higher Education Scholar',
+      university: 'Khalifa University, UAE',
+      availability: 'Available for Mentorship',
+      category: 'engineering',
+      categoryLabel: 'Engineering & Tech',
+      badgeClass: 'badge-eng',
+      summitRole: 'GCC Guidance Speaker · UniMates Mentor',
+      focusAreas: ['GCC University Admissions', 'Scholarships in UAE', 'International Student Life & STEM Research'],
+      bio: 'Speaker at the GCC Higher Education Guidance Session, guiding students on university admission processes and scholarship pathways in the UAE and Gulf region.'
     }
   ];
 
@@ -151,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ---------------- Render Alumni Cards ----------------
+  // ---------------- Render UniMates Mentor Cards ----------------
   function renderAlumni() {
     if (!alumniGrid) return;
 
@@ -161,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const matchesSearch = !q || 
         person.name.toLowerCase().includes(q) ||
         person.degree.toLowerCase().includes(q) ||
+        (person.university && person.university.toLowerCase().includes(q)) ||
         (person.categoryLabel && person.categoryLabel.toLowerCase().includes(q)) ||
         (person.focusAreas && person.focusAreas.some(area => area.toLowerCase().includes(q)));
       
@@ -169,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update Counter
     if (directoryCounter) {
-      directoryCounter.textContent = `Showing ${filtered.length} of ${liveAlumniData.length} mentors & achievers`;
+      directoryCounter.textContent = `Showing ${filtered.length} of ${liveAlumniData.length} mentors`;
     }
 
     // Filter transition
@@ -182,8 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <svg style="margin: 0 auto 12px; width: 36px; height: 36px; color: var(--slate-400);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
-            <h4 style="font-size: 1.1rem; color: var(--pine-900); margin-bottom: 4px;">No alumni found</h4>
-            <p style="font-size: 0.85rem; color: var(--slate-600);">Try searching for a different name or academic stream (e.g. MBBS, Physics, Design, B.Arch).</p>
+            <h4 style="font-size: 1.1rem; color: #FFFFFF; margin-bottom: 4px;">No mentors found</h4>
+            <p style="font-size: 0.85rem; color: #94A3B8;">Try searching for a different mentor name or course/major (e.g. MBBS, Physics, Biotechnology, B.Tech, B.Arch).</p>
           </div>
         `;
         alumniGrid.style.opacity = '1';
@@ -195,13 +227,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
           <article class="alumni-card" data-id="${person.id}">
             <div class="alumni-top">
-              <span class="alumni-badge-pill ${person.badgeClass || 'badge-pine'}">${person.categoryLabel || 'Excellence Alumna'}</span>
+              <span class="alumni-badge-pill ${person.badgeClass || 'badge-pine'}">${person.categoryLabel || 'UniMates Mentor'}</span>
               <div class="alumni-avatar-circle">${initials}</div>
             </div>
             <h3 class="alumni-name">${person.name}</h3>
             <div class="alumni-degree">${person.degree}</div>
+            <div class="alumni-university">
+              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="flex-shrink:0;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+              <span>${person.university || 'University of Calicut'}</span>
+            </div>
+            <div class="alumni-availability-badge">
+              <span class="availability-dot"></span>
+              <span>${person.availability || 'Available for Mentorship'}</span>
+            </div>
             <div class="alumni-footer-meta">
-              <span>${person.summitRole || 'EduWay Career Mentor'}</span>
+              <span>${person.summitRole || 'UniMates Mentor'}</span>
               <span class="alumni-action-link">
                 View Profile
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -223,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       alumniGrid.style.opacity = '1';
+      window.dispatchEvent(new CustomEvent('aroham:alumni-rendered'));
     }, 120);
   }
 
@@ -238,30 +281,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalBody.innerHTML = `
       <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-        <div class="member-avatar" style="width: 60px; height: 60px; font-size: 1.2rem;">${initials}</div>
+        <div class="member-avatar" style="width: 60px; height: 60px; font-size: 1.2rem; background: rgba(45, 212, 191, 0.15); color: #2DD4BF;">${initials}</div>
         <div>
           <div class="alumni-badge-pill ${person.badgeClass}" style="margin-bottom: 6px; display: inline-block;">${person.categoryLabel}</div>
-          <h3 style="font-size: 1.35rem; color: var(--pine-900); font-weight: 600;">${person.name}</h3>
-          <div style="font-size: 0.95rem; font-weight: 600; color: var(--pine-800);">${person.degree}</div>
+          <h3 style="font-size: 1.35rem; color: #FFFFFF; font-weight: 700;">${person.name}</h3>
+          <div style="font-size: 0.95rem; font-weight: 600; color: #2DD4BF;">${person.degree}</div>
+          <div style="font-size: 0.85rem; color: #DF9C2C; margin-top: 2px;">${person.university || 'University of Calicut'}</div>
         </div>
       </div>
 
-      <div style="background-color: var(--bg-page); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 20px;">
-        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ochre-600); font-weight: 600; margin-bottom: 4px;">Role & Mentorship</div>
-        <div style="font-size: 0.92rem; font-weight: 500; color: var(--pine-900);">${person.summitRole}</div>
+      <div style="background: rgba(14, 27, 23, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div>
+          <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #DF9C2C; font-weight: 700;">Role & Mentorship</div>
+          <div style="font-size: 0.9rem; font-weight: 600; color: #E2E8F0;">${person.summitRole}</div>
+        </div>
+        <div class="alumni-availability-badge" style="margin: 0;">
+          <span class="availability-dot"></span>
+          <span>${person.availability || 'Available for Mentorship'}</span>
+        </div>
       </div>
 
       <div style="margin-bottom: 20px;">
-        <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pine-900); font-weight: 600; margin-bottom: 8px;">About the Alumna & Mentorship Journey</h4>
-        <p style="font-size: 0.9rem; color: var(--slate-700); line-height: 1.6;">${person.bio}</p>
+        <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #2DD4BF; font-weight: 700; margin-bottom: 8px;">About the Alumna & Mentorship Journey</h4>
+        <p style="font-size: 0.9rem; color: #CBD5E1; line-height: 1.65;">${person.bio}</p>
       </div>
 
       <div style="margin-bottom: 12px;">
-        <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pine-900); font-weight: 600; margin-bottom: 10px;">Primary Guidance & Mentorship Areas</h4>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+        <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #2DD4BF; font-weight: 700; margin-bottom: 10px;">Primary Guidance & Mentorship Areas</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0;">
           ${person.focusAreas.map(area => `
-            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--slate-700);">
-              <svg style="width: 16px; height: 16px; color: var(--pine-800); flex-shrink: 0; margin-top: 2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: #E2E8F0;">
+              <svg style="width: 16px; height: 16px; color: #2DD4BF; flex-shrink: 0; margin-top: 2px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
               </svg>
               <span>${area}</span>
@@ -441,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const senderName = document.getElementById('contact-name')?.value || 'Friend';
       const senderEmail = document.getElementById('contact-email')?.value || '';
       const senderPhone = document.getElementById('contact-phone')?.value || '';
-      const senderPurpose = document.getElementById('contact-category')?.value || '';
+      const senderPurpose = document.getElementById('contact-subject')?.value || document.getElementById('contact-category')?.value || '';
       const senderMessage = document.getElementById('contact-message')?.value || '';
 
       try {
@@ -704,6 +754,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
   updateActiveNavOnScroll();
+
+  // ==========================================================================
+  // SCROLL POPUP ANIMATION ENGINE (GPU Accelerated IntersectionObserver)
+  // ==========================================================================
+  function initScrollPopupEngine() {
+    const selectorList = [
+      '.section-header-block',
+      '.pillar-card',
+      '.committee-member-card',
+      '.bearer-card',
+      '.trustee-card',
+      '.advisor-card',
+      '.support-team-card',
+      '.alumni-card',
+      '.initiative-card',
+      '.timeline-item',
+      '.impact-stat-card',
+      '.reflection-panel',
+      '.goal-card',
+      '.gratitude-box',
+      '.contact-info-card',
+      '.contact-form-card',
+      '.campus-video-container',
+      '.campus-highlights-bar',
+      '.campus-showcase-header',
+      '.directory-controls',
+      '.site-footer .footer-top > div',
+      '.highlight-feature-card',
+      '.story-paragraph',
+      '.story-milestone-highlight',
+      '.upcoming-events-card',
+      '.past-event-card',
+      '.unimates-narrative-card',
+      '.unimates-milestone-card',
+      '.unimates-activities-card',
+      '.session-item-card',
+      '.unimates-cta-card',
+      '.contact-channel-card'
+    ].join(',');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.08
+    };
+
+    const popupObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    function registerPopupElements(container = document) {
+      const elements = container.querySelectorAll(selectorList);
+      elements.forEach(el => {
+        if (!el.classList.contains('scroll-popup')) {
+          el.classList.add('scroll-popup');
+          
+          // Immediate reveal if already in initial viewport
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('is-visible');
+          } else {
+            popupObserver.observe(el);
+          }
+        }
+      });
+    }
+
+    // Register initial DOM elements
+    registerPopupElements();
+
+    // Hook into dynamic renders (e.g., when alumni cards are filtered/rendered)
+    window.addEventListener('aroham:alumni-rendered', () => {
+      registerPopupElements();
+    });
+  }
+
+  initScrollPopupEngine();
 
   // Initial Render & Live Sync
   renderAlumni();

@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     : '/api';
 
   let liveAlumniData = [...ALUMNI_DATA];
+  let updateMentorDeck = null;
 
   async function fetchLiveMentors() {
     try {
@@ -175,6 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (json && json.mentors && json.mentors.length > 0) {
           liveAlumniData = json.mentors;
           renderAlumni();
+          if (typeof updateMentorDeck === 'function') {
+            updateMentorDeck();
+          }
         }
       }
     } catch (e) {
@@ -795,12 +799,221 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
+  // QMENTR 3D MENTOR CARD STACK CONTROLLER
+  // ==========================================================================
+  function initQmentrMentorDeck() {
+    const deck = document.getElementById('qmentrMentorDeck');
+    const cycleBtn = document.getElementById('mentorCycleBtn');
+    const prevBtn = document.getElementById('stackPrevBtn');
+    const nextBtn = document.getElementById('stackNextBtn');
+    const dotsContainer = document.getElementById('stackDots');
+    const outerWrap = document.querySelector('.mentor-stack-outer-wrap');
+
+    if (!deck) return;
+
+    let currentDeckIndex = 0;
+    let isSwiping = false;
+    let autoCycleTimer = null;
+
+    function createCardHTML(mentor, positionClass, stepText) {
+      const initials = mentor.name.split(' ').map(n => n[0]).join('').substring(0, 2);
+      const tags = (mentor.focusAreas && mentor.focusAreas.length > 0) 
+        ? mentor.focusAreas.slice(0, 2)
+        : [mentor.categoryLabel || 'Mentorship', 'Higher Studies'];
+      
+      const bioText = mentor.bio || mentor.summitRole || 'Dedicated to guiding younger students toward their academic and career aspirations.';
+
+      return `
+        <div class="qmentr-stacked-card ${positionClass}" data-mentor-id="${mentor.id}">
+          <div class="card-header-row">
+            <span class="card-verified-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              Aroham Mentor
+            </span>
+            <span class="card-num-pill">${stepText}</span>
+          </div>
+
+          <div class="card-profile-header">
+            <div class="card-avatar-frame">
+              <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(45, 212, 191, 0.15); color: #2DD4BF; font-weight: 700; font-size: 1.15rem; font-family: 'Montserrat', sans-serif;">${initials}</div>
+              <span class="card-status-dot" title="Available for 1:1 Guidance"></span>
+            </div>
+            <div style="min-width: 0; flex: 1;">
+              <h4 class="card-mentor-name">${mentor.name}</h4>
+              <div class="card-mentor-degree">${mentor.degree}</div>
+              <p class="card-mentor-uni">${mentor.university || 'University of Calicut'}</p>
+            </div>
+          </div>
+
+          <div class="card-tags-row">
+            ${tags.map(t => `<span class="card-tag-pill">${t}</span>`).join('')}
+          </div>
+
+          <p class="card-bio-quote">"${bioText}"</p>
+
+          <div class="card-actions-row">
+            <button class="card-connect-btn" data-action="connect" data-mentor-id="${mentor.id}">
+              Connect with Mentor
+            </button>
+            <button class="btn btn-outline" style="padding: 10px 14px; font-size: 0.82rem; border-color: rgba(45, 212, 191, 0.35); color: #2DD4BF; border-radius: 10px; cursor: pointer;" data-action="profile" data-mentor-id="${mentor.id}">
+              Profile
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDeck() {
+      if (!liveAlumniData || liveAlumniData.length === 0) return;
+      const total = liveAlumniData.length;
+
+      const idx0 = ((currentDeckIndex % total) + total) % total;
+      const idx1 = ((currentDeckIndex + 1) % total + total) % total;
+      const idx2 = ((currentDeckIndex + 2) % total + total) % total;
+
+      const m0 = liveAlumniData[idx0];
+      const m1 = liveAlumniData[idx1];
+      const m2 = liveAlumniData[idx2];
+
+      deck.innerHTML = `
+        ${createCardHTML(m2, 'card-2', `${idx2 + 1} of ${total}`)}
+        ${createCardHTML(m1, 'card-1', `${idx1 + 1} of ${total}`)}
+        ${createCardHTML(m0, 'card-0', `${idx0 + 1} of ${total}`)}
+      `;
+
+      if (dotsContainer) {
+        const dotsCount = Math.min(total, 6);
+        dotsContainer.innerHTML = Array.from({ length: dotsCount }).map((_, i) => {
+          const isActive = (idx0 % dotsCount) === i;
+          return `<span class="stack-dot ${isActive ? 'active' : ''}"></span>`;
+        }).join('');
+      }
+
+      const topCard = deck.querySelector('.card-0');
+      if (topCard) {
+        const connectBtn = topCard.querySelector('[data-action="connect"]');
+        const profileBtn = topCard.querySelector('[data-action="profile"]');
+
+        if (connectBtn) {
+          connectBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openUnimateModalWithPref(m0.name, m0.degree);
+          });
+        }
+
+        if (profileBtn) {
+          profileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openAlumniDetailModal(m0.id);
+          });
+        }
+
+        topCard.addEventListener('click', () => {
+          cycleDeck(1);
+        });
+      }
+    }
+
+    function cycleDeck(direction = 1) {
+      if (isSwiping) return;
+      isSwiping = true;
+
+      const topCard = deck.querySelector('.card-0');
+      if (topCard) {
+        topCard.classList.add('is-swiping');
+      }
+
+      setTimeout(() => {
+        const total = liveAlumniData.length;
+        currentDeckIndex = ((currentDeckIndex + direction) % total + total) % total;
+        renderDeck();
+        isSwiping = false;
+      }, 260);
+    }
+
+    if (cycleBtn) {
+      cycleBtn.addEventListener('click', () => cycleDeck(1));
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => cycleDeck(1));
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => cycleDeck(-1));
+    }
+
+    function startAutoCycle() {
+      if (!autoCycleTimer) {
+        autoCycleTimer = setInterval(() => {
+          cycleDeck(1);
+        }, 6500);
+      }
+    }
+
+    function stopAutoCycle() {
+      if (autoCycleTimer) {
+        clearInterval(autoCycleTimer);
+        autoCycleTimer = null;
+      }
+    }
+
+    if (outerWrap) {
+      outerWrap.addEventListener('mouseenter', stopAutoCycle);
+      outerWrap.addEventListener('mouseleave', startAutoCycle);
+    }
+
+    renderDeck();
+    startAutoCycle();
+
+    updateMentorDeck = renderDeck;
+  }
+
+  // ==========================================================================
+  // QMENTR FAQ ACCORDION CONTROLLER
+  // ==========================================================================
+  function initQmentrFAQ() {
+    const faqItems = document.querySelectorAll('.qmentr-faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(item => {
+      const trigger = item.querySelector('.qmentr-faq-trigger');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', () => {
+        const isOpen = item.classList.contains('active');
+
+        // Close other items (clean accordion behavior)
+        faqItems.forEach(other => {
+          if (other !== item) {
+            other.classList.remove('active');
+            const otherTrigger = other.querySelector('.qmentr-faq-trigger');
+            if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle current item
+        if (isOpen) {
+          item.classList.remove('active');
+          trigger.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('active');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  // ==========================================================================
   // SCROLL POPUP ANIMATION ENGINE (GPU Accelerated IntersectionObserver)
   // ==========================================================================
   function initScrollPopupEngine() {
     const selectorList = [
       '.section-header-block',
       '.pillar-card',
+      '.journey-card',
+      '.qmentr-faq-list',
+      '.qmentr-cta-banner-card',
       '.committee-member-card',
       '.bearer-card',
       '.trustee-card',
@@ -876,6 +1089,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Initialize Qmentr features & animation engine
+  initQmentrMentorDeck();
+  initQmentrFAQ();
   initScrollPopupEngine();
 
   // Initial Render & Live Sync

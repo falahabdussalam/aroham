@@ -158,57 +158,294 @@
 
   <main>
     <!-- ==========================================================================
-         PAGE 1: HOME (Hero Section & Highlights - PDF Pages 2 & 3)
+         PAGE 1: HOME (Qmentr-Inspired Split Hero & 3D Interactive Mentor Stack)
          ========================================================================== -->
-    <section class="hero-section hero-wireframe-theme" id="hero">
-      <div class="hero-wireframe-container">
+    <section class="qmentr-hero-section" id="hero">
+      <div class="container qmentr-hero-container">
         
-        <!-- Center Content Stack -->
-        <div class="hero-content-center">
+        <div class="qmentr-hero-grid">
           
-          <!-- Logo in Hero Section (PDF Page 3 requirement) -->
-          <div class="hero-logo-badge">
-            <img src="assets/images/aroham-emblem-transparent.png" alt="Aroham Foundation Logo Emblem" class="hero-brand-logo-img">
-            <div class="hero-logo-text">
-              <span class="hero-logo-brand">Aroham</span>
-              <span class="hero-logo-sub">FOUNDATION</span>
+          <!-- LEFT COLUMN: Hero Copy, Badge, CTA & Quick Tools -->
+          <div class="qmentr-hero-left">
+            
+            <!-- Hero Top Badge (Matches Qmentr Stars Badge) -->
+            <div class="qmentr-hero-badge">
+              <span class="qmentr-badge-glow"></span>
+              <div class="qmentr-badge-content">
+                <svg class="qmentr-badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.2L12 16.8 5.7 21.2 8 14 2 9.4h7.6L12 2z"/>
+                </svg>
+                <span>Your Future, Guided by Alumnae</span>
+              </div>
             </div>
+
+            <!-- Glowing Big H6 AROHAM Brand Header -->
+            <div class="hero-aroham-effect-wrap" id="hero-aroham-display">
+              <span class="hero-aroham-accent-line line-left" aria-hidden="true"></span>
+              <span class="hero-aroham-sparkle" aria-hidden="true">✦</span>
+              <h6 class="hero-aroham-h6">AROHAM</h6>
+              <span class="hero-aroham-sparkle" aria-hidden="true">✦</span>
+              <span class="hero-aroham-accent-line line-right" aria-hidden="true"></span>
+            </div>
+
+            <!-- Big Impact Headline (Matches Qmentr "Find Your Mentor, for a Quality Future.") -->
+            <h1 class="qmentr-hero-heading">
+              <span class="qmentr-heading-line">Find Your Mentor,</span>
+              <span class="qmentr-heading-line mt-2">for a <span class="qmentr-accent-gradient">Quality Future.</span></span>
+            </h1>
+
+            <!-- Tagline Quote & Supporting Text -->
+            <p class="qmentr-hero-quote">
+              "Connected by Our Past, United by Our Future."
+            </p>
+            <p class="qmentr-hero-paragraph">
+              Aroham connects students with Bolster Girls Campus alumnae who know the way forward. Learn from authentic university experiences across India, GCC, and the UK to build the future you deserve. Match with the right mentor today!
+            </p>
+
+            <!-- Hero CTA Buttons & Hand-Drawn Doodle Arrow -->
+            <div class="qmentr-cta-wrapper">
+              <div class="qmentr-cta-buttons">
+                <a href="#unimates-mentors" class="qmentr-btn-primary">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
+                  <span>Find a Mentor</span>
+                </a>
+                <a href="https://forms.gle/JyFUEfFbERjRgUyD6" target="_blank" rel="noopener noreferrer" class="qmentr-btn-secondary">
+                  <span>Register as Mentee</span>
+                  <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Playful Hand-Drawn Doodle Arrow pointing to 3D Mentor Stack -->
+              <div class="qmentr-doodle-arrow" aria-hidden="true">
+                <svg width="84" height="48" viewBox="0 0 100 60" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8,44 Q45,12 86,28"/>
+                  <path d="M72,16 L86,28 L74,38"/>
+                </svg>
+                <span class="doodle-label">Meet Mentors</span>
+              </div>
+            </div>
+
+            <!-- Quick Interactive Tools Section (Matches Qmentr Tools) -->
+            <div class="qmentr-tools-section">
+              <div class="tools-divider-label">
+                <span>Core Mentorship Pillars</span>
+              </div>
+              <div class="qmentr-tools-grid">
+                <a href="#unimates" class="qmentr-tool-card">
+                  <div class="tool-icon-wrap" style="color: #2DD4BF; background: rgba(45, 212, 191, 0.12);">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 class="tool-title">1:1 Mentorship</h5>
+                    <p class="tool-sub">Direct Alumna Guidance</p>
+                  </div>
+                </a>
+
+                <a href="#events" class="qmentr-tool-card">
+                  <div class="tool-icon-wrap" style="color: #DF9C2C; background: rgba(223, 156, 44, 0.12);">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 class="tool-title">Higher Ed Roadmaps</h5>
+                    <p class="tool-sub">GCC, UK & India</p>
+                  </div>
+                </a>
+
+                <a href="#register-mentee" class="qmentr-tool-card">
+                  <div class="tool-icon-wrap" style="color: #60A5FA; background: rgba(96, 165, 250, 0.12);">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h5 class="tool-title">100% Free Guidance</h5>
+                    <p class="tool-sub">Voluntary Alumnae Impact</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
           </div>
 
-          <!-- AROHAM Text with Big H6 Size & Glowing Shimmer Effect -->
-          <div class="hero-aroham-effect-wrap" id="hero-aroham-display">
-            <span class="hero-aroham-accent-line line-left" aria-hidden="true"></span>
-            <span class="hero-aroham-sparkle" aria-hidden="true">✦</span>
-            <h6 class="hero-aroham-h6">AROHAM</h6>
-            <span class="hero-aroham-sparkle" aria-hidden="true">✦</span>
-            <span class="hero-aroham-accent-line line-right" aria-hidden="true"></span>
-          </div>
+          <!-- RIGHT COLUMN: Interactive 3D Mentor Card Stack (Matches Qmentr Mentor Card Stack) -->
+          <div class="qmentr-hero-right">
+            <div class="mentor-stack-outer-wrap">
+              
+              <!-- Tap to Cycle Sticker Badge -->
+              <button class="qmentr-cycle-sticker" id="mentorCycleBtn" aria-label="Cycle next mentor card">
+                <span>Tap to cycle</span>
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+              </button>
 
-          <!-- Tagline (PDF Page 2 verbatim) -->
-          <h1 class="hero-headline">
-            <span class="headline-gradient-text">Connected by Our Past,</span>
-            <span class="headline-white-underlined">United by Our Future<span class="headline-period">.</span></span>
-          </h1>
+              <!-- Dynamic 3D Card Stack Container (Rendered & Handled by app.js) -->
+              <div class="qmentr-cards-deck" id="qmentrMentorDeck">
+                <!-- Stacked cards rendered via JavaScript -->
+              </div>
 
-          <!-- Supporting Text (PDF Page 2 verbatim) -->
-          <p class="hero-description">
-            Bringing generations together, turning shared experiences into opportunities, and guiding students towards a future filled with possibilities.
-          </p>
+              <!-- Stack Navigation Indicator & Manual Next / Prev Controls -->
+              <div class="stack-controls-bar">
+                <button class="stack-arrow-btn" id="stackPrevBtn" aria-label="Previous Mentor">
+                  <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <div class="stack-dots-indicator" id="stackDots">
+                  <!-- Dots rendered via app.js -->
+                </div>
+                <button class="stack-arrow-btn" id="stackNextBtn" aria-label="Next Mentor">
+                  <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
 
-          <div class="hero-cta-group">
-            <a href="#unimates" class="btn-hero-start" id="hero-get-started-btn">
-              <span>Explore UniMates</span>
-            </a>
-            <a href="#about" class="btn-hero-start" style="background: rgba(14, 27, 23, 0.8); border: 1px solid rgba(45, 212, 191, 0.3);">
-              <span>About Aroham</span>
-            </a>
+            </div>
           </div>
 
         </div>
 
-        <!-- 3D Perspective Topographic Wave Mesh -->
-        <div class="hero-wireframe-canvas-wrap" aria-hidden="true">
-          <img src="assets/images/hero-wireframe-mesh.svg" alt="Aroham Wave Mesh" class="hero-wireframe-img">
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2: TRUST STRIP (Continuous Infinite Marquee matching Qmentr)
+         ========================================================================== -->
+    <section class="qmentr-trust-strip" id="trust-strip">
+      <div class="trust-marquee-track">
+        <div class="trust-marquee-content">
+          <div class="trust-item"><span class="trust-icon">⭐</span><span>100% Mentorship Match Rate</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">🎓</span><span>Bolster Girls Campus Alumnae</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">🏛️</span><span>Top National & Global Universities</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">✨</span><span>1-on-1 Free Guidance Sessions</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">🎯</span><span>10+ Dedicated Alumnae Mentors</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">🌍</span><span>GCC, UK & India Roadmaps</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">👩‍🎓</span><span>Women-Led Educational Mission</span></div>
+          <span class="trust-separator">·</span>
+        </div>
+        <!-- Duplicate for seamless infinite loop -->
+        <div class="trust-marquee-content" aria-hidden="true">
+          <div class="trust-item"><span class="trust-icon">⭐</span><span>100% Mentorship Match Rate</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">🎓</span><span>Bolster Girls Campus Alumnae</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">🏛️</span><span>Top National & Global Universities</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">✨</span><span>1-on-1 Free Guidance Sessions</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">🎯</span><span>10+ Dedicated Alumnae Mentors</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">🌍</span><span>GCC, UK & India Roadmaps</span></div>
+          <span class="trust-separator">·</span>
+          <div class="trust-item"><span class="trust-icon">👩‍🎓</span><span>Women-Led Educational Mission</span></div>
+          <span class="trust-separator">·</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: THE 4-STEP MENTORSHIP JOURNEY (Matching Qmentr Journey Section)
+         ========================================================================== -->
+    <section class="section qmentr-journey-section" id="journey">
+      <div class="container">
+        
+        <div class="section-header-block center scroll-popup">
+          <span class="section-label">Your Mentorship Journey</span>
+          <h2 class="section-heading">Your Journey to <span class="qmentr-accent-gradient">Clarity & Confidence.</span></h2>
+          <p class="section-desc">
+            How Aroham UniMates connects you with the guidance you need in four simple steps.
+          </p>
+        </div>
+
+        <div class="qmentr-journey-grid">
+          
+          <div class="journey-card scroll-popup">
+            <div class="journey-card-top">
+              <span class="journey-step-num">01</span>
+              <div class="journey-icon-wrap" style="color: #2DD4BF;">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="journey-step-title">Explore Alumnae Mentors</h3>
+            <p class="journey-step-desc">
+              Browse through our verified Bolster Girls Campus alumnae across diverse fields—Medicine, Engineering, Architecture, Sciences, and Languages.
+            </p>
+            <div class="journey-card-footer">
+              <a href="#unimates-mentors" class="journey-link">Browse Mentors Directory &rarr;</a>
+            </div>
+          </div>
+
+          <div class="journey-card scroll-popup">
+            <div class="journey-card-top">
+              <span class="journey-step-num">02</span>
+              <div class="journey-icon-wrap" style="color: #DF9C2C;">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="journey-step-title">Register as a Mentee</h3>
+            <p class="journey-step-desc">
+              Fill out the official Aroham UniMates registration form detailing your current grade, academic interests, target degrees, and guidance needs.
+            </p>
+            <div class="journey-card-footer">
+              <a href="https://forms.gle/JyFUEfFbERjRgUyD6" target="_blank" rel="noopener noreferrer" class="journey-link">Mentee Form &rarr;</a>
+            </div>
+          </div>
+
+          <div class="journey-card scroll-popup">
+            <div class="journey-card-top">
+              <span class="journey-step-num">03</span>
+              <div class="journey-icon-wrap" style="color: #60A5FA;">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="journey-step-title">Get Matched 1-on-1</h3>
+            <p class="journey-step-desc">
+              Aroham coordinates a tailored match, connecting you directly with an alumna mentor who has walked the exact path you aspire to follow.
+            </p>
+            <div class="journey-card-footer">
+              <span class="journey-badge">100% Match Rate</span>
+            </div>
+          </div>
+
+          <div class="journey-card scroll-popup">
+            <div class="journey-card-top">
+              <span class="journey-step-num">04</span>
+              <div class="journey-icon-wrap" style="color: #34D399;">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="journey-step-title">Shape Your Future</h3>
+            <p class="journey-step-desc">
+              Prepare for entrance exams, gain candid insights into university cultures, demystify scholarships, and step into higher education with total clarity.
+            </p>
+            <div class="journey-card-footer">
+              <span class="journey-badge">Lifelong Mentorship</span>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -1326,6 +1563,104 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION: FREQUENTLY ASKED QUESTIONS (Matching Qmentr FAQ Section)
+         ========================================================================== -->
+    <section class="section qmentr-faq-section" id="faq">
+      <div class="container">
+        <div class="section-header-block center scroll-popup">
+          <span class="section-label">Common Inquiries</span>
+          <h2 class="section-heading">Frequently Asked <span class="qmentr-accent-gradient">Questions</span></h2>
+          <p class="section-desc">Everything you need to know about Aroham Foundation and the UniMates mentorship programme.</p>
+        </div>
+
+        <div class="qmentr-faq-list scroll-popup">
+          <div class="qmentr-faq-item active">
+            <button class="qmentr-faq-trigger" aria-expanded="true">
+              <span>Who is eligible to register as a mentee in Aroham UniMates?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="qmentr-faq-content">
+              <p>Any higher secondary student or recent school graduate seeking academic guidance, entrance examination direction (NEET, CUET, KEAM, NID, etc.), or university admissions insights can register as a mentee for free.</p>
+            </div>
+          </div>
+
+          <div class="qmentr-faq-item">
+            <button class="qmentr-faq-trigger" aria-expanded="false">
+              <span>Is mentorship on Aroham UniMates completely free?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="qmentr-faq-content">
+              <p>Yes, 100% free. Aroham Foundation is a non-profit, women-led initiative established by Bolster Girls Campus alumnae to give back to the community and empower students without any financial barriers.</p>
+            </div>
+          </div>
+
+          <div class="qmentr-faq-item">
+            <button class="qmentr-faq-trigger" aria-expanded="false">
+              <span>Who are the mentors on Aroham UniMates?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="qmentr-faq-content">
+              <p>Our mentors are accomplished Bolster Girls Campus alumnae currently studying or graduated from prestigious institutions across India and abroad, including Medical Colleges, AIIMS, National Institute of Design (NID), EFLU, Khalifa University UAE, and UK universities.</p>
+            </div>
+          </div>
+
+          <div class="qmentr-faq-item">
+            <button class="qmentr-faq-trigger" aria-expanded="false">
+              <span>How are the one-to-one mentorship sessions conducted?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="qmentr-faq-content">
+              <p>Sessions are conducted virtually via Google Meet or scheduled video/voice calls, tailored to both the mentee's questions and the mentor's availability.</p>
+            </div>
+          </div>
+
+          <div class="qmentr-faq-item">
+            <button class="qmentr-faq-trigger" aria-expanded="false">
+              <span>How can an alumna register to become a UniMates mentor?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="qmentr-faq-content">
+              <p>Bolster Girls Campus alumnae who wish to guide younger students can fill out our official Mentor Registration Form via the "Register as a Mentor" button. Our committee will review your profile and welcome you to the mentors collective.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION: DUAL ACTION CTA BANNER (Matching Qmentr AptitudeCTA Banner)
+         ========================================================================== -->
+    <section class="qmentr-cta-banner-section">
+      <div class="container">
+        <div class="qmentr-cta-banner-card scroll-popup">
+          <div class="banner-orb orb-top-right" aria-hidden="true"></div>
+          <div class="banner-orb orb-bottom-left" aria-hidden="true"></div>
+          
+          <div class="banner-inner-content">
+            <span class="badge badge-ochre mb-3" style="display: inline-block;">Shape Your Academic Future</span>
+            <h2 class="banner-headline">
+              Take the Next Step. <span class="qmentr-accent-gradient">Gain Total Career Clarity.</span>
+            </h2>
+            <p class="banner-subtext">
+              Connect directly with verified Bolster Girls Campus alumnae or join our growing network of dedicated mentors. Free, personal, and transformative.
+            </p>
+            <div class="banner-buttons-row">
+              <a href="https://forms.gle/JyFUEfFbERjRgUyD6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+                <span>Register as a Mentee</span>
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSd291LZODd-U09vR_W3AUR8AGQRs5pdTnv4IZDkSk0MVLWXCA/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg" style="background: rgba(14, 27, 23, 0.85); border-color: rgba(223, 156, 44, 0.5); color: #DF9C2C;">
+                <span>Join as an Alumna Mentor</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>

@@ -3554,58 +3554,97 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ---------------- Hero AROHAM Text with Big H6 Size & Glowing Effect ---------------- */
+.hero-section .hero-logo-badge,
+.hero-section .hero-headline,
+.hero-section .hero-description,
+.hero-section .hero-cta-group,
 .hero-aroham-effect-wrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin: 0 auto 24px auto;
-  padding: 8px 24px;
-  background: rgba(7, 18, 15, 0.65);
-  border: 1px solid rgba(45, 212, 191, 0.22);
-  border-radius: 9999px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.45), 0 0 20px rgba(45, 212, 191, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  position: relative;
-  cursor: default;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.hero-aroham-effect-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+  margin: 8px auto 26px auto !important;
+  padding: 10px 28px !important;
+  background: rgba(7, 18, 15, 0.8) !important;
+  border: 1.5px solid rgba(45, 212, 191, 0.45) !important;
+  border-radius: 9999px !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 0 28px rgba(45, 212, 191, 0.28), 0 0 56px rgba(223, 156, 44, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+  position: relative !important;
+  cursor: default !important;
+  z-index: 25 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease !important;
 }
 
 .hero-aroham-accent-line {
-  display: inline-block;
-  width: 38px;
-  height: 2px;
-  border-radius: 2px;
-  transition: width 0.35s ease, opacity 0.35s ease;
+  display: inline-block !important;
+  width: 44px !important;
+  height: 2px !important;
+  border-radius: 2px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: width 0.35s ease, opacity 0.35s ease !important;
 }
 
 .hero-aroham-accent-line.line-left {
-  background: linear-gradient(90deg, transparent 0%, rgba(223, 156, 44, 0.85) 100%);
+  background: linear-gradient(90deg, transparent 0%, #DF9C2C 100%) !important;
 }
 
 .hero-aroham-accent-line.line-right {
-  background: linear-gradient(90deg, rgba(45, 212, 191, 0.85) 0%, transparent 100%);
+  background: linear-gradient(90deg, #2DD4BF 0%, transparent 100%) !important;
+}
+
+.hero-aroham-sparkle {
+  font-size: 1rem !important;
+  color: #DF9C2C !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: arohamSparkleGlow 2.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes arohamSparkleGlow {
+  0% {
+    color: #DF9C2C;
+    transform: scale(0.9) rotate(0deg);
+    filter: drop-shadow(0 0 6px rgba(223, 156, 44, 0.6));
+  }
+  100% {
+    color: #2DD4BF;
+    transform: scale(1.2) rotate(45deg);
+    filter: drop-shadow(0 0 10px rgba(45, 212, 191, 0.9));
+  }
 }
 
 .hero-aroham-h6 {
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-  font-size: clamp(1.22rem, 2.5vw, 1.55rem);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.38em;
-  margin: 0;
-  padding: 0 0 0 0.38em; /* Optical centering for wide letter-spacing */
-  display: inline-block;
-  line-height: 1;
-  background: linear-gradient(135deg, #DF9C2C 0%, #FFE59E 25%, #2DD4BF 55%, #A7F3D0 80%, #DF9C2C 100%);
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: arohamShimmerEffect 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 16px rgba(45, 212, 191, 0.45)) drop-shadow(0 0 32px rgba(223, 156, 44, 0.35));
-  transition: transform 0.3s ease, filter 0.3s ease;
-  user-select: none;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif !important;
+  font-size: clamp(1.45rem, 3.2vw, 2.05rem) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.36em !important;
+  margin: 0 !important;
+  padding: 0 0 0 0.36em !important; /* Optical centering for wide letter-spacing */
+  display: inline-block !important;
+  line-height: 1.15 !important;
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #DF9C2C 0%, #FFFFFF 28%, #2DD4BF 60%, #A7F3D0 80%, #DF9C2C 100%) !important;
+  background-size: 250% 100% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: arohamShimmerEffect 4s ease-in-out infinite !important;
+  filter: drop-shadow(0 0 18px rgba(45, 212, 191, 0.65)) drop-shadow(0 0 36px rgba(223, 156, 44, 0.45)) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  user-select: none !important;
 }
 
 @keyframes arohamShimmerEffect {
@@ -3621,17 +3660,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-aroham-effect-wrap:hover {
-  transform: translateY(-2px) scale(1.02);
-  border-color: rgba(45, 212, 191, 0.45);
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.6), 0 0 28px rgba(45, 212, 191, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px) scale(1.03) !important;
+  border-color: rgba(45, 212, 191, 0.75) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.65), 0 0 36px rgba(45, 212, 191, 0.4), 0 0 60px rgba(223, 156, 44, 0.25) !important;
 }
 
 .hero-aroham-effect-wrap:hover .hero-aroham-h6 {
-  filter: drop-shadow(0 0 24px rgba(45, 212, 191, 0.8)) drop-shadow(0 0 44px rgba(223, 156, 44, 0.6));
+  filter: drop-shadow(0 0 26px rgba(45, 212, 191, 0.9)) drop-shadow(0 0 48px rgba(223, 156, 44, 0.7)) !important;
 }
 
 .hero-aroham-effect-wrap:hover .hero-aroham-accent-line {
-  width: 52px;
+  width: 58px !important;
 }
 
 /* Home Page Highlights (PDF Page 2) */

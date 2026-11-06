@@ -832,7 +832,8 @@ document.addEventListener('DOMContentLoaded', () => {
       '.unimates-cta-card',
       '.contact-channel-card',
       '.about-subsection',
-      '.unimates-subsection'
+      '.unimates-subsection',
+      '.hero-aroham-effect-wrap'
     ].join(',');
 
     const observerOptions = {

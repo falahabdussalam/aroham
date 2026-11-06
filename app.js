@@ -534,16 +534,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeMobileMenu = () => {
     if (navLinksList && navLinksList.classList.contains('open')) {
       navLinksList.classList.remove('open');
-      if (mobileToggle) mobileToggle.classList.remove('active');
+      if (mobileToggle) {
+        mobileToggle.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      }
       if (navBackdrop) navBackdrop.classList.remove('open');
+      document.body.style.overflow = '';
+
+      // Reset open dropdown accordions on mobile
+      document.querySelectorAll('.nav-dropdown-wrapper.open').forEach(w => {
+        w.classList.remove('open');
+        const t = w.querySelector('.nav-dropdown-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
     }
   };
 
   const openMobileMenu = () => {
     if (navLinksList) {
       navLinksList.classList.add('open');
-      if (mobileToggle) mobileToggle.classList.add('active');
+      if (mobileToggle) {
+        mobileToggle.classList.add('active');
+        mobileToggle.setAttribute('aria-expanded', 'true');
+      }
       if (navBackdrop) navBackdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
   };
 
@@ -577,6 +592,11 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
       if (!targetId || targetId === '#') return;
+
+      // On mobile, tapping a dropdown trigger should toggle its accordion, not trigger page jump
+      if (window.innerWidth <= 992 && this.classList.contains('nav-dropdown-toggle')) {
+        return;
+      }
 
       if (targetId === '#top' || targetId === '#hero') {
         e.preventDefault();
@@ -769,17 +789,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggle = wrapper.querySelector('.nav-dropdown-toggle');
     if (toggle) {
       toggle.addEventListener('click', (e) => {
-        if (window.innerWidth <= 900) {
-          if (!wrapper.classList.contains('open')) {
-            e.preventDefault();
-            // Close other dropdowns
-            dropdownWrappers.forEach(w => {
-              if (w !== wrapper) {
-                w.classList.remove('open');
-                const t = w.querySelector('.nav-dropdown-toggle');
-                if (t) t.setAttribute('aria-expanded', 'false');
-              }
-            });
+        if (window.innerWidth <= 992) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = wrapper.classList.contains('open');
+
+          // Close other dropdowns
+          dropdownWrappers.forEach(w => {
+            if (w !== wrapper) {
+              w.classList.remove('open');
+              const t = w.querySelector('.nav-dropdown-toggle');
+              if (t) t.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          if (isOpen) {
+            wrapper.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          } else {
             wrapper.classList.add('open');
             toggle.setAttribute('aria-expanded', 'true');
           }

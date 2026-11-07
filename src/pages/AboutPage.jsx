@@ -322,7 +322,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 Our Vision
               </h3>
               <p className="text-sm sm:text-base text-aroham-heading/90 leading-relaxed pt-2">
-                Helping every student make informed academic and career decisions.
+                Aroham Foundation envisions a world where every child has access to the right guidance, opportunities, and support to shape their own future with confidence and fulfil their dreams.
               </p>
             </div>
 

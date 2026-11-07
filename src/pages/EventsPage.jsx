@@ -491,15 +491,13 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
               We collaborate with colleges, high schools, and student unions to host bespoke guidance assemblies and career bootcamps.
             </p>
           </div>
-          <button
-            onClick={() => {
-              setActivePage('contact');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold tracking-wide transition-all shadow shrink-0"
+          <a
+            href="mailto:arohamconnect@gmail.com?subject=Proposal%20for%20Guidance%20Session%20%2F%20Collaboration"
+            className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold tracking-wide transition-all shadow shrink-0 inline-flex items-center justify-center gap-2"
           >
-            Propose a Session / Connect With Us
-          </button>
+            <Mail size={15} />
+            <span>Propose a Session / Connect With Us</span>
+          </a>
         </div>
       </section>
     </div>

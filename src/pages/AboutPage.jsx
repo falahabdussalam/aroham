@@ -19,6 +19,15 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
   const [selectedPoster, setSelectedPoster] = useState(null);
   const committee = [
     {
+      id: 'president',
+      name: 'Fathimath Mufeedha',
+      role: 'President',
+      almaMater: 'Bolster Girls Campus Alumnae',
+      image: '/committee/fathimath-mufeedha.jpg',
+      badgeColor: 'bg-aroham-dark text-white',
+      hasFullPoster: true
+    },
+    {
       id: 'gen-sec',
       name: 'Afifa M.A',
       role: 'General Secretary',
@@ -87,6 +96,33 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
       role: 'Our Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/shana.jpg',
+      badgeColor: 'bg-aroham-terracotta text-white',
+      hasFullPoster: true
+    },
+    {
+      id: 'trustee-khadeeja-misba',
+      name: 'Khadeeja Misba PM',
+      role: 'Our Trustee',
+      almaMater: 'Bolster Girls Campus Alumnae',
+      image: '/committee/khadeeja-misba-pm.jpg',
+      badgeColor: 'bg-aroham-terracotta text-white',
+      hasFullPoster: true
+    },
+    {
+      id: 'trustee-aysha-huda',
+      name: 'Aysha Huda AP',
+      role: 'Our Trustee',
+      almaMater: 'Bolster Girls Campus Alumnae',
+      image: '/committee/aysha-huda-ap.jpg',
+      badgeColor: 'bg-aroham-terracotta text-white',
+      hasFullPoster: true
+    },
+    {
+      id: 'trustee-diya-fathima',
+      name: 'Diya Fathima MN',
+      role: 'Our Trustee',
+      almaMater: 'Bolster Girls Campus Alumnae',
+      image: '/committee/diya-fathima-mn.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
       hasFullPoster: true
     }

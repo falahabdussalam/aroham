@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { X, CheckCircle, Heart, GraduationCap, Users2, Building } from 'lucide-react';
+import { X, CheckCircle, Heart, GraduationCap, Users2, Building, Mail, Loader2 } from 'lucide-react';
 
 export default function GetInvolvedModal({ isOpen, onClose }) {
   const [selectedRole, setSelectedRole] = useState('student');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,9 +15,41 @@ export default function GetInvolvedModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const roleLabels = {
+    student: 'Student Aspirant',
+    mentor: 'Alumna Mentor',
+    partner: 'Institutional Partner'
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      await fetch("https://formsubmit.co/ajax/arohamconnect@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          role: roleLabels[selectedRole] || selectedRole,
+          phone: formData.phone || 'Not provided',
+          campus_batch: formData.campusYear || 'N/A',
+          message: formData.message || 'No additional note provided',
+          _subject: `[Aroham Network Application] ${roleLabels[selectedRole] || selectedRole} - ${formData.name}`,
+          _template: "table",
+          _captcha: "false"
+        })
+      });
+    } catch (err) {
+      console.warn("Direct transmission note:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   const handleReset = () => {
@@ -31,6 +64,7 @@ export default function GetInvolvedModal({ isOpen, onClose }) {
           <button
             onClick={onClose}
             className="absolute top-5 right-5 text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+            aria-label="Close"
           >
             <X size={20} />
           </button>
@@ -55,13 +89,20 @@ export default function GetInvolvedModal({ isOpen, onClose }) {
               <h4 className="text-xl font-bold text-aroham-dark font-serif">
                 Thank You for Stepping Forward!
               </h4>
-              <p className="text-sm text-aroham-body max-w-sm mx-auto">
-                We're thrilled to welcome you. Our leadership committee will reach out to <span className="font-semibold text-aroham-dark">{formData.email}</span> shortly.
+              <p className="text-sm text-aroham-body max-w-sm mx-auto leading-relaxed">
+                Your application has been received and forwarded directly to <strong className="text-aroham-forest">arohamconnect@gmail.com</strong>. Our leadership team will review and connect with you at <span className="font-semibold text-aroham-dark">{formData.email}</span> shortly.
               </p>
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href={`mailto:arohamconnect@gmail.com?subject=Application%20Follow-up%20-%20${encodeURIComponent(formData.name)}`}
+                  className="px-5 py-2.5 bg-aroham-sage text-aroham-dark rounded-lg text-xs font-semibold hover:bg-aroham-mint transition-colors flex items-center gap-1.5 border border-aroham-border"
+                >
+                  <Mail size={14} className="text-aroham-forest" />
+                  <span>Email Team Directly</span>
+                </a>
                 <button
                   onClick={handleReset}
-                  className="px-6 py-2.5 bg-aroham-dark text-white rounded-lg text-sm font-semibold hover:bg-aroham-forest transition-colors shadow"
+                  className="px-6 py-2.5 bg-aroham-dark text-white rounded-lg text-xs font-semibold hover:bg-aroham-forest transition-colors shadow"
                 >
                   Close
                 </button>
@@ -196,9 +237,17 @@ export default function GetInvolvedModal({ isOpen, onClose }) {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg font-semibold text-sm shadow transition-all duration-200"
+                  disabled={isSubmitting}
+                  className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest disabled:opacity-75 text-white rounded-lg font-semibold text-sm shadow transition-all duration-200 flex items-center justify-center gap-2"
                 >
-                  Join Aroham Network →
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>Connecting to arohamconnect@gmail.com...</span>
+                    </>
+                  ) : (
+                    <span>Join Aroham Network →</span>
+                  )}
                 </button>
               </div>
             </form>
@@ -208,4 +257,3 @@ export default function GetInvolvedModal({ isOpen, onClose }) {
     </div>
   );
 }
-

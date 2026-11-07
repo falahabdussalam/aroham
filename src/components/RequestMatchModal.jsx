@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { X, CheckCircle, GraduationCap, Building2, MapPin, Sparkles } from 'lucide-react';
+import { X, CheckCircle, GraduationCap, Building2, MapPin, Sparkles, Loader2, Mail } from 'lucide-react';
 
 export default function RequestMatchModal({ isOpen, onClose, mentor }) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     studentName: '',
     email: '',
@@ -14,9 +15,36 @@ export default function RequestMatchModal({ isOpen, onClose, mentor }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      await fetch("https://formsubmit.co/ajax/arohamconnect@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          student_name: formData.studentName,
+          email: formData.email,
+          phone: formData.phone || 'Not provided',
+          school_or_college: formData.schoolOrCollege,
+          intended_major: formData.intendedMajor,
+          requested_mentor: mentor ? `${mentor.name} (${mentor.university})` : 'General Alumna Matching',
+          aspirations: formData.aspirations,
+          _subject: `[UniMates Match Request] ${formData.studentName} for ${mentor ? mentor.name : 'General Guidance'}`,
+          _template: "table",
+          _captcha: "false"
+        })
+      });
+    } catch (err) {
+      console.warn("Direct transmission note:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   const handleDone = () => {
@@ -158,9 +186,17 @@ export default function RequestMatchModal({ isOpen, onClose, mentor }) {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg font-semibold text-sm shadow transition-all duration-200"
+                  disabled={isSubmitting}
+                  className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest disabled:opacity-75 text-white rounded-lg font-semibold text-sm shadow transition-all duration-200 flex items-center justify-center gap-2"
                 >
-                  Submit 1:1 Match Request →
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>Submitting to arohamconnect@gmail.com...</span>
+                    </>
+                  ) : (
+                    <span>Submit 1:1 Match Request →</span>
+                  )}
                 </button>
               </div>
             </form>

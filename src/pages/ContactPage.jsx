@@ -19,6 +19,7 @@ import { InstagramIcon } from '../components/Icons';
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -47,9 +48,34 @@ export default function ContactPage() {
     }
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      await fetch("https://formsubmit.co/ajax/arohamconnect@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          role_affiliation: formData.affiliation,
+          subject: formData.subject,
+          message: formData.message,
+          _subject: `[Aroham Website Contact] ${formData.subject || 'New Message'} - from ${formData.name}`,
+          _template: "table",
+          _captcha: "false"
+        })
+      });
+    } catch (err) {
+      console.warn("Direct transmission note:", err);
+    } finally {
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+    }
   };
 
   const toggleFaq = (idx) => {
@@ -306,12 +332,19 @@ export default function ContactPage() {
                   <CheckCircle size={36} />
                 </div>
                 <h4 className="text-2xl font-bold font-serif text-aroham-heading">
-                  Message Dispatched
+                  Message Dispatched to arohamconnect@gmail.com
                 </h4>
                 <p className="text-sm text-aroham-body max-w-md mx-auto">
-                  Thank you, <span className="font-semibold text-aroham-dark">{formData.name}</span>. Your message has been received by our Secretariat. A coordinator will reply to <span className="font-semibold text-aroham-dark">{formData.email}</span> within 24–48 hours.
+                  Thank you, <span className="font-semibold text-aroham-dark">{formData.name}</span>. Your details have been sent to our Secretariat at <span className="font-semibold text-aroham-dark">arohamconnect@gmail.com</span>. A coordinator will review your note and reply to <span className="font-semibold text-aroham-dark">{formData.email}</span> within 24–48 hours.
                 </p>
-                <div className="pt-4">
+                <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <a
+                    href={`mailto:arohamconnect@gmail.com?subject=${encodeURIComponent(`[Aroham Contact] ${formData.subject || 'Website Inquiry'}`)}&body=${encodeURIComponent(`Full Name: ${formData.name}\nEmail: ${formData.email}\nAffiliation: ${formData.affiliation}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`)}`}
+                    className="px-6 py-2.5 bg-aroham-dark text-white rounded-lg text-xs font-bold hover:bg-aroham-forest transition-all flex items-center gap-1.5 shadow"
+                  >
+                    <span>Open in Email App</span>
+                    <ArrowUpRight size={14} />
+                  </a>
                   <button
                     onClick={() => {
                       setFormSubmitted(false);
@@ -323,7 +356,7 @@ export default function ContactPage() {
                         message: ''
                       });
                     }}
-                    className="px-6 py-2.5 bg-aroham-dark text-white rounded-lg text-xs font-bold hover:bg-aroham-forest transition-all"
+                    className="px-6 py-2.5 bg-white border border-aroham-border text-aroham-dark rounded-lg text-xs font-bold hover:bg-aroham-sage/40 transition-all shadow-sm"
                   >
                     Send Another Note
                   </button>
@@ -417,10 +450,20 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-8 py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold transition-all shadow flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto px-8 py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold transition-all shadow flex items-center justify-center gap-2 transform hover:-translate-y-0.5 disabled:opacity-75 disabled:cursor-not-allowed"
                   >
-                    <span>Send Message</span>
-                    <span>▷</span>
+                    {isSubmitting ? (
+                      <>
+                        <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>Sending Details...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <span>▷</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

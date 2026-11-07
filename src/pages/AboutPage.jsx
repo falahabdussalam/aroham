@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Sparkles, 
   Flag, 
@@ -11,38 +11,45 @@ import {
   Award, 
   TrendingUp,
   Heart,
-  Lightbulb
+  Lightbulb,
+  X
 } from 'lucide-react';
 
 export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
+  const [selectedPoster, setSelectedPoster] = useState(null);
   const committee = [
     {
-      name: 'Fathima Rasha',
+      id: 'president',
+      name: 'President',
       role: 'President',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
       badgeColor: 'bg-aroham-dark text-white'
     },
     {
-      name: 'Aysha Nuha',
+      id: 'gen-sec',
+      name: 'General Secretary',
       role: 'General Secretary',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80',
+      badgeColor: 'bg-aroham-forest text-white'
+    },
+    {
+      id: 'fin-sec',
+      name: 'Finance Secretary',
+      role: 'Finance Secretary',
+      almaMater: 'Bolster Girls Campus Alumnae',
+      image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80',
       badgeColor: 'bg-aroham-gold text-white'
     },
     {
-      name: 'Hiba Mariyam',
-      role: 'Mentorship Coordinator',
+      id: 'trustee-minha',
+      name: 'Minha Nafeesa',
+      role: 'Our Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
-      image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80',
-      badgeColor: 'bg-aroham-terracotta text-white'
-    },
-    {
-      name: 'Sana Mehreen',
-      role: 'Media & Communications',
-      almaMater: 'Bolster Girls Campus Alumnae',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
-      badgeColor: 'bg-aroham-forest text-white'
+      image: '/committee/minha-nafeesa.jpg',
+      badgeColor: 'bg-aroham-terracotta text-white',
+      hasFullPoster: true
     }
   ];
 
@@ -364,15 +371,23 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               key={idx}
               className="bg-white rounded-2xl overflow-hidden border border-aroham-border shadow-soft group hover:shadow-elevated transition-all duration-200"
             >
-              <div className="relative h-64 w-full overflow-hidden bg-aroham-sage">
+              <div 
+                className={`relative h-72 w-full overflow-hidden bg-aroham-sage ${member.hasFullPoster ? 'cursor-pointer' : ''}`}
+                onClick={() => member.hasFullPoster && setSelectedPoster(member)}
+              >
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 />
                 <span className={`absolute top-3 right-3 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider shadow ${member.badgeColor}`}>
                   {member.role}
                 </span>
+                {member.hasFullPoster && (
+                  <span className="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/60 text-white text-[9px] font-bold tracking-wide backdrop-blur-sm opacity-90 group-hover:opacity-100 transition-opacity">
+                    View Poster ↗
+                  </span>
+                )}
               </div>
               <div className="p-5">
                 <h4 className="text-base font-bold font-serif text-aroham-heading">
@@ -385,6 +400,35 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             </div>
           ))}
         </div>
+
+        {/* Full Poster Lightbox Modal */}
+        {selectedPoster && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+            onClick={() => setSelectedPoster(null)}
+          >
+            <div 
+              className="relative max-w-md w-full max-h-[90vh] flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedPoster(null)}
+                className="absolute -top-10 right-0 text-white/90 hover:text-white p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                aria-label="Close Poster"
+              >
+                <X size={22} />
+              </button>
+              <img
+                src={selectedPoster.image}
+                alt={selectedPoster.name}
+                className="max-h-[80vh] w-auto rounded-2xl shadow-2xl object-contain border border-white/20"
+              />
+              <div className="mt-3 text-center text-white text-xs font-semibold">
+                <span>{selectedPoster.name}</span> • <span>{selectedPoster.role}</span>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* =========================================================================

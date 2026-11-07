@@ -6,7 +6,6 @@ import { InstagramIcon } from './Icons';
 export default function Footer({ setActivePage, onOpenGetInvolved }) {
   const handleNav = (page) => {
     setActivePage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -48,18 +47,18 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('events')}
-                  className="hover:text-aroham-dark transition-colors"
-                >
-                  Events & Guidance
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => handleNav('unimates')}
                   className="hover:text-aroham-dark transition-colors"
                 >
                   UniMates Mentorship
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNav('events')}
+                  className="hover:text-aroham-dark transition-colors"
+                >
+                  Events & Guidance
                 </button>
               </li>
               <li>
@@ -90,13 +89,13 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
               </li>
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/aroham_foundation"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2.5 text-aroham-body hover:text-aroham-dark transition-colors group"
                 >
                   <InstagramIcon size={16} className="text-aroham-forest group-hover:scale-110 transition-transform" />
-                  <span>@arohamfoundation</span>
+                  <span>@aroham_foundation</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>

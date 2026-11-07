@@ -9,15 +9,14 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
   const navLinks = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About Us' },
-    { id: 'events', label: 'Events' },
     { id: 'unimates', label: 'UniMates' },
+    { id: 'events', label: 'Events' },
     { id: 'contact', label: 'Contact Us' },
   ];
 
   const handleNavClick = (id) => {
-    setActivePage(id);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setActivePage(id);
   };
 
   return (
@@ -93,7 +92,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
             <button
               key={link.id}
               onClick={() => handleNavClick(link.id)}
-              className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.01] ${
+              className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 transform ${
                 activePage === link.id
                   ? 'bg-aroham-dark text-white shadow-soft'
                   : 'text-aroham-body hover:bg-white hover:text-aroham-dark hover:shadow-sm'
@@ -108,7 +107,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
                 setMobileMenuOpen(false);
                 onOpenGetInvolved();
               }}
-              className="w-full py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-xl font-semibold text-sm text-center shadow-soft hover:shadow-elevated transition-all duration-200 transform hover:-translate-y-0.5 active:scale-98"
+              className="w-full py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-xl font-semibold text-sm text-center shadow-soft hover:shadow-elevated transition-all duration-200"
             >
               Get Involved
             </button>

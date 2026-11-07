@@ -530,39 +530,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </div>
         )}
       </section>
-
-      {/* =========================================================================
-          CALL TO ACTION
-          ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-elevated">
-          <div className="space-y-2 max-w-xl text-center md:text-left">
-            <h3 className="text-2xl sm:text-3xl font-bold font-serif">
-              Want to support or collaborate with Aroham?
-            </h3>
-            <p className="text-xs sm:text-sm text-emerald-100">
-              Join as an alumna mentor, student mentee, or institutional partner.
-            </p>
-          </div>
-          <div className="flex items-center gap-4 shrink-0">
-            <button
-              onClick={onOpenGetInvolved}
-              className="px-6 py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold transition-all shadow"
-            >
-              Get Involved Today
-            </button>
-            <button
-              onClick={() => {
-                setActivePage('contact');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-bold border border-white/20 transition-all"
-            >
-              Contact Us
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

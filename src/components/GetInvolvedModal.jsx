@@ -109,6 +109,20 @@ export default function GetInvolvedModal({ isOpen, onClose }) {
                 </button>
               </div>
 
+              {selectedRole === 'student' && (
+                <div className="p-3 bg-amber-50 rounded-xl border border-amber-200/80 flex items-center justify-between gap-3 text-xs">
+                  <span className="text-amber-900 font-medium">Looking for 1:1 guidance from an alumna?</span>
+                  <a
+                    href="https://forms.gle/JyFUEfFbERjRgUyD6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark font-bold rounded-lg transition-colors"
+                  >
+                    Register as a Mentee ↗
+                  </a>
+                </div>
+              )}
+
               <div>
                 <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1">
                   Full Name *

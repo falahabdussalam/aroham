@@ -494,12 +494,14 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
               </p>
             </div>
 
-            <button
-              onClick={() => onOpenRequestMatch(null)}
-              className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow"
+            <a
+              href="https://forms.gle/JyFUEfFbERjRgUyD6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow text-center block"
             >
-              Apply for 1:1 Mentorship
-            </button>
+              Register as a Mentee
+            </a>
           </div>
 
           {/* Mentor Alumna Card */}

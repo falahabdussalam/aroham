@@ -72,7 +72,20 @@ export default function RequestMatchModal({ isOpen, onClose, mentor }) {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <div className="mb-4 p-3 bg-amber-50 rounded-xl border border-amber-200/80 flex items-center justify-between text-xs">
+                <span className="text-amber-900 font-medium">Direct Google Form available:</span>
+                <a
+                  href="https://forms.gle/JyFUEfFbERjRgUyD6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark font-bold rounded-lg transition-colors shrink-0"
+                >
+                  Register as a Mentee ↗
+                </a>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1">
                   Your Full Name *
@@ -151,6 +164,7 @@ export default function RequestMatchModal({ isOpen, onClose, mentor }) {
                 </button>
               </div>
             </form>
+          </div>
           )}
         </div>
       </div>

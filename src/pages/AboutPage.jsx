@@ -447,8 +447,8 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               className="bg-white rounded-2xl overflow-hidden border border-aroham-border shadow-soft group hover:shadow-elevated transition-all duration-200"
             >
               <div 
-                className={`relative h-72 w-full overflow-hidden bg-aroham-sage ${member.hasFullPoster ? 'cursor-pointer' : ''}`}
-                onClick={() => member.hasFullPoster && setSelectedPoster(member)}
+                className="relative h-72 w-full overflow-hidden bg-aroham-sage cursor-pointer"
+                onClick={() => setSelectedPoster(member)}
               >
                 <img
                   src={member.image}
@@ -458,11 +458,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 <span className={`absolute top-3 right-3 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider shadow ${member.badgeColor}`}>
                   {member.role}
                 </span>
-                {member.hasFullPoster && (
-                  <span className="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/60 text-white text-[9px] font-bold tracking-wide backdrop-blur-sm opacity-90 group-hover:opacity-100 transition-opacity">
-                    View Poster ↗
-                  </span>
-                )}
               </div>
               <div className="p-5">
                 <h4 className="text-base font-bold font-serif text-aroham-heading">

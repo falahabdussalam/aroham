@@ -19,30 +19,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
   const [selectedPoster, setSelectedPoster] = useState(null);
   const committee = [
     {
-      id: 'president',
-      name: 'President',
-      role: 'President',
-      almaMater: 'Bolster Girls Campus Alumnae',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
-      badgeColor: 'bg-aroham-dark text-white'
-    },
-    {
-      id: 'gen-sec',
-      name: 'General Secretary',
-      role: 'General Secretary',
-      almaMater: 'Bolster Girls Campus Alumnae',
-      image: 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80',
-      badgeColor: 'bg-aroham-forest text-white'
-    },
-    {
-      id: 'fin-sec',
-      name: 'Finance Secretary',
-      role: 'Finance Secretary',
-      almaMater: 'Bolster Girls Campus Alumnae',
-      image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80',
-      badgeColor: 'bg-aroham-gold text-white'
-    },
-    {
       id: 'trustee-minha',
       name: 'Minha Nafeesa',
       role: 'Our Trustee',

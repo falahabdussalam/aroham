@@ -297,7 +297,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 Our Mission
               </h3>
               <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed pt-2">
-                Connecting students with mentors, guidance, and opportunities through education, career support, and community engagement.
+                We aim to build a global network of mentors who can guide young people, especially those from underprivileged backgrounds, towards achieving their academic and career aspirations.
               </p>
             </div>
 

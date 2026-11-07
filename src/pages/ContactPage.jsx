@@ -252,7 +252,7 @@ export default function ContactPage() {
                 @arohamfoundation
               </span>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                 target="_blank"
                 rel="noreferrer"
                 className="w-full sm:w-auto px-5 py-2.5 bg-aroham-amber text-aroham-dark hover:bg-amber-400 rounded-lg text-xs font-bold transition-all shadow flex items-center justify-center gap-1.5"

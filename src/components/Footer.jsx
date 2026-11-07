@@ -89,13 +89,13 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
               </li>
               <li>
                 <a
-                  href="https://www.instagram.com/aroham_foundation"
+                  href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2.5 text-aroham-body hover:text-aroham-dark transition-colors group"
                 >
                   <InstagramIcon size={16} className="text-aroham-forest group-hover:scale-110 transition-transform" />
-                  <span>@aroham_foundation</span>
+                  <span>@arohamfoundation</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>

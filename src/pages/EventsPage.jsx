@@ -266,7 +266,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
 
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="https://www.instagram.com/aroham_foundation"
+                href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                 target="_blank"
                 rel="noreferrer"
                 className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-bold rounded-lg transition-all shadow flex items-center gap-2"

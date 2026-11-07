@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Sparkles, 
   Flag, 
@@ -17,6 +17,23 @@ import {
 
 export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
   const [selectedPoster, setSelectedPoster] = useState(null);
+
+  // Lock body scroll and allow ESC key closing when poster modal is open
+  useEffect(() => {
+    if (selectedPoster) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') setSelectedPoster(null);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = 'unset';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [selectedPoster]);
   const committee = [
     {
       id: 'president',
@@ -471,31 +488,48 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ))}
         </div>
 
-        {/* Full Poster Lightbox Modal */}
+        {/* Full Poster Lightbox Modal (Optimized for Mobile & Desktop) */}
         {selectedPoster && (
           <div 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-fadeIn select-none"
             onClick={() => setSelectedPoster(null)}
           >
+            {/* Top Bar with Name & Close Button */}
             <div 
-              className="relative max-w-md w-full max-h-[90vh] flex flex-col items-center justify-center"
+              className="w-full max-w-sm sm:max-w-md flex items-center justify-between mb-3 px-1"
               onClick={(e) => e.stopPropagation()}
             >
+              <div className="text-white text-xs sm:text-sm font-semibold truncate pr-2">
+                <span>{selectedPoster.name}</span>
+                <span className="text-white/60 text-xs ml-1.5">• {selectedPoster.role}</span>
+              </div>
               <button
                 onClick={() => setSelectedPoster(null)}
-                className="absolute -top-10 right-0 text-white/90 hover:text-white p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all transform active:scale-90 shrink-0"
                 aria-label="Close Poster"
               >
-                <X size={22} />
+                <X size={20} />
               </button>
+            </div>
+
+            {/* Poster Card View */}
+            <div 
+              className="relative max-w-sm sm:max-w-md w-full flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
               <img
                 src={selectedPoster.image}
                 alt={selectedPoster.name}
-                className="max-h-[80vh] w-auto rounded-2xl shadow-2xl object-contain border border-white/20"
+                className="max-h-[72dvh] sm:max-h-[80vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain border border-white/20"
               />
-              <div className="mt-3 text-center text-white text-xs font-semibold">
-                <span>{selectedPoster.name}</span> • <span>{selectedPoster.role}</span>
-              </div>
+
+              {/* Bottom Quick-Dismiss Button for Mobile Thumbs */}
+              <button
+                onClick={() => setSelectedPoster(null)}
+                className="mt-3.5 px-6 py-2 rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 text-white text-xs font-semibold backdrop-blur-md border border-white/25 transition-all shadow-lg sm:hidden"
+              >
+                Close Preview
+              </button>
             </div>
           </div>
         )}

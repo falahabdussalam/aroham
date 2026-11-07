@@ -464,13 +464,17 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               className="bg-white rounded-2xl overflow-hidden border border-aroham-border shadow-soft group hover:shadow-elevated transition-all duration-200"
             >
               <div 
-                className="relative h-72 w-full overflow-hidden bg-aroham-sage cursor-pointer"
-                onClick={() => setSelectedPoster(member)}
+                className="relative h-72 w-full overflow-hidden bg-aroham-sage md:cursor-pointer"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+                    setSelectedPoster(member);
+                  }
+                }}
               >
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover object-top md:group-hover:scale-105 transition-transform duration-300"
                 />
                 <span className={`absolute top-3 right-3 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider shadow ${member.badgeColor}`}>
                   {member.role}
@@ -488,18 +492,18 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ))}
         </div>
 
-        {/* Full Poster Lightbox Modal (Optimized for Mobile & Desktop) */}
+        {/* Full Poster Lightbox Modal (Desktop Only - Disabled on Mobile for Smooth Page Scrolling) */}
         {selectedPoster && (
           <div 
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-fadeIn select-none"
+            className="hidden md:flex fixed inset-0 z-[100] flex-col items-center justify-center p-6 bg-black/90 backdrop-blur-md animate-fadeIn select-none"
             onClick={() => setSelectedPoster(null)}
           >
             {/* Top Bar with Name & Close Button */}
             <div 
-              className="w-full max-w-sm sm:max-w-md flex items-center justify-between mb-3 px-1"
+              className="w-full max-w-md flex items-center justify-between mb-3 px-1"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="text-white text-xs sm:text-sm font-semibold truncate pr-2">
+              <div className="text-white text-sm font-semibold truncate pr-2">
                 <span>{selectedPoster.name}</span>
                 <span className="text-white/60 text-xs ml-1.5">• {selectedPoster.role}</span>
               </div>
@@ -514,22 +518,14 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
 
             {/* Poster Card View */}
             <div 
-              className="relative max-w-sm sm:max-w-md w-full flex flex-col items-center justify-center"
+              className="relative max-w-md w-full flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={selectedPoster.image}
                 alt={selectedPoster.name}
-                className="max-h-[72dvh] sm:max-h-[80vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain border border-white/20"
+                className="max-h-[80vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain border border-white/20"
               />
-
-              {/* Bottom Quick-Dismiss Button for Mobile Thumbs */}
-              <button
-                onClick={() => setSelectedPoster(null)}
-                className="mt-3.5 px-6 py-2 rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 text-white text-xs font-semibold backdrop-blur-md border border-white/25 transition-all shadow-lg sm:hidden"
-              >
-                Close Preview
-              </button>
             </div>
           </div>
         )}

@@ -43,11 +43,16 @@ export default {
       },
       animation: {
         'popup': 'popupIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'page-fade': 'slowPageFade 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
         popupIn: {
           '0%': { opacity: '0', transform: 'translateY(8px) scale(0.96)' },
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+        slowPageFade: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

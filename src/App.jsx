@@ -24,6 +24,7 @@ export default function App() {
       const hash = window.location.hash.replace('#', '');
       if (['home', 'about', 'events', 'unimates', 'contact'].includes(hash)) {
         setActivePage(hash);
+        window.scrollTo(0, 0);
       }
     };
 
@@ -35,6 +36,7 @@ export default function App() {
   const handlePageChange = (page) => {
     setActivePage(page);
     window.location.hash = page;
+    window.scrollTo(0, 0);
   };
 
   const handleOpenRegister = (eventTitle = "Next Guidance Cohort & University Workshop") => {
@@ -60,37 +62,39 @@ export default function App() {
         onOpenGetInvolved={handleOpenGetInvolved}
       />
 
-      {/* Main Dynamic View */}
+      {/* Main Dynamic View with Slow Fade Transition */}
       <main className="flex-1">
-        {activePage === 'home' && (
-          <HomePage
-            setActivePage={handlePageChange}
-            onOpenRegister={() => handleOpenRegister("Next Guidance Cohort & University Workshop")}
-            onOpenGetInvolved={handleOpenGetInvolved}
-          />
-        )}
-        {activePage === 'about' && (
-          <AboutPage
-            setActivePage={handlePageChange}
-            onOpenGetInvolved={handleOpenGetInvolved}
-          />
-        )}
-        {activePage === 'events' && (
-          <EventsPage
-            setActivePage={handlePageChange}
-            onOpenRegister={() => handleOpenRegister("Fall 2026 Global Academic Pathways")}
-            onOpenGetInvolved={handleOpenGetInvolved}
-          />
-        )}
-        {activePage === 'unimates' && (
-          <UniMatesPage
-            onOpenRequestMatch={handleOpenRequestMatch}
-            onOpenGetInvolved={handleOpenGetInvolved}
-          />
-        )}
-        {activePage === 'contact' && (
-          <ContactPage />
-        )}
+        <div key={activePage} className="animate-page-fade">
+          {activePage === 'home' && (
+            <HomePage
+              setActivePage={handlePageChange}
+              onOpenRegister={() => handleOpenRegister("Next Guidance Cohort & University Workshop")}
+              onOpenGetInvolved={handleOpenGetInvolved}
+            />
+          )}
+          {activePage === 'about' && (
+            <AboutPage
+              setActivePage={handlePageChange}
+              onOpenGetInvolved={handleOpenGetInvolved}
+            />
+          )}
+          {activePage === 'events' && (
+            <EventsPage
+              setActivePage={handlePageChange}
+              onOpenRegister={() => handleOpenRegister("Fall 2026 Global Academic Pathways")}
+              onOpenGetInvolved={handleOpenGetInvolved}
+            />
+          )}
+          {activePage === 'unimates' && (
+            <UniMatesPage
+              onOpenRequestMatch={handleOpenRequestMatch}
+              onOpenGetInvolved={handleOpenGetInvolved}
+            />
+          )}
+          {activePage === 'contact' && (
+            <ContactPage />
+          )}
+        </div>
       </main>
 
       {/* Footer */}

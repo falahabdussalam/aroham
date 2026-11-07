@@ -22,7 +22,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
 
   return (
     <header className="sticky top-0 z-40 bg-[#F4F8F5]/90 backdrop-blur-md border-b border-aroham-border/60 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
         {/* Brand with hover popup transition */}
         <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
           <ArohamLogo onClick={() => handleNavClick('home')} />

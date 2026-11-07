@@ -39,7 +39,17 @@ export default {
         'soft': '0 4px 20px -2px rgba(11, 59, 44, 0.05), 0 2px 6px -1px rgba(11, 59, 44, 0.03)',
         'elevated': '0 12px 32px -4px rgba(11, 59, 44, 0.08), 0 4px 12px -2px rgba(11, 59, 44, 0.04)',
         'glow': '0 0 25px rgba(245, 166, 35, 0.25)',
-      }
+        'popup': '0 20px 40px -8px rgba(11, 59, 44, 0.12), 0 8px 16px -4px rgba(11, 59, 44, 0.06)',
+      },
+      animation: {
+        'popup': 'popupIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+      },
+      keyframes: {
+        popupIn: {
+          '0%': { opacity: '0', transform: 'translateY(8px) scale(0.96)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+      },
     },
   },
   plugins: [],

@@ -24,7 +24,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
         {/* Brand with hover popup transition */}
         <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
-          <ArohamLogo onClick={() => handleNavClick('home')} />
+          <ArohamLogo size="header" onClick={() => handleNavClick('home')} />
         </div>
 
         {/* Desktop Navigation Links with spring popup transition */}

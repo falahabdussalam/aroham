@@ -14,7 +14,7 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-aroham-border">
           {/* Col 1: Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <ArohamLogo onClick={() => handleNav('home')} />
+            <ArohamLogo size="footer" onClick={() => handleNav('home')} />
             <p className="text-sm text-aroham-body leading-relaxed max-w-sm pt-2">
               Empowering women-led academic mentorship, lifelong alumni solidarity, and generational uplift across academic and career milestones.
             </p>

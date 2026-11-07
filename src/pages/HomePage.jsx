@@ -14,9 +14,12 @@ import {
   HeartHandshake,
   Quote,
   TrendingUp,
-  Award
+  Award,
+  Mail
 } from 'lucide-react';
 import { ArohamEmblem } from '../components/ArohamLogo';
+import { InstagramIcon } from '../components/Icons';
+import { upcomingEvents } from '../data/eventsData';
 
 export default function HomePage({ setActivePage, onOpenRegister, onOpenGetInvolved }) {
   return (
@@ -155,7 +158,7 @@ export default function HomePage({ setActivePage, onOpenRegister, onOpenGetInvol
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100/80 text-aroham-terracotta text-xs font-bold tracking-wide uppercase mb-2">
               <Sparkles size={13} />
-              <span>Happening Soon</span>
+              <span>Event Schedule</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
               Upcoming Events
@@ -164,95 +167,123 @@ export default function HomePage({ setActivePage, onOpenRegister, onOpenGetInvol
               Live guidance sessions, university admission bootcamps, and alumnae roundtables.
             </p>
           </div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 text-aroham-terracotta border border-red-200/60 text-xs font-bold shrink-0 self-start sm:self-auto">
-            <span className="w-2 h-2 rounded-full bg-aroham-terracotta animate-ping" />
-            <span>1 Live Event Scheduled</span>
-          </div>
+          {upcomingEvents.length > 0 && (
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-aroham-forest border border-emerald-200/60 text-xs font-bold shrink-0 self-start sm:self-auto">
+              <span className="w-2 h-2 rounded-full bg-aroham-forest animate-ping" />
+              <span>{upcomingEvents.length} Event{upcomingEvents.length > 1 ? 's' : ''} Scheduled</span>
+            </div>
+          )}
         </div>
 
-        {/* Feature Event Dual Card */}
-        <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-aroham-border grid grid-cols-1 lg:grid-cols-12">
-          {/* Left Dark Side */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-aroham-dark via-aroham-forest to-[#07251C] p-8 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden">
-            {/* Background design elements */}
-            <div className="absolute -bottom-10 -right-10 w-44 h-44 rounded-full bg-white/5 blur-2xl pointer-events-none" />
-            
-            <div className="space-y-4">
-              <div className="inline-block px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-[11px] font-bold tracking-wider uppercase border border-amber-400/30">
-                UniMates Workshop
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-serif leading-snug">
-                Next Guidance Cohort & University Workshop
-              </h3>
-              <p className="text-sm text-emerald-100/90 leading-relaxed">
-                Direct mentorship orientation for students planning higher education admissions, career maps, and scholarship applications.
-              </p>
-            </div>
-
-            <div className="pt-8 border-t border-white/10 mt-6 flex flex-wrap gap-4 text-xs font-medium text-emerald-200">
-              <div className="flex items-center gap-1.5">
-                <Calendar size={15} className="text-amber-300" />
-                <span>Nov 16, 2025</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Clock size={15} className="text-amber-300" />
-                <span>4:30 PM IST</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Light Details Side */}
-          <div className="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-between space-y-6">
-            <div>
-              <div className="text-xs font-semibold text-aroham-forest/90 mb-3 flex flex-wrap items-center gap-2">
-                <span>Virtual Interactive Meet</span>
-                <span>•</span>
-                <span>Led by Ivy League & Central University Alumnae</span>
-                <span>•</span>
-                <span className="text-aroham-terracotta font-bold">Limited to 35 Seats</span>
-              </div>
-
-              <p className="text-sm text-aroham-body leading-relaxed mb-6">
-                Get direct 1-on-1 feedback on undergraduate essays, scholarship navigation, and subject specialisation strategies. Alumnae mentors will share practical toolkits and host breakout Q&A sessions.
-              </p>
-
-              {/* Checkmarks grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                <div className="flex items-start gap-2.5 text-xs text-aroham-heading font-medium">
-                  <CheckCircle2 size={16} className="text-aroham-forest shrink-0 mt-0.5" />
-                  <span>Choosing majors matching your academic passion</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-aroham-heading font-medium">
-                  <CheckCircle2 size={16} className="text-aroham-forest shrink-0 mt-0.5" />
-                  <span>Financial aid & merit scholarship breakdown</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-aroham-heading font-medium">
-                  <CheckCircle2 size={16} className="text-aroham-forest shrink-0 mt-0.5" />
-                  <span>Interactive UniMates 1:1 matching process</span>
-                </div>
-                <div className="flex items-start gap-2.5 text-xs text-aroham-heading font-medium">
-                  <CheckCircle2 size={16} className="text-aroham-forest shrink-0 mt-0.5" />
-                  <span>Live alumnae Q&A and resource access</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Row */}
-            <div className="pt-6 border-t border-aroham-border flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-2 text-xs font-medium text-aroham-muted">
-                <ShieldCheck size={16} className="text-aroham-forest" />
-                <span>Free access for all registered students</span>
-              </div>
-              <button
-                onClick={onOpenRegister}
-                className="w-full sm:w-auto px-6 py-2.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold tracking-wide transition-all duration-200 shadow-sm flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
+        {upcomingEvents.length > 0 ? (
+          <div className="space-y-6">
+            {upcomingEvents.map((event) => (
+              <div 
+                key={event.id}
+                className="bg-white rounded-3xl overflow-hidden shadow-soft border border-aroham-border grid grid-cols-1 lg:grid-cols-12"
               >
-                <span>Register Now</span>
-                <ArrowUpRight size={15} />
+                {/* Left Side */}
+                <div className="lg:col-span-5 bg-gradient-to-br from-aroham-dark via-aroham-forest to-[#07251C] p-8 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden">
+                  <div className="space-y-4">
+                    <div className="inline-block px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-[11px] font-bold tracking-wider uppercase border border-amber-400/30">
+                      {event.tag || 'Upcoming Session'}
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold font-serif leading-snug">
+                      {event.name}
+                    </h3>
+                  </div>
+
+                  {(event.date || event.time) && (
+                    <div className="pt-8 border-t border-white/10 mt-6 flex flex-wrap gap-4 text-xs font-medium text-emerald-200">
+                      {event.date && (
+                        <div className="flex items-center gap-1.5">
+                          <Calendar size={15} className="text-amber-300" />
+                          <span>{event.date}</span>
+                        </div>
+                      )}
+                      {event.time && (
+                        <div className="flex items-center gap-1.5">
+                          <Clock size={15} className="text-amber-300" />
+                          <span>{event.time}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Right Side: Details & Link */}
+                <div className="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-between space-y-6">
+                  <div>
+                    {event.platform && (
+                      <div className="text-xs font-semibold text-aroham-forest/90 mb-3 flex items-center gap-2">
+                        <span>Platform: {event.platform}</span>
+                      </div>
+                    )}
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-aroham-muted mb-2">
+                      Event Details
+                    </h4>
+                    <p className="text-sm text-aroham-body leading-relaxed">
+                      {event.details}
+                    </p>
+                  </div>
+
+                  <div className="pt-6 border-t border-aroham-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <span className="text-xs text-aroham-muted flex items-center gap-1.5">
+                      <ShieldCheck size={16} className="text-aroham-forest" />
+                      <span>Free access for all registered students</span>
+                    </span>
+                    <a
+                      href={event.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto px-6 py-2.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold tracking-wide transition-all shadow flex items-center justify-center gap-2"
+                    >
+                      <span>{event.linkText || 'Register Now'}</span>
+                      <ArrowUpRight size={15} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-3xl p-10 sm:p-14 border border-aroham-border shadow-soft text-center max-w-3xl mx-auto space-y-6">
+            <div className="w-16 h-16 rounded-2xl bg-aroham-mint text-aroham-dark flex items-center justify-center mx-auto">
+              <Calendar size={28} />
+            </div>
+
+            <div className="space-y-2">
+              <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
+                Schedule Status
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold font-serif text-aroham-heading">
+                No upcoming events at the moment. Stay connected for future updates.
+              </h3>
+              <p className="text-xs sm:text-sm text-aroham-body max-w-md mx-auto pt-1 leading-relaxed">
+                We organize higher education guidance sessions, alumnae roundtables, and university workshops dynamically throughout the academic year.
+              </p>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="https://www.instagram.com/aroham_foundation"
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-bold rounded-lg transition-all shadow flex items-center gap-2"
+              >
+                <InstagramIcon size={14} />
+                <span>Follow on Instagram</span>
+              </a>
+              <button
+                onClick={onOpenGetInvolved}
+                className="px-5 py-2.5 bg-white hover:bg-aroham-sage text-aroham-dark border border-aroham-border text-xs font-bold rounded-lg transition-all shadow-sm flex items-center gap-1.5"
+              >
+                <Mail size={14} />
+                <span>Stay Connected / Get Involved</span>
               </button>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
 

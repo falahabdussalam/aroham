@@ -13,9 +13,11 @@ import {
   ArrowUpRight,
   Filter,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  Radio
 } from 'lucide-react';
 import { InstagramIcon } from '../components/Icons';
+import { upcomingEvents } from '../data/eventsData';
 
 export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInvolved }) {
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' = oldest to newest, 'desc' = newest to oldest
@@ -175,110 +177,113 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             </h2>
           </div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-aroham-forest border border-emerald-200 text-xs font-bold">
-            <span>📋 1 Registration Phase Live</span>
+            {upcomingEvents.length > 0 ? (
+              <span>📋 {upcomingEvents.length} Event{upcomingEvents.length > 1 ? 's' : ''} Scheduled</span>
+            ) : (
+              <span>Stay Tuned</span>
+            )}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Card 1: Featured Fall 2026 Event */}
-          <div className="lg:col-span-8 bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold text-xs font-bold border border-amber-200">
-                ⚡ Registration Open
-              </span>
-              <span className="text-xs font-semibold text-aroham-muted flex items-center gap-1.5">
-                <Video size={14} className="text-aroham-forest" />
-                <span>Platform: Zoom Webinar</span>
-              </span>
-            </div>
-
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-serif text-aroham-heading">
-                Fall 2026 Global Academic Pathways
-              </h3>
-              <p className="text-xs sm:text-sm text-aroham-body leading-relaxed mt-2">
-                Comprehensive roadmap for international bachelor's and master's degrees. Specialized roundtables on statement of purpose refinement, funding portfolios, and cross-cultural campus integration with Aroham mentors worldwide.
-              </p>
-            </div>
-
-            {/* Grid specs */}
-            <div className="grid grid-cols-3 gap-4 p-4 rounded-2xl bg-aroham-mint/50 border border-aroham-border text-xs">
-              <div>
-                <span className="text-[10px] uppercase font-bold text-aroham-muted block">Proposed Date</span>
-                <span className="font-bold text-aroham-heading mt-0.5 block">12 Sep 2026</span>
-              </div>
-              <div>
-                <span className="text-[10px] uppercase font-bold text-aroham-muted block">Time Slot</span>
-                <span className="font-bold text-aroham-heading mt-0.5 block">18:30 IST</span>
-              </div>
-              <div>
-                <span className="text-[10px] uppercase font-bold text-aroham-muted block">Availability</span>
-                <span className="font-bold text-aroham-terracotta mt-0.5 block">Limited Seats</span>
-              </div>
-            </div>
-
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs font-medium text-aroham-heading flex items-center gap-1.5">
-                <Users size={15} className="text-aroham-forest" />
-                <span>Mentors from UK, GCC & European Universities</span>
-              </span>
-              <button
-                onClick={onOpenRegister}
-                className="w-full sm:w-auto px-6 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-bold transition-all shadow flex items-center justify-center gap-1.5"
+        {upcomingEvents.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {upcomingEvents.map((event) => (
+              <div 
+                key={event.id}
+                className="bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6"
               >
-                <span>Secure Your Seat →</span>
-              </button>
-            </div>
-          </div>
+                <div className="space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold text-xs font-bold border border-amber-200">
+                      {event.tag || '⚡ Registration Open'}
+                    </span>
+                    {event.platform && (
+                      <span className="text-xs font-semibold text-aroham-muted flex items-center gap-1.5">
+                        <Video size={14} className="text-aroham-forest" />
+                        <span>{event.platform}</span>
+                      </span>
+                    )}
+                  </div>
 
-          {/* Card 2: Upcoming Feed Status Card */}
-          <div className="lg:col-span-4 bg-white rounded-3xl p-8 border border-aroham-border shadow-soft space-y-6">
-            <div className="w-12 h-12 rounded-2xl bg-aroham-mint flex items-center justify-center text-aroham-dark">
-              <Bell size={22} />
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-bold font-serif text-aroham-heading">
+                      {event.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-aroham-body leading-relaxed mt-2">
+                      {event.details}
+                    </p>
+                  </div>
+
+                  {(event.date || event.time) && (
+                    <div className="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-aroham-mint/50 border border-aroham-border text-xs">
+                      {event.date && (
+                        <div>
+                          <span className="text-[10px] uppercase font-bold text-aroham-muted block">Date</span>
+                          <span className="font-bold text-aroham-heading mt-0.5 block">{event.date}</span>
+                        </div>
+                      )}
+                      {event.time && (
+                        <div>
+                          <span className="text-[10px] uppercase font-bold text-aroham-muted block">Time</span>
+                          <span className="font-bold text-aroham-heading mt-0.5 block">{event.time}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href={event.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-bold text-center transition-all shadow flex items-center justify-center gap-2"
+                  >
+                    <span>{event.linkText || 'Register for Event'}</span>
+                    <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-3xl p-10 sm:p-14 border border-aroham-border shadow-soft text-center max-w-3xl mx-auto space-y-6">
+            <div className="w-16 h-16 rounded-2xl bg-aroham-mint text-aroham-dark flex items-center justify-center mx-auto">
+              <Calendar size={28} />
             </div>
 
             <div className="space-y-2">
-              <div className="text-[10px] uppercase font-bold tracking-widest text-aroham-muted">
-                System Status
+              <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
+                Schedule Status
               </div>
-              <h4 className="text-xl font-bold font-serif text-aroham-heading">
-                Upcoming Events Feed
-              </h4>
+              <h3 className="text-xl sm:text-2xl font-bold font-serif text-aroham-heading">
+                No upcoming events at the moment. Stay connected for future updates.
+              </h3>
+              <p className="text-xs sm:text-sm text-aroham-body max-w-md mx-auto pt-1 leading-relaxed">
+                We organize higher education guidance sessions, alumnae roundtables, and university workshops dynamically throughout the academic year.
+              </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-aroham-sage/50 border border-aroham-border text-xs italic text-aroham-body leading-relaxed">
-              "No upcoming events at the moment. Stay connected for future updates"
-            </div>
-
-            <p className="text-xs text-aroham-muted leading-relaxed">
-              We schedule guidance sessions dynamically in sync with college admission and scholarship release cycles.
-            </p>
-
-            <div className="pt-4 border-t border-aroham-border space-y-2">
-              <div className="text-[10px] uppercase font-bold tracking-wider text-aroham-heading">
-                Get Direct Reminders
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-aroham-mint hover:bg-aroham-mint/80 text-aroham-dark text-xs font-semibold flex items-center gap-1.5 border border-aroham-border"
-                >
-                  <InstagramIcon size={13} />
-                  <span># Instagram Updates</span>
-                </a>
-                <button
-                  onClick={onOpenGetInvolved}
-                  className="px-3 py-1.5 rounded-lg bg-white hover:bg-aroham-sage text-aroham-body text-xs font-semibold flex items-center gap-1.5 border border-aroham-border"
-                >
-                  <Mail size={13} />
-                  <span>Mailing Circle</span>
-                </button>
-              </div>
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="https://www.instagram.com/aroham_foundation"
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-bold rounded-lg transition-all shadow flex items-center gap-2"
+              >
+                <InstagramIcon size={14} />
+                <span>Follow on Instagram</span>
+              </a>
+              <button
+                onClick={onOpenGetInvolved}
+                className="px-5 py-2.5 bg-white hover:bg-aroham-sage text-aroham-dark border border-aroham-border text-xs font-bold rounded-lg transition-all shadow-sm flex items-center gap-1.5"
+              >
+                <Mail size={14} />
+                <span>Stay Connected / Get Involved</span>
+              </button>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* =========================================================================

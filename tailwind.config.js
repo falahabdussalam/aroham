@@ -43,16 +43,28 @@ export default {
       },
       animation: {
         'popup': 'popupIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'page-fade': 'slowPageFade 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'page-fade': 'slowMotionPageFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
         popupIn: {
           '0%': { opacity: '0', transform: 'translateY(8px) scale(0.96)' },
           '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
-        slowPageFade: {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        slowMotionPageFade: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(28px) scale(0.985)',
+            filter: 'blur(6px)',
+          },
+          '40%': {
+            opacity: '0.55',
+            filter: 'blur(2px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0) scale(1)',
+            filter: 'blur(0px)',
+          },
         },
       },
     },

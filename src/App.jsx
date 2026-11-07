@@ -17,6 +17,7 @@ export default function App() {
   const [matchModalOpen, setMatchModalOpen] = useState(false);
   const [selectedMentor, setSelectedMentor] = useState(null);
   const [getInvolvedModalOpen, setGetInvolvedModalOpen] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   // Sync hash in URL with active page
   useEffect(() => {
@@ -24,7 +25,9 @@ export default function App() {
       const hash = window.location.hash.replace('#', '');
       if (['home', 'about', 'events', 'unimates', 'contact'].includes(hash)) {
         setActivePage(hash);
+        setIsNavigating(true);
         window.scrollTo(0, 0);
+        setTimeout(() => setIsNavigating(false), 1200);
       }
     };
 
@@ -34,9 +37,15 @@ export default function App() {
   }, []);
 
   const handlePageChange = (page) => {
+    if (page === activePage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    setIsNavigating(true);
     setActivePage(page);
     window.location.hash = page;
     window.scrollTo(0, 0);
+    setTimeout(() => setIsNavigating(false), 1200);
   };
 
   const handleOpenRegister = (eventTitle = "Next Guidance Cohort & University Workshop") => {
@@ -55,6 +64,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F8F5]">
+      {/* Slow-motion Navigation Ambient Top Bar */}
+      <div
+        className={`fixed top-0 left-0 right-0 h-[3px] z-[60] pointer-events-none transition-opacity duration-500 ${
+          isNavigating ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="h-full w-full bg-gradient-to-r from-aroham-terracotta via-aroham-amber to-aroham-forest shadow-glow" />
+      </div>
+
       {/* Navigation Bar */}
       <Navbar
         activePage={activePage}

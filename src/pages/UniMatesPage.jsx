@@ -29,7 +29,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
       status: 'Available for 1-on-1 Guidance',
       badgeColor: 'bg-amber-100 text-aroham-gold border-amber-200',
       description: 'Focuses on STEM admissions in the GCC, engineering design fundamentals, and undergraduate research application strategies.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80'
+      image: ''
     },
     {
       id: 'AM-2602',
@@ -41,7 +41,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
       status: 'Active Mentor',
       badgeColor: 'bg-emerald-100 text-aroham-forest border-emerald-200',
       description: 'Specialises in UK international student transitions, brand management modules, and graduate internship readiness.',
-      image: 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=500&q=80'
+      image: ''
     },
     {
       id: 'AM-2603',
@@ -53,7 +53,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
       status: 'Weekend Sessions',
       badgeColor: 'bg-orange-100 text-aroham-terracotta border-orange-200',
       description: 'Guides high school seniors aspiring for medical, lab sciences, and allied health professions curriculum requirements.',
-      image: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&w=500&q=80'
+      image: ''
     },
     {
       id: 'AM-2604',
@@ -65,7 +65,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
       status: 'Available for UCAS Guidance',
       badgeColor: 'bg-amber-100 text-aroham-gold border-amber-200',
       description: 'Expert advice on UCAS personal statements, psychological empirical research pathways, and UK campus life acclimatization.',
-      image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=80'
+      image: ''
     },
     {
       id: 'AM-2605',
@@ -77,7 +77,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
       status: 'Available',
       badgeColor: 'bg-emerald-100 text-aroham-forest border-emerald-200',
       description: 'Mentors students on critical theory analysis, academic writing, entrance examinations, and central university admissions.',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80'
+      image: ''
     },
     {
       id: 'AM-2606',
@@ -89,7 +89,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
       status: 'Active Mentor',
       badgeColor: 'bg-blue-100 text-blue-700 border-blue-200',
       description: 'Passionate about bridging women into tech disciplines, coding foundational bootcamps, and artificial intelligence avenues.',
-      image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=500&q=80'
+      image: ''
     }
   ];
 
@@ -341,11 +341,17 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
                 {/* Header: Photo + Badge */}
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={mentor.image}
-                      alt={mentor.name}
-                      className="w-12 h-12 rounded-2xl object-cover border border-aroham-border"
-                    />
+                    {mentor.image ? (
+                      <img
+                        src={mentor.image}
+                        alt={mentor.name}
+                        className="w-12 h-12 rounded-2xl object-cover border border-aroham-border shrink-0"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-center text-aroham-dark font-serif font-bold text-sm tracking-wider shrink-0 shadow-sm">
+                        {mentor.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                      </div>
+                    )}
                     <div>
                       <h4 className="text-base font-bold font-serif text-aroham-heading">
                         {mentor.name}
@@ -357,7 +363,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
                   </div>
                 </div>
 
-                <div className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${mentor.badgeColor}">
+                <div className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${mentor.badgeColor}`}>
                   {mentor.status}
                 </div>
 

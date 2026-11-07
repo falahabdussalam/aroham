@@ -457,14 +457,14 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3.5 lg:gap-6">
           {committee.map((member, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl overflow-hidden border border-aroham-border shadow-soft group hover:shadow-elevated transition-all duration-200"
+              className="bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-aroham-border shadow-soft group hover:shadow-elevated transition-all duration-200 flex flex-col justify-between"
             >
               <div 
-                className="relative h-72 w-full overflow-hidden bg-aroham-sage md:cursor-pointer"
+                className="relative aspect-[4/5] sm:h-64 md:h-72 w-full overflow-hidden bg-aroham-sage md:cursor-pointer shrink-0"
                 onClick={() => {
                   if (typeof window !== 'undefined' && window.innerWidth >= 768) {
                     setSelectedPoster(member);
@@ -476,15 +476,15 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                   alt={member.name}
                   className="w-full h-full object-cover object-top md:group-hover:scale-105 transition-transform duration-300"
                 />
-                <span className={`absolute top-3 right-3 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider shadow ${member.badgeColor}`}>
+                <span className={`absolute top-1.5 right-1.5 sm:top-2 sm:right-2 md:top-3 md:right-3 px-1.5 py-0.5 sm:px-2 md:px-2.5 rounded sm:rounded-md text-[7.5px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider shadow leading-tight ${member.badgeColor}`}>
                   {member.role}
                 </span>
               </div>
-              <div className="p-5">
-                <h4 className="text-base font-bold font-serif text-aroham-heading">
+              <div className="p-2 sm:p-3 md:p-5 flex-1 flex flex-col justify-center">
+                <h4 className="text-[11px] sm:text-sm md:text-base font-bold font-serif text-aroham-heading leading-snug line-clamp-1 sm:line-clamp-none">
                   {member.name}
                 </h4>
-                <p className="text-[10px] uppercase font-bold tracking-wider text-aroham-muted mt-1">
+                <p className="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-bold tracking-wider text-aroham-muted mt-0.5 sm:mt-1 truncate">
                   {member.almaMater}
                 </p>
               </div>

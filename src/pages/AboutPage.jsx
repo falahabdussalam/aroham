@@ -19,6 +19,33 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
   const [selectedPoster, setSelectedPoster] = useState(null);
   const committee = [
     {
+      id: 'gen-sec',
+      name: 'Afifa M.A',
+      role: 'General Secretary',
+      almaMater: 'Bolster Girls Campus Alumnae',
+      image: '/committee/afifa-ma.jpg',
+      badgeColor: 'bg-aroham-forest text-white',
+      hasFullPoster: true
+    },
+    {
+      id: 'fin-sec',
+      name: 'Nishfa Mariya V',
+      role: 'Finance Secretary',
+      almaMater: 'Bolster Girls Campus Alumnae',
+      image: '/committee/nishfa-mariya-v.jpg',
+      badgeColor: 'bg-aroham-gold text-white',
+      hasFullPoster: true
+    },
+    {
+      id: 'trustee-fathima',
+      name: 'Fathima Hija T',
+      role: 'Our Trustee',
+      almaMater: 'Bolster Girls Campus Alumnae',
+      image: '/committee/fathima-hija-t.jpg',
+      badgeColor: 'bg-aroham-terracotta text-white',
+      hasFullPoster: true
+    },
+    {
       id: 'trustee-minha',
       name: 'Minha Nafeesa',
       role: 'Our Trustee',

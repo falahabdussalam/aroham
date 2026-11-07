@@ -21,11 +21,11 @@ export default function ArohamLogo({ withText = true, textDark = true, size = 38
     >
       <ArohamEmblem size={size} className="transition-transform group-hover:scale-105 duration-200 shrink-0" />
       {withText && (
-        <div className="flex flex-col justify-center -space-y-0.5">
+        <div className="flex flex-col justify-center">
           <span className={`text-xl font-bold tracking-tight font-serif leading-none ${textDark ? 'text-aroham-heading' : 'text-white'}`}>
             Aroham
           </span>
-          <span className={`text-[9.5px] uppercase font-bold tracking-[0.22em] leading-none ${textDark ? 'text-aroham-muted' : 'text-emerald-300'}`}>
+          <span className={`text-[10px] uppercase font-bold tracking-[0.22em] leading-none ${textDark ? 'text-aroham-muted' : 'text-emerald-300'}`}>
             FOUNDATION
           </span>
         </div>

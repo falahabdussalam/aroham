@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ArohamLogo from './ArohamLogo';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShieldCheck } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, onOpenGetInvolved }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -64,13 +64,22 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
         </nav>
 
         {/* Action Button with attractive popup hover transition */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <button
             onClick={onOpenGetInvolved}
             className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-sm font-semibold rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform hover:-translate-y-1 hover:scale-105 active:scale-95 active:translate-y-0 flex items-center gap-1.5"
           >
             <span>Get Involved</span>
           </button>
+
+          <a
+            href="#admin"
+            title="Admin Portal"
+            className="px-3 py-2 text-xs font-semibold rounded-xl border border-aroham-border bg-white text-aroham-forest hover:bg-aroham-mint shadow-sm hover:shadow transition-all flex items-center gap-1.5"
+          >
+            <ShieldCheck size={14} className="text-aroham-forest" />
+            <span>Admin</span>
+          </a>
         </div>
 
         {/* Mobile menu trigger */}
@@ -101,7 +110,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
               {link.label}
             </button>
           ))}
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col gap-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -111,6 +120,15 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
             >
               Get Involved
             </button>
+
+            <a
+              href="#admin"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-2.5 bg-white border border-aroham-border hover:bg-aroham-mint text-aroham-forest rounded-xl font-bold text-xs text-center shadow-sm transition-all duration-200 flex items-center justify-center gap-2"
+            >
+              <ShieldCheck size={14} className="text-aroham-forest" />
+              <span>Admin Portal Console</span>
+            </a>
           </div>
         </div>
       )}

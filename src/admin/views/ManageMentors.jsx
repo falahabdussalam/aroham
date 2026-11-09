@@ -219,8 +219,8 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
 
       {/* Mentor Details Modal */}
       {selectedMentorDetails && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-aroham-dark/70 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-aroham-border shadow-popup space-y-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-aroham-dark/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl p-5 sm:p-8 max-w-lg w-full max-h-[92vh] overflow-y-auto border border-aroham-border shadow-popup space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-aroham-border">
               <div className="flex items-center gap-3">
                 {selectedMentorDetails.image ? (

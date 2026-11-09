@@ -264,27 +264,15 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           <div className="lg:col-span-5 space-y-6">
             {/* Photo Card */}
             <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-aroham-border">
-              <div className="relative h-60 sm:h-64 w-full">
+              <div className="relative w-full">
                 <img
                   src={strategicGatheringImg}
                   alt="Bolster Summer Camp & Aroham Gathering"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-auto object-cover block"
                 />
                 <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-aroham-dark/80 text-white text-[11px] font-medium backdrop-blur-sm shadow-sm">
                   📍 Bolster Girls Campus, Kerala
                 </span>
-              </div>
-              <div className="p-6 space-y-2">
-                <div className="flex items-center justify-between text-xs font-semibold text-aroham-muted">
-                  <span className="uppercase tracking-wider text-aroham-forest font-bold">Milestone Gathering</span>
-                  <span>25–29 Dec 2025</span>
-                </div>
-                <h4 className="text-lg font-bold font-serif text-aroham-heading">
-                  Strategic Council at HiLite Mall
-                </h4>
-                <p className="text-xs text-aroham-body leading-relaxed">
-                  Five days of intensive blueprinting where senior alumnae structured our four pillars: Scholar Guidance, UniMates Peer Circles, Mentorship Tracks, and Career Advancement.
-                </p>
               </div>
             </div>
 

@@ -7,6 +7,7 @@ import ManageMentees from './views/ManageMentees';
 import ManageEvents from './views/ManageEvents';
 import ManageApplications from './views/ManageApplications';
 import AddMentorModal from './views/AddMentorModal';
+import SyncModal from './components/SyncModal';
 import { 
   INITIAL_MENTORS, 
   INITIAL_MENTEES, 
@@ -38,6 +39,7 @@ export default function AdminDashboardApp({
 
   const [currentTab, setCurrentTab] = useState('dashboard');
   const [isAddMentorOpen, setIsAddMentorOpen] = useState(false);
+  const [isSyncModalOpen, setIsSyncModalOpen] = useState(false);
 
   // Internal data collections fallback with localStorage persistence
   const [internalMentors, setInternalMentors] = useState(() => {
@@ -206,6 +208,7 @@ export default function AdminDashboardApp({
       onLogout={handleLogout}
       onBackToSite={onBackToSite}
       onOpenAddMentor={() => setIsAddMentorOpen(true)}
+      onOpenSyncModal={() => setIsSyncModalOpen(true)}
     >
       {currentTab === 'dashboard' && (
         <DashboardOverview
@@ -224,6 +227,7 @@ export default function AdminDashboardApp({
           onDeleteMentor={handleDeleteMentor}
           onOpenAddMentor={() => setIsAddMentorOpen(true)}
           onUpdateMentor={handleUpdateMentor}
+          onOpenSyncModal={() => setIsSyncModalOpen(true)}
         />
       )}
 
@@ -260,6 +264,22 @@ export default function AdminDashboardApp({
         isOpen={isAddMentorOpen}
         onClose={() => setIsAddMentorOpen(false)}
         onAddMentor={handleAddMentor}
+      />
+
+      {/* Cross-Device Cloud Sync Modal */}
+      <SyncModal
+        isOpen={isSyncModalOpen}
+        onClose={() => setIsSyncModalOpen(false)}
+        onDataUpdated={() => {
+          fetchLiveDatabase().then(live => {
+            if (live) {
+              if (live.mentors) setMentors(live.mentors);
+              if (live.events) setEvents(live.events);
+              if (live.mentees) setMentees(live.mentees);
+              if (live.applications) setApplications(live.applications);
+            }
+          });
+        }}
       />
     </AdminLayout>
   );

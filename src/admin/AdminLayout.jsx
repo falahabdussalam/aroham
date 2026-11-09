@@ -23,6 +23,7 @@ export default function AdminLayout({
   onLogout, 
   onBackToSite, 
   onOpenAddMentor,
+  onOpenSyncModal,
   children 
 }) {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function AdminLayout({
     <div className="min-h-screen bg-[#F4F8F5] flex flex-col font-sans selection:bg-aroham-terracotta/20 selection:text-aroham-dark">
       {/* Top Mobile Bar */}
       <header className="lg:hidden sticky top-0 z-40 bg-aroham-dark text-white px-4 py-3 flex items-center justify-between border-b border-aroham-pine shadow-sm">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <button
             onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
             className="p-1.5 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors"
@@ -55,13 +56,25 @@ export default function AdminLayout({
           <ArohamLogo size="header" textDark={false} onClick={onBackToSite} />
         </div>
 
-        <button
-          onClick={onBackToSite}
-          className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-emerald-200 transition-colors flex items-center gap-1"
-        >
-          <span>Live Site</span>
-          <ExternalLink size={12} />
-        </button>
+        <div className="flex items-center gap-2">
+          {onOpenSyncModal && (
+            <button
+              onClick={onOpenSyncModal}
+              className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1 active:scale-95"
+            >
+              <Sparkles size={12} className="text-emerald-300" />
+              <span>Sync</span>
+            </button>
+          )}
+
+          <button
+            onClick={onBackToSite}
+            className="text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-emerald-200 transition-colors flex items-center gap-1"
+          >
+            <span>Site</span>
+            <ExternalLink size={12} />
+          </button>
+        </div>
       </header>
 
       <div className="flex-1 flex overflow-hidden">
@@ -180,7 +193,18 @@ export default function AdminLayout({
               <span className="text-xs text-aroham-muted">• Aroham Foundation Hub</span>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              {onOpenSyncModal && (
+                <button
+                  onClick={onOpenSyncModal}
+                  className="px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border border-emerald-200 shadow-sm active:scale-98"
+                  title="Sync data between mobile and desktop"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Sync Mobile & Desktop</span>
+                </button>
+              )}
+
               <button
                 onClick={onBackToSite}
                 className="px-4 py-2 bg-aroham-sage hover:bg-aroham-mint text-aroham-dark rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 border border-aroham-border"

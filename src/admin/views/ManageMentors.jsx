@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { fetchLiveDatabase } from '../data/dataSyncManager';
 
-export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor, onUpdateMentor }) {
+export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor, onUpdateMentor, onOpenSyncModal }) {
   const [search, setSearch] = useState('');
   const [selectedStream, setSelectedStream] = useState('All');
   const [selectedMentorDetails, setSelectedMentorDetails] = useState(null);
@@ -95,15 +95,26 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
         </div>
 
         <div className="flex items-center gap-2.5">
-          <button
-            onClick={handleManualSync}
-            disabled={isSyncing}
-            className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest border border-emerald-200 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
-            title="Force refresh data from cloud"
-          >
-            <RefreshCw size={14} className={isSyncing ? "animate-spin text-aroham-forest" : "text-aroham-forest"} />
-            <span>{syncFeedback || "Sync from Cloud"}</span>
-          </button>
+          {onOpenSyncModal ? (
+            <button
+              onClick={onOpenSyncModal}
+              className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest border border-emerald-200 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
+              title="Open cross-device sync options"
+            >
+              <RefreshCw size={14} className="text-aroham-forest" />
+              <span>Sync with Mobile</span>
+            </button>
+          ) : (
+            <button
+              onClick={handleManualSync}
+              disabled={isSyncing}
+              className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest border border-emerald-200 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
+              title="Force refresh data from cloud"
+            >
+              <RefreshCw size={14} className={isSyncing ? "animate-spin text-aroham-forest" : "text-aroham-forest"} />
+              <span>{syncFeedback || "Sync from Cloud"}</span>
+            </button>
+          )}
 
           <button
             onClick={onOpenAddMentor}

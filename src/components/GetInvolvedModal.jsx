@@ -105,12 +105,12 @@ export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-aroham-dark/60 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white rounded-2xl shadow-elevated max-w-lg w-full overflow-hidden border border-aroham-border relative">
-        <div className="bg-gradient-to-r from-aroham-dark to-aroham-forest p-6 text-white relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-aroham-dark/60 backdrop-blur-sm animate-fadeIn">
+      <div className="bg-white rounded-2xl shadow-elevated max-w-lg w-full max-h-[92vh] flex flex-col overflow-hidden border border-aroham-border relative">
+        <div className="bg-gradient-to-r from-aroham-dark to-aroham-forest p-5 sm:p-6 text-white relative shrink-0">
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+            className="absolute top-4 sm:top-5 right-4 sm:top-5 text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
             aria-label="Close"
           >
             <X size={20} />
@@ -127,7 +127,7 @@ export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication 
           </p>
         </div>
 
-        <div className="p-6">
+        <div className="p-5 sm:p-6 overflow-y-auto">
           {submitted ? (
             <div className="text-center py-6 space-y-4">
               <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">

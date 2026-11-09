@@ -272,7 +272,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             {upcomingEvents.map((event) => (
               <div 
                 key={event.id}
-                className="bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6 hover:shadow-elevated transition-all"
+                className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6 hover:shadow-elevated transition-all"
               >
                 <div className="space-y-4">
                   <div className="flex flex-wrap items-center justify-between gap-2">
@@ -339,7 +339,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-3xl p-10 sm:p-14 border border-aroham-border shadow-soft text-center max-w-3xl mx-auto space-y-6">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-14 border border-aroham-border shadow-soft text-center max-w-3xl mx-auto space-y-6">
             <div className="w-16 h-16 rounded-2xl bg-aroham-mint text-aroham-dark flex items-center justify-center mx-auto">
               <Calendar size={28} />
             </div>

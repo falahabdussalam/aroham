@@ -188,7 +188,7 @@ export default function ContactPage() {
           </div>
 
           {/* Instagram Community Card */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -219,9 +219,9 @@ export default function ContactPage() {
                   href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-gold/50 transition-all shadow-sm"
+                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-gold/50 transition-all shadow-sm active:scale-[0.98]"
                 >
-                  <div className="h-28 sm:h-32 overflow-hidden bg-aroham-light">
+                  <div className="h-36 sm:h-32 overflow-hidden bg-aroham-light">
                     <img
                       src={strategicGathering}
                       alt="Bolster Summer Camp & Campus Circles"
@@ -229,10 +229,10 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
-                    <span>
+                    <span className="truncate">
                       <span className="text-aroham-gold font-bold">#UniMates</span> Campus Circles & Student Meetups
                     </span>
-                    <ArrowUpRight size={12} className="text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
+                    <ArrowUpRight size={13} className="text-aroham-muted opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
                   </div>
                 </a>
 
@@ -240,9 +240,9 @@ export default function ContactPage() {
                   href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-forest/50 transition-all shadow-sm"
+                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-forest/50 transition-all shadow-sm active:scale-[0.98]"
                 >
-                  <div className="h-28 sm:h-32 overflow-hidden bg-aroham-light">
+                  <div className="h-36 sm:h-32 overflow-hidden bg-aroham-light">
                     <img
                       src={instaSpotlight}
                       alt="Alumnae Leadership Spotlight"
@@ -250,10 +250,10 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
-                    <span>
+                    <span className="truncate">
                       <span className="text-aroham-forest font-bold">#Alumnae</span> Leadership Spotlight
                     </span>
-                    <ArrowUpRight size={12} className="text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
+                    <ArrowUpRight size={13} className="text-aroham-muted opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
                   </div>
                 </a>
 
@@ -261,9 +261,9 @@ export default function ContactPage() {
                   href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-terracotta/50 transition-all shadow-sm"
+                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-terracotta/50 transition-all shadow-sm active:scale-[0.98]"
                 >
-                  <div className="h-28 sm:h-32 overflow-hidden bg-aroham-light">
+                  <div className="h-36 sm:h-32 overflow-hidden bg-aroham-light">
                     <img
                       src={instaLeadership}
                       alt="Executive Committee Post"
@@ -271,10 +271,10 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
-                    <span>
+                    <span className="truncate">
                       <span className="text-aroham-terracotta font-bold">#Leadership</span> Executive Announcement Series
                     </span>
-                    <ArrowUpRight size={12} className="text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
+                    <ArrowUpRight size={13} className="text-aroham-muted opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
                   </div>
                 </a>
               </div>

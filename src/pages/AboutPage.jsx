@@ -263,14 +263,14 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           {/* Right Cards & Visual Evidence */}
           <div className="lg:col-span-5 space-y-6">
             {/* Photo Card */}
-            <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-aroham-border">
+            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-soft border border-aroham-border">
               <div className="relative w-full">
                 <img
                   src={strategicGatheringImg}
                   alt="Bolster Summer Camp & Aroham Gathering"
                   className="w-full h-auto object-cover block"
                 />
-                <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-aroham-dark/80 text-white text-[11px] font-medium backdrop-blur-sm shadow-sm">
+                <span className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 px-2.5 sm:px-3 py-1 rounded-full bg-aroham-dark/85 text-white text-[10px] sm:text-[11px] font-medium backdrop-blur-sm shadow-sm">
                   📍 Bolster Girls Campus, Kerala
                 </span>
               </div>

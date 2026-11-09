@@ -16,6 +16,7 @@ import {
   INITIAL_MENTEES, 
   INITIAL_APPLICATIONS 
 } from './admin/data/initialAdminData';
+import { fetchLiveDatabase, saveLiveDatabase } from './admin/data/dataSyncManager';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -44,66 +45,71 @@ export default function App() {
     return saved ? JSON.parse(saved) : INITIAL_APPLICATIONS;
   });
 
-  // Automatically persist state changes to localStorage
+  // Real-time bidirectional cross-device synchronization
   useEffect(() => {
-    try {
-      localStorage.setItem('aroham_mentors', JSON.stringify(mentors));
-    } catch (e) {}
-  }, [mentors]);
+    let isMounted = true;
 
-  useEffect(() => {
-    try {
-      localStorage.setItem('aroham_events', JSON.stringify(events));
-    } catch (e) {}
-  }, [events]);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('aroham_mentees', JSON.stringify(mentees));
-    } catch (e) {}
-  }, [mentees]);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('aroham_applications', JSON.stringify(applications));
-    } catch (e) {}
-  }, [applications]);
-
-  // Listen to cross-tab storage changes and custom sync events
-  useEffect(() => {
-    const handleStorageChange = (e) => {
-      if (e.key === 'aroham_mentors' && e.newValue) {
-        try { setMentors(JSON.parse(e.newValue)); } catch (err) {}
-      }
-      if (e.key === 'aroham_events' && e.newValue) {
-        try { setEvents(JSON.parse(e.newValue)); } catch (err) {}
-      }
-      if (e.key === 'aroham_mentees' && e.newValue) {
-        try { setMentees(JSON.parse(e.newValue)); } catch (err) {}
-      }
-      if (e.key === 'aroham_applications' && e.newValue) {
-        try { setApplications(JSON.parse(e.newValue)); } catch (err) {}
-      }
+    const syncLive = async () => {
+      try {
+        const live = await fetchLiveDatabase();
+        if (isMounted && live) {
+          if (Array.isArray(live.mentors)) {
+            setMentors(prev => JSON.stringify(prev) !== JSON.stringify(live.mentors) ? live.mentors : prev);
+          }
+          if (Array.isArray(live.events)) {
+            setEvents(prev => JSON.stringify(prev) !== JSON.stringify(live.events) ? live.events : prev);
+          }
+          if (Array.isArray(live.mentees)) {
+            setMentees(prev => JSON.stringify(prev) !== JSON.stringify(live.mentees) ? live.mentees : prev);
+          }
+          if (Array.isArray(live.applications)) {
+            setApplications(prev => JSON.stringify(prev) !== JSON.stringify(live.applications) ? live.applications : prev);
+          }
+        }
+      } catch (err) {}
     };
 
-    const handleCustomSync = () => {
-      const savedMentors = localStorage.getItem('aroham_mentors');
-      if (savedMentors) {
-        try { setMentors(JSON.parse(savedMentors)); } catch (err) {}
-      }
-      const savedEvents = localStorage.getItem('aroham_events');
-      if (savedEvents) {
-        try { setEvents(JSON.parse(savedEvents)); } catch (err) {}
-      }
-    };
+    // 1. Initial live fetch on mount
+    syncLive();
 
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('aroham_data_sync', handleCustomSync);
+    // 2. Poll every 2.5 seconds so changes on desktop appear on mobile, and vice-versa
+    const pollTimer = setInterval(syncLive, 2500);
+
+    // 3. Immediately sync on tab focus or screen unlock
+    const handleFocus = () => syncLive();
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('storage', handleFocus);
+    window.addEventListener('aroham_data_sync', handleFocus);
+
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('aroham_data_sync', handleCustomSync);
+      isMounted = false;
+      clearInterval(pollTimer);
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('storage', handleFocus);
+      window.removeEventListener('aroham_data_sync', handleFocus);
     };
   }, []);
+
+  // Sync state changes to both localStorage and centralized network database
+  const handleUpdateMentors = (newMentors) => {
+    setMentors(newMentors);
+    saveLiveDatabase({ mentors: newMentors, events, mentees, applications });
+  };
+
+  const handleUpdateEvents = (newEvents) => {
+    setEvents(newEvents);
+    saveLiveDatabase({ mentors, events: newEvents, mentees, applications });
+  };
+
+  const handleUpdateMentees = (newMentees) => {
+    setMentees(newMentees);
+    saveLiveDatabase({ mentors, events, mentees: newMentees, applications });
+  };
+
+  const handleUpdateApplications = (newApps) => {
+    setApplications(newApps);
+    saveLiveDatabase({ mentors, events, mentees, applications: newApps });
+  };
 
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
   const [selectedEventTitle, setSelectedEventTitle] = useState('Next Guidance Cohort & University Workshop');
@@ -205,23 +211,27 @@ export default function App() {
   const handleApplyMentee = (applicationData, menteeData) => {
     const updatedApps = [applicationData, ...applications];
     setApplications(updatedApps);
-    localStorage.setItem('aroham_applications', JSON.stringify(updatedApps));
 
+    let updatedMentees = mentees;
     if (menteeData) {
-      const updatedMentees = [menteeData, ...mentees];
+      updatedMentees = [menteeData, ...mentees];
       setMentees(updatedMentees);
-      localStorage.setItem('aroham_mentees', JSON.stringify(updatedMentees));
     }
 
-    window.dispatchEvent(new Event('aroham_data_sync'));
+    saveLiveDatabase({
+      mentors,
+      events,
+      mentees: updatedMentees,
+      applications: updatedApps
+    });
   };
 
   // Handler for network applications from Join Aroham Network / Get Involved form
   const handleAddApplication = (applicationData) => {
     const updatedApps = [applicationData, ...applications];
     setApplications(updatedApps);
-    localStorage.setItem('aroham_applications', JSON.stringify(updatedApps));
 
+    let updatedMentees = mentees;
     if (applicationData.role === 'Student Aspirant') {
       const studentId = `STU-${Math.floor(100 + Math.random() * 900)}`;
       const menteeItem = {
@@ -235,12 +245,16 @@ export default function App() {
         matchedDate: 'In Review',
         targetCountry: 'Global'
       };
-      const updatedMentees = [menteeItem, ...mentees];
+      updatedMentees = [menteeItem, ...mentees];
       setMentees(updatedMentees);
-      localStorage.setItem('aroham_mentees', JSON.stringify(updatedMentees));
     }
 
-    window.dispatchEvent(new Event('aroham_data_sync'));
+    saveLiveDatabase({
+      mentors,
+      events,
+      mentees: updatedMentees,
+      applications: updatedApps
+    });
   };
 
   // If viewing admin route, render the complete Admin Dashboard Application
@@ -253,13 +267,13 @@ export default function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         mentors={mentors}
-        setMentors={setMentors}
+        setMentors={handleUpdateMentors}
         events={events}
-        setEvents={setEvents}
+        setEvents={handleUpdateEvents}
         mentees={mentees}
-        setMentees={setMentees}
+        setMentees={handleUpdateMentees}
         applications={applications}
-        setApplications={setApplications}
+        setApplications={handleUpdateApplications}
       />
     );
   }

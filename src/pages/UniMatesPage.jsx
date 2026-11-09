@@ -19,40 +19,17 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStream, setSelectedStream] = useState('All Disciplines');
 
-  // Reactive state defaulting to propMentors, localStorage, or INITIAL_MENTORS
-  const [mentors, setMentors] = useState(() => {
-    if (propMentors && Array.isArray(propMentors)) return propMentors;
-    const saved = localStorage.getItem('aroham_mentors');
-    return saved ? JSON.parse(saved) : INITIAL_MENTORS;
-  });
-
-  // Sync when propMentors changes from parent App
-  useEffect(() => {
-    if (propMentors && Array.isArray(propMentors)) {
-      setMentors(propMentors);
-    }
-  }, [propMentors]);
-
-  // Sync across tabs and custom events
-  useEffect(() => {
-    const handleSync = () => {
-      const saved = localStorage.getItem('aroham_mentors');
-      if (saved) {
+  // Directly derive mentors from propMentors or fallback to cached storage / INITIAL_MENTORS
+  const mentors = propMentors && Array.isArray(propMentors) 
+    ? propMentors 
+    : (() => {
         try {
-          setMentors(JSON.parse(saved));
+          const saved = localStorage.getItem('aroham_mentors');
+          return saved ? JSON.parse(saved) : INITIAL_MENTORS;
         } catch (e) {
-          console.error('Error syncing mentors:', e);
+          return INITIAL_MENTORS;
         }
-      }
-    };
-
-    window.addEventListener('aroham_data_sync', handleSync);
-    window.addEventListener('storage', handleSync);
-    return () => {
-      window.removeEventListener('aroham_data_sync', handleSync);
-      window.removeEventListener('storage', handleSync);
-    };
-  }, []);
+      })();
 
   const defaultStreams = [
     'All Disciplines',

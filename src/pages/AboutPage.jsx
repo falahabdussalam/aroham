@@ -453,11 +453,9 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               className="bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-aroham-border shadow-soft group hover:shadow-elevated transition-all duration-200 flex flex-col justify-between"
             >
               <div 
-                className="relative aspect-[4/5] sm:h-64 md:h-72 w-full overflow-hidden bg-aroham-sage md:cursor-pointer shrink-0"
+                className="relative aspect-[4/5] sm:h-64 md:h-72 w-full overflow-hidden bg-aroham-sage cursor-pointer shrink-0"
                 onClick={() => {
-                  if (typeof window !== 'undefined' && window.innerWidth >= 768) {
-                    setSelectedPoster(member);
-                  }
+                  setSelectedPoster(member);
                 }}
               >
                 <img
@@ -481,10 +479,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ))}
         </div>
 
-        {/* Full Poster Lightbox Modal (Desktop Only - Disabled on Mobile for Smooth Page Scrolling) */}
+        {/* Full Poster Lightbox Modal (Works seamlessly on Mobile and Desktop) */}
         {selectedPoster && (
           <div 
-            className="hidden md:flex fixed inset-0 z-[100] flex-col items-center justify-center p-6 bg-black/90 backdrop-blur-md animate-fadeIn select-none"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-fadeIn select-none"
             onClick={() => setSelectedPoster(null)}
           >
             {/* Top Bar with Name & Close Button */}

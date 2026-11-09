@@ -13,6 +13,7 @@ import {
   INITIAL_EVENTS, 
   INITIAL_APPLICATIONS 
 } from './data/initialAdminData';
+import { saveLiveDatabase } from './data/dataSyncManager';
 
 export default function AdminDashboardApp({ 
   onBackToSite,
@@ -110,75 +111,51 @@ export default function AdminDashboardApp({
   const handleAddMentor = (newMentor) => {
     const updated = [newMentor, ...mentors];
     setMentors(updated);
-    try {
-      localStorage.setItem('aroham_mentors', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors: updated, events, mentees, applications });
   };
 
   const handleUpdateMentor = (updatedMentor) => {
     const updated = mentors.map(m => m.id === updatedMentor.id ? updatedMentor : m);
     setMentors(updated);
-    try {
-      localStorage.setItem('aroham_mentors', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors: updated, events, mentees, applications });
   };
 
   const handleDeleteMentor = (mentorId) => {
     const updated = mentors.filter(m => m.id !== mentorId);
     setMentors(updated);
-    try {
-      localStorage.setItem('aroham_mentors', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors: updated, events, mentees, applications });
   };
 
   // Mentee Actions
   const handleAddMentee = (newMentee) => {
     const updated = [newMentee, ...mentees];
     setMentees(updated);
-    try {
-      localStorage.setItem('aroham_mentees', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors, events, mentees: updated, applications });
   };
 
   const handleUpdateMentee = (updatedMentee) => {
     const updated = mentees.map(m => m.id === updatedMentee.id ? updatedMentee : m);
     setMentees(updated);
-    try {
-      localStorage.setItem('aroham_mentees', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors, events, mentees: updated, applications });
   };
 
   const handleUpdateMenteeStatus = (menteeId, newStatus) => {
     const updated = mentees.map(m => m.id === menteeId ? { ...m, status: newStatus } : m);
     setMentees(updated);
-    try {
-      localStorage.setItem('aroham_mentees', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors, events, mentees: updated, applications });
   };
 
   const handleDeleteMentee = (menteeId) => {
     const updated = mentees.filter(m => m.id !== menteeId);
     setMentees(updated);
-    try {
-      localStorage.setItem('aroham_mentees', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors, events, mentees: updated, applications });
   };
 
   // Event Actions
   const handleAddEvent = (newEvent) => {
     const updated = [newEvent, ...events];
     setEvents(updated);
-    try {
-      localStorage.setItem('aroham_events', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors, events: updated, mentees, applications });
   };
 
   const handleToggleEventStatus = (eventId) => {
@@ -187,29 +164,27 @@ export default function AdminDashboardApp({
       status: e.status === 'Upcoming' ? 'Completed' : 'Upcoming'
     } : e);
     setEvents(updated);
-    try {
-      localStorage.setItem('aroham_events', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors, events: updated, mentees, applications });
   };
 
   const handleDeleteEvent = (eventId) => {
     const updated = events.filter(e => e.id !== eventId);
     setEvents(updated);
-    try {
-      localStorage.setItem('aroham_events', JSON.stringify(updated));
-      window.dispatchEvent(new Event('aroham_data_sync'));
-    } catch (e) {}
+    saveLiveDatabase({ mentors, events: updated, mentees, applications });
   };
 
   // Application Actions
   const handleUpdateApplicationStatus = (appId, newStatus) => {
-    setApplications(applications.map(a => a.id === appId ? { ...a, status: newStatus } : a));
+    const updated = applications.map(a => a.id === appId ? { ...a, status: newStatus } : a);
+    setApplications(updated);
+    saveLiveDatabase({ mentors, events, mentees, applications: updated });
   };
 
   const handleDeleteApplication = (appId) => {
     if (window.confirm('Delete this application entry?')) {
-      setApplications(applications.filter(a => a.id !== appId));
+      const updated = applications.filter(a => a.id !== appId);
+      setApplications(updated);
+      saveLiveDatabase({ mentors, events, mentees, applications: updated });
     }
   };
 

@@ -22,38 +22,17 @@ import { INITIAL_EVENTS } from '../admin/data/initialAdminData';
 export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInvolved, events: propEvents }) {
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' = oldest to newest, 'desc' = newest to oldest
 
-  const [events, setEvents] = useState(() => {
-    if (propEvents && Array.isArray(propEvents)) return propEvents;
-    const saved = localStorage.getItem('aroham_events');
-    return saved ? JSON.parse(saved) : INITIAL_EVENTS;
-  });
-
-  useEffect(() => {
-    if (propEvents && Array.isArray(propEvents)) {
-      setEvents(propEvents);
-    }
-  }, [propEvents]);
-
-  // Reactive sync across tabs and admin changes
-  useEffect(() => {
-    const handleSync = () => {
-      const saved = localStorage.getItem('aroham_events');
-      if (saved) {
+  // Directly derive events from propEvents or fallback to cached storage / INITIAL_EVENTS
+  const events = propEvents && Array.isArray(propEvents)
+    ? propEvents
+    : (() => {
         try {
-          setEvents(JSON.parse(saved));
+          const saved = localStorage.getItem('aroham_events');
+          return saved ? JSON.parse(saved) : INITIAL_EVENTS;
         } catch (e) {
-          console.error('Error syncing events:', e);
+          return INITIAL_EVENTS;
         }
-      }
-    };
-
-    window.addEventListener('aroham_data_sync', handleSync);
-    window.addEventListener('storage', handleSync);
-    return () => {
-      window.removeEventListener('aroham_data_sync', handleSync);
-      window.removeEventListener('storage', handleSync);
-    };
-  }, []);
+      })();
 
   // Historic extra media & panelists map for foundational sessions
   const historicalDetailsMap = {

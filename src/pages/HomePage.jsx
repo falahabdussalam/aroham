@@ -17,31 +17,40 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
   return (
     <div className="space-y-20 lg:space-y-28 pb-12 animate-fadeIn">
       {/* =========================================================================
-          HERO SECTION
+          HERO SECTION WITH AMBIENT BACKGROUND VIDEO
           ========================================================================= */}
-      <section className="relative pt-6 sm:pt-12 lg:pt-16 overflow-hidden">
-        {/* Soft background glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-emerald-100/40 via-amber-100/30 to-transparent blur-3xl pointer-events-none -z-10" />
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-16 pb-20 sm:pt-20 sm:pb-28 overflow-hidden">
+        {/* Full-Fit Background Video with 75% Opacity */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/ywaGkzfjUKA?autoplay=1&mute=1&loop=1&playlist=ywaGkzfjUKA&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&playsinline=1"
+            title="Bolster Girls Campus Background Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full object-cover opacity-75 scale-125"
+          />
+          {/* Subtle light overlay to blend smoothly into page styling while maintaining high contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F4F8F5]/80 via-[#F4F8F5]/65 to-[#F4F8F5] pointer-events-none" />
+        </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-7">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-7">
           {/* Badges */}
           <div className="flex flex-wrap items-center justify-center gap-2.5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-aroham-amber-light text-aroham-gold text-xs font-bold tracking-wide uppercase border border-amber-200/60 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-aroham-amber-light/95 backdrop-blur-sm text-aroham-gold text-xs font-bold tracking-wide uppercase border border-amber-200/80 shadow-sm">
               <Sparkles size={14} className="text-aroham-gold" />
               <span>Women-Led Alumnae Initiative</span>
             </div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-aroham-forest text-xs font-bold tracking-wide uppercase border border-emerald-200/80 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-aroham-forest text-xs font-bold tracking-wide uppercase border border-emerald-200/80 shadow-sm">
               <span>Founded by Bolster Girls Campus Alumnae</span>
             </div>
           </div>
 
           {/* Subtitle */}
-          <p className="text-xs uppercase font-extrabold tracking-[0.25em] text-aroham-forest">
+          <p className="text-xs uppercase font-extrabold tracking-[0.25em] text-aroham-forest drop-shadow-sm">
             Aroham Foundation
           </p>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-aroham-heading leading-[1.15] tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-aroham-heading leading-[1.15] tracking-tight drop-shadow-sm">
             Connected by Our Past, <br />
             <span className="italic font-serif font-normal text-aroham-dark">
               United by Our Future.
@@ -49,7 +58,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
           </h1>
 
           {/* Paragraph */}
-          <p className="text-base sm:text-lg text-aroham-body leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-aroham-body font-medium leading-relaxed max-w-2xl mx-auto">
             Bringing generations together, turning shared experiences into opportunities, and guiding students towards a future filled with possibilities.
           </p>
 
@@ -57,7 +66,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <button
               onClick={() => setActivePage('unimates')}
-              className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white text-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 flex items-center gap-2"
+              className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 flex items-center gap-2"
             >
               <span>Explore UniMates</span>
               <ArrowRight size={16} />
@@ -65,7 +74,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
 
             <button
               onClick={() => setActivePage('about')}
-              className="px-6 py-3.5 bg-white hover:bg-aroham-sage text-aroham-dark text-sm font-semibold rounded-lg border border-aroham-border shadow-sm hover:border-aroham-border-dark transition-all duration-200 flex items-center gap-2"
+              className="px-6 py-3.5 bg-white/95 backdrop-blur-sm hover:bg-white text-aroham-dark text-sm font-semibold rounded-lg border border-aroham-border shadow-md hover:border-aroham-border-dark transition-all duration-200 flex items-center gap-2"
             >
               <BookOpen size={16} className="text-aroham-forest" />
               <span>Our Story</span>
@@ -73,12 +82,12 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
           </div>
 
           {/* Metrics Row */}
-          <div className="grid grid-cols-3 gap-6 pt-8 border-t border-aroham-border/80 max-w-xl mx-auto">
+          <div className="grid grid-cols-3 gap-6 pt-6 max-w-xl mx-auto bg-white/75 backdrop-blur-md rounded-2xl p-5 border border-aroham-border/80 shadow-soft">
             <div>
               <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
                 10+
               </div>
-              <div className="text-xs font-medium text-aroham-muted mt-0.5">
+              <div className="text-xs font-semibold text-aroham-muted mt-0.5">
                 Alumnae Mentors
               </div>
             </div>
@@ -86,7 +95,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
               <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
                 100%
               </div>
-              <div className="text-xs font-medium text-aroham-muted mt-0.5">
+              <div className="text-xs font-semibold text-aroham-muted mt-0.5">
                 Student Match Rate
               </div>
             </div>
@@ -94,7 +103,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
               <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
                 Global
               </div>
-              <div className="text-xs font-medium text-aroham-muted mt-0.5">
+              <div className="text-xs font-semibold text-aroham-muted mt-0.5">
                 University Guidance
               </div>
             </div>

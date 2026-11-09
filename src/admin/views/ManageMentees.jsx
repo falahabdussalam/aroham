@@ -9,13 +9,15 @@ import {
   Clock, 
   UserPlus, 
   Sparkles,
+  Edit3,
   X
 } from 'lucide-react';
 
-export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, onDeleteMentee, onAddMentee }) {
+export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, onDeleteMentee, onAddMentee, onUpdateMentee }) {
   const [search, setSearch] = useState('');
   const [filterStatus, setFilterStatus] = useState('All');
   const [isAddOpen, setIsAddOpen] = useState(false);
+  const [editingMentee, setEditingMentee] = useState(null);
   const [newStudent, setNewStudent] = useState({
     name: '',
     schoolOrCollege: '',
@@ -188,13 +190,22 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                   </td>
 
                   <td className="py-4 px-6 text-right">
-                    <button
-                      onClick={() => onDeleteMentee(mentee.id)}
-                      className="p-2 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors"
-                      title="Delete Student Record"
-                    >
-                      <Trash2 size={16} />
-                    </button>
+                    <div className="flex items-center justify-end gap-2">
+                      <button
+                        onClick={() => setEditingMentee({ ...mentee })}
+                        className="p-2 rounded-lg text-aroham-muted hover:text-aroham-forest hover:bg-emerald-50 transition-colors"
+                        title="Edit Mentee Profile"
+                      >
+                        <Edit3 size={16} />
+                      </button>
+                      <button
+                        onClick={() => onDeleteMentee(mentee.id)}
+                        className="p-2 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors"
+                        title="Delete Student Record"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -289,6 +300,149 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                   className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl font-bold"
                 >
                   Enroll Mentee
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Mentee Modal */}
+      {editingMentee && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-aroham-dark/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-aroham-border shadow-popup space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-aroham-border">
+              <div className="flex items-center gap-2">
+                <span className="w-8 h-8 rounded-lg bg-emerald-100 text-aroham-forest flex items-center justify-center">
+                  <Edit3 size={16} />
+                </span>
+                <div>
+                  <h3 className="text-xl font-bold font-serif text-aroham-heading">
+                    Edit Mentee Profile
+                  </h3>
+                  <p className="text-xs text-aroham-muted font-mono">{editingMentee.id}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setEditingMentee(null)}
+                className="p-1 rounded-full text-aroham-muted hover:text-aroham-dark"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const mentorObj = mentors.find(m => m.id === editingMentee.assignedMentorId);
+                const toSave = {
+                  ...editingMentee,
+                  assignedMentorId: mentorObj ? mentorObj.id : null,
+                  assignedMentorName: mentorObj ? mentorObj.name : 'Unassigned',
+                  matchedDate: mentorObj && (!editingMentee.matchedDate || editingMentee.matchedDate === 'In Review')
+                    ? new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+                    : editingMentee.matchedDate
+                };
+                if (onUpdateMentee) onUpdateMentee(toSave);
+                setEditingMentee(null);
+              }}
+              className="space-y-4 text-xs"
+            >
+              <div>
+                <label className="block font-bold text-aroham-dark uppercase mb-1">Student Name *</label>
+                <input
+                  type="text"
+                  required
+                  value={editingMentee.name}
+                  onChange={(e) => setEditingMentee({ ...editingMentee, name: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold text-aroham-dark uppercase mb-1">Current School / College *</label>
+                <input
+                  type="text"
+                  required
+                  value={editingMentee.schoolOrCollege}
+                  onChange={(e) => setEditingMentee({ ...editingMentee, schoolOrCollege: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold text-aroham-dark uppercase mb-1">Target Major / Specialization *</label>
+                <input
+                  type="text"
+                  required
+                  value={editingMentee.targetMajor}
+                  onChange={(e) => setEditingMentee({ ...editingMentee, targetMajor: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Target Country</label>
+                  <input
+                    type="text"
+                    value={editingMentee.targetCountry || ''}
+                    onChange={(e) => setEditingMentee({ ...editingMentee, targetCountry: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Mentorship Status</label>
+                  <select
+                    value={editingMentee.status}
+                    onChange={(e) => setEditingMentee({ ...editingMentee, status: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  >
+                    <option value="Active Match">Active Match</option>
+                    <option value="Pending Match">Pending Match</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-bold text-aroham-dark uppercase mb-1">Assigned Alumna Mentor</label>
+                <select
+                  value={editingMentee.assignedMentorId || ''}
+                  onChange={(e) => {
+                    const selectedId = e.target.value;
+                    const mentorObj = mentors.find(m => m.id === selectedId);
+                    setEditingMentee({
+                      ...editingMentee,
+                      assignedMentorId: selectedId || null,
+                      assignedMentorName: mentorObj ? mentorObj.name : 'Unassigned',
+                      status: mentorObj ? 'Active Match' : editingMentee.status
+                    });
+                  }}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                >
+                  <option value="">-- Unassigned (Awaiting Match) --</option>
+                  {mentors.map((m) => (
+                    <option key={m.id} value={m.id}>
+                      {m.name} ({m.university} - {m.stream})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="pt-3 border-t border-aroham-border flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setEditingMentee(null)}
+                  className="px-4 py-2 border border-aroham-border rounded-xl text-aroham-body hover:bg-aroham-sage font-semibold"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl font-bold transition-all shadow"
+                >
+                  Save Mentee Changes
                 </button>
               </div>
             </form>

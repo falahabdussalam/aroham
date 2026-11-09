@@ -21,6 +21,23 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
   const [search, setSearch] = useState('');
   const [selectedStream, setSelectedStream] = useState('All');
   const [selectedMentorDetails, setSelectedMentorDetails] = useState(null);
+  const [editingMentor, setEditingMentor] = useState(null);
+
+  const streamOptions = [
+    'Engineering',
+    'Business',
+    'Medicine & Biomedical',
+    'Humanities',
+    'Computer Science & AI',
+    'Law & Public Policy'
+  ];
+
+  const statusOptions = [
+    'Available for 1-on-1 Guidance',
+    'Active Mentor',
+    'Weekend Sessions',
+    'Available for UCAS Guidance'
+  ];
 
   const streams = ['All', 'Engineering', 'Business', 'Medicine & Biomedical', 'Humanities', 'Computer Science & AI'];
 
@@ -168,6 +185,13 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                         title="View Details"
                       >
                         <Eye size={16} />
+                      </button>
+                      <button
+                        onClick={() => setEditingMentor({ ...mentor })}
+                        className="p-2 rounded-lg text-aroham-muted hover:text-aroham-forest hover:bg-emerald-50 transition-colors"
+                        title="Edit Mentor Profile"
+                      >
+                        <Edit3 size={16} />
                       </button>
                       <button
                         onClick={() => onDeleteMentor(mentor.id)}
@@ -337,14 +361,273 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 flex items-center gap-3">
+              <button
+                onClick={() => {
+                  setEditingMentor({ ...selectedMentorDetails });
+                  setSelectedMentorDetails(null);
+                }}
+                className="flex-1 py-2.5 bg-aroham-forest hover:bg-aroham-dark text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"
+              >
+                <Edit3 size={14} />
+                <span>Edit Profile</span>
+              </button>
               <button
                 onClick={() => setSelectedMentorDetails(null)}
-                className="w-full py-2.5 bg-aroham-dark text-white rounded-xl text-xs font-bold hover:bg-aroham-forest"
+                className="px-5 py-2.5 border border-aroham-border text-aroham-dark rounded-xl text-xs font-bold hover:bg-aroham-sage transition-all"
               >
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Mentor Modal */}
+      {editingMentor && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-aroham-dark/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-aroham-border shadow-popup space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-aroham-border">
+              <div className="flex items-center gap-2">
+                <span className="w-8 h-8 rounded-lg bg-emerald-100 text-aroham-forest flex items-center justify-center">
+                  <Edit3 size={16} />
+                </span>
+                <div>
+                  <h3 className="text-xl font-bold font-serif text-aroham-heading">
+                    Edit Mentor Profile
+                  </h3>
+                  <p className="text-xs text-aroham-muted font-mono">{editingMentor.id}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setEditingMentor(null)}
+                className="p-1 rounded-full text-aroham-muted hover:text-aroham-dark"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                let badgeColor = editingMentor.badgeColor || 'bg-emerald-100 text-aroham-forest border-emerald-200';
+                if (editingMentor.stream === 'Engineering') {
+                  badgeColor = 'bg-amber-100 text-aroham-gold border-amber-200';
+                } else if (editingMentor.stream === 'Medicine & Biomedical') {
+                  badgeColor = 'bg-orange-100 text-aroham-terracotta border-orange-200';
+                } else if (editingMentor.stream === 'Computer Science & AI') {
+                  badgeColor = 'bg-blue-100 text-blue-700 border-blue-200';
+                }
+                const toSave = { ...editingMentor, badgeColor };
+                if (onUpdateMentor) onUpdateMentor(toSave);
+                setEditingMentor(null);
+              }}
+              className="space-y-4 text-xs"
+            >
+              {/* Profile Picture In Edit Form */}
+              <div className="p-4 rounded-2xl bg-[#F4F8F5] border border-aroham-border flex flex-col sm:flex-row items-center gap-4">
+                <div className="shrink-0">
+                  {editingMentor.image ? (
+                    <div className="relative">
+                      <img
+                        src={editingMentor.image}
+                        alt="Preview"
+                        className="w-16 h-16 rounded-2xl object-cover border-2 border-aroham-forest shadow-sm"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setEditingMentor({ ...editingMentor, image: '' })}
+                        className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center shadow"
+                        title="Remove photo"
+                      >
+                        <X size={12} />
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="w-16 h-16 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-center text-aroham-dark font-serif font-bold text-base shadow-sm">
+                      {(editingMentor.name || 'M').split(' ').map(n => n[0]).slice(0, 2).join('')}
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex-1 space-y-1.5 text-center sm:text-left w-full">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-aroham-dark uppercase">Profile Picture</span>
+                    {editingMentor.image && (
+                      <button
+                        type="button"
+                        onClick={() => setEditingMentor({ ...editingMentor, image: '' })}
+                        className="text-[11px] text-red-500 hover:text-red-700 font-semibold"
+                      >
+                        Remove Photo
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-2 pt-0.5">
+                    <label className="px-3 py-1.5 rounded-xl bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-semibold cursor-pointer transition-all shadow-sm flex items-center gap-1.5">
+                      <Upload size={13} />
+                      <span>Upload from Device</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files && e.target.files[0];
+                          if (file) {
+                            const reader = new FileReader();
+                            reader.onloadend = () => {
+                              setEditingMentor({ ...editingMentor, image: reader.result });
+                            };
+                            reader.readAsDataURL(file);
+                          }
+                        }}
+                      />
+                    </label>
+
+                    <span className="text-[11px] text-aroham-muted">or</span>
+
+                    <input
+                      type="url"
+                      value={editingMentor.image && !editingMentor.image.startsWith('data:') ? editingMentor.image : ''}
+                      onChange={(e) => setEditingMentor({ ...editingMentor, image: e.target.value })}
+                      placeholder="Paste image link URL..."
+                      className="flex-1 min-w-[150px] px-3 py-1.5 rounded-xl border border-aroham-border bg-white text-xs focus:outline-none focus:ring-1 focus:ring-aroham-dark"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Name & University */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Full Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingMentor.name}
+                    onChange={(e) => setEditingMentor({ ...editingMentor, name: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">University / Institution *</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingMentor.university}
+                    onChange={(e) => setEditingMentor({ ...editingMentor, university: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  />
+                </div>
+              </div>
+
+              {/* Major & Stream */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Major / Degree *</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingMentor.major}
+                    onChange={(e) => setEditingMentor({ ...editingMentor, major: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Discipline Stream</label>
+                  <select
+                    value={editingMentor.stream}
+                    onChange={(e) => setEditingMentor({ ...editingMentor, stream: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  >
+                    {streamOptions.map(st => (
+                      <option key={st} value={st}>{st}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Location & Status */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Location *</label>
+                  <input
+                    type="text"
+                    required
+                    value={editingMentor.location}
+                    onChange={(e) => setEditingMentor({ ...editingMentor, location: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Mentorship Status</label>
+                  <select
+                    value={editingMentor.status}
+                    onChange={(e) => setEditingMentor({ ...editingMentor, status: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  >
+                    {statusOptions.map(st => (
+                      <option key={st} value={st}>{st}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Email & Phone */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Contact Email</label>
+                  <input
+                    type="email"
+                    value={editingMentor.email || ''}
+                    onChange={(e) => setEditingMentor({ ...editingMentor, email: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-aroham-dark uppercase mb-1">Phone Number</label>
+                  <input
+                    type="text"
+                    value={editingMentor.phone || ''}
+                    onChange={(e) => setEditingMentor({ ...editingMentor, phone: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                  />
+                </div>
+              </div>
+
+              {/* Description */}
+              <div>
+                <label className="block font-bold text-aroham-dark uppercase mb-1">Mentorship Overview & Focus *</label>
+                <textarea
+                  rows={3}
+                  required
+                  value={editingMentor.description}
+                  onChange={(e) => setEditingMentor({ ...editingMentor, description: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                />
+              </div>
+
+              <div className="pt-3 border-t border-aroham-border flex items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={() => setEditingMentor(null)}
+                  className="px-4 py-2 border border-aroham-border rounded-xl text-aroham-body hover:bg-aroham-sage font-semibold"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl font-bold transition-all shadow"
+                >
+                  Save Profile Changes
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

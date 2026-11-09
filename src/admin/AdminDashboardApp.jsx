@@ -126,6 +126,10 @@ export default function AdminDashboardApp({
     setMentees([newMentee, ...mentees]);
   };
 
+  const handleUpdateMentee = (updatedMentee) => {
+    setMentees(mentees.map(m => m.id === updatedMentee.id ? updatedMentee : m));
+  };
+
   const handleUpdateMenteeStatus = (menteeId, newStatus) => {
     setMentees(mentees.map(m => m.id === menteeId ? { ...m, status: newStatus } : m));
   };
@@ -209,6 +213,7 @@ export default function AdminDashboardApp({
           mentees={mentees}
           mentors={mentors}
           onAddMentee={handleAddMentee}
+          onUpdateMentee={handleUpdateMentee}
           onUpdateMenteeStatus={handleUpdateMenteeStatus}
           onDeleteMentee={handleDeleteMentee}
         />

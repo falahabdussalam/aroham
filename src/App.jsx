@@ -44,6 +44,31 @@ export default function App() {
     return saved ? JSON.parse(saved) : INITIAL_APPLICATIONS;
   });
 
+  // Automatically persist state changes to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('aroham_mentors', JSON.stringify(mentors));
+    } catch (e) {}
+  }, [mentors]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('aroham_events', JSON.stringify(events));
+    } catch (e) {}
+  }, [events]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('aroham_mentees', JSON.stringify(mentees));
+    } catch (e) {}
+  }, [mentees]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('aroham_applications', JSON.stringify(applications));
+    } catch (e) {}
+  }, [applications]);
+
   // Listen to cross-tab storage changes and custom sync events
   useEffect(() => {
     const handleStorageChange = (e) => {

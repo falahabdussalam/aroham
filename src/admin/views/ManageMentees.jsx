@@ -18,6 +18,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
   const [filterStatus, setFilterStatus] = useState('All');
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [editingMentee, setEditingMentee] = useState(null);
+  const [menteeToDelete, setMenteeToDelete] = useState(null);
   const [newStudent, setNewStudent] = useState({
     name: '',
     schoolOrCollege: '',
@@ -117,8 +118,86 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
         </div>
       </div>
 
-      {/* Mentees Table */}
-      <div className="bg-white rounded-3xl border border-aroham-border shadow-soft overflow-hidden">
+      {/* Mobile Card List (shown on mobile, hidden on desktop) */}
+      <div className="md:hidden space-y-3">
+        {filtered.map((mentee) => (
+          <div
+            key={mentee.id}
+            className="bg-white rounded-2xl p-4 border border-aroham-border shadow-soft space-y-3"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 text-aroham-gold font-bold font-serif text-sm flex items-center justify-center border border-amber-200 shrink-0">
+                  {mentee.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                </div>
+                <div>
+                  <h4 className="font-bold font-serif text-aroham-heading text-base leading-snug">
+                    {mentee.name}
+                  </h4>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-aroham-sage text-aroham-muted border border-aroham-border">
+                      {mentee.id}
+                    </span>
+                    <button
+                      onClick={() => onUpdateMenteeStatus(mentee.id, mentee.status === 'Active Match' ? 'Pending Match' : 'Active Match')}
+                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${
+                        mentee.status === 'Active Match'
+                          ? 'bg-emerald-50 text-aroham-forest border-emerald-200'
+                          : 'bg-amber-50 text-aroham-gold border-amber-200'
+                      }`}
+                    >
+                      {mentee.status}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-1 text-xs pt-1 border-t border-aroham-border/60">
+              <div className="text-aroham-muted">
+                {mentee.schoolOrCollege}
+              </div>
+              <div className="font-semibold text-aroham-forest flex items-center gap-1.5">
+                <GraduationCap size={14} />
+                <span>{mentee.targetMajor}</span>
+              </div>
+              <div className="text-xs text-aroham-heading">
+                Mentor: <span className="font-semibold">{mentee.assignedMentorName}</span>
+              </div>
+            </div>
+
+            {/* Mobile Touch Action Buttons */}
+            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-aroham-border/60">
+              <button
+                type="button"
+                onClick={() => setEditingMentee({ ...mentee })}
+                className="py-2 px-3 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-emerald-200 active:scale-95"
+              >
+                <Edit3 size={13} />
+                <span>Edit Profile</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setMenteeToDelete(mentee)}
+                className="py-2 px-3 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-red-200 active:scale-95"
+              >
+                <Trash2 size={13} />
+                <span>Remove</span>
+              </button>
+            </div>
+          </div>
+        ))}
+
+        {filtered.length === 0 && (
+          <div className="bg-white rounded-2xl p-8 border border-aroham-border text-center text-aroham-muted text-xs">
+            No mentees found matching your search.
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Mentees Table (hidden on mobile) */}
+      <div className="hidden md:block bg-white rounded-3xl border border-aroham-border shadow-soft overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead className="bg-[#F4F8F5] text-xs font-bold text-aroham-muted uppercase tracking-wider border-b border-aroham-border">
@@ -192,6 +271,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                   <td className="py-4 px-6 text-right">
                     <div className="flex items-center justify-end gap-2">
                       <button
+                        type="button"
                         onClick={() => setEditingMentee({ ...mentee })}
                         className="p-2 rounded-lg text-aroham-muted hover:text-aroham-forest hover:bg-emerald-50 transition-colors"
                         title="Edit Mentee Profile"
@@ -199,7 +279,8 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                         <Edit3 size={16} />
                       </button>
                       <button
-                        onClick={() => onDeleteMentee(mentee.id)}
+                        type="button"
+                        onClick={() => setMenteeToDelete(mentee)}
                         className="p-2 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors"
                         title="Delete Student Record"
                       >
@@ -430,22 +511,77 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                 </select>
               </div>
 
-              <div className="pt-3 border-t border-aroham-border flex items-center justify-end gap-3">
+              <div className="pt-3 border-t border-aroham-border flex flex-wrap items-center justify-between gap-3">
                 <button
                   type="button"
-                  onClick={() => setEditingMentee(null)}
-                  className="px-4 py-2 border border-aroham-border rounded-xl text-aroham-body hover:bg-aroham-sage font-semibold"
+                  onClick={() => {
+                    setMenteeToDelete(editingMentee);
+                  }}
+                  className="px-3.5 py-2 text-xs font-bold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl flex items-center gap-1.5 transition-colors active:scale-95"
                 >
-                  Cancel
+                  <Trash2 size={13} />
+                  <span>Remove Student</span>
                 </button>
-                <button
-                  type="submit"
-                  className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl font-bold transition-all shadow"
-                >
-                  Save Mentee Changes
-                </button>
+
+                <div className="flex items-center gap-2 ml-auto">
+                  <button
+                    type="button"
+                    onClick={() => setEditingMentee(null)}
+                    className="px-4 py-2 border border-aroham-border rounded-xl text-aroham-body hover:bg-aroham-sage text-xs font-semibold"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow"
+                  >
+                    Save Mentee Changes
+                  </button>
+                </div>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* In-App Delete Confirmation Modal */}
+      {menteeToDelete && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-aroham-dark/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-aroham-border shadow-popup space-y-5 text-center">
+            <div className="w-16 h-16 rounded-full bg-red-50 text-red-600 flex items-center justify-center mx-auto border border-red-100">
+              <Trash2 size={28} />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-xl font-bold font-serif text-aroham-heading">
+                Remove Student Record?
+              </h3>
+              <p className="text-sm text-aroham-body leading-relaxed">
+                Are you sure you want to remove <span className="font-bold text-aroham-dark">{menteeToDelete.name}</span> ({menteeToDelete.schoolOrCollege})?
+              </p>
+            </div>
+            <div className="flex items-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setMenteeToDelete(null)}
+                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-bold text-aroham-body hover:bg-aroham-sage transition-all"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  onDeleteMentee(menteeToDelete.id);
+                  setMenteeToDelete(null);
+                  if (editingMentee && editingMentee.id === menteeToDelete.id) {
+                    setEditingMentee(null);
+                  }
+                }}
+                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
+              >
+                <Trash2 size={14} />
+                <span>Yes, Remove</span>
+              </button>
+            </div>
           </div>
         </div>
       )}

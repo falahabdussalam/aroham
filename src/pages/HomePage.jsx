@@ -5,7 +5,6 @@ import {
   Sparkles, 
   Building2, 
   Users, 
-  GraduationCap, 
   ShieldCheck, 
   BookOpen, 
   HeartHandshake, 
@@ -13,7 +12,6 @@ import {
   TrendingUp, 
   Mail 
 } from 'lucide-react';
-import { ArohamEmblem } from '../components/ArohamLogo';
 
 export default function HomePage({ setActivePage, onOpenGetInvolved }) {
   return (
@@ -25,114 +23,81 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
         {/* Soft background glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-emerald-100/40 via-amber-100/30 to-transparent blur-3xl pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-aroham-amber-light text-aroham-gold text-xs font-bold tracking-wide uppercase border border-amber-200/60 shadow-sm">
-                <Sparkles size={14} className="text-aroham-gold" />
-                <span>Women-Led Alumnae Initiative</span>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-7">
+          {/* Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-aroham-amber-light text-aroham-gold text-xs font-bold tracking-wide uppercase border border-amber-200/60 shadow-sm">
+              <Sparkles size={14} className="text-aroham-gold" />
+              <span>Women-Led Alumnae Initiative</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-aroham-forest text-xs font-bold tracking-wide uppercase border border-emerald-200/80 shadow-sm">
+              <span>Founded by Bolster Girls Campus Alumnae</span>
+            </div>
+          </div>
+
+          {/* Subtitle */}
+          <p className="text-xs uppercase font-extrabold tracking-[0.25em] text-aroham-forest">
+            Aroham Foundation
+          </p>
+
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-aroham-heading leading-[1.15] tracking-tight">
+            Connected by Our Past, <br />
+            <span className="italic font-serif font-normal text-aroham-dark">
+              United by Our Future.
+            </span>
+          </h1>
+
+          {/* Paragraph */}
+          <p className="text-base sm:text-lg text-aroham-body leading-relaxed max-w-2xl mx-auto">
+            Bringing generations together, turning shared experiences into opportunities, and guiding students towards a future filled with possibilities.
+          </p>
+
+          {/* Action Buttons with smooth section scrolling */}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <button
+              onClick={() => setActivePage('unimates')}
+              className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white text-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 flex items-center gap-2"
+            >
+              <span>Explore UniMates</span>
+              <ArrowRight size={16} />
+            </button>
+
+            <button
+              onClick={() => setActivePage('about')}
+              className="px-6 py-3.5 bg-white hover:bg-aroham-sage text-aroham-dark text-sm font-semibold rounded-lg border border-aroham-border shadow-sm hover:border-aroham-border-dark transition-all duration-200 flex items-center gap-2"
+            >
+              <BookOpen size={16} className="text-aroham-forest" />
+              <span>Our Story</span>
+            </button>
+          </div>
+
+          {/* Metrics Row */}
+          <div className="grid grid-cols-3 gap-6 pt-8 border-t border-aroham-border/80 max-w-xl mx-auto">
+            <div>
+              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
+                10+
               </div>
-
-              {/* Subtitle */}
-              <p className="text-xs uppercase font-extrabold tracking-[0.25em] text-aroham-forest">
-                Aroham Foundation
-              </p>
-
-              {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-aroham-heading leading-[1.15] tracking-tight">
-                Connected by Our Past, <br />
-                <span className="italic font-serif font-normal text-aroham-dark">
-                  United by Our Future.
-                </span>
-              </h1>
-
-              {/* Paragraph */}
-              <p className="text-base sm:text-lg text-aroham-body leading-relaxed max-w-xl">
-                Bringing generations together, turning shared experiences into opportunities, and guiding students towards a future filled with possibilities.
-              </p>
-
-              {/* Action Buttons with smooth section scrolling */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <button
-                  onClick={() => setActivePage('unimates')}
-                  className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white text-sm font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 flex items-center gap-2"
-                >
-                  <span>Explore UniMates</span>
-                  <ArrowRight size={16} />
-                </button>
-
-                <button
-                  onClick={() => setActivePage('about')}
-                  className="px-6 py-3.5 bg-white hover:bg-aroham-sage text-aroham-dark text-sm font-semibold rounded-lg border border-aroham-border shadow-sm hover:border-aroham-border-dark transition-all duration-200 flex items-center gap-2"
-                >
-                  <BookOpen size={16} className="text-aroham-forest" />
-                  <span>Our Story</span>
-                </button>
-              </div>
-
-              {/* Metrics Row */}
-              <div className="grid grid-cols-3 gap-6 pt-6 border-t border-aroham-border/80 max-w-lg">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
-                    10+
-                  </div>
-                  <div className="text-xs font-medium text-aroham-muted mt-0.5">
-                    Alumnae Mentors
-                  </div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
-                    100%
-                  </div>
-                  <div className="text-xs font-medium text-aroham-muted mt-0.5">
-                    Student Match Rate
-                  </div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
-                    Global
-                  </div>
-                  <div className="text-xs font-medium text-aroham-muted mt-0.5">
-                    University Guidance
-                  </div>
-                </div>
+              <div className="text-xs font-medium text-aroham-muted mt-0.5">
+                Alumnae Mentors
               </div>
             </div>
-
-            {/* Right Card / Visual Presentation */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-md bg-white rounded-3xl p-8 sm:p-10 shadow-elevated border border-aroham-border flex flex-col items-center text-center">
-                {/* Cohort status badge */}
-                <div className="absolute top-6 right-6 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200/80">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Active Cohort 2025</span>
-                </div>
-
-                {/* Original Logo with subtle back glow */}
-                <div className="my-6 relative flex flex-col items-center">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-amber-200/40 via-emerald-200/40 to-transparent rounded-full blur-2xl -z-10 scale-125" />
-                  <img
-                    src="/logo.png"
-                    alt="Aroham Foundation Logo"
-                    className="w-56 sm:w-64 h-auto object-contain mx-auto drop-shadow-sm"
-                  />
-                </div>
-
-                <p className="text-xs font-medium tracking-wider uppercase text-aroham-forest/80 mt-2 mb-6">
-                  Nurturing Generational Guidance
-                </p>
-
-                {/* Bottom affiliation pill */}
-                <div className="w-full py-2.5 px-4 rounded-xl bg-aroham-dark text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-sm">
-                  <GraduationCap size={15} className="text-amber-300" />
-                  <span>Founded by Bolster Girls Campus Alumnae</span>
-                </div>
+            <div>
+              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
+                100%
+              </div>
+              <div className="text-xs font-medium text-aroham-muted mt-0.5">
+                Student Match Rate
               </div>
             </div>
-
+            <div>
+              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
+                Global
+              </div>
+              <div className="text-xs font-medium text-aroham-muted mt-0.5">
+                University Guidance
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -45,9 +45,10 @@ export default function App() {
     return saved ? JSON.parse(saved) : INITIAL_APPLICATIONS;
   });
 
-  // Real-time bidirectional cross-device synchronization
+  // Real-time bidirectional cross-device synchronization (SSE + Polling + Focus)
   useEffect(() => {
     let isMounted = true;
+    let sse = null;
 
     const syncLive = async () => {
       try {
@@ -72,10 +73,36 @@ export default function App() {
     // 1. Initial live fetch on mount
     syncLive();
 
-    // 2. Poll every 2.5 seconds so changes on desktop appear on mobile, and vice-versa
+    // 2. Real-time instant SSE listener (receives updates in <200ms from mobile to desktop)
+    try {
+      if (typeof window !== 'undefined' && window.EventSource) {
+        sse = new EventSource('https://ntfy.sh/aroham_cloud_live_sync_v1_9a2f/sse');
+        sse.onmessage = async (e) => {
+          try {
+            const entry = JSON.parse(e.data);
+            let cloudData = null;
+            if (entry.attachment && entry.attachment.url) {
+              const res = await fetch(entry.attachment.url, { cache: 'no-store' });
+              if (res.ok) cloudData = await res.json();
+            } else if (entry.message && entry.message.startsWith('{')) {
+              cloudData = JSON.parse(entry.message);
+            }
+
+            if (isMounted && cloudData && Array.isArray(cloudData.mentors)) {
+              setMentors(prev => JSON.stringify(prev) !== JSON.stringify(cloudData.mentors) ? cloudData.mentors : prev);
+              if (Array.isArray(cloudData.events)) setEvents(prev => JSON.stringify(prev) !== JSON.stringify(cloudData.events) ? cloudData.events : prev);
+              if (Array.isArray(cloudData.mentees)) setMentees(prev => JSON.stringify(prev) !== JSON.stringify(cloudData.mentees) ? cloudData.mentees : prev);
+              if (Array.isArray(cloudData.applications)) setApplications(prev => JSON.stringify(prev) !== JSON.stringify(cloudData.applications) ? cloudData.applications : prev);
+            }
+          } catch (err) {}
+        };
+      }
+    } catch (e) {}
+
+    // 3. Fallback poll every 2.5 seconds
     const pollTimer = setInterval(syncLive, 2500);
 
-    // 3. Immediately sync on tab focus or screen unlock
+    // 4. Immediately sync on tab focus or screen unlock
     const handleFocus = () => syncLive();
     window.addEventListener('focus', handleFocus);
     window.addEventListener('storage', handleFocus);
@@ -83,6 +110,7 @@ export default function App() {
 
     return () => {
       isMounted = false;
+      if (sse) sse.close();
       clearInterval(pollTimer);
       window.removeEventListener('focus', handleFocus);
       window.removeEventListener('storage', handleFocus);

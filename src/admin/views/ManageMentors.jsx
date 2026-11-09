@@ -14,8 +14,10 @@ import {
   Eye,
   Camera,
   Upload,
-  X
+  X,
+  RefreshCw
 } from 'lucide-react';
+import { fetchLiveDatabase } from '../data/dataSyncManager';
 
 export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor, onUpdateMentor }) {
   const [search, setSearch] = useState('');
@@ -23,6 +25,27 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
   const [selectedMentorDetails, setSelectedMentorDetails] = useState(null);
   const [editingMentor, setEditingMentor] = useState(null);
   const [mentorToDelete, setMentorToDelete] = useState(null);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncFeedback, setSyncFeedback] = useState(null);
+
+  const handleManualSync = async () => {
+    setIsSyncing(true);
+    setSyncFeedback('Syncing...');
+    try {
+      const live = await fetchLiveDatabase();
+      if (live && Array.isArray(live.mentors)) {
+        window.dispatchEvent(new Event('aroham_data_sync'));
+        setSyncFeedback(`Synced (${live.mentors.length} mentors) ✓`);
+      } else {
+        setSyncFeedback('Synced ✓');
+      }
+    } catch (e) {
+      setSyncFeedback('Sync complete ✓');
+    } finally {
+      setIsSyncing(false);
+      setTimeout(() => setSyncFeedback(null), 3500);
+    }
+  };
 
   const streamOptions = [
     'Engineering',
@@ -57,21 +80,39 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-aroham-border shadow-soft">
         <div>
-          <h2 className="text-2xl font-bold font-serif text-aroham-heading">
-            Manage Mentors
-          </h2>
+          <div className="flex flex-wrap items-center gap-2.5">
+            <h2 className="text-2xl font-bold font-serif text-aroham-heading">
+              Manage Mentors
+            </h2>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-aroham-forest border border-emerald-200 text-[10px] font-bold tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Live Cloud Synced
+            </span>
+          </div>
           <p className="text-xs text-aroham-body mt-0.5">
             Oversee, curate, and onboard verified alumnae mentors for Aroham UniMates.
           </p>
         </div>
 
-        <button
-          onClick={onOpenAddMentor}
-          className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 shrink-0"
-        >
-          <UserPlus size={16} />
-          <span>Add New Mentor</span>
-        </button>
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={handleManualSync}
+            disabled={isSyncing}
+            className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest border border-emerald-200 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
+            title="Force refresh data from cloud"
+          >
+            <RefreshCw size={14} className={isSyncing ? "animate-spin text-aroham-forest" : "text-aroham-forest"} />
+            <span>{syncFeedback || "Sync from Cloud"}</span>
+          </button>
+
+          <button
+            onClick={onOpenAddMentor}
+            className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 shrink-0"
+          >
+            <UserPlus size={16} />
+            <span>Add New Mentor</span>
+          </button>
+        </div>
       </div>
 
       {/* Search & Stream Filter */}

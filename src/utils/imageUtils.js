@@ -50,3 +50,4 @@ export function compressImageFile(file, maxWidth = 360, maxHeight = 360, quality
     reader.readAsDataURL(file);
   });
 }
+

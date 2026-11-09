@@ -32,3 +32,9 @@ dist-ssr
 *.html
 !index.html
 
+# Local Database & Environment
+data/
+.env
+.env.local
+
+

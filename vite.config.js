@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
 import { getMongoAllData, saveMongoAllData, getMongoStatus } from './server/db.js';
+import { getMysqlAllData, saveMysqlAllData, getMysqlStatus } from './server/mysql.js';
 
 function arohamApiPlugin() {
   const dbPath = path.resolve(__dirname, 'src/admin/data/aroham_db.json');
@@ -19,12 +20,23 @@ function arohamApiPlugin() {
       return;
     }
 
-    // 1. Status endpoint
+    // 1. Status endpoint: returns both MongoDB and MySQL statuses
     if (req.url === '/status' || req.url === '/api/status') {
       try {
-        const status = await getMongoStatus();
+        const [mongoStatus, mysqlStatus] = await Promise.all([
+          getMongoStatus().catch(err => ({ connected: false, error: err.message })),
+          getMysqlStatus().catch(err => ({ connected: false, error: err.message }))
+        ]);
+
+        const response = {
+          connected: Boolean(mongoStatus?.connected || mysqlStatus?.connected),
+          active: mongoStatus?.connected ? 'mongodb' : (mysqlStatus?.connected ? 'mysql' : 'json_backup'),
+          mongo: mongoStatus,
+          mysql: mysqlStatus
+        };
+
         res.statusCode = 200;
-        res.end(JSON.stringify(status));
+        res.end(JSON.stringify(response));
       } catch (err) {
         res.statusCode = 500;
         res.end(JSON.stringify({ error: err.message }));
@@ -35,8 +47,8 @@ function arohamApiPlugin() {
     // 2. Main data endpoint
     if (req.url === '/data' || req.url.startsWith('/data?') || req.url.startsWith('/api/data')) {
       if (req.method === 'GET') {
+        // Attempt MongoDB query first
         try {
-          // Attempt MongoDB query first
           const mongoData = await getMongoAllData();
           if (mongoData && Array.isArray(mongoData.mentors) && mongoData.mentors.length > 0) {
             res.statusCode = 200;
@@ -45,6 +57,18 @@ function arohamApiPlugin() {
           }
         } catch (err) {
           console.warn('[Vite API] MongoDB read fallback:', err.message);
+        }
+
+        // Attempt MySQL query if MongoDB was unavailable
+        try {
+          const mysqlData = await getMysqlAllData();
+          if (mysqlData && Array.isArray(mysqlData.mentors) && mysqlData.mentors.length > 0) {
+            res.statusCode = 200;
+            res.end(JSON.stringify(mysqlData));
+            return;
+          }
+        } catch (err) {
+          console.warn('[Vite API] MySQL read fallback:', err.message);
         }
 
         // Fallback to local JSON file
@@ -66,21 +90,31 @@ function arohamApiPlugin() {
           try {
             const parsed = JSON.parse(body);
 
-            // 1. Save to MongoDB
-            let mongoResult = null;
-            try {
-              mongoResult = await saveMongoAllData(parsed);
-            } catch (mErr) {
-              console.warn('[Vite API] MongoDB save error:', mErr.message);
-            }
+            // 1. Save to MongoDB & MySQL in parallel
+            const [mongoResult, mysqlResult] = await Promise.all([
+              saveMongoAllData(parsed).catch(mErr => {
+                console.warn('[Vite API] MongoDB save error:', mErr.message);
+                return { success: false, error: mErr.message };
+              }),
+              saveMysqlAllData(parsed).catch(myErr => {
+                console.warn('[Vite API] MySQL save error:', myErr.message);
+                return { success: false, error: myErr.message };
+              })
+            ]);
 
             // 2. Mirror to JSON file on disk
-            fs.writeFileSync(dbPath, JSON.stringify(parsed, null, 2), 'utf8');
+            try {
+              fs.writeFileSync(dbPath, JSON.stringify(parsed, null, 2), 'utf8');
+            } catch (fsErr) {
+              console.warn('[Vite API] JSON disk mirror warning:', fsErr.message);
+            }
 
             res.statusCode = 200;
             res.end(JSON.stringify({
               success: true,
-              database: mongoResult?.success ? 'mongodb' : 'json_backup',
+              mongo: mongoResult?.success ?? false,
+              mysql: mysqlResult?.success ?? false,
+              database: mongoResult?.success ? 'mongodb' : (mysqlResult?.success ? 'mysql' : 'json_backup'),
               timestamp: new Date().toISOString()
             }));
           } catch (err) {

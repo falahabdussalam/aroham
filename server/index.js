@@ -4,13 +4,6 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import { 
-  connectToMongo, 
-  getMongoAllData, 
-  saveMongoAllData, 
-  getMongoStatus,
-  seedMongoDatabase 
-} from './db.js';
 import {
   connectToMysql,
   getMysqlAllData,
@@ -40,35 +33,25 @@ if (fs.existsSync(distPath)) {
 // REST API ROUTES
 // -------------------------------------------------------------
 
-// 1. Health & Database Status (MongoDB + MySQL)
+// 1. Health & Database Status (MySQL)
 app.get('/api/status', async (req, res) => {
-  const [mongoStatus, mysqlStatus] = await Promise.all([
-    getMongoStatus().catch(e => ({ connected: false, error: e.message })),
-    getMysqlStatus().catch(e => ({ connected: false, error: e.message }))
-  ]);
+  const mysqlStatus = await getMysqlStatus().catch(e => ({ connected: false, error: e.message }));
   res.json({
-    connected: Boolean(mongoStatus?.connected || mysqlStatus?.connected),
-    active: mongoStatus?.connected ? 'mongodb' : (mysqlStatus?.connected ? 'mysql' : 'json_backup'),
-    mongo: mongoStatus,
+    connected: Boolean(mysqlStatus?.connected),
+    active: mysqlStatus?.connected ? 'mysql' : 'json_backup',
     mysql: mysqlStatus
   });
 });
 
 // 2. Full Database Bundle (GET & POST)
 app.get('/api/data', async (req, res) => {
-  // 1. Try MongoDB
-  const mongoData = await getMongoAllData();
-  if (mongoData && Array.isArray(mongoData.mentors) && mongoData.mentors.length > 0) {
-    return res.json(mongoData);
-  }
-
-  // 2. Try MySQL
+  // 1. Try MySQL
   const mysqlData = await getMysqlAllData();
   if (mysqlData && Array.isArray(mysqlData.mentors) && mysqlData.mentors.length > 0) {
     return res.json(mysqlData);
   }
 
-  // 3. Fallback to local JSON disk file
+  // 2. Fallback to local JSON disk file
   const jsonPath = path.resolve(__dirname, '../src/admin/data/aroham_db.json');
   if (fs.existsSync(jsonPath)) {
     return res.json(JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
@@ -78,10 +61,7 @@ app.get('/api/data', async (req, res) => {
 });
 
 app.post('/api/data', async (req, res) => {
-  const [mongoRes, mysqlRes] = await Promise.all([
-    saveMongoAllData(req.body).catch(e => ({ success: false, error: e.message })),
-    saveMysqlAllData(req.body).catch(e => ({ success: false, error: e.message }))
-  ]);
+  const mysqlRes = await saveMysqlAllData(req.body).catch(e => ({ success: false, error: e.message }));
 
   // Mirror to JSON disk backup
   try {
@@ -91,18 +71,13 @@ app.post('/api/data', async (req, res) => {
 
   res.json({
     success: true,
-    mongo: mongoRes?.success ?? false,
     mysql: mysqlRes?.success ?? false,
+    database: mysqlRes?.success ? 'mysql' : 'json_backup',
     timestamp: new Date().toISOString()
   });
 });
 
-// 3. Database Re-seed Endpoints
-app.post('/api/seed/mongo', async (req, res) => {
-  const result = await seedMongoDatabase();
-  res.json(result);
-});
-
+// 3. Database Re-seed Endpoint
 app.post('/api/seed/mysql', async (req, res) => {
   const result = await seedMysqlDatabase();
   res.json(result);
@@ -110,23 +85,16 @@ app.post('/api/seed/mysql', async (req, res) => {
 
 // 4. Mentors Endpoints
 app.get('/api/mentors', async (req, res) => {
-  const db = await connectToMongo();
-  if (db) {
-    const mentors = await db.collection('mentors').find({}, { projection: { _id: 0 } }).toArray();
-    return res.json(mentors);
-  }
   const all = await getMysqlAllData();
   if (all && all.mentors) return res.json(all.mentors);
-  res.status(503).json({ error: 'Database disconnected' });
-});
-
-app.post('/api/mentors', async (req, res) => {
-  const mentor = { ...req.body, updatedAt: new Date() };
-  const db = await connectToMongo();
-  if (db) {
-    await db.collection('mentors').updateOne({ id: mentor.id }, { $set: mentor }, { upsert: true });
+  
+  // Fallback to local JSON
+  const jsonPath = path.resolve(__dirname, '../src/admin/data/aroham_db.json');
+  if (fs.existsSync(jsonPath)) {
+    const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+    return res.json(data.mentors || []);
   }
-  res.json({ success: true, mentor });
+  res.status(503).json({ error: 'Database disconnected' });
 });
 
 // Serve frontend for SPA routing in production
@@ -142,6 +110,5 @@ app.get('*', (req, res) => {
 // Start Server
 app.listen(PORT, '0.0.0.0', async () => {
   console.log(`[Aroham Server] Listening on http://0.0.0.0:${PORT}`);
-  await connectToMongo();
   await connectToMysql();
 });

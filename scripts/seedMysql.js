@@ -27,3 +27,4 @@ main().catch(err => {
   console.error('Fatal error during MySQL seeding:', err);
   process.exit(1);
 });
+

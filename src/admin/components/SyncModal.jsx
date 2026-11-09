@@ -155,7 +155,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
         <div className="flex border-b border-aroham-border bg-[#F4F8F5] p-2 gap-1.5 text-xs font-bold overflow-x-auto">
           <button
             onClick={() => setActiveTab('cloud')}
-            className={`flex-1 py-2 px-2 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
+            className={`flex-1 py-2 px-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
               activeTab === 'cloud'
                 ? 'bg-white text-aroham-dark shadow-sm'
                 : 'text-aroham-muted hover:text-aroham-dark'
@@ -166,32 +166,20 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
           </button>
 
           <button
-            onClick={() => setActiveTab('mongo')}
-            className={`flex-1 py-2 px-2 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
-              activeTab === 'mongo'
-                ? 'bg-white text-aroham-dark shadow-sm'
-                : 'text-aroham-muted hover:text-aroham-dark'
-            }`}
-          >
-            <Database size={14} className={activeTab === 'mongo' ? 'text-emerald-600' : ''} />
-            <span>🍃 MongoDB</span>
-          </button>
-
-          <button
             onClick={() => setActiveTab('mysql')}
-            className={`flex-1 py-2 px-2 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
+            className={`flex-1 py-2 px-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
               activeTab === 'mysql'
                 ? 'bg-white text-aroham-dark shadow-sm'
                 : 'text-aroham-muted hover:text-aroham-dark'
             }`}
           >
             <Database size={14} className={activeTab === 'mysql' ? 'text-sky-600' : ''} />
-            <span>🐬 MySQL</span>
+            <span>🐬 MySQL Database</span>
           </button>
 
           <button
             onClick={() => setActiveTab('copy')}
-            className={`flex-1 py-2 px-2 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
+            className={`flex-1 py-2 px-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
               activeTab === 'copy'
                 ? 'bg-white text-aroham-dark shadow-sm'
                 : 'text-aroham-muted hover:text-aroham-dark'
@@ -203,7 +191,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
 
           <button
             onClick={() => setActiveTab('wifi')}
-            className={`flex-1 py-2 px-2 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
+            className={`flex-1 py-2 px-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
               activeTab === 'wifi'
                 ? 'bg-white text-aroham-dark shadow-sm'
                 : 'text-aroham-muted hover:text-aroham-dark'
@@ -262,102 +250,6 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                   <span>Pull from Cloud</span>
                   <span className="text-[10px] text-aroham-muted font-normal">Get other device's data</span>
                 </button>
-              </div>
-            </div>
-          )}
-
-          {/* TAB: MongoDB Database */}
-          {activeTab === 'mongo' && (
-            <div className="space-y-4 text-xs">
-              <div className={`p-4 rounded-2xl border flex items-start gap-3 ${
-                dbStatus?.mongo?.connected 
-                  ? 'bg-emerald-50/80 border-emerald-300' 
-                  : 'bg-amber-50/80 border-amber-300'
-              }`}>
-                <span className={`w-3 h-3 rounded-full mt-0.5 shrink-0 ${
-                  dbStatus?.mongo?.connected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'
-                }`} />
-                <div className="flex-1">
-                  <div className="font-bold text-sm text-aroham-heading flex items-center justify-between">
-                    <span>
-                      {dbStatus?.mongo?.connected ? 'MongoDB Live & Connected' : 'Local JSON Mode (MongoDB Offline)'}
-                    </span>
-                    <button
-                      onClick={checkDbStatus}
-                      className="text-[10px] text-aroham-forest hover:underline flex items-center gap-1"
-                    >
-                      <RefreshCw size={11} /> Refresh
-                    </button>
-                  </div>
-                  <p className="text-[11px] text-aroham-body mt-0.5">
-                    {dbStatus?.mongo?.connected
-                      ? `Database: "${dbStatus.mongo.database || 'aroham'}" on ${dbStatus.mongo.uri || '127.0.0.1:27017'}`
-                      : 'Running with local JSON fallback. Start MongoDB with: npm run start:mongo'}
-                  </p>
-                </div>
-              </div>
-
-              {/* Collections stats grid */}
-              {dbStatus?.mongo?.connected && dbStatus.mongo.collections && (
-                <div className="grid grid-cols-4 gap-2">
-                  <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
-                    <div className="text-base font-bold text-aroham-dark">
-                      {dbStatus.mongo.collections.mentors ?? 0}
-                    </div>
-                    <div className="text-[10px] uppercase text-aroham-muted font-bold">Mentors</div>
-                  </div>
-                  <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
-                    <div className="text-base font-bold text-aroham-dark">
-                      {dbStatus.mongo.collections.events ?? 0}
-                    </div>
-                    <div className="text-[10px] uppercase text-aroham-muted font-bold">Events</div>
-                  </div>
-                  <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
-                    <div className="text-base font-bold text-aroham-dark">
-                      {dbStatus.mongo.collections.mentees ?? 0}
-                    </div>
-                    <div className="text-[10px] uppercase text-aroham-muted font-bold">Mentees</div>
-                  </div>
-                  <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
-                    <div className="text-base font-bold text-aroham-dark">
-                      {dbStatus.mongo.collections.applications ?? 0}
-                    </div>
-                    <div className="text-[10px] uppercase text-aroham-muted font-bold">Apps</div>
-                  </div>
-                </div>
-              )}
-
-              {/* Action buttons */}
-              <div className="space-y-2 pt-1">
-                <button
-                  onClick={async () => {
-                    setIsProcessing(true);
-                    setStatusMsg({ type: 'info', text: 'Saving all collections to MongoDB...' });
-                    try {
-                      const mentors = JSON.parse(localStorage.getItem('aroham_mentors') || '[]');
-                      const events = JSON.parse(localStorage.getItem('aroham_events') || '[]');
-                      const mentees = JSON.parse(localStorage.getItem('aroham_mentees') || '[]');
-                      const applications = JSON.parse(localStorage.getItem('aroham_applications') || '[]');
-                      await saveLiveDatabase({ mentors, events, mentees, applications });
-                      await checkDbStatus();
-                      setStatusMsg({ type: 'success', text: 'All data successfully saved into MongoDB database!' });
-                      onDataUpdated && onDataUpdated();
-                    } catch (err) {
-                      setStatusMsg({ type: 'error', text: 'Save failed: ' + err.message });
-                    } finally {
-                      setIsProcessing(false);
-                    }
-                  }}
-                  disabled={isProcessing}
-                  className="w-full py-2.5 px-4 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold transition-all shadow flex items-center justify-center gap-2"
-                >
-                  <Database size={15} />
-                  <span>Save All Current Data to MongoDB</span>
-                </button>
-
-                <p className="text-[11px] text-aroham-muted text-center">
-                  All updates, additions, and edits in the admin panel automatically persist to MongoDB.
-                </p>
               </div>
             </div>
           )}

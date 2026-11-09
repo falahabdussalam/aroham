@@ -18,6 +18,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { fetchLiveDatabase } from '../data/dataSyncManager';
+import { compressImageFile } from '../../utils/imageUtils';
 
 export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor, onUpdateMentor, onOpenSyncModal }) {
   const [search, setSearch] = useState('');
@@ -424,16 +425,23 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                     type="file"
                     accept="image/*"
                     className="hidden"
-                    onChange={(e) => {
+                    onChange={async (e) => {
                       const file = e.target.files && e.target.files[0];
                       if (file) {
-                        const reader = new FileReader();
-                        reader.onloadend = () => {
-                          const updated = { ...selectedMentorDetails, image: reader.result };
+                        try {
+                          const compressed = await compressImageFile(file, 360, 360, 0.8);
+                          const updated = { ...selectedMentorDetails, image: compressed };
                           setSelectedMentorDetails(updated);
                           if (onUpdateMentor) onUpdateMentor(updated);
-                        };
-                        reader.readAsDataURL(file);
+                        } catch (err) {
+                          const reader = new FileReader();
+                          reader.onloadend = () => {
+                            const updated = { ...selectedMentorDetails, image: reader.result };
+                            setSelectedMentorDetails(updated);
+                            if (onUpdateMentor) onUpdateMentor(updated);
+                          };
+                          reader.readAsDataURL(file);
+                        }
                       }
                     }}
                   />
@@ -631,14 +639,19 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                         type="file"
                         accept="image/*"
                         className="hidden"
-                        onChange={(e) => {
+                        onChange={async (e) => {
                           const file = e.target.files && e.target.files[0];
                           if (file) {
-                            const reader = new FileReader();
-                            reader.onloadend = () => {
-                              setEditingMentor({ ...editingMentor, image: reader.result });
-                            };
-                            reader.readAsDataURL(file);
+                            try {
+                              const compressed = await compressImageFile(file, 360, 360, 0.8);
+                              setEditingMentor({ ...editingMentor, image: compressed });
+                            } catch (err) {
+                              const reader = new FileReader();
+                              reader.onloadend = () => {
+                                setEditingMentor({ ...editingMentor, image: reader.result });
+                              };
+                              reader.readAsDataURL(file);
+                            }
                           }
                         }}
                       />

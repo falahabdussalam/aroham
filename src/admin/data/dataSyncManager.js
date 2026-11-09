@@ -6,56 +6,6 @@ import {
 } from './initialAdminData';
 
 const LOCAL_API_ENDPOINT = '/api/data';
-const CLOUD_API_BASE = 'https://crudcrud.com/api/d90d7c9b04fc4e3ea8dbbb50f9c3c46f/aroham';
-const CLOUD_DOC_ID = '6af192c42c743903e8e0f2b9';
-
-/**
- * Fetch from cloud database with strict 2.5s timeout to prevent UI freezes
- */
-async function fetchCloudDatabase() {
-  try {
-    const res = await fetch(CLOUD_API_BASE, {
-      signal: AbortSignal.timeout(2500),
-      cache: 'no-store'
-    });
-    if (res.ok) {
-      const list = await res.json();
-      if (Array.isArray(list) && list.length > 0) {
-        const item = list[0];
-        if (item && Array.isArray(item.mentors)) {
-          return item;
-        }
-      }
-    }
-  } catch (err) {
-    // Network / timeout fallback
-  }
-  return null;
-}
-
-/**
- * Push to cloud database
- */
-async function pushCloudDatabase(payload) {
-  try {
-    // Try updating existing document
-    const res = await fetch(`${CLOUD_API_BASE}/${CLOUD_DOC_ID}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(3000)
-    });
-    if (!res.ok) {
-      // If doc expired or missing, create new document
-      await fetch(CLOUD_API_BASE, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        signal: AbortSignal.timeout(3000)
-      });
-    }
-  } catch (err) {}
-}
 
 /**
  * Smart merge two collections by ID, preserving additions and updates
@@ -86,28 +36,21 @@ function mergeById(localItems = [], remoteItems = []) {
 export async function fetchLiveDatabase() {
   let remoteData = null;
 
-  // 1. Fetch from cloud database
+  // 1. Fetch from local LAN Vite API endpoint if available
   try {
-    remoteData = await fetchCloudDatabase();
+    const res = await fetch(LOCAL_API_ENDPOINT, {
+      signal: AbortSignal.timeout(1500),
+      cache: 'no-store'
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && Array.isArray(data.mentors) && data.mentors.length > 0) {
+        remoteData = data;
+      }
+    }
   } catch (e) {}
 
-  // 2. Fetch from local LAN Vite API if cloud was unreachable
-  if (!remoteData) {
-    try {
-      const res = await fetch(LOCAL_API_ENDPOINT, {
-        signal: AbortSignal.timeout(1500),
-        cache: 'no-store'
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data && Array.isArray(data.mentors)) {
-          remoteData = data;
-        }
-      }
-    } catch (e) {}
-  }
-
-  // 3. Read cached data from local browser storage
+  // 2. Read cached data from local browser storage
   let localMentors = null;
   let localEvents = null;
   let localMentees = null;
@@ -124,7 +67,7 @@ export async function fetchLiveDatabase() {
     if (sa) localApps = JSON.parse(sa);
   } catch (e) {}
 
-  // 4. Merge local with remote
+  // 3. Merge local with remote (remote data updates local, but local additions are NEVER deleted)
   if (remoteData) {
     const mergedMentors = localMentors ? mergeById(localMentors, remoteData.mentors || []) : (remoteData.mentors || INITIAL_MENTORS);
     const mergedEvents = localEvents ? mergeById(localEvents, remoteData.events || []) : (remoteData.events || INITIAL_EVENTS);
@@ -139,12 +82,6 @@ export async function fetchLiveDatabase() {
       lastModified: new Date().toISOString()
     };
 
-    // If local device had new records (e.g. mentor added on phone), push merged state to cloud!
-    const localHadNew = localMentors && localMentors.some(lm => !remoteData.mentors?.some(rm => rm.id === lm.id));
-    if (localHadNew) {
-      pushCloudDatabase(mergedPayload);
-    }
-
     // Cache merged state locally
     try {
       localStorage.setItem('aroham_mentors', JSON.stringify(mergedMentors));
@@ -158,15 +95,15 @@ export async function fetchLiveDatabase() {
 
   // Fallback to localStorage or initial seeds
   return {
-    mentors: localMentors || INITIAL_MENTORS,
-    events: localEvents || INITIAL_EVENTS,
-    mentees: localMentees || INITIAL_MENTEES,
-    applications: localApps || INITIAL_APPLICATIONS
+    mentors: (localMentors && localMentors.length > 0) ? localMentors : INITIAL_MENTORS,
+    events: (localEvents && localEvents.length > 0) ? localEvents : INITIAL_EVENTS,
+    mentees: (localMentees && localMentees.length > 0) ? localMentees : INITIAL_MENTEES,
+    applications: (localApps && localApps.length > 0) ? localApps : INITIAL_APPLICATIONS
   };
 }
 
 /**
- * Save data to cloud database, local network database, and browser localStorage
+ * Save data to local network database and browser localStorage with quota protection
  */
 export async function saveLiveDatabase(payload) {
   const payloadWithMeta = {
@@ -177,27 +114,36 @@ export async function saveLiveDatabase(payload) {
     lastModified: new Date().toISOString()
   };
 
-  // 1. Immediately cache in localStorage
+  // 1. Immediately cache in localStorage with quota-safe protection
   try {
     localStorage.setItem('aroham_mentors', JSON.stringify(payloadWithMeta.mentors));
     localStorage.setItem('aroham_events', JSON.stringify(payloadWithMeta.events));
     localStorage.setItem('aroham_mentees', JSON.stringify(payloadWithMeta.mentees));
     localStorage.setItem('aroham_applications', JSON.stringify(payloadWithMeta.applications));
-  } catch (e) {}
+  } catch (e) {
+    console.warn('LocalStorage quota limit reached, saving with image compression...', e);
+    try {
+      // If quota exceeded, strip heavy image data URLs so mentor details are NEVER lost
+      const safeMentors = payloadWithMeta.mentors.map(m => {
+        if (m.image && m.image.length > 50000) {
+          return { ...m, image: '' };
+        }
+        return m;
+      });
+      localStorage.setItem('aroham_mentors', JSON.stringify(safeMentors));
+    } catch (err) {}
+  }
 
   // 2. Dispatch custom event to update all components in current window
   window.dispatchEvent(new Event('aroham_data_sync'));
 
-  // 3. Broadcast to cloud database asynchronously
-  pushCloudDatabase(payloadWithMeta);
-
-  // 4. Save to local network database API (/api/data)
+  // 3. Save to local network database API (/api/data)
   try {
     fetch(LOCAL_API_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payloadWithMeta),
-      signal: AbortSignal.timeout(1500)
+      signal: AbortSignal.timeout(2000)
     }).catch(() => {});
   } catch (err) {}
 }

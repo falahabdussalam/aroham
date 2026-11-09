@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, UserPlus, Sparkles, GraduationCap, Building2, MapPin, Mail, Phone, BookOpen, ShieldCheck, Camera, Upload, Trash2, Image } from 'lucide-react';
+import { compressImageFile } from '../../utils/imageUtils';
 
 export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
   const [formData, setFormData] = useState({
@@ -176,14 +177,19 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
                     type="file"
                     accept="image/*"
                     className="hidden"
-                    onChange={(e) => {
+                    onChange={async (e) => {
                       const file = e.target.files && e.target.files[0];
                       if (file) {
-                        const reader = new FileReader();
-                        reader.onloadend = () => {
-                          setFormData(prev => ({ ...prev, image: reader.result }));
-                        };
-                        reader.readAsDataURL(file);
+                        try {
+                          const compressed = await compressImageFile(file, 360, 360, 0.8);
+                          setFormData(prev => ({ ...prev, image: compressed }));
+                        } catch (err) {
+                          const reader = new FileReader();
+                          reader.onloadend = () => {
+                            setFormData(prev => ({ ...prev, image: reader.result }));
+                          };
+                          reader.readAsDataURL(file);
+                        }
                       }
                     }}
                   />

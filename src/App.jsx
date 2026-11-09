@@ -54,7 +54,17 @@ export default function App() {
         const live = await fetchLiveDatabase();
         if (isMounted && live) {
           if (Array.isArray(live.mentors)) {
-            setMentors(prev => JSON.stringify(prev) !== JSON.stringify(live.mentors) ? live.mentors : prev);
+            setMentors(prev => {
+              // If current state in memory has newer mentors not present in live, keep them
+              if (prev && prev.length > live.mentors.length) {
+                const liveIds = new Set(live.mentors.map(m => m.id));
+                const localOnly = prev.filter(m => !liveIds.has(m.id));
+                if (localOnly.length > 0) {
+                  return [...localOnly, ...live.mentors];
+                }
+              }
+              return JSON.stringify(prev) !== JSON.stringify(live.mentors) ? live.mentors : prev;
+            });
           }
           if (Array.isArray(live.events)) {
             setEvents(prev => JSON.stringify(prev) !== JSON.stringify(live.events) ? live.events : prev);

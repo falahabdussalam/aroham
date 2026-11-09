@@ -16,6 +16,9 @@ import {
 } from 'lucide-react';
 import { ArohamEmblem } from '../components/ArohamLogo';
 import { InstagramIcon } from '../components/Icons';
+import strategicGathering from '../assets/strategic_gathering.jpg';
+import instaSpotlight from '../assets/insta_spotlight.jpg';
+import instaLeadership from '../assets/insta_leadership.jpg';
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -212,38 +215,68 @@ export default function ContactPage() {
 
               {/* 3 Snapshot Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                <div className="rounded-2xl overflow-hidden border border-aroham-border relative group">
-                  <img
-                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&q=80"
-                    alt="UniMates circle"
-                    className="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate">
-                    <span className="text-aroham-gold font-bold">#UniMates</span> Circle: Navigating university entrance...
+                <a
+                  href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-gold/50 transition-all shadow-sm"
+                >
+                  <div className="h-28 sm:h-32 overflow-hidden bg-aroham-light">
+                    <img
+                      src={strategicGathering}
+                      alt="Bolster Summer Camp & Campus Circles"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                </div>
+                  <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
+                    <span>
+                      <span className="text-aroham-gold font-bold">#UniMates</span> Campus Circles & Student Meetups
+                    </span>
+                    <ArrowUpRight size={12} className="text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
+                  </div>
+                </a>
 
-                <div className="rounded-2xl overflow-hidden border border-aroham-border relative group">
-                  <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
-                    alt="Alumna spotlight"
-                    className="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate">
-                    <span className="text-aroham-forest font-bold">#Alumnae</span> Spotlight: Adv. Sarah on law...
+                <a
+                  href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-forest/50 transition-all shadow-sm"
+                >
+                  <div className="h-28 sm:h-32 overflow-hidden bg-aroham-light">
+                    <img
+                      src={instaSpotlight}
+                      alt="Alumnae Leadership Spotlight"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                </div>
+                  <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
+                    <span>
+                      <span className="text-aroham-forest font-bold">#Alumnae</span> Leadership Spotlight
+                    </span>
+                    <ArrowUpRight size={12} className="text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
+                  </div>
+                </a>
 
-                <div className="rounded-2xl overflow-hidden border border-aroham-border relative group">
-                  <img
-                    src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=400&q=80"
-                    alt="Annual conclave"
-                    className="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate">
-                    <span className="text-aroham-terracotta font-bold">#Events</span> Annual Conclave 2025: 120+ rising scholars...
+                <a
+                  href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-2xl overflow-hidden border border-aroham-border relative group block bg-aroham-light hover:border-aroham-terracotta/50 transition-all shadow-sm"
+                >
+                  <div className="h-28 sm:h-32 overflow-hidden bg-aroham-light">
+                    <img
+                      src={instaLeadership}
+                      alt="Executive Committee Post"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                </div>
+                  <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
+                    <span>
+                      <span className="text-aroham-terracotta font-bold">#Leadership</span> Executive Announcement Series
+                    </span>
+                    <ArrowUpRight size={12} className="text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
+                  </div>
+                </a>
               </div>
             </div>
 

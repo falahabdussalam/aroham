@@ -1,6 +1,6 @@
 import React from 'react';
 import ArohamLogo from './ArohamLogo';
-import { Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, MapPin, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { InstagramIcon } from './Icons';
 
 export default function Footer({ setActivePage, onOpenGetInvolved }) {
@@ -127,6 +127,13 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
           <div className="flex items-center gap-6">
             <button onClick={() => handleNav('about')} className="hover:text-aroham-dark transition-colors">Sisterhood Charter</button>
             <button onClick={() => handleNav('contact')} className="hover:text-aroham-dark transition-colors">Privacy & Guidelines</button>
+            <a 
+              href="#admin" 
+              className="hover:text-aroham-dark font-bold transition-colors flex items-center gap-1.5 text-aroham-forest bg-aroham-sage/60 px-2.5 py-1 rounded-lg border border-aroham-border hover:bg-aroham-mint"
+            >
+              <ShieldCheck size={13} className="text-aroham-forest" />
+              <span>Admin Portal</span>
+            </a>
           </div>
         </div>
       </div>

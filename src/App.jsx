@@ -9,9 +9,14 @@ import ContactPage from './pages/ContactPage';
 import RegisterModal from './components/RegisterModal';
 import RequestMatchModal from './components/RequestMatchModal';
 import GetInvolvedModal from './components/GetInvolvedModal';
+import AdminDashboardApp from './admin/AdminDashboardApp';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isAdminView, setIsAdminView] = useState(() => {
+    return window.location.hash.startsWith('#admin');
+  });
+
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
   const [selectedEventTitle, setSelectedEventTitle] = useState('Next Guidance Cohort & University Workshop');
   const [matchModalOpen, setMatchModalOpen] = useState(false);
@@ -20,6 +25,9 @@ export default function App() {
 
   // Smooth scroll handler to target section
   const scrollToSection = (id) => {
+    if (isAdminView) {
+      setIsAdminView(false);
+    }
     setActiveSection(id);
     if (id === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -42,6 +50,13 @@ export default function App() {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '');
+      if (hash.startsWith('admin')) {
+        setIsAdminView(true);
+        window.scrollTo(0, 0);
+        return;
+      }
+      setIsAdminView(false);
+
       if (['home', 'about', 'unimates', 'events', 'contact'].includes(hash)) {
         setActiveSection(hash);
         const el = document.getElementById(hash);
@@ -61,6 +76,8 @@ export default function App() {
 
   // Scrollspy: automatically update active section in navbar during scroll
   useEffect(() => {
+    if (isAdminView) return;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 160;
       const sectionIds = ['home', 'about', 'unimates', 'events', 'contact'];
@@ -80,7 +97,7 @@ export default function App() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isAdminView]);
 
   const handleOpenRegister = (eventTitle = "Next Guidance Cohort & University Workshop") => {
     setSelectedEventTitle(eventTitle);
@@ -95,6 +112,19 @@ export default function App() {
   const handleOpenGetInvolved = () => {
     setGetInvolvedModalOpen(true);
   };
+
+  // If viewing admin route, render the complete Admin Dashboard Application
+  if (isAdminView) {
+    return (
+      <AdminDashboardApp
+        onBackToSite={() => {
+          setIsAdminView(false);
+          window.location.hash = '#home';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F8F5] selection:bg-aroham-terracotta/20 selection:text-aroham-dark">

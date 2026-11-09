@@ -238,3 +238,4 @@ export const INITIAL_APPLICATIONS = [
     status: 'Approved'
   }
 ];
+

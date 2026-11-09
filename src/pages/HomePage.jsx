@@ -13,7 +13,7 @@ import {
   Mail 
 } from 'lucide-react';
 
-export default function HomePage({ setActivePage, onOpenGetInvolved }) {
+export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCount = 10 }) {
   return (
     <div className="space-y-20 lg:space-y-28 pb-12 animate-fadeIn">
       {/* =========================================================================
@@ -85,7 +85,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved }) {
           <div className="grid grid-cols-3 gap-6 pt-6 max-w-xl mx-auto bg-white/75 backdrop-blur-md rounded-2xl p-5 border border-aroham-border/80 shadow-soft">
             <div>
               <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
-                10+
+                {mentorsCount}+
               </div>
               <div className="text-xs font-semibold text-aroham-muted mt-0.5">
                 Alumnae Mentors

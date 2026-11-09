@@ -10,12 +10,75 @@ import RegisterModal from './components/RegisterModal';
 import RequestMatchModal from './components/RequestMatchModal';
 import GetInvolvedModal from './components/GetInvolvedModal';
 import AdminDashboardApp from './admin/AdminDashboardApp';
+import { 
+  INITIAL_MENTORS, 
+  INITIAL_EVENTS, 
+  INITIAL_MENTEES, 
+  INITIAL_APPLICATIONS 
+} from './admin/data/initialAdminData';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isAdminView, setIsAdminView] = useState(() => {
     return window.location.hash.startsWith('#admin');
   });
+
+  // Centralized collections with localStorage persistence
+  const [mentors, setMentors] = useState(() => {
+    const saved = localStorage.getItem('aroham_mentors');
+    return saved ? JSON.parse(saved) : INITIAL_MENTORS;
+  });
+
+  const [events, setEvents] = useState(() => {
+    const saved = localStorage.getItem('aroham_events');
+    return saved ? JSON.parse(saved) : INITIAL_EVENTS;
+  });
+
+  const [mentees, setMentees] = useState(() => {
+    const saved = localStorage.getItem('aroham_mentees');
+    return saved ? JSON.parse(saved) : INITIAL_MENTEES;
+  });
+
+  const [applications, setApplications] = useState(() => {
+    const saved = localStorage.getItem('aroham_applications');
+    return saved ? JSON.parse(saved) : INITIAL_APPLICATIONS;
+  });
+
+  // Listen to cross-tab storage changes and custom sync events
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === 'aroham_mentors' && e.newValue) {
+        try { setMentors(JSON.parse(e.newValue)); } catch (err) {}
+      }
+      if (e.key === 'aroham_events' && e.newValue) {
+        try { setEvents(JSON.parse(e.newValue)); } catch (err) {}
+      }
+      if (e.key === 'aroham_mentees' && e.newValue) {
+        try { setMentees(JSON.parse(e.newValue)); } catch (err) {}
+      }
+      if (e.key === 'aroham_applications' && e.newValue) {
+        try { setApplications(JSON.parse(e.newValue)); } catch (err) {}
+      }
+    };
+
+    const handleCustomSync = () => {
+      const savedMentors = localStorage.getItem('aroham_mentors');
+      if (savedMentors) {
+        try { setMentors(JSON.parse(savedMentors)); } catch (err) {}
+      }
+      const savedEvents = localStorage.getItem('aroham_events');
+      if (savedEvents) {
+        try { setEvents(JSON.parse(savedEvents)); } catch (err) {}
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('aroham_data_sync', handleCustomSync);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('aroham_data_sync', handleCustomSync);
+    };
+  }, []);
 
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
   const [selectedEventTitle, setSelectedEventTitle] = useState('Next Guidance Cohort & University Workshop');
@@ -122,6 +185,14 @@ export default function App() {
           window.location.hash = '#home';
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        mentors={mentors}
+        setMentors={setMentors}
+        events={events}
+        setEvents={setEvents}
+        mentees={mentees}
+        setMentees={setMentees}
+        applications={applications}
+        setApplications={setApplications}
       />
     );
   }
@@ -143,6 +214,7 @@ export default function App() {
             setActivePage={scrollToSection}
             onOpenRegister={() => handleOpenRegister("Next Guidance Cohort & University Workshop")}
             onOpenGetInvolved={handleOpenGetInvolved}
+            mentorsCount={mentors.length}
           />
         </section>
 
@@ -170,6 +242,7 @@ export default function App() {
             setActivePage={scrollToSection}
             onOpenRequestMatch={handleOpenRequestMatch}
             onOpenGetInvolved={handleOpenGetInvolved}
+            mentors={mentors}
           />
         </section>
 
@@ -182,8 +255,9 @@ export default function App() {
         <section id="events" className="scroll-mt-24 sm:scroll-mt-28">
           <EventsPage
             setActivePage={scrollToSection}
-            onOpenRegister={() => handleOpenRegister("Fall 2026 Global Academic Pathways")}
+            onOpenRegister={() => handleOpenRegister("Next Guidance Cohort & University Workshop")}
             onOpenGetInvolved={handleOpenGetInvolved}
+            events={events}
           />
         </section>
 

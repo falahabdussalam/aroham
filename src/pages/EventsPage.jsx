@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Calendar, 
   Clock, 
@@ -17,22 +17,53 @@ import {
   Radio
 } from 'lucide-react';
 import { InstagramIcon } from '../components/Icons';
-import { upcomingEvents } from '../data/eventsData';
+import { INITIAL_EVENTS } from '../admin/data/initialAdminData';
 
-export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInvolved }) {
+export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInvolved, events: propEvents }) {
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' = oldest to newest, 'desc' = newest to oldest
 
-  const pastEvents = [
-    {
-      id: 1,
+  const [events, setEvents] = useState(() => {
+    if (propEvents && Array.isArray(propEvents)) return propEvents;
+    const saved = localStorage.getItem('aroham_events');
+    return saved ? JSON.parse(saved) : INITIAL_EVENTS;
+  });
+
+  useEffect(() => {
+    if (propEvents && Array.isArray(propEvents)) {
+      setEvents(propEvents);
+    }
+  }, [propEvents]);
+
+  // Reactive sync across tabs and admin changes
+  useEffect(() => {
+    const handleSync = () => {
+      const saved = localStorage.getItem('aroham_events');
+      if (saved) {
+        try {
+          setEvents(JSON.parse(saved));
+        } catch (e) {
+          console.error('Error syncing events:', e);
+        }
+      }
+    };
+
+    window.addEventListener('aroham_data_sync', handleSync);
+    window.addEventListener('storage', handleSync);
+    return () => {
+      window.removeEventListener('aroham_data_sync', handleSync);
+      window.removeEventListener('storage', handleSync);
+    };
+  }, []);
+
+  // Historic extra media & panelists map for foundational sessions
+  const historicalDetailsMap = {
+    'EVT-01': {
       day: '18',
       month: 'APR',
       year: '2026',
       sessionType: 'Zoom Session',
       sessionNo: 'Session #01',
       tags: ['Global Education', 'Gulf Higher Ed'],
-      title: 'GCC Higher Education Guidance Session',
-      description: "Aroham Foundation's first major online initiative was designed to introduce students to higher education opportunities in Gulf Cooperation Council (GCC) countries. The session covered university admission processes, scholarship opportunities and practical aspects of student life in GCC nations.",
       panelists: [
         { name: 'Nuha Kadija', university: 'Khalifa University' },
         { name: 'Ayishathul Fibha Fabhina', university: 'University of Stirling' },
@@ -40,16 +71,13 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
       ],
       stats: '63 registrations • 50+ active participants'
     },
-    {
-      id: 2,
+    'EVT-02': {
       day: '04',
       month: 'MAY',
       year: '2026',
       sessionType: 'Flagship Launch',
       sessionNo: 'Milestone #02',
       tags: ['Mentorship Framework', '1-on-1 Matching'],
-      title: 'Aroham UniMates – Programme Launch',
-      description: 'Aroham UniMates was officially launched as a one-to-one student mentorship program. It aims to connect students with alumni mentors who can provide personalized academic and career guidance across diverse undergraduate specializations.',
       launchStats: {
         students: 17,
         studentLabel: 'Initial founding cohort',
@@ -58,16 +86,13 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
       },
       note: '17 students matched seamlessly with 10 senior mentors'
     },
-    {
-      id: 3,
+    'EVT-03': {
       day: '10',
       month: 'MAY',
       year: '2026',
       sessionType: 'Zoom Platform',
       sessionNo: 'Session #03',
       tags: ['Study in UK', 'UCAS & Scholarships'],
-      title: 'UK Higher Education Guidance Session',
-      description: 'The session offered students insights into the higher education landscape in the United Kingdom, guided by an alumna with firsthand experience. Topics included the UCAS application process, scholarships, campus life and career prospects.',
       speaker: {
         initials: 'FH',
         name: 'Fida Haneef',
@@ -86,16 +111,13 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
         }
       ]
     },
-    {
-      id: 4,
+    'EVT-04': {
       day: '23',
       month: 'MAY',
       year: '2026',
       sessionType: '📍 Rose Lounge, Malappuram, Kerala',
       sessionNo: 'Classes 10-12 Summit',
       tags: ['Summit Partnership', 'Classes 10–12 Mentorship'],
-      title: 'EduWay 2026 - Future Skills & Career Summit',
-      description: "Aroham Foundation participated in EduWay 2026 as Career Mentors. The team guided students from Classes 10–12 by sharing insights into different academic fields, university experiences and career pathways. They also provided one-to-one career guidance and answered students' queries.",
       onGroundMentors: {
         count: 9,
         label: 'Aroham Alumni Mentors',
@@ -103,10 +125,70 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
         tag: 'Live 1-to-1 Counseling'
       }
     }
-  ];
+  };
 
-  const sortedEvents = [...pastEvents].sort((a, b) => {
-    return sortOrder === 'asc' ? a.id - b.id : b.id - a.id;
+  const parseDateParts = (dateStr) => {
+    if (!dateStr || dateStr === 'TBA') {
+      return { day: '—', month: 'DATE', year: 'TBA' };
+    }
+    const parts = dateStr.trim().split(/[\s,/-]+/);
+    if (parts.length >= 3) {
+      if (isNaN(parts[1]) && !isNaN(parts[0])) {
+        return {
+          day: parts[0].padStart(2, '0'),
+          month: parts[1].slice(0, 3).toUpperCase(),
+          year: parts[2]
+        };
+      }
+      if (parts[0].length === 4 && !isNaN(parts[0])) {
+        const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        const mIdx = parseInt(parts[1], 10) - 1;
+        return {
+          day: parts[2].padStart(2, '0'),
+          month: monthNames[mIdx] || parts[1].slice(0, 3).toUpperCase(),
+          year: parts[0]
+        };
+      }
+      return {
+        day: parts[0].slice(0, 2),
+        month: parts[1].slice(0, 3).toUpperCase(),
+        year: parts[2]
+      };
+    }
+    return { day: dateStr.slice(0, 2), month: 'EVT', year: '2026' };
+  };
+
+  const upcomingEvents = events.filter(e => e.status === 'Upcoming');
+  const completedEvents = events.filter(e => e.status === 'Completed');
+
+  const formattedCompletedEvents = completedEvents.map((evt, idx) => {
+    const extra = historicalDetailsMap[evt.id] || {};
+    const dateParts = extra.day ? { day: extra.day, month: extra.month, year: extra.year } : parseDateParts(evt.date);
+    return {
+      id: evt.id,
+      day: dateParts.day,
+      month: dateParts.month,
+      year: dateParts.year,
+      sessionType: extra.sessionType || evt.platform || 'Interactive Session',
+      sessionNo: extra.sessionNo || `Session #${idx + 1}`,
+      tags: extra.tags || [evt.type || 'Guidance Session', 'Completed'],
+      title: evt.title || evt.name,
+      description: evt.details || evt.description || '',
+      panelists: extra.panelists,
+      launchStats: extra.launchStats,
+      note: extra.note,
+      speaker: extra.speaker,
+      stats: extra.stats || (evt.attendees ? `${evt.attendees}+ participants` : null),
+      photos: extra.photos,
+      onGroundMentors: extra.onGroundMentors,
+      platform: evt.platform
+    };
+  });
+
+  const sortedEvents = [...formattedCompletedEvents].sort((a, b) => {
+    return sortOrder === 'asc' 
+      ? String(a.id).localeCompare(String(b.id)) 
+      : String(b.id).localeCompare(String(a.id));
   });
 
   return (
@@ -135,7 +217,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           <div className="bg-white rounded-2xl p-5 border border-aroham-border shadow-soft flex items-center gap-8 shrink-0 self-start lg:self-center">
             <div>
               <div className="text-2xl sm:text-3xl font-bold font-serif text-aroham-dark">
-                5+
+                {completedEvents.length}+
               </div>
               <div className="text-[10px] uppercase font-bold tracking-wider text-aroham-muted mt-0.5">
                 Sessions Completed
@@ -190,12 +272,12 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             {upcomingEvents.map((event) => (
               <div 
                 key={event.id}
-                className="bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6"
+                className="bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6 hover:shadow-elevated transition-all"
               >
                 <div className="space-y-4">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold text-xs font-bold border border-amber-200">
-                      {event.tag || '⚡ Registration Open'}
+                      {event.tag || event.type || '⚡ Registration Open'}
                     </span>
                     {event.platform && (
                       <span className="text-xs font-semibold text-aroham-muted flex items-center gap-1.5">
@@ -207,7 +289,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
 
                   <div>
                     <h3 className="text-xl sm:text-2xl font-bold font-serif text-aroham-heading">
-                      {event.name}
+                      {event.title || event.name}
                     </h3>
                     <p className="text-xs sm:text-sm text-aroham-body leading-relaxed mt-2">
                       {event.details}
@@ -233,15 +315,25 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                 </div>
 
                 <div className="pt-2">
-                  <a
-                    href={event.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-bold text-center transition-all shadow flex items-center justify-center gap-2"
-                  >
-                    <span>{event.linkText || 'Register for Event'}</span>
-                    <ArrowUpRight size={14} />
-                  </a>
+                  {event.link ? (
+                    <a
+                      href={event.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-bold text-center transition-all shadow flex items-center justify-center gap-2"
+                    >
+                      <span>{event.linkText || 'Register for Event'}</span>
+                      <ArrowUpRight size={14} />
+                    </a>
+                  ) : (
+                    <button
+                      onClick={() => onOpenRegister(event.title || event.name)}
+                      className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-bold text-center transition-all shadow flex items-center justify-center gap-2"
+                    >
+                      <span>{event.linkText || 'Register for Event'}</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
@@ -318,7 +410,8 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
         </div>
 
         {/* Timeline Stack */}
-        <div className="space-y-8">
+        {sortedEvents.length > 0 ? (
+          <div className="space-y-8">
           {sortedEvents.map((evt) => (
             <div
               key={evt.id}
@@ -475,7 +568,17 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        ) : (
+          <div className="bg-white rounded-3xl p-12 border border-aroham-border shadow-soft text-center max-w-xl mx-auto space-y-3">
+            <p className="text-sm font-semibold text-aroham-heading">
+              No sessions found in the archive.
+            </p>
+            <p className="text-xs text-aroham-body">
+              Completed workshops and conclaves will appear in this chronological timeline.
+            </p>
+          </div>
+        )}
       </section>
 
       {/* =========================================================================

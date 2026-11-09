@@ -217,6 +217,17 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
               </div>
 
               <div>
+                <label className="block font-bold text-aroham-dark uppercase mb-1">Registration Link (Optional)</label>
+                <input
+                  type="url"
+                  value={newEvent.link}
+                  onChange={(e) => setNewEvent({ ...newEvent, link: e.target.value })}
+                  placeholder="https://forms.gle/... or Zoom registration URL"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-aroham-border bg-[#F4F8F5] text-sm focus:outline-none focus:ring-2 focus:ring-aroham-dark/20"
+                />
+              </div>
+
+              <div>
                 <label className="block font-bold text-aroham-dark uppercase mb-1">Event Description & Key Topics</label>
                 <textarea
                   rows={3}
@@ -249,3 +260,4 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
     </div>
   );
 }
+

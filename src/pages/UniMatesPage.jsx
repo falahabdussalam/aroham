@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Search, 
   Sparkles, 
@@ -13,103 +13,73 @@ import {
   Building,
   HeartHandshake
 } from 'lucide-react';
+import { INITIAL_MENTORS } from '../admin/data/initialAdminData';
 
-export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) {
+export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, mentors: propMentors }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStream, setSelectedStream] = useState('All Disciplines');
 
-  const mentors = [
-    {
-      id: 'AM-2601',
-      name: 'Nuha Kadija',
-      university: 'Khalifa University',
-      major: 'Aerospace Engineering',
-      location: 'Abu Dhabi, UAE',
-      stream: 'Engineering',
-      status: 'Available for 1-on-1 Guidance',
-      badgeColor: 'bg-amber-100 text-aroham-gold border-amber-200',
-      description: 'Focuses on STEM admissions in the GCC, engineering design fundamentals, and undergraduate research application strategies.',
-      image: ''
-    },
-    {
-      id: 'AM-2602',
-      name: 'Ayishathul Fibha Fabhina',
-      university: 'University of Stirling',
-      major: 'Business Management & Marketing',
-      location: 'Scotland, United Kingdom',
-      stream: 'Business',
-      status: 'Active Mentor',
-      badgeColor: 'bg-emerald-100 text-aroham-forest border-emerald-200',
-      description: 'Specialises in UK international student transitions, brand management modules, and graduate internship readiness.',
-      image: ''
-    },
-    {
-      id: 'AM-2603',
-      name: 'Fathima Afiya',
-      university: 'University of Sharjah',
-      major: 'Biomedical Sciences',
-      location: 'Sharjah, UAE',
-      stream: 'Medicine & Biomedical',
-      status: 'Weekend Sessions',
-      badgeColor: 'bg-orange-100 text-aroham-terracotta border-orange-200',
-      description: 'Guides high school seniors aspiring for medical, lab sciences, and allied health professions curriculum requirements.',
-      image: ''
-    },
-    {
-      id: 'AM-2604',
-      name: 'Fida Haneef',
-      university: 'University of Leicester',
-      major: 'Psychology & Mental Health',
-      location: 'Leicester, United Kingdom',
-      stream: 'Humanities',
-      status: 'Available for UCAS Guidance',
-      badgeColor: 'bg-amber-100 text-aroham-gold border-amber-200',
-      description: 'Expert advice on UCAS personal statements, psychological empirical research pathways, and UK campus life acclimatization.',
-      image: ''
-    },
-    {
-      id: 'AM-2605',
-      name: 'Hiba Mariyam',
-      university: 'Delhi University',
-      major: 'English Literature & Research',
-      location: 'New Delhi, India',
-      stream: 'Humanities',
-      status: 'Available',
-      badgeColor: 'bg-emerald-100 text-aroham-forest border-emerald-200',
-      description: 'Mentors students on critical theory analysis, academic writing, entrance examinations, and central university admissions.',
-      image: ''
-    },
-    {
-      id: 'AM-2606',
-      name: 'Raniya Thasneem',
-      university: 'Calicut University',
-      major: 'Computer Applications & AI',
-      location: 'Kerala, India',
-      stream: 'Computer Science & AI',
-      status: 'Active Mentor',
-      badgeColor: 'bg-blue-100 text-blue-700 border-blue-200',
-      description: 'Passionate about bridging women into tech disciplines, coding foundational bootcamps, and artificial intelligence avenues.',
-      image: ''
-    }
-  ];
+  // Reactive state defaulting to propMentors, localStorage, or INITIAL_MENTORS
+  const [mentors, setMentors] = useState(() => {
+    if (propMentors && Array.isArray(propMentors)) return propMentors;
+    const saved = localStorage.getItem('aroham_mentors');
+    return saved ? JSON.parse(saved) : INITIAL_MENTORS;
+  });
 
-  const streams = [
+  // Sync when propMentors changes from parent App
+  useEffect(() => {
+    if (propMentors && Array.isArray(propMentors)) {
+      setMentors(propMentors);
+    }
+  }, [propMentors]);
+
+  // Sync across tabs and custom events
+  useEffect(() => {
+    const handleSync = () => {
+      const saved = localStorage.getItem('aroham_mentors');
+      if (saved) {
+        try {
+          setMentors(JSON.parse(saved));
+        } catch (e) {
+          console.error('Error syncing mentors:', e);
+        }
+      }
+    };
+
+    window.addEventListener('aroham_data_sync', handleSync);
+    window.addEventListener('storage', handleSync);
+    return () => {
+      window.removeEventListener('aroham_data_sync', handleSync);
+      window.removeEventListener('storage', handleSync);
+    };
+  }, []);
+
+  const defaultStreams = [
     'All Disciplines',
     'Engineering',
     'Medicine & Biomedical',
     'Business',
     'Humanities',
-    'Computer Science & AI'
+    'Computer Science & AI',
+    'Law & Public Policy'
   ];
+
+  // Dynamic streams extracted from mentor roster
+  const streams = Array.from(new Set([
+    ...defaultStreams,
+    ...mentors.map(m => m.stream).filter(Boolean)
+  ]));
 
   const filteredMentors = mentors.filter((m) => {
     const matchStream = selectedStream === 'All Disciplines' || m.stream === selectedStream;
-    const q = searchQuery.toLowerCase();
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return matchStream;
     const matchQuery = 
-      m.name.toLowerCase().includes(q) ||
-      m.university.toLowerCase().includes(q) ||
-      m.major.toLowerCase().includes(q) ||
-      m.location.toLowerCase().includes(q);
+      (m.name || '').toLowerCase().includes(q) ||
+      (m.university || '').toLowerCase().includes(q) ||
+      (m.major || '').toLowerCase().includes(q) ||
+      (m.location || '').toLowerCase().includes(q) ||
+      (m.stream || '').toLowerCase().includes(q);
     return matchStream && matchQuery;
   });
 
@@ -331,76 +301,103 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved }) 
         </div>
 
         {/* Mentors Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredMentors.map((mentor) => (
-            <div
-              key={mentor.id}
-              className="bg-white rounded-3xl p-6 border border-aroham-border shadow-soft flex flex-col justify-between space-y-5 hover:shadow-elevated transition-all duration-200"
-            >
-              <div className="space-y-4">
-                {/* Header: Photo + Badge */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    {mentor.image ? (
-                      <img
-                        src={mentor.image}
-                        alt={mentor.name}
-                        className="w-12 h-12 rounded-2xl object-cover border border-aroham-border shrink-0"
-                      />
-                    ) : (
-                      <div className="w-12 h-12 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-center text-aroham-dark font-serif font-bold text-sm tracking-wider shrink-0 shadow-sm">
-                        {mentor.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+        {filteredMentors.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredMentors.map((mentor) => (
+              <div
+                key={mentor.id}
+                className="bg-white rounded-3xl p-6 border border-aroham-border shadow-soft flex flex-col justify-between space-y-5 hover:shadow-elevated transition-all duration-200"
+              >
+                <div className="space-y-4">
+                  {/* Header: Photo + Badge */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      {mentor.image ? (
+                        <img
+                          src={mentor.image}
+                          alt={mentor.name}
+                          className="w-12 h-12 rounded-2xl object-cover border border-aroham-border shrink-0"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-center text-aroham-dark font-serif font-bold text-sm tracking-wider shrink-0 shadow-sm">
+                          {(mentor.name || 'M').split(' ').map(n => n[0]).slice(0, 2).join('')}
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="text-base font-bold font-serif text-aroham-heading">
+                          {mentor.name}
+                        </h4>
+                        <p className="text-xs font-medium text-aroham-forest">
+                          {mentor.university}
+                        </p>
                       </div>
-                    )}
-                    <div>
-                      <h4 className="text-base font-bold font-serif text-aroham-heading">
-                        {mentor.name}
-                      </h4>
-                      <p className="text-xs font-medium text-aroham-forest">
-                        {mentor.university}
-                      </p>
                     </div>
                   </div>
-                </div>
 
-                <div className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${mentor.badgeColor}`}>
-                  {mentor.status}
-                </div>
-
-                {/* Major & Location */}
-                <div className="p-3 rounded-xl bg-aroham-sage/40 border border-aroham-border text-xs space-y-1">
-                  <div className="font-semibold text-aroham-heading flex items-center gap-1.5">
-                    <GraduationCap size={14} className="text-aroham-forest shrink-0" />
-                    <span>{mentor.major}</span>
+                  <div className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${mentor.badgeColor || 'bg-emerald-100 text-aroham-forest border-emerald-200'}`}>
+                    {mentor.status}
                   </div>
-                  <div className="text-aroham-muted flex items-center gap-1.5 text-[11px]">
-                    <MapPin size={13} className="shrink-0" />
-                    <span>{mentor.location}</span>
+
+                  {/* Major & Location */}
+                  <div className="p-3 rounded-xl bg-aroham-sage/40 border border-aroham-border text-xs space-y-1">
+                    <div className="font-semibold text-aroham-heading flex items-center gap-1.5">
+                      <GraduationCap size={14} className="text-aroham-forest shrink-0" />
+                      <span>{mentor.major}</span>
+                    </div>
+                    <div className="text-aroham-muted flex items-center gap-1.5 text-[11px]">
+                      <MapPin size={13} className="shrink-0" />
+                      <span>{mentor.location}</span>
+                    </div>
                   </div>
+
+                  {/* Description */}
+                  <p className="text-xs text-aroham-body leading-relaxed">
+                    {mentor.description}
+                  </p>
                 </div>
 
-                {/* Description */}
-                <p className="text-xs text-aroham-body leading-relaxed">
-                  {mentor.description}
-                </p>
+                {/* Footer CTA */}
+                <div className="pt-4 border-t border-aroham-border flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-aroham-muted uppercase tracking-wider">
+                    ID: {mentor.id}
+                  </span>
+                  <button
+                    onClick={() => onOpenRequestMatch(mentor)}
+                    className="text-xs font-bold text-aroham-forest hover:text-aroham-dark flex items-center gap-1 group transition-colors"
+                  >
+                    <span>Request Match</span>
+                    <span className="group-hover:translate-x-1 transition-transform">›</span>
+                  </button>
+                </div>
               </div>
-
-              {/* Footer CTA */}
-              <div className="pt-4 border-t border-aroham-border flex items-center justify-between">
-                <span className="text-[11px] font-bold text-aroham-muted uppercase tracking-wider">
-                  ID: {mentor.id}
-                </span>
-                <button
-                  onClick={() => onOpenRequestMatch(mentor)}
-                  className="text-xs font-bold text-aroham-forest hover:text-aroham-dark flex items-center gap-1 group transition-colors"
-                >
-                  <span>Request Match</span>
-                  <span className="group-hover:translate-x-1 transition-transform">›</span>
-                </button>
-              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-3xl p-10 sm:p-14 border border-aroham-border shadow-soft text-center max-w-2xl mx-auto space-y-4">
+            <div className="w-14 h-14 rounded-2xl bg-aroham-mint text-aroham-dark flex items-center justify-center mx-auto shadow-sm">
+              <Users size={26} />
             </div>
-          ))}
-        </div>
+            <h4 className="text-xl font-bold font-serif text-aroham-heading">
+              No mentors found
+            </h4>
+            <p className="text-xs sm:text-sm text-aroham-body max-w-md mx-auto leading-relaxed">
+              {searchQuery
+                ? `No mentor records matched "${searchQuery}". Try searching with a different term.`
+                : `No mentors are currently listed under the "${selectedStream}" stream.`}
+            </p>
+            <div className="pt-2">
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setSelectedStream('All Disciplines');
+                }}
+                className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-bold rounded-xl transition-all shadow"
+              >
+                Reset Search & Filters
+              </button>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* =========================================================================

@@ -14,7 +14,17 @@ import {
   INITIAL_APPLICATIONS 
 } from './data/initialAdminData';
 
-export default function AdminDashboardApp({ onBackToSite }) {
+export default function AdminDashboardApp({ 
+  onBackToSite,
+  mentors: externalMentors,
+  setMentors: externalSetMentors,
+  mentees: externalMentees,
+  setMentees: externalSetMentees,
+  events: externalEvents,
+  setEvents: externalSetEvents,
+  applications: externalApplications,
+  setApplications: externalSetApplications
+}) {
   // Authentication state with localStorage persistence
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem('aroham_admin_auth') === 'true';
@@ -28,42 +38,58 @@ export default function AdminDashboardApp({ onBackToSite }) {
   const [currentTab, setCurrentTab] = useState('dashboard');
   const [isAddMentorOpen, setIsAddMentorOpen] = useState(false);
 
-  // Data collections with localStorage persistence
-  const [mentors, setMentors] = useState(() => {
+  // Internal data collections fallback with localStorage persistence
+  const [internalMentors, setInternalMentors] = useState(() => {
     const saved = localStorage.getItem('aroham_mentors');
     return saved ? JSON.parse(saved) : INITIAL_MENTORS;
   });
 
-  const [mentees, setMentees] = useState(() => {
+  const [internalMentees, setInternalMentees] = useState(() => {
     const saved = localStorage.getItem('aroham_mentees');
     return saved ? JSON.parse(saved) : INITIAL_MENTEES;
   });
 
-  const [events, setEvents] = useState(() => {
+  const [internalEvents, setInternalEvents] = useState(() => {
     const saved = localStorage.getItem('aroham_events');
     return saved ? JSON.parse(saved) : INITIAL_EVENTS;
   });
 
-  const [applications, setApplications] = useState(() => {
+  const [internalApplications, setInternalApplications] = useState(() => {
     const saved = localStorage.getItem('aroham_applications');
     return saved ? JSON.parse(saved) : INITIAL_APPLICATIONS;
   });
 
-  // Sync state to localStorage whenever collections update
+  const mentors = externalMentors !== undefined ? externalMentors : internalMentors;
+  const setMentors = externalSetMentors || setInternalMentors;
+
+  const mentees = externalMentees !== undefined ? externalMentees : internalMentees;
+  const setMentees = externalSetMentees || setInternalMentees;
+
+  const events = externalEvents !== undefined ? externalEvents : internalEvents;
+  const setEvents = externalSetEvents || setInternalEvents;
+
+  const applications = externalApplications !== undefined ? externalApplications : internalApplications;
+  const setApplications = externalSetApplications || setInternalApplications;
+
+  // Sync state to localStorage and broadcast sync event
   useEffect(() => {
     localStorage.setItem('aroham_mentors', JSON.stringify(mentors));
+    window.dispatchEvent(new Event('aroham_data_sync'));
   }, [mentors]);
 
   useEffect(() => {
     localStorage.setItem('aroham_mentees', JSON.stringify(mentees));
+    window.dispatchEvent(new Event('aroham_data_sync'));
   }, [mentees]);
 
   useEffect(() => {
     localStorage.setItem('aroham_events', JSON.stringify(events));
+    window.dispatchEvent(new Event('aroham_data_sync'));
   }, [events]);
 
   useEffect(() => {
     localStorage.setItem('aroham_applications', JSON.stringify(applications));
+    window.dispatchEvent(new Event('aroham_data_sync'));
   }, [applications]);
 
   // Auth Handlers
@@ -209,3 +235,4 @@ export default function AdminDashboardApp({ onBackToSite }) {
     </AdminLayout>
   );
 }
+

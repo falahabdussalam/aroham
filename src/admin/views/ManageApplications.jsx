@@ -181,3 +181,4 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
     </div>
   );
 }
+

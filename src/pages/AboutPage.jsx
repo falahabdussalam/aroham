@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import strategicGatheringImg from '../assets/strategic_gathering.jpg';
 import { 
   Sparkles, 
   Flag, 
@@ -263,14 +264,14 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           <div className="lg:col-span-5 space-y-6">
             {/* Photo Card */}
             <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-aroham-border">
-              <div className="relative h-56 w-full">
+              <div className="relative h-60 sm:h-64 w-full">
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                  alt="Aroham alumnae discussion meeting"
-                  className="w-full h-full object-cover"
+                  src={strategicGatheringImg}
+                  alt="Bolster Summer Camp & Aroham Gathering"
+                  className="w-full h-full object-cover object-top"
                 />
-                <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-aroham-dark/80 text-white text-[11px] font-medium backdrop-blur-sm">
-                  📍 Kozhikode, Kerala
+                <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-aroham-dark/80 text-white text-[11px] font-medium backdrop-blur-sm shadow-sm">
+                  📍 Bolster Girls Campus, Kerala
                 </span>
               </div>
               <div className="p-6 space-y-2">

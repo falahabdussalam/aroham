@@ -291,3 +291,4 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
     </div>
   );
 }
+

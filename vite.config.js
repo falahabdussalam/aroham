@@ -45,7 +45,7 @@ function arohamApiPlugin() {
         // Attempt MySQL query first
         try {
           const mysqlData = await getMysqlAllData();
-          if (mysqlData && Array.isArray(mysqlData.mentors) && mysqlData.mentors.length > 0) {
+          if (mysqlData && Array.isArray(mysqlData.mentors)) {
             res.statusCode = 200;
             res.end(JSON.stringify(mysqlData));
             return;
@@ -56,9 +56,22 @@ function arohamApiPlugin() {
 
         // Fallback to local JSON file
         if (fs.existsSync(dbPath)) {
-          const data = fs.readFileSync(dbPath, 'utf8');
-          res.statusCode = 200;
-          res.end(data);
+          try {
+            const raw = fs.readFileSync(dbPath, 'utf8');
+            const data = JSON.parse(raw);
+            const dSet = new Set((data.deletedIds || []).map(String));
+            if (dSet.size > 0) {
+              if (Array.isArray(data.mentors)) data.mentors = data.mentors.filter(m => m && !dSet.has(String(m.id)));
+              if (Array.isArray(data.events)) data.events = data.events.filter(e => e && !dSet.has(String(e.id)));
+              if (Array.isArray(data.mentees)) data.mentees = data.mentees.filter(m => m && !dSet.has(String(m.id)));
+              if (Array.isArray(data.applications)) data.applications = data.applications.filter(a => a && !dSet.has(String(a.id)));
+            }
+            res.statusCode = 200;
+            res.end(JSON.stringify(data));
+          } catch (e) {
+            res.statusCode = 200;
+            res.end(fs.readFileSync(dbPath, 'utf8'));
+          }
         } else {
           res.statusCode = 404;
           res.end(JSON.stringify({ error: 'Database not initialized' }));
@@ -73,6 +86,15 @@ function arohamApiPlugin() {
           try {
             const parsed = JSON.parse(body);
 
+            // Filter out any items in deletedIds
+            const dSet = new Set((parsed.deletedIds || []).map(String));
+            if (dSet.size > 0) {
+              if (Array.isArray(parsed.mentors)) parsed.mentors = parsed.mentors.filter(m => m && !dSet.has(String(m.id)));
+              if (Array.isArray(parsed.events)) parsed.events = parsed.events.filter(e => e && !dSet.has(String(e.id)));
+              if (Array.isArray(parsed.mentees)) parsed.mentees = parsed.mentees.filter(m => m && !dSet.has(String(m.id)));
+              if (Array.isArray(parsed.applications)) parsed.applications = parsed.applications.filter(a => a && !dSet.has(String(a.id)));
+            }
+
             // 1. Save to MySQL
             let mysqlResult = null;
             try {
@@ -81,7 +103,7 @@ function arohamApiPlugin() {
               console.warn('[Vite API] MySQL save error:', myErr.message);
             }
 
-            // 2. Mirror to JSON file on disk
+            // 2. Mirror clean state to JSON file on disk
             try {
               fs.writeFileSync(dbPath, JSON.stringify(parsed, null, 2), 'utf8');
             } catch (fsErr) {

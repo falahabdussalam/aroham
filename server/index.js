@@ -47,26 +47,47 @@ app.get('/api/status', async (req, res) => {
 app.get('/api/data', async (req, res) => {
   // 1. Try MySQL
   const mysqlData = await getMysqlAllData();
-  if (mysqlData && Array.isArray(mysqlData.mentors) && mysqlData.mentors.length > 0) {
+  if (mysqlData && Array.isArray(mysqlData.mentors)) {
     return res.json(mysqlData);
   }
 
   // 2. Fallback to local JSON disk file
   const jsonPath = path.resolve(__dirname, '../src/admin/data/aroham_db.json');
   if (fs.existsSync(jsonPath)) {
-    return res.json(JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
+    try {
+      const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+      const dSet = new Set((data.deletedIds || []).map(String));
+      if (dSet.size > 0) {
+        if (Array.isArray(data.mentors)) data.mentors = data.mentors.filter(m => m && !dSet.has(String(m.id)));
+        if (Array.isArray(data.events)) data.events = data.events.filter(e => e && !dSet.has(String(e.id)));
+        if (Array.isArray(data.mentees)) data.mentees = data.mentees.filter(m => m && !dSet.has(String(m.id)));
+        if (Array.isArray(data.applications)) data.applications = data.applications.filter(a => a && !dSet.has(String(a.id)));
+      }
+      return res.json(data);
+    } catch (e) {
+      return res.json(JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
+    }
   }
 
   res.status(404).json({ error: 'Database not initialized' });
 });
 
 app.post('/api/data', async (req, res) => {
-  const mysqlRes = await saveMysqlAllData(req.body).catch(e => ({ success: false, error: e.message }));
+  const payload = req.body;
+  const dSet = new Set((payload.deletedIds || []).map(String));
+  if (dSet.size > 0) {
+    if (Array.isArray(payload.mentors)) payload.mentors = payload.mentors.filter(m => m && !dSet.has(String(m.id)));
+    if (Array.isArray(payload.events)) payload.events = payload.events.filter(e => e && !dSet.has(String(e.id)));
+    if (Array.isArray(payload.mentees)) payload.mentees = payload.mentees.filter(m => m && !dSet.has(String(m.id)));
+    if (Array.isArray(payload.applications)) payload.applications = payload.applications.filter(a => a && !dSet.has(String(a.id)));
+  }
+
+  const mysqlRes = await saveMysqlAllData(payload).catch(e => ({ success: false, error: e.message }));
 
   // Mirror to JSON disk backup
   try {
     const jsonPath = path.resolve(__dirname, '../src/admin/data/aroham_db.json');
-    fs.writeFileSync(jsonPath, JSON.stringify(req.body, null, 2), 'utf8');
+    fs.writeFileSync(jsonPath, JSON.stringify(payload, null, 2), 'utf8');
   } catch (e) {}
 
   res.json({

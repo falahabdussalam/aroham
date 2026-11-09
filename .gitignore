@@ -33,7 +33,7 @@ dist-ssr
 !index.html
 
 # Local Database & Environment
-data/
+/data/
 .env
 .env.local
 

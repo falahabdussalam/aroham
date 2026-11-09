@@ -15,6 +15,7 @@ import {
 export default function ManageApplications({ applications, onUpdateApplicationStatus, onDeleteApplication }) {
   const [search, setSearch] = useState('');
   const [filterRole, setFilterRole] = useState('All');
+  const [appToDelete, setAppToDelete] = useState(null);
 
   const roles = ['All', 'Student Aspirant', 'Alumna Mentor', 'Institutional Partner'];
 
@@ -161,7 +162,8 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
                 </a>
 
                 <button
-                  onClick={() => onDeleteApplication(app.id)}
+                  type="button"
+                  onClick={() => setAppToDelete(app)}
                   className="p-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
                   title="Delete Application"
                 >
@@ -178,6 +180,48 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
           </div>
         )}
       </div>
+
+      {/* In-App Delete Confirmation Modal */}
+      {appToDelete && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-aroham-dark/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full border border-aroham-border shadow-popup space-y-5 text-center">
+            <div className="w-16 h-16 rounded-full bg-red-50 text-red-600 flex items-center justify-center mx-auto border border-red-100">
+              <Trash2 size={28} />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-xl font-bold font-serif text-aroham-heading">
+                Delete Application?
+              </h3>
+              <p className="text-sm text-aroham-body leading-relaxed">
+                Are you sure you want to remove the application from <span className="font-bold text-aroham-dark">{appToDelete.name}</span> ({appToDelete.email})?
+              </p>
+              <p className="text-xs text-red-600 font-semibold bg-red-50 py-2 px-3 rounded-xl border border-red-100">
+                ⚠️ This application entry will be permanently removed across all devices.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setAppToDelete(null)}
+                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-bold text-aroham-body hover:bg-aroham-sage transition-all"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  onDeleteApplication(appToDelete.id);
+                  setAppToDelete(null);
+                }}
+                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
+              >
+                <Trash2 size={14} />
+                <span>Yes, Remove</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

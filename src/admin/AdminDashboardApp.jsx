@@ -14,7 +14,7 @@ import {
   INITIAL_EVENTS, 
   INITIAL_APPLICATIONS 
 } from './data/initialAdminData';
-import { saveLiveDatabase } from './data/dataSyncManager';
+import { saveLiveDatabase, markIdDeleted } from './data/dataSyncManager';
 
 export default function AdminDashboardApp({ 
   onBackToSite,
@@ -123,7 +123,8 @@ export default function AdminDashboardApp({
   };
 
   const handleDeleteMentor = (mentorId) => {
-    const updated = mentors.filter(m => m.id !== mentorId);
+    markIdDeleted(mentorId);
+    const updated = mentors.filter(m => String(m.id) !== String(mentorId));
     setMentors(updated);
     saveLiveDatabase({ mentors: updated, events, mentees, applications });
   };
@@ -148,7 +149,8 @@ export default function AdminDashboardApp({
   };
 
   const handleDeleteMentee = (menteeId) => {
-    const updated = mentees.filter(m => m.id !== menteeId);
+    markIdDeleted(menteeId);
+    const updated = mentees.filter(m => String(m.id) !== String(menteeId));
     setMentees(updated);
     saveLiveDatabase({ mentors, events, mentees: updated, applications });
   };
@@ -170,7 +172,8 @@ export default function AdminDashboardApp({
   };
 
   const handleDeleteEvent = (eventId) => {
-    const updated = events.filter(e => e.id !== eventId);
+    markIdDeleted(eventId);
+    const updated = events.filter(e => String(e.id) !== String(eventId));
     setEvents(updated);
     saveLiveDatabase({ mentors, events: updated, mentees, applications });
   };
@@ -183,11 +186,10 @@ export default function AdminDashboardApp({
   };
 
   const handleDeleteApplication = (appId) => {
-    if (window.confirm('Delete this application entry?')) {
-      const updated = applications.filter(a => a.id !== appId);
-      setApplications(updated);
-      saveLiveDatabase({ mentors, events, mentees, applications: updated });
-    }
+    markIdDeleted(appId);
+    const updated = applications.filter(a => String(a.id) !== String(appId));
+    setApplications(updated);
+    saveLiveDatabase({ mentors, events, mentees, applications: updated });
   };
 
   // If not logged in, display the Admin Login page

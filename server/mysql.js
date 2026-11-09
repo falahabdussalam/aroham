@@ -185,11 +185,12 @@ export async function initMysqlTables(targetPool) {
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
 
-    // Auto-seed if mentors table is empty
-    const [countRows] = await p.query('SELECT COUNT(*) as count FROM mentors');
-    if (countRows && countRows[0].count === 0) {
-      console.log('[MySQL] Database is empty. Seeding authoritative Aroham dataset into MySQL...');
+    // Auto-seed only if database was never initialized before
+    const [initRows] = await p.query("SELECT value_data FROM system_metadata WHERE key_name = 'initialized'");
+    if (initRows.length === 0) {
+      console.log('[MySQL] Database is newly created. Seeding initial Aroham dataset into MySQL...');
       await seedMysqlDatabase(p);
+      await p.query("INSERT INTO system_metadata (key_name, value_data) VALUES ('initialized', 'true') ON DUPLICATE KEY UPDATE value_data='true'");
     }
   } catch (err) {
     console.warn('[MySQL] Table init warning:', err.message);
@@ -407,11 +408,20 @@ export async function getMysqlAllData() {
       };
     });
 
+    let deletedIds = [];
+    try {
+      const [metaRows] = await p.query("SELECT value_data FROM system_metadata WHERE key_name = 'deleted_ids'");
+      if (metaRows.length > 0 && metaRows[0].value_data) {
+        deletedIds = JSON.parse(metaRows[0].value_data);
+      }
+    } catch (e) {}
+
     return {
       mentors,
       events,
       mentees,
       applications,
+      deletedIds,
       source: 'mysql',
       lastModified: new Date().toISOString()
     };
@@ -526,12 +536,20 @@ export async function saveMysqlAllData(payload) {
         }
       }
 
-      // Save system metadata timestamp
+      // Save system metadata timestamp & deleted IDs
       await conn.query(`
         INSERT INTO system_metadata (key_name, value_data)
         VALUES ('last_sync', ?)
         ON DUPLICATE KEY UPDATE value_data=VALUES(value_data)
       `, [new Date().toISOString()]);
+
+      if (Array.isArray(payload.deletedIds)) {
+        await conn.query(`
+          INSERT INTO system_metadata (key_name, value_data)
+          VALUES ('deleted_ids', ?)
+          ON DUPLICATE KEY UPDATE value_data=VALUES(value_data)
+        `, [JSON.stringify(payload.deletedIds)]);
+      }
 
       await conn.commit();
       conn.release();

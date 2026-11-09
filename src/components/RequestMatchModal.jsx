@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle, GraduationCap, Building2, MapPin, Sparkles, Loader2, Mail } from 'lucide-react';
 
-export default function RequestMatchModal({ isOpen, onClose, mentor }) {
+export default function RequestMatchModal({ isOpen, onClose, mentor, onApplyMentee }) {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -18,6 +18,53 @@ export default function RequestMatchModal({ isOpen, onClose, mentor }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    const appId = `APP-${Math.floor(100 + Math.random() * 900)}`;
+    const studentId = `STU-${Math.floor(100 + Math.random() * 900)}`;
+
+    const applicationItem = {
+      id: appId,
+      name: formData.studentName.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim() || 'N/A',
+      role: 'Student Aspirant',
+      campusBatch: formData.schoolOrCollege.trim() || 'Class 12 / Student',
+      message: `UniMates 1:1 Match Request. Intended Major: ${formData.intendedMajor || (mentor ? mentor.major : 'General')}. Requested Mentor: ${mentor ? `${mentor.name} (${mentor.university})` : 'General Alumna Matching'}. Aspirations: ${formData.aspirations.trim() || 'Looking for personalized academic & career guidance.'}`,
+      date: todayStr,
+      status: 'New'
+    };
+
+    const menteeItem = {
+      id: studentId,
+      name: formData.studentName.trim(),
+      schoolOrCollege: formData.schoolOrCollege.trim() || 'Student Applicant',
+      targetMajor: formData.intendedMajor.trim() || (mentor ? mentor.major : 'Undergraduate Studies'),
+      assignedMentorId: mentor ? mentor.id : null,
+      assignedMentorName: mentor ? mentor.name : 'Unassigned',
+      status: mentor ? 'Active Match' : 'Pending Match',
+      matchedDate: mentor ? todayStr : 'In Review',
+      targetCountry: mentor ? mentor.location : 'Global'
+    };
+
+    // Dispatch to parent or fallback to localStorage sync
+    if (onApplyMentee) {
+      onApplyMentee(applicationItem, menteeItem);
+    } else {
+      try {
+        const savedApps = localStorage.getItem('aroham_applications');
+        const apps = savedApps ? JSON.parse(savedApps) : [];
+        localStorage.setItem('aroham_applications', JSON.stringify([applicationItem, ...apps]));
+
+        const savedMentees = localStorage.getItem('aroham_mentees');
+        const mentees = savedMentees ? JSON.parse(savedMentees) : [];
+        localStorage.setItem('aroham_mentees', JSON.stringify([menteeItem, ...mentees]));
+
+        window.dispatchEvent(new Event('aroham_data_sync'));
+      } catch (err) {
+        console.error("Local sync error:", err);
+      }
+    }
 
     try {
       await fetch("https://formsubmit.co/ajax/arohamconnect@gmail.com", {

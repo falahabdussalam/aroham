@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle, Heart, GraduationCap, Users2, Building, Mail, Loader2 } from 'lucide-react';
 
-export default function GetInvolvedModal({ isOpen, onClose }) {
+export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication }) {
   const [selectedRole, setSelectedRole] = useState('student');
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,6 +24,53 @@ export default function GetInvolvedModal({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    const appId = `APP-${Math.floor(100 + Math.random() * 900)}`;
+
+    const applicationItem = {
+      id: appId,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim() || 'N/A',
+      role: roleLabels[selectedRole] || 'Student Aspirant',
+      campusBatch: formData.campusYear.trim() || 'N/A',
+      message: formData.message.trim() || `Submitted via Join Aroham Network form as ${roleLabels[selectedRole] || 'Community Member'}`,
+      date: todayStr,
+      status: 'New'
+    };
+
+    if (onSubmitApplication) {
+      onSubmitApplication(applicationItem);
+    } else {
+      try {
+        const savedApps = localStorage.getItem('aroham_applications');
+        const apps = savedApps ? JSON.parse(savedApps) : [];
+        localStorage.setItem('aroham_applications', JSON.stringify([applicationItem, ...apps]));
+
+        if (selectedRole === 'student') {
+          const studentId = `STU-${Math.floor(100 + Math.random() * 900)}`;
+          const menteeItem = {
+            id: studentId,
+            name: formData.name.trim(),
+            schoolOrCollege: formData.campusYear.trim() || 'Prospective Mentee',
+            targetMajor: 'General Academic Guidance',
+            assignedMentorId: null,
+            assignedMentorName: 'Unassigned',
+            status: 'Pending Match',
+            matchedDate: 'In Review',
+            targetCountry: 'Global'
+          };
+          const savedMentees = localStorage.getItem('aroham_mentees');
+          const mentees = savedMentees ? JSON.parse(savedMentees) : [];
+          localStorage.setItem('aroham_mentees', JSON.stringify([menteeItem, ...mentees]));
+        }
+
+        window.dispatchEvent(new Event('aroham_data_sync'));
+      } catch (err) {
+        console.error("Local sync error:", err);
+      }
+    }
 
     try {
       await fetch("https://formsubmit.co/ajax/arohamconnect@gmail.com", {

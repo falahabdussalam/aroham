@@ -176,6 +176,48 @@ export default function App() {
     setGetInvolvedModalOpen(true);
   };
 
+  // Handler for mentee applications from website (UniMates Request Match Modal)
+  const handleApplyMentee = (applicationData, menteeData) => {
+    const updatedApps = [applicationData, ...applications];
+    setApplications(updatedApps);
+    localStorage.setItem('aroham_applications', JSON.stringify(updatedApps));
+
+    if (menteeData) {
+      const updatedMentees = [menteeData, ...mentees];
+      setMentees(updatedMentees);
+      localStorage.setItem('aroham_mentees', JSON.stringify(updatedMentees));
+    }
+
+    window.dispatchEvent(new Event('aroham_data_sync'));
+  };
+
+  // Handler for network applications from Join Aroham Network / Get Involved form
+  const handleAddApplication = (applicationData) => {
+    const updatedApps = [applicationData, ...applications];
+    setApplications(updatedApps);
+    localStorage.setItem('aroham_applications', JSON.stringify(updatedApps));
+
+    if (applicationData.role === 'Student Aspirant') {
+      const studentId = `STU-${Math.floor(100 + Math.random() * 900)}`;
+      const menteeItem = {
+        id: studentId,
+        name: applicationData.name,
+        schoolOrCollege: applicationData.campusBatch !== 'N/A' ? applicationData.campusBatch : 'Student Applicant',
+        targetMajor: 'General Guidance',
+        assignedMentorId: null,
+        assignedMentorName: 'Unassigned',
+        status: 'Pending Match',
+        matchedDate: 'In Review',
+        targetCountry: 'Global'
+      };
+      const updatedMentees = [menteeItem, ...mentees];
+      setMentees(updatedMentees);
+      localStorage.setItem('aroham_mentees', JSON.stringify(updatedMentees));
+    }
+
+    window.dispatchEvent(new Event('aroham_data_sync'));
+  };
+
   // If viewing admin route, render the complete Admin Dashboard Application
   if (isAdminView) {
     return (
@@ -289,11 +331,13 @@ export default function App() {
         isOpen={matchModalOpen}
         onClose={() => setMatchModalOpen(false)}
         mentor={selectedMentor}
+        onApplyMentee={handleApplyMentee}
       />
 
       <GetInvolvedModal
         isOpen={getInvolvedModalOpen}
         onClose={() => setGetInvolvedModalOpen(false)}
+        onSubmitApplication={handleAddApplication}
       />
     </div>
   );

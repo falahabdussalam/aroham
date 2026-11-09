@@ -22,12 +22,15 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
       <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-16 pb-20 sm:pt-20 sm:pb-28 overflow-hidden">
         {/* Full-Fit Background Video with 75% Opacity */}
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/ywaGkzfjUKA?autoplay=1&mute=1&loop=1&playlist=ywaGkzfjUKA&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&playsinline=1"
-            title="Bolster Girls Campus Background Video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full object-cover opacity-75 scale-125"
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-75"
+          >
+            <source src="/hero-bg.mp4" type="video/mp4" />
+          </video>
           {/* Subtle light overlay to blend smoothly into page styling while maintaining high contrast */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#F4F8F5]/80 via-[#F4F8F5]/65 to-[#F4F8F5] pointer-events-none" />
         </div>

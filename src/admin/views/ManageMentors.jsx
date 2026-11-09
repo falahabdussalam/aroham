@@ -11,10 +11,13 @@ import {
   ShieldCheck, 
   Filter, 
   CheckCircle2, 
-  Eye 
+  Eye,
+  Camera,
+  Upload,
+  X
 } from 'lucide-react';
 
-export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor }) {
+export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor, onUpdateMentor }) {
   const [search, setSearch] = useState('');
   const [selectedStream, setSelectedStream] = useState('All');
   const [selectedMentorDetails, setSelectedMentorDetails] = useState(null);
@@ -105,9 +108,17 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                   {/* Name & ID */}
                   <td className="py-4 px-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-aroham-mint border border-aroham-border text-aroham-dark font-serif font-bold text-sm flex items-center justify-center shrink-0">
-                        {mentor.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
-                      </div>
+                      {mentor.image ? (
+                        <img
+                          src={mentor.image}
+                          alt={mentor.name}
+                          className="w-10 h-10 rounded-xl object-cover border border-aroham-border shrink-0 shadow-sm"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-xl bg-aroham-mint border border-aroham-border text-aroham-dark font-serif font-bold text-sm flex items-center justify-center shrink-0">
+                          {mentor.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                        </div>
+                      )}
                       <div>
                         <div className="font-bold text-aroham-heading flex items-center gap-2">
                           <span>{mentor.name}</span>
@@ -188,9 +199,17 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-aroham-border shadow-popup space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-aroham-border">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-aroham-mint text-aroham-dark font-bold font-serif flex items-center justify-center text-base border border-aroham-border">
-                  {selectedMentorDetails.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
-                </div>
+                {selectedMentorDetails.image ? (
+                  <img
+                    src={selectedMentorDetails.image}
+                    alt={selectedMentorDetails.name}
+                    className="w-14 h-14 rounded-2xl object-cover border-2 border-aroham-forest shrink-0 shadow-sm"
+                  />
+                ) : (
+                  <div className="w-14 h-14 rounded-2xl bg-aroham-mint text-aroham-dark font-bold font-serif flex items-center justify-center text-lg border border-aroham-border shrink-0 shadow-sm">
+                    {selectedMentorDetails.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                  </div>
+                )}
                 <div>
                   <h3 className="text-xl font-bold font-serif text-aroham-heading">
                     {selectedMentorDetails.name}
@@ -204,6 +223,84 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               >
                 ✕
               </button>
+            </div>
+
+            {/* Profile Picture Management Card */}
+            <div className="p-3.5 rounded-2xl bg-[#F4F8F5] border border-aroham-border space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-bold text-aroham-dark uppercase tracking-wider flex items-center gap-1.5">
+                  <Camera size={14} className="text-aroham-forest" />
+                  <span>Profile Picture</span>
+                </span>
+                {selectedMentorDetails.image && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const updated = { ...selectedMentorDetails, image: '' };
+                      setSelectedMentorDetails(updated);
+                      if (onUpdateMentor) onUpdateMentor(updated);
+                    }}
+                    className="text-[11px] font-semibold text-red-500 hover:text-red-700"
+                  >
+                    Remove Photo
+                  </button>
+                )}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <label className="px-3 py-1.5 rounded-xl bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-semibold cursor-pointer transition-all shadow-sm flex items-center gap-1.5">
+                  <Upload size={13} />
+                  <span>{selectedMentorDetails.image ? 'Change Photo' : 'Upload Photo'}</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files && e.target.files[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          const updated = { ...selectedMentorDetails, image: reader.result };
+                          setSelectedMentorDetails(updated);
+                          if (onUpdateMentor) onUpdateMentor(updated);
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                </label>
+
+                <span className="text-[11px] text-aroham-muted">or</span>
+
+                <input
+                  type="url"
+                  placeholder="Paste image link URL..."
+                  defaultValue={selectedMentorDetails.image && !selectedMentorDetails.image.startsWith('data:') ? selectedMentorDetails.image : ''}
+                  onBlur={(e) => {
+                    const url = e.target.value.trim();
+                    if (url && url !== selectedMentorDetails.image) {
+                      const updated = { ...selectedMentorDetails, image: url };
+                      setSelectedMentorDetails(updated);
+                      if (onUpdateMentor) onUpdateMentor(updated);
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      const url = e.target.value.trim();
+                      if (url && url !== selectedMentorDetails.image) {
+                        const updated = { ...selectedMentorDetails, image: url };
+                        setSelectedMentorDetails(updated);
+                        if (onUpdateMentor) onUpdateMentor(updated);
+                      }
+                    }
+                  }}
+                  className="flex-1 min-w-[150px] px-3 py-1.5 rounded-xl border border-aroham-border bg-white text-xs focus:outline-none focus:ring-1 focus:ring-aroham-dark"
+                />
+              </div>
+              <p className="text-[10px] text-aroham-muted">
+                Profile picture updates appear instantly across the UniMates directory and website.
+              </p>
             </div>
 
             <div className="space-y-3 text-xs">

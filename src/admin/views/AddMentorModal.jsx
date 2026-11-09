@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, UserPlus, Sparkles, GraduationCap, Building2, MapPin, Mail, Phone, BookOpen, ShieldCheck } from 'lucide-react';
+import { X, UserPlus, Sparkles, GraduationCap, Building2, MapPin, Mail, Phone, BookOpen, ShieldCheck, Camera, Upload, Trash2, Image } from 'lucide-react';
 
 export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
   const [formData, setFormData] = useState({
@@ -11,7 +11,8 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
     stream: 'Engineering',
     location: '',
     status: 'Available for 1-on-1 Guidance',
-    description: ''
+    description: '',
+    image: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -75,7 +76,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
       email: formData.email.trim() || 'mentor@alumnae.aroham.org',
       phone: formData.phone.trim() || 'N/A',
       activeMentees: 0,
-      image: '' // Prepared for blank / custom photo upload
+      image: formData.image || ''
     };
 
     onAddMentor(newMentor);
@@ -90,7 +91,8 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
       stream: 'Engineering',
       location: '',
       status: 'Available for 1-on-1 Guidance',
-      description: ''
+      description: '',
+      image: ''
     });
     setErrors({});
   };
@@ -120,6 +122,86 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
 
         {/* Form Body */}
         <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-5">
+          {/* Profile Picture Uploader */}
+          <div className="p-4 rounded-2xl bg-[#F4F8F5] border border-aroham-border flex flex-col sm:flex-row items-center gap-4">
+            <div className="relative group shrink-0">
+              {formData.image ? (
+                <div className="relative">
+                  <img
+                    src={formData.image}
+                    alt="Profile Preview"
+                    className="w-20 h-20 rounded-2xl object-cover border-2 border-aroham-forest shadow-sm"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, image: '' })}
+                    className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center shadow transition-colors"
+                    title="Remove picture"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              ) : (
+                <div className="w-20 h-20 rounded-2xl bg-aroham-mint border-2 border-dashed border-aroham-border flex flex-col items-center justify-center text-aroham-dark/70 shadow-sm">
+                  <Camera size={24} className="text-aroham-forest" />
+                  <span className="text-[10px] font-bold mt-1 text-aroham-dark">Add Photo</span>
+                </div>
+              )}
+            </div>
+
+            <div className="flex-1 space-y-2 text-center sm:text-left w-full">
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider">
+                  Profile Picture (Optional)
+                </label>
+                {formData.image && (
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, image: '' })}
+                    className="text-xs text-red-500 hover:text-red-700 font-semibold"
+                  >
+                    Remove Photo
+                  </button>
+                )}
+              </div>
+              <p className="text-[11px] text-aroham-muted">
+                Upload a portrait from your device or paste an image link.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-2 pt-0.5">
+                <label className="px-3.5 py-1.5 rounded-xl bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-semibold cursor-pointer transition-all shadow-sm flex items-center gap-1.5">
+                  <Upload size={13} />
+                  <span>Upload from Device</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files && e.target.files[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setFormData(prev => ({ ...prev, image: reader.result }));
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                  />
+                </label>
+
+                <span className="text-[11px] text-aroham-muted font-medium">or</span>
+
+                <input
+                  type="url"
+                  value={formData.image.startsWith('data:') ? '' : formData.image}
+                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                  placeholder="Paste image URL..."
+                  className="flex-1 min-w-[160px] px-3 py-1.5 rounded-xl border border-aroham-border bg-white text-xs focus:outline-none focus:ring-1 focus:ring-aroham-dark"
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Full Name */}
             <div>

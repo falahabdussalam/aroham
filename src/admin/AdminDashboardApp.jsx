@@ -111,6 +111,10 @@ export default function AdminDashboardApp({
     setMentors([newMentor, ...mentors]);
   };
 
+  const handleUpdateMentor = (updatedMentor) => {
+    setMentors(mentors.map(m => m.id === updatedMentor.id ? updatedMentor : m));
+  };
+
   const handleDeleteMentor = (mentorId) => {
     if (window.confirm('Are you sure you want to remove this mentor profile?')) {
       setMentors(mentors.filter(m => m.id !== mentorId));
@@ -196,6 +200,7 @@ export default function AdminDashboardApp({
           mentors={mentors}
           onDeleteMentor={handleDeleteMentor}
           onOpenAddMentor={() => setIsAddMentorOpen(true)}
+          onUpdateMentor={handleUpdateMentor}
         />
       )}
 

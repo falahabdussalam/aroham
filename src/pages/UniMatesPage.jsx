@@ -151,7 +151,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
 
           {/* Right Visual Card */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[300px] sm:max-w-[320px] rounded-3xl overflow-hidden shadow-elevated border border-aroham-border bg-white">
+            <div className="relative w-full max-w-[300px] sm:max-w-[320px] rounded-3xl overflow-hidden shadow-elevated border border-aroham-border bg-[#07281E]">
               <div
                 className="relative aspect-[9/16] w-full bg-[#07281E] overflow-hidden cursor-pointer group"
                 onClick={togglePlay}
@@ -194,26 +194,6 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                     {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
                   </button>
                 </div>
-              </div>
-              
-              {/* Floating impact pod card */}
-              <div className="p-6 bg-white border-t border-aroham-border space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-extrabold uppercase tracking-wider text-aroham-forest text-[10px]">
-                    Aroham Impact Pod
-                  </span>
-                  <span className="text-emerald-700 font-bold flex items-center gap-1 text-[11px]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    100% Match Rate
-                  </span>
-                </div>
-                <h4 className="text-base font-bold font-serif text-aroham-heading flex items-center gap-2">
-                  <Users size={17} className="text-aroham-gold" />
-                  <span>1:1 Pairing Model</span>
-                </h4>
-                <p className="text-xs text-aroham-body leading-relaxed">
-                  Personalized academic guidance and support to unlock admission resilience and university integration.
-                </p>
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Search, 
   Sparkles, 
@@ -11,13 +11,52 @@ import {
   Lightbulb, 
   Calendar,
   Building,
-  HeartHandshake
+  HeartHandshake,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { INITIAL_MENTORS } from '../admin/data/initialAdminData';
 
 export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, mentors: propMentors }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStream, setSelectedStream] = useState('All Disciplines');
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+  }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = (e) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+    const nextMuted = !isMuted;
+    video.muted = nextMuted;
+    setIsMuted(nextMuted);
+    if (video.paused) {
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  };
 
   // Directly derive mentors from propMentors or fallback to cached storage / INITIAL_MENTORS
   const mentors = propMentors && Array.isArray(propMentors) 
@@ -111,13 +150,51 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           </div>
 
           {/* Right Visual Card */}
-          <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden shadow-elevated border border-aroham-border bg-white">
-              <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
-                alt="Two student alumnae studying together in mentorship"
-                className="w-full h-80 object-cover"
-              />
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[300px] sm:max-w-[320px] rounded-3xl overflow-hidden shadow-elevated border border-aroham-border bg-white">
+              <div
+                className="relative aspect-[9/16] w-full bg-[#07281E] overflow-hidden cursor-pointer group"
+                onClick={togglePlay}
+              >
+                <video
+                  ref={videoRef}
+                  src="/unimates-launch.mp4"
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  preload="auto"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Subtle bottom gradient for control legibility */}
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/55 via-black/15 to-transparent pointer-events-none" />
+
+                {/* Floating Play/Pause & Mute/Unmute controls */}
+                <div className="absolute bottom-3 right-3 flex items-center gap-2 z-10">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      togglePlay();
+                    }}
+                    aria-label={isPlaying ? 'Pause launch video' : 'Play launch video'}
+                    className="w-9 h-9 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md text-white border border-white/20 flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                  >
+                    {isPlaying ? <Pause size={15} /> : <Play size={15} className="ml-0.5" />}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={toggleMute}
+                    aria-label={isMuted ? 'Unmute launch video' : 'Mute launch video'}
+                    className="w-9 h-9 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md text-white border border-white/20 flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                  >
+                    {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+                  </button>
+                </div>
+              </div>
               
               {/* Floating impact pod card */}
               <div className="p-6 bg-white border-t border-aroham-border space-y-2">

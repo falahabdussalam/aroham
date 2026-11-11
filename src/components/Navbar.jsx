@@ -39,7 +39,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
                 onClick={() => handleNavClick(link.id)}
                 onMouseEnter={() => setHoveredLink(link.id)}
                 onMouseLeave={() => setHoveredLink(null)}
-                className={`relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform select-none ${
+                className={`relative px-4 py-2 rounded-xl text-sm font-semibold no-underline transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform select-none ${
                   isActive
                     ? 'bg-aroham-dark text-white shadow-soft -translate-y-0.5 scale-[1.02]'
                     : isHovered
@@ -53,11 +53,6 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse" />
                   )}
                 </span>
-
-                {/* Subtle bottom pop indicator line */}
-                {isHovered && !isActive && (
-                  <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-aroham-gold rounded-full transform scale-x-100 transition-transform duration-300" />
-                )}
               </button>
             );
           })}

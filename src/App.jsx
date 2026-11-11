@@ -134,16 +134,28 @@ export default function App() {
     }
     setActivePage(targetPage);
 
-    const targetHash = `#${targetPage}`;
-    if (window.location.hash !== targetHash && window.history.pushState) {
-      window.history.pushState(null, '', targetHash);
+    if (window.history.pushState) {
+      if (targetPage === 'home') {
+        if (window.location.hash) {
+          window.history.pushState(null, '', window.location.pathname + window.location.search);
+        }
+      } else {
+        const targetHash = `#${targetPage}`;
+        if (window.location.hash !== targetHash) {
+          window.history.pushState(null, '', targetHash);
+        }
+      }
     }
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  // Sync active page with browser hash changes (forward/back navigation & #admin)
+  // Sync active page with browser navigation (forward/back, hash changes & #admin)
   useEffect(() => {
-    const handleHashChange = () => {
+    if (window.location.hash === '#home' && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+
+    const handleRouteChange = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash.startsWith('admin')) {
         setIsAdminView(true);
@@ -151,12 +163,19 @@ export default function App() {
         return;
       }
       setIsAdminView(false);
+      if (hash === 'home' && window.history.replaceState) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
       setActivePage(VALID_PAGES.includes(hash) ? hash : 'home');
       window.scrollTo(0, 0);
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', handleRouteChange);
+    window.addEventListener('popstate', handleRouteChange);
+    return () => {
+      window.removeEventListener('hashchange', handleRouteChange);
+      window.removeEventListener('popstate', handleRouteChange);
+    };
   }, []);
 
   const handleOpenRegister = (eventTitle = "Next Guidance Cohort & University Workshop") => {

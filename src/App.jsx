@@ -18,8 +18,15 @@ import {
 } from './admin/data/initialAdminData';
 import { fetchLiveDatabase, saveLiveDatabase } from './admin/data/dataSyncManager';
 
+const VALID_PAGES = ['home', 'about', 'unimates', 'events', 'contact'];
+
+const getPageFromHash = () => {
+  const hash = window.location.hash.replace('#', '');
+  return VALID_PAGES.includes(hash) ? hash : 'home';
+};
+
 export default function App() {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activePage, setActivePage] = useState(getPageFromHash);
   const [isAdminView, setIsAdminView] = useState(() => {
     return window.location.hash.startsWith('#admin');
   });
@@ -119,32 +126,24 @@ export default function App() {
   const [selectedMentor, setSelectedMentor] = useState(null);
   const [getInvolvedModalOpen, setGetInvolvedModalOpen] = useState(false);
 
-  // Smooth scroll handler to target section
-  const scrollToSection = (id) => {
+  // Navigate to a standalone page and reset scroll to the top
+  const navigateToPage = (page) => {
+    const targetPage = VALID_PAGES.includes(page) ? page : 'home';
     if (isAdminView) {
       setIsAdminView(false);
     }
-    setActiveSection(id);
-    if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (window.history.pushState) {
-        window.history.pushState(null, '', '#home');
-      }
-      return;
-    }
+    setActivePage(targetPage);
 
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      if (window.history.pushState) {
-        window.history.pushState(null, '', `#${id}`);
-      }
+    const targetHash = `#${targetPage}`;
+    if (window.location.hash !== targetHash && window.history.pushState) {
+      window.history.pushState(null, '', targetHash);
     }
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  // Sync hash on initial page load or browser forward/back
+  // Sync active page with browser hash changes (forward/back navigation & #admin)
   useEffect(() => {
-    const handleHash = () => {
+    const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash.startsWith('admin')) {
         setIsAdminView(true);
@@ -152,48 +151,13 @@ export default function App() {
         return;
       }
       setIsAdminView(false);
-
-      if (['home', 'about', 'unimates', 'events', 'contact'].includes(hash)) {
-        setActiveSection(hash);
-        const el = document.getElementById(hash);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
+      setActivePage(VALID_PAGES.includes(hash) ? hash : 'home');
+      window.scrollTo(0, 0);
     };
 
-    const timer = setTimeout(handleHash, 150);
-    window.addEventListener('hashchange', handleHash);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('hashchange', handleHash);
-    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
-
-  // Scrollspy: automatically update active section in navbar during scroll
-  useEffect(() => {
-    if (isAdminView) return;
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 160;
-      const sectionIds = ['home', 'about', 'unimates', 'events', 'contact'];
-
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const id = sectionIds[i];
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(id);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isAdminView]);
 
   const handleOpenRegister = (eventTitle = "Next Guidance Cohort & University Workshop") => {
     setSelectedEventTitle(eventTitle);
@@ -264,9 +228,7 @@ export default function App() {
     return (
       <AdminDashboardApp
         onBackToSite={() => {
-          setIsAdminView(false);
-          window.location.hash = '#home';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          navigateToPage('home');
         }}
         mentors={mentors}
         setMentors={handleUpdateMentors}
@@ -280,84 +242,65 @@ export default function App() {
     );
   }
 
-  return (
-    <div className="min-h-screen flex flex-col bg-[#F4F8F5] selection:bg-aroham-terracotta/20 selection:text-aroham-dark">
-      {/* Navigation Bar with active scroll state */}
-      <Navbar
-        activePage={activeSection}
-        setActivePage={scrollToSection}
-        onOpenGetInvolved={handleOpenGetInvolved}
-      />
-
-      {/* Main Unified Single-Page Architecture */}
-      <main className="flex-1">
-        {/* Section 1: Home / Hero / Pillars */}
-        <section id="home" className="scroll-mt-24 sm:scroll-mt-28">
-          <HomePage
-            setActivePage={scrollToSection}
-            onOpenRegister={() => handleOpenRegister("Next Guidance Cohort & University Workshop")}
-            onOpenGetInvolved={handleOpenGetInvolved}
-            mentorsCount={mentors.length}
-          />
-        </section>
-
-        {/* Section Divider */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-center">
-          <div className="h-px bg-gradient-to-r from-transparent via-aroham-border to-transparent w-full" />
-        </div>
-
-        {/* Section 2: About Us & Leadership Committee */}
-        <section id="about" className="scroll-mt-24 sm:scroll-mt-28">
+  const renderActivePage = () => {
+    switch (activePage) {
+      case 'about':
+        return (
           <AboutPage
-            setActivePage={scrollToSection}
+            setActivePage={navigateToPage}
             onOpenGetInvolved={handleOpenGetInvolved}
           />
-        </section>
-
-        {/* Section Divider */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-center">
-          <div className="h-px bg-gradient-to-r from-transparent via-aroham-border to-transparent w-full" />
-        </div>
-
-        {/* Section 3: UniMates Mentorship Ecosystem */}
-        <section id="unimates" className="scroll-mt-24 sm:scroll-mt-28">
+        );
+      case 'unimates':
+        return (
           <UniMatesPage
-            setActivePage={scrollToSection}
+            setActivePage={navigateToPage}
             onOpenRequestMatch={handleOpenRequestMatch}
             onOpenGetInvolved={handleOpenGetInvolved}
             mentors={mentors}
           />
-        </section>
-
-        {/* Section Divider */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-center">
-          <div className="h-px bg-gradient-to-r from-transparent via-aroham-border to-transparent w-full" />
-        </div>
-
-        {/* Section 4: Events, Upcoming Schedule & Chronological Timeline */}
-        <section id="events" className="scroll-mt-24 sm:scroll-mt-28">
+        );
+      case 'events':
+        return (
           <EventsPage
-            setActivePage={scrollToSection}
+            setActivePage={navigateToPage}
             onOpenRegister={() => handleOpenRegister("Next Guidance Cohort & University Workshop")}
             onOpenGetInvolved={handleOpenGetInvolved}
             events={events}
           />
-        </section>
+        );
+      case 'contact':
+        return <ContactPage />;
+      case 'home':
+      default:
+        return (
+          <HomePage
+            setActivePage={navigateToPage}
+            onOpenRegister={() => handleOpenRegister("Next Guidance Cohort & University Workshop")}
+            onOpenGetInvolved={handleOpenGetInvolved}
+            mentorsCount={mentors.length}
+          />
+        );
+    }
+  };
 
-        {/* Section Divider */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-center">
-          <div className="h-px bg-gradient-to-r from-transparent via-aroham-border to-transparent w-full" />
-        </div>
+  return (
+    <div className="min-h-screen flex flex-col bg-[#F4F8F5] selection:bg-aroham-terracotta/20 selection:text-aroham-dark">
+      {/* Navigation Bar */}
+      <Navbar
+        activePage={activePage}
+        setActivePage={navigateToPage}
+        onOpenGetInvolved={handleOpenGetInvolved}
+      />
 
-        {/* Section 5: Contact & FAQs */}
-        <section id="contact" className="scroll-mt-24 sm:scroll-mt-28">
-          <ContactPage />
-        </section>
+      {/* Active Page View */}
+      <main className="flex-1">
+        {renderActivePage()}
       </main>
 
       {/* Footer */}
       <Footer
-        setActivePage={scrollToSection}
+        setActivePage={navigateToPage}
         onOpenGetInvolved={handleOpenGetInvolved}
       />
 

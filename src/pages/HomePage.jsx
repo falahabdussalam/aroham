@@ -10,7 +10,7 @@ import Reveal from '../components/Reveal';
 
 export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCount = 10 }) {
   return (
-    <div className="space-y-20 lg:space-y-28 pb-12 animate-fadeIn">
+    <div className="space-y-20 lg:space-y-28 animate-fadeIn">
       {/* =========================================================================
           HERO SECTION WITH AMBIENT BACKGROUND VIDEO
           ========================================================================= */}
@@ -227,8 +227,8 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           </svg>
         </div>
 
-        {/* Dark Yellow Tinted Wave Body */}
-        <div className="bg-[rgba(180,114,8,0.16)] pb-14 sm:pb-20 pt-2">
+        {/* Dark Yellow Tinted Wave Body (flows seamlessly into Footer) */}
+        <div className="bg-[rgba(180,114,8,0.16)] pb-16 sm:pb-24 pt-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center space-y-6">
               <Reveal variant="up" delay={0}>
@@ -257,21 +257,6 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               </Reveal>
             </div>
           </div>
-        </div>
-
-        {/* Bottom Organic Wave returning to Cream */}
-        <div className="w-full leading-none pointer-events-none select-none bg-[rgba(180,114,8,0.16)]">
-          <svg
-            viewBox="0 0 1440 90"
-            preserveAspectRatio="none"
-            className="w-full h-12 sm:h-16 lg:h-20 block"
-            aria-hidden="true"
-          >
-            <path
-              d="M0,24 C360,84 1020,0 1440,56 L1440,90 L0,90 Z"
-              fill="#F4F8F5"
-            />
-          </svg>
         </div>
       </section>
     </div>

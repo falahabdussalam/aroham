@@ -59,10 +59,9 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           <div className="hero-reveal hero-reveal-3 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 w-full max-w-sm sm:max-w-none mx-auto">
             <button
               onClick={() => setActivePage('unimates')}
-              className="group w-full sm:w-auto px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-[1.02] active:scale-95 flex items-center justify-center"
             >
               <span>Explore UniMates</span>
-              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
             </button>
 
             <button
@@ -182,34 +181,89 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
 
       {/* =========================================================================
-          QUOTE & TESTIMONIAL SECTION
+          QUOTE & TESTIMONIAL SECTION WITH DARK YELLOW WAVE BACKGROUND
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <Reveal variant="up" delay={0}>
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading leading-tight max-w-2xl mx-auto">
-            "When one alumna rises, she extends a hand to ten more."
-          </h2>
-          </Reveal>
+      <section className="relative w-full overflow-hidden">
+        {/* Top Organic Wave + Decorative Circular Motif */}
+        <div className="relative w-full leading-none pointer-events-none select-none">
+          {/* Decorative Circular Wavy-Line Emblem (Right Side) */}
+          <svg
+            viewBox="0 0 160 160"
+            className="w-28 h-28 sm:w-40 sm:h-40 lg:w-48 lg:h-48 absolute right-4 sm:right-12 lg:right-24 -top-2 sm:-top-4 text-[#B47208]/20 z-0"
+            fill="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="arohamWaveCircle">
+                <circle cx="80" cy="80" r="76" />
+              </clipPath>
+            </defs>
+            <g clipPath="url(#arohamWaveCircle)" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              {/* Upper vertical wavy lines */}
+              <path d="M20 0 Q28 38 18 76 M36 0 Q44 38 34 76 M52 0 Q60 38 50 76 M68 0 Q76 38 66 76 M84 0 Q92 38 82 76 M100 0 Q108 38 98 76 M116 0 Q124 38 114 76 M132 0 Q140 38 130 76 M148 0 Q156 38 146 76" />
+              {/* Lower horizontal wavy lines */}
+              <path d="M0 82 Q40 72 80 84 T160 82 M0 96 Q40 86 80 98 T160 96 M0 110 Q40 100 80 112 T160 110 M0 124 Q40 114 80 126 T160 124 M0 138 Q40 128 80 140 T160 138 M0 152 Q40 142 80 154 T160 152" />
+            </g>
+          </svg>
 
-          <Reveal variant="up" delay={100}>
-          <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[820px] mx-auto text-justify">
-            Aroham Foundation bridges the transition from school corridors to global lecture halls. Our network of Bolster Girls Campus alumnae spans medicine, public policy, engineering, humanities, and social entrepreneurship, dedicated to nurturing each young woman's distinctive spark.
-          </p>
-          </Reveal>
+          <svg
+            viewBox="0 0 1440 130"
+            preserveAspectRatio="none"
+            className="w-full h-16 sm:h-24 lg:h-32 block relative z-10"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,76 C260,104 460,12 740,22 C1040,34 1200,124 1440,26 L1440,130 L0,130 Z"
+              fill="rgba(180, 114, 8, 0.16)"
+            />
+          </svg>
+        </div>
 
-          {/* Testimonial callout */}
-          <Reveal variant="scale" delay={180}>
-          <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft max-w-2xl mx-auto text-center space-y-2.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-            <Quote size={24} className="text-aroham-gold mx-auto opacity-70" />
-            <p className="text-xs sm:text-sm italic text-aroham-heading leading-relaxed">
-              "Having a mentor who walked the very same halls gave me the certainty I needed to apply for national merit fellowships. UniMates changed my trajectory."
-            </p>
-            <span className="block text-[11px] font-bold text-aroham-muted uppercase tracking-wider">
-              — Scholar Cohort '24
-            </span>
+        {/* Dark Yellow Tinted Wave Body */}
+        <div className="bg-[rgba(180,114,8,0.16)] pb-14 sm:pb-20 pt-2">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl mx-auto text-center space-y-6">
+              <Reveal variant="up" delay={0}>
+              <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading leading-tight max-w-2xl mx-auto">
+                "When one alumna rises, she extends a hand to ten more."
+              </h2>
+              </Reveal>
+
+              <Reveal variant="up" delay={100}>
+              <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[820px] mx-auto text-justify">
+                Aroham Foundation bridges the transition from school corridors to global lecture halls. Our network of Bolster Girls Campus alumnae spans medicine, public policy, engineering, humanities, and social entrepreneurship, dedicated to nurturing each young woman's distinctive spark.
+              </p>
+              </Reveal>
+
+              {/* Testimonial callout */}
+              <Reveal variant="scale" delay={180}>
+              <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft max-w-2xl mx-auto text-center space-y-2.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
+                <Quote size={24} className="text-aroham-gold mx-auto opacity-70" />
+                <p className="text-xs sm:text-sm italic text-aroham-heading leading-relaxed">
+                  "Having a mentor who walked the very same halls gave me the certainty I needed to apply for national merit fellowships. UniMates changed my trajectory."
+                </p>
+                <span className="block text-[11px] font-bold text-aroham-muted uppercase tracking-wider">
+                  — Scholar Cohort '24
+                </span>
+              </div>
+              </Reveal>
+            </div>
           </div>
-          </Reveal>
+        </div>
+
+        {/* Bottom Organic Wave returning to Cream */}
+        <div className="w-full leading-none pointer-events-none select-none bg-[rgba(180,114,8,0.16)]">
+          <svg
+            viewBox="0 0 1440 90"
+            preserveAspectRatio="none"
+            className="w-full h-12 sm:h-16 lg:h-20 block"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,24 C360,84 1020,0 1440,56 L1440,90 L0,90 Z"
+              fill="#F4F8F5"
+            />
+          </svg>
         </div>
       </section>
     </div>

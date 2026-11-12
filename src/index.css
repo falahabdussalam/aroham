@@ -86,13 +86,59 @@
   transform: translate3d(0, 0, 0) scale(1);
 }
 
+/* Ambient Educational & Career Background Illustration Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(2.5deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, 14px, 0) rotate(-2.5deg);
+  }
+}
+
+@keyframes floatDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10px, -10px, 0) scale(1.04);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 9s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-drift {
+  animation: floatDrift 11s ease-in-out infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .animate-page-fade,
   .hero-reveal,
-  .reveal {
+  .reveal,
+  .animate-float-slow,
+  .animate-float-reverse,
+  .animate-float-drift {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;

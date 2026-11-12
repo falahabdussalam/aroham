@@ -9,6 +9,7 @@ import ContactPage from './pages/ContactPage';
 import RegisterModal from './components/RegisterModal';
 import RequestMatchModal from './components/RequestMatchModal';
 import GetInvolvedModal from './components/GetInvolvedModal';
+import BackgroundIllustrations from './components/BackgroundIllustrations';
 import AdminDashboardApp from './admin/AdminDashboardApp';
 import { 
   INITIAL_MENTORS, 
@@ -313,8 +314,9 @@ export default function App() {
       />
 
       {/* Active Page View */}
-      <main className="flex-1">
-        <div key={activePage} className="animate-page-fade">
+      <main className="flex-1 relative overflow-x-clip">
+        <BackgroundIllustrations variant={activePage} />
+        <div key={activePage} className="animate-page-fade relative z-10">
           {renderActivePage()}
         </div>
       </main>

@@ -183,16 +183,8 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
             "When one alumna rises, she extends a hand to ten more."
           </h2>
 
-          <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-4xl mx-auto">
-            <span className="lg:block lg:whitespace-nowrap">
-              Aroham Foundation bridges the transition from school corridors to global lecture halls.{' '}
-            </span>
-            <span className="lg:block lg:whitespace-nowrap">
-              Our network of Bolster Girls Campus alumnae spans medicine, public policy, engineering, humanities,{' '}
-            </span>
-            <span className="lg:block lg:whitespace-nowrap">
-              and social entrepreneurship, dedicated to nurturing each young woman's distinctive spark.
-            </span>
+          <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[820px] mx-auto text-justify">
+            Aroham Foundation bridges the transition from school corridors to global lecture halls. Our network of Bolster Girls Campus alumnae spans medicine, public policy, engineering, humanities, and social entrepreneurship, dedicated to nurturing each young woman's distinctive spark.
           </p>
 
           {/* Testimonial callout */}

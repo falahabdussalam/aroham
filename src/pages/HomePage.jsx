@@ -185,11 +185,12 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           ========================================================================= */}
       <section className="relative w-full overflow-hidden">
         {/* Top Organic Wave + Decorative Aroham Outline Logo */}
-        <div className="relative w-full leading-none pointer-events-none select-none">
-          {/* Decorative Aroham Outline Emblem (Right Side overlapping wave line) */}
+        <div className="relative w-full pt-12 sm:pt-16 leading-none pointer-events-none select-none">
+          {/* Decorative Aroham Outline Emblem (Full uncropped, right side overlapping wave) */}
           <svg
-            viewBox="0 0 140 200"
-            className="w-24 h-36 sm:w-32 sm:h-44 lg:w-36 lg:h-52 absolute right-6 sm:right-14 lg:right-24 -top-6 sm:-top-10 text-[#B47208]/25 z-0"
+            viewBox="-4 -4 148 208"
+            overflow="visible"
+            className="w-24 h-36 sm:w-32 sm:h-44 lg:w-36 lg:h-52 absolute right-6 sm:right-14 lg:right-24 top-0 text-[#B47208]/25 z-20"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"

@@ -6,7 +6,6 @@ import {
   Users, 
   ShieldCheck, 
   BookOpen, 
-  HeartHandshake, 
   Quote, 
   TrendingUp, 
   Mail 
@@ -108,32 +107,15 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
 
       {/* =========================================================================
-          TWO PILLARS, ONE SHARED MISSION
+          TWO PILLARS CARDS
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
-            Our Pillars
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
-            Two Pillars, One Shared Mission
-          </h2>
-          <p className="text-sm text-aroham-body leading-relaxed">
-            From organizational advocacy to personalized student mentorship, discover how the Aroham ecosystem elevates students at every crossroad.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Pillar 1: Aroham Foundation */}
           <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-soft border border-aroham-border flex flex-col justify-between transition-all duration-200 hover:shadow-elevated">
             <div className="space-y-5">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-aroham-mint flex items-center justify-center text-aroham-dark">
-                  <Building2 size={24} />
-                </div>
-                <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-aroham-sage text-aroham-forest border border-aroham-border">
-                  Institutional Entity
-                </span>
+              <div className="w-12 h-12 rounded-2xl bg-aroham-mint flex items-center justify-center text-aroham-dark">
+                <Building2 size={24} />
               </div>
 
               <h3 className="text-2xl font-bold font-serif text-aroham-heading">
@@ -159,28 +141,13 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
                 </li>
               </ul>
             </div>
-
-            <div className="pt-8 mt-6 border-t border-aroham-border">
-              <button
-                onClick={() => setActivePage('about')}
-                className="text-xs font-bold text-aroham-dark hover:text-aroham-forest inline-flex items-center gap-1.5 transition-colors group"
-              >
-                <span>Learn More About Us</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
           </div>
 
           {/* Pillar 2: Aroham UniMates */}
           <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-soft border-t-4 border-t-aroham-terracotta border-x border-b border-aroham-border flex flex-col justify-between transition-all duration-200 hover:shadow-elevated">
             <div className="space-y-5">
-              <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-aroham-gold">
-                  <Users size={24} />
-                </div>
-                <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-aroham-amber-light text-aroham-gold border border-amber-200/80">
-                  1:1 Mentorship
-                </span>
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-aroham-gold">
+                <Users size={24} />
               </div>
 
               <h3 className="text-2xl font-bold font-serif text-aroham-heading">
@@ -206,16 +173,6 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
                 </li>
               </ul>
             </div>
-
-            <div className="pt-8 mt-6 border-t border-aroham-border">
-              <button
-                onClick={() => setActivePage('unimates')}
-                className="text-xs font-bold text-aroham-terracotta hover:text-aroham-terracotta-dark inline-flex items-center gap-1.5 transition-colors group"
-              >
-                <span>Find a Mentor / Join UniMates</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
           </div>
         </div>
       </section>
@@ -229,11 +186,6 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           
           {/* Left Quote Section */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-aroham-forest">
-              <HeartHandshake size={15} />
-              <span>Generational Sisterhood</span>
-            </div>
-
             <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading leading-tight">
               "When one alumna rises, she extends a hand to ten more."
             </h2>

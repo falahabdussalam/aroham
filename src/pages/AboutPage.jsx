@@ -65,7 +65,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-fathima-hija',
       name: 'Fathima Hija T',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/fathima-hija-t.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
@@ -74,7 +74,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-minha-nafeesa',
       name: 'Minha Nafeesa',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/minha-nafeesa.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
@@ -83,7 +83,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-hajara',
       name: 'Hajara Fida',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/hajara-fida.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
@@ -92,7 +92,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-fathima-nasreen',
       name: 'Fathima Nasreen',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/fathima-nasreen.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
@@ -101,7 +101,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-fathima-minha',
       name: 'Fathima Minha PM',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/fathima-minha-pm.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
@@ -110,7 +110,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-shana',
       name: 'Shana',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/shana.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
@@ -119,7 +119,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-khadeeja-misba',
       name: 'Khadeeja Misba PM',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/khadeeja-misba-pm.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
@@ -128,7 +128,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-aysha-huda',
       name: 'Aysha Huda AP',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/aysha-huda-ap.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',
@@ -137,7 +137,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       id: 'trustee-diya-fathima',
       name: 'Diya Fathima MN',
-      role: 'Our Trustee',
+      role: 'Trustee',
       almaMater: 'Bolster Girls Campus Alumnae',
       image: '/committee/diya-fathima-mn.jpg',
       badgeColor: 'bg-aroham-terracotta text-white',

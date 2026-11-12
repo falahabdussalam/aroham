@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle, Heart, GraduationCap, Users2, Building, Mail, Loader2 } from 'lucide-react';
+import { X, CheckCircle, GraduationCap, Users2, Building, Mail, Loader2 } from 'lucide-react';
 
 export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication }) {
   const [selectedRole, setSelectedRole] = useState('student');
@@ -115,10 +115,6 @@ export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication 
           >
             <X size={20} />
           </button>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-xs font-semibold text-emerald-200 mb-2 border border-white/10">
-            <Heart size={12} className="fill-emerald-200" />
-            <span>Join Our Sisterhood</span>
-          </div>
           <h3 className="text-xl font-bold font-serif leading-snug">
             Get Involved with Aroham Foundation
           </h3>
@@ -196,20 +192,6 @@ export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication 
                   <span>As a Partner</span>
                 </button>
               </div>
-
-              {selectedRole === 'student' && (
-                <div className="p-3 bg-amber-50 rounded-xl border border-amber-200/80 flex items-center justify-between gap-3 text-xs">
-                  <span className="text-amber-900 font-medium">Looking for 1:1 guidance from an alumna?</span>
-                  <a
-                    href="https://forms.gle/JyFUEfFbERjRgUyD6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark font-bold rounded-lg transition-colors"
-                  >
-                    Register as a Mentee ↗
-                  </a>
-                </div>
-              )}
 
               <div>
                 <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1">

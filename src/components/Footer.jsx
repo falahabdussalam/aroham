@@ -9,30 +9,27 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
   };
 
   return (
-    <footer className="bg-[#EBF2EE] border-t border-aroham-border/80 pt-16 pb-12 text-aroham-body">
+    <footer className="bg-aroham-dark border-t border-white/10 pt-16 pb-12 text-emerald-100/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-aroham-border">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/15">
           {/* Col 1: Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <ArohamLogo size="footer" onClick={() => handleNav('home')} />
-            <p className="text-sm text-aroham-body leading-relaxed max-w-sm pt-2">
+            <ArohamLogo size="footer" textDark={false} onClick={() => handleNav('home')} />
+            <p className="text-sm text-emerald-100/85 leading-relaxed max-w-sm pt-2">
               Empowering women-led academic mentorship, lifelong alumni solidarity, and generational uplift across academic and career milestones.
             </p>
-            <div className="pt-2 flex items-center gap-2 text-xs font-semibold text-aroham-forest bg-aroham-mint/60 w-fit px-3 py-1.5 rounded-full border border-aroham-border">
-              <span>🎓 Rooted in Alma Mater: Bolster Girls Campus</span>
-            </div>
           </div>
 
           {/* Col 2: Quick Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-aroham-dark">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
               Quick Links
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <button
                   onClick={() => handleNav('home')}
-                  className="hover:text-aroham-dark transition-colors"
+                  className="text-emerald-100/80 hover:text-white transition-colors"
                 >
                   Home
                 </button>
@@ -40,7 +37,7 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
               <li>
                 <button
                   onClick={() => handleNav('about')}
-                  className="hover:text-aroham-dark transition-colors"
+                  className="text-emerald-100/80 hover:text-white transition-colors"
                 >
                   About Us
                 </button>
@@ -48,7 +45,7 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
               <li>
                 <button
                   onClick={() => handleNav('unimates')}
-                  className="hover:text-aroham-dark transition-colors"
+                  className="text-emerald-100/80 hover:text-white transition-colors"
                 >
                   UniMates Mentorship
                 </button>
@@ -56,7 +53,7 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
               <li>
                 <button
                   onClick={() => handleNav('events')}
-                  className="hover:text-aroham-dark transition-colors"
+                  className="text-emerald-100/80 hover:text-white transition-colors"
                 >
                   Events & Guidance
                 </button>
@@ -64,7 +61,7 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
               <li>
                 <button
                   onClick={() => handleNav('contact')}
-                  className="hover:text-aroham-dark transition-colors"
+                  className="text-emerald-100/80 hover:text-white transition-colors"
                 >
                   Contact Us
                 </button>
@@ -74,16 +71,16 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
 
           {/* Col 3: Connect With Us */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-aroham-dark">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
               Connect With Us
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <a
                   href="mailto:arohamconnect@gmail.com"
-                  className="flex items-center gap-2.5 text-aroham-body hover:text-aroham-dark transition-colors group"
+                  className="flex items-center gap-2.5 text-emerald-100/85 hover:text-white transition-colors group"
                 >
-                  <Mail className="w-4 h-4 text-aroham-forest group-hover:scale-110 transition-transform" />
+                  <Mail className="w-4 h-4 text-emerald-300 group-hover:scale-110 transition-transform" />
                   <span>arohamconnect@gmail.com</span>
                 </a>
               </li>
@@ -92,15 +89,15 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
                   href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2.5 text-aroham-body hover:text-aroham-dark transition-colors group"
+                  className="flex items-center gap-2.5 text-emerald-100/85 hover:text-white transition-colors group"
                 >
-                  <InstagramIcon size={16} className="text-aroham-forest group-hover:scale-110 transition-transform" />
+                  <InstagramIcon size={16} className="text-emerald-300 group-hover:scale-110 transition-transform" />
                   <span>@arohamfoundation</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-aroham-muted opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-emerald-200 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-aroham-body">
-                <MapPin className="w-4 h-4 text-aroham-forest shrink-0 mt-0.5" />
+              <li className="flex items-start gap-2.5 text-emerald-100/85">
+                <MapPin className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" />
                 <span>Higher Education & Mentorship Network</span>
               </li>
             </ul>
@@ -108,30 +105,30 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
         </div>
 
         {/* Bottom copyright row */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-aroham-muted gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-emerald-100/75 gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-            <p>© 2026 Aroham Foundation. Built with pride by Bolster Girls Campus Alumnae.</p>
-            <span className="hidden sm:inline text-aroham-border-dark">•</span>
+            <p>© 2026 Aroham Foundation.</p>
+            <span className="hidden sm:inline text-white/25">•</span>
             <p>
               Powered by{' '}
               <a
                 href="https://ziqx.cc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-aroham-dark hover:text-aroham-terracotta underline decoration-aroham-muted/40 hover:decoration-aroham-terracotta transition-colors"
+                className="font-semibold text-white hover:text-amber-300 underline decoration-white/30 hover:decoration-amber-300 transition-colors"
               >
                 Ziqx
               </a>
             </p>
           </div>
           <div className="flex items-center gap-6">
-            <button onClick={() => handleNav('about')} className="hover:text-aroham-dark transition-colors">Sisterhood Charter</button>
-            <button onClick={() => handleNav('contact')} className="hover:text-aroham-dark transition-colors">Privacy & Guidelines</button>
+            <button onClick={() => handleNav('about')} className="text-emerald-100/80 hover:text-white transition-colors">Sisterhood Charter</button>
+            <button onClick={() => handleNav('contact')} className="text-emerald-100/80 hover:text-white transition-colors">Privacy & Guidelines</button>
             <a 
               href="#admin" 
-              className="hover:text-aroham-dark font-bold transition-colors flex items-center gap-1.5 text-aroham-forest bg-aroham-sage/60 px-2.5 py-1 rounded-lg border border-aroham-border hover:bg-aroham-mint"
+              className="hover:text-white font-bold transition-colors flex items-center gap-1.5 text-emerald-100 bg-white/10 px-2.5 py-1 rounded-lg border border-white/20 hover:bg-white/20"
             >
-              <ShieldCheck size={13} className="text-aroham-forest" />
+              <ShieldCheck size={13} className="text-emerald-300" />
               <span>Admin Portal</span>
             </a>
           </div>

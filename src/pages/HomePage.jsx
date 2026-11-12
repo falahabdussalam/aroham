@@ -184,27 +184,15 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           QUOTE & TESTIMONIAL SECTION WITH DARK YELLOW WAVE BACKGROUND
           ========================================================================= */}
       <section className="relative w-full overflow-hidden">
-        {/* Top Organic Wave + Decorative Circular Motif */}
+        {/* Top Organic Wave + Decorative Aroham Logo Watermark */}
         <div className="relative w-full leading-none pointer-events-none select-none">
-          {/* Decorative Circular Wavy-Line Emblem (Right Side) */}
-          <svg
-            viewBox="0 0 160 160"
-            className="w-28 h-28 sm:w-40 sm:h-40 lg:w-48 lg:h-48 absolute right-4 sm:right-12 lg:right-24 -top-2 sm:-top-4 text-[#B47208]/20 z-0"
-            fill="none"
+          {/* Decorative Aroham Logo Watermark (Right Side overlapping wave line) */}
+          <img
+            src="/emblem.png"
+            alt=""
             aria-hidden="true"
-          >
-            <defs>
-              <clipPath id="arohamWaveCircle">
-                <circle cx="80" cy="80" r="76" />
-              </clipPath>
-            </defs>
-            <g clipPath="url(#arohamWaveCircle)" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              {/* Upper vertical wavy lines */}
-              <path d="M20 0 Q28 38 18 76 M36 0 Q44 38 34 76 M52 0 Q60 38 50 76 M68 0 Q76 38 66 76 M84 0 Q92 38 82 76 M100 0 Q108 38 98 76 M116 0 Q124 38 114 76 M132 0 Q140 38 130 76 M148 0 Q156 38 146 76" />
-              {/* Lower horizontal wavy lines */}
-              <path d="M0 82 Q40 72 80 84 T160 82 M0 96 Q40 86 80 98 T160 96 M0 110 Q40 100 80 112 T160 110 M0 124 Q40 114 80 126 T160 124 M0 138 Q40 128 80 140 T160 138 M0 152 Q40 142 80 154 T160 152" />
-            </g>
-          </svg>
+            className="w-28 h-28 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-contain absolute right-4 sm:right-12 lg:right-24 -top-4 sm:-top-8 opacity-[0.16] mix-blend-multiply z-0"
+          />
 
           <svg
             viewBox="0 0 1440 130"

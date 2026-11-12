@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ArohamLogo from './ArohamLogo';
-import { Menu, X, ShieldCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, onOpenGetInvolved }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -60,15 +60,6 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
           >
             <span>Get Involved</span>
           </button>
-
-          <a
-            href="#admin"
-            title="Admin Portal"
-            className="px-3 py-2 text-xs font-semibold rounded-xl border border-aroham-border bg-white text-aroham-forest hover:bg-aroham-mint shadow-sm hover:shadow transition-all flex items-center gap-1.5"
-          >
-            <ShieldCheck size={14} className="text-aroham-forest" />
-            <span>Admin</span>
-          </a>
         </div>
 
         {/* Mobile menu trigger */}
@@ -119,15 +110,6 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
             >
               Get Involved
             </button>
-
-            <a
-              href="#admin"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-2.5 bg-white border border-aroham-border hover:bg-aroham-mint text-aroham-forest rounded-xl font-bold text-xs text-center shadow-sm transition-all duration-200 flex items-center justify-center gap-2"
-            >
-              <ShieldCheck size={14} className="text-aroham-forest" />
-              <span>Admin Portal Console</span>
-            </a>
           </div>
         </div>
       )}

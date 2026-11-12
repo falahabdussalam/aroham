@@ -10,6 +10,7 @@ import RegisterModal from './components/RegisterModal';
 import RequestMatchModal from './components/RequestMatchModal';
 import GetInvolvedModal from './components/GetInvolvedModal';
 import BackgroundIllustrations from './components/BackgroundIllustrations';
+import ScrollSectionEffects from './components/ScrollSectionEffects';
 import AdminDashboardApp from './admin/AdminDashboardApp';
 import { 
   INITIAL_MENTORS, 
@@ -316,9 +317,10 @@ export default function App() {
       {/* Active Page View */}
       <main className="flex-1 relative overflow-x-clip">
         <BackgroundIllustrations variant={activePage} />
-        <div key={activePage} className="animate-page-fade relative z-10">
+        <div id="page-scroll-root" key={activePage} className="animate-page-fade relative z-10">
           {renderActivePage()}
         </div>
+        <ScrollSectionEffects activePage={activePage} />
       </main>
 
       {/* Footer */}

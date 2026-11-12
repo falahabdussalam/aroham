@@ -86,6 +86,13 @@
   transform: translate3d(0, 0, 0) scale(1);
 }
 
+/* Bidirectional Scroll Overlay & Pull-Up / Push-Down Section Transitions */
+.scroll-overlay-section {
+  position: relative;
+  transform-origin: center top;
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), opacity 140ms ease-out;
+}
+
 /* Ambient Educational & Career Background Illustration Animations */
 @keyframes floatSlow {
   0%, 100% {
@@ -136,6 +143,7 @@
   .animate-page-fade,
   .hero-reveal,
   .reveal,
+  .scroll-overlay-section,
   .animate-float-slow,
   .animate-float-reverse,
   .animate-float-drift {

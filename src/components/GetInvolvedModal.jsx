@@ -110,7 +110,7 @@ export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication 
         <div className="bg-gradient-to-r from-aroham-dark to-aroham-forest p-5 sm:p-6 text-white relative shrink-0">
           <button
             onClick={onClose}
-            className="absolute top-4 sm:top-5 right-4 sm:top-5 text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+            className="absolute top-4 sm:top-5 right-4 sm:right-5 text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
             aria-label="Close"
           >
             <X size={20} />

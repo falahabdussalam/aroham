@@ -126,15 +126,15 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
               <ul className="space-y-3 pt-2 text-xs font-medium text-aroham-heading">
                 <li className="flex items-start gap-2">
-                  <span className="text-aroham-forest font-bold">→</span>
+                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-forest shrink-0 mt-0.5" />
                   <span>Generational support networks spanning global institutions</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-aroham-forest font-bold">→</span>
+                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-forest shrink-0 mt-0.5" />
                   <span>Career readiness, scholarship grants & academic resources</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-aroham-forest font-bold">→</span>
+                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-forest shrink-0 mt-0.5" />
                   <span>Cultivating leadership and self-determination in young women</span>
                 </li>
               </ul>
@@ -158,15 +158,15 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
               <ul className="space-y-3 pt-2 text-xs font-medium text-aroham-heading">
                 <li className="flex items-start gap-2">
-                  <span className="text-aroham-terracotta font-bold">→</span>
+                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-terracotta shrink-0 mt-0.5" />
                   <span>Personalised matches tailored to field of study and interests</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-aroham-terracotta font-bold">→</span>
+                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-terracotta shrink-0 mt-0.5" />
                   <span>Ongoing academic tracking, application reviews, and mock sessions</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-aroham-terracotta font-bold">→</span>
+                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-terracotta shrink-0 mt-0.5" />
                   <span>Safe, empathetic space to navigate campus life & ambitions</span>
                 </li>
               </ul>

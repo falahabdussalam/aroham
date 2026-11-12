@@ -53,7 +53,7 @@ export default function ArohamLogo({
       />
       {withText && (
         <div className="flex flex-col justify-center leading-none">
-          <span className={`${titleClasses} font-semibold tracking-tight font-serif ${textDark ? 'text-aroham-heading' : 'text-white'}`}>
+          <span className={`${titleClasses} font-bold tracking-tight font-serif ${textDark ? 'text-aroham-heading' : 'text-white'}`}>
             Aroham
           </span>
           <span className={`${subtitleClasses} uppercase font-semibold ${textDark ? 'text-aroham-muted' : 'text-emerald-300'}`}>

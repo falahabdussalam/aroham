@@ -5,10 +5,8 @@ import Reveal from '../components/Reveal';
 import { 
   Flag, 
   Eye, 
-  GraduationCap, 
   MapPin, 
   Calendar, 
-  ArrowRight, 
   Users, 
   Award, 
   TrendingUp,
@@ -208,9 +206,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up">
-          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-2">
-            Genesis of Aroham
-          </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading mb-10">
             From Sisterhood to Sustained Impact
           </h2>
@@ -288,26 +283,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 </div>
               </div>
             </div>
-
-            {/* Evolution Momentum timeline chart */}
-            <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft space-y-4">
-              <div className="flex items-center justify-between text-xs">
-                <span className="font-bold font-serif text-aroham-heading text-sm">Evolution Momentum</span>
-                <span className="text-aroham-muted text-[11px]">2025 Milestones</span>
-              </div>
-              {/* Graphic line chart representation */}
-              <div className="relative pt-6 pb-2">
-                <div className="h-1 bg-aroham-sage rounded-full relative">
-                  <div className="absolute top-0 left-0 h-1 bg-gradient-to-r from-emerald-600 via-amber-500 to-aroham-terracotta rounded-full w-full" />
-                </div>
-                <div className="flex justify-between text-[10px] font-bold text-aroham-muted mt-3">
-                  <span>July: Meet</span>
-                  <span>Aug: Identity</span>
-                  <span>Oct: Campaign</span>
-                  <span>Dec: HiLite Meet</span>
-                </div>
-              </div>
-            </div>
           </Reveal>
         </div>
       </section>
@@ -317,9 +292,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="text-center max-w-xl mx-auto mb-12 space-y-2">
-          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
-            Chronology of Growth
-          </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
             Foundational Timeline (2025)
           </h2>
@@ -358,9 +330,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="text-center max-w-xl mx-auto mb-10 space-y-2">
-          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
-            Purpose & Ambition
-          </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
             Our Guiding Light
           </h2>
@@ -383,13 +352,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 Build a global mentor network that guides young people—especially from underserved backgrounds—toward their academic and career goals.
               </p>
             </div>
-
-            <div className="pt-6 border-t border-white/10">
-              <span className="text-xs font-bold text-amber-300 inline-flex items-center gap-1">
-                <span>Action-driven mentorship</span>
-                <ArrowRight size={14} />
-              </span>
-            </div>
           </Reveal>
 
           {/* Vision Card */}
@@ -408,13 +370,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 A world where every student has the guidance, opportunities, and support needed to build their future with confidence.
               </p>
             </div>
-
-            <div className="pt-6 border-t border-aroham-heading/10">
-              <span className="text-xs font-bold text-aroham-dark inline-flex items-center gap-1">
-                <span>Empowered generational pathways</span>
-                <ArrowRight size={14} />
-              </span>
-            </div>
           </Reveal>
         </div>
       </section>
@@ -423,22 +378,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           OUR COMMITTEE
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
-          <div>
-            <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-2">
-              Governance & Stewardship
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
-              Our Committee
-            </h2>
-            <p className="text-sm text-aroham-body mt-1">
-              Alumnae leaders bringing expertise in medicine, technology, academia, and social impact.
-            </p>
-          </div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-aroham-mint text-aroham-dark text-xs font-bold shrink-0 self-start sm:self-auto border border-aroham-border">
-            <GraduationCap size={15} />
-            <span>Bolster Girls Campus Alumnae</span>
-          </div>
+        <div className="mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+            Our Committee
+          </h2>
         </div>
 
         <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3.5 lg:gap-6">

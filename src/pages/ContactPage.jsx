@@ -18,6 +18,7 @@ import { InstagramIcon } from '../components/Icons';
 import strategicGathering from '../assets/strategic_gathering.jpg';
 import instaSpotlight from '../assets/insta_spotlight.jpg';
 import instaLeadership from '../assets/insta_leadership.jpg';
+import Reveal from '../components/Reveal';
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -91,7 +92,7 @@ export default function ContactPage() {
           ========================================================================= */}
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl hero-reveal hero-reveal-1">
             <h1 className="text-4xl sm:text-5xl font-bold font-serif text-aroham-heading tracking-tight">
               Get in Touch with Aroham Foundation
             </h1>
@@ -113,7 +114,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right Circular Guild Emblem */}
-          <div className="bg-white rounded-full p-8 border border-aroham-border shadow-elevated flex flex-col items-center justify-center text-center shrink-0 w-52 h-52 self-start lg:self-center relative">
+          <div className="hero-reveal hero-reveal-2 bg-white rounded-full p-8 border border-aroham-border shadow-elevated flex flex-col items-center justify-center text-center shrink-0 w-52 h-52 self-start lg:self-center relative transition-transform duration-300 hover:scale-[1.03]">
             <div className="absolute inset-0 bg-gradient-to-tr from-amber-200/20 via-emerald-200/20 to-transparent rounded-full blur-xl -z-10" />
             <ArohamEmblem size={56} className="mx-auto" />
             <span className="text-base font-bold font-serif text-aroham-heading mt-2">
@@ -136,18 +137,18 @@ export default function ContactPage() {
           OFFICIAL CONTACT CHANNELS
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
+        <Reveal variant="up" className="mb-8">
           <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-1">
             Primary Inquiries
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold font-serif text-aroham-heading">
             Official Contact Channels
           </h2>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Email Address Card */}
-          <div className="lg:col-span-5 bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
+          <Reveal variant="up" delay={80} className="lg:col-span-5 bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
             <div className="space-y-4">
               <div className="w-12 h-12 rounded-2xl bg-aroham-mint flex items-center justify-center text-aroham-dark">
                 <Mail size={22} />
@@ -179,7 +180,7 @@ export default function ContactPage() {
               <span>Send us an Email</span>
               <ArrowUpRight size={15} />
             </a>
-          </div>
+          </Reveal>
 
           {/* Instagram Community Card */}
           <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
@@ -503,7 +504,7 @@ export default function ContactPage() {
           FREQUENTLY ASKED QUESTIONS
           ========================================================================= */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 space-y-2">
+        <Reveal variant="up" className="text-center mb-10 space-y-2">
           <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
             Immediate Answers
           </div>
@@ -513,7 +514,7 @@ export default function ContactPage() {
           <p className="text-sm text-aroham-body">
             Common queries regarding mentorship cycles, campus alliances, and participation.
           </p>
-        </div>
+        </Reveal>
 
         {/* Accordion */}
         <div className="space-y-3">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import strategicGatheringImg from '../assets/strategic_gathering.jpg';
+import Reveal from '../components/Reveal';
 import { 
   Flag, 
   Eye, 
@@ -179,7 +180,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl hero-reveal hero-reveal-1">
             <h1 className="text-4xl sm:text-5xl font-bold font-serif text-aroham-heading tracking-tight">
               About Aroham Foundation
             </h1>
@@ -190,7 +191,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </div>
 
           {/* Rooted in Alma Mater badge */}
-          <div className="bg-white rounded-2xl p-4 sm:p-5 border border-aroham-border shadow-soft flex items-center gap-4 shrink-0 self-start lg:self-center">
+          <div className="hero-reveal hero-reveal-2 bg-white rounded-2xl p-4 sm:p-5 border border-aroham-border shadow-soft flex items-center gap-4 shrink-0 self-start lg:self-center transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
             <div className="w-12 h-12 rounded-xl bg-aroham-dark text-white font-bold text-xs flex items-center justify-center tracking-wider">
               BGC
             </div>
@@ -210,16 +211,18 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           GENESIS OF AROHAM: FROM SISTERHOOD TO SUSTAINED IMPACT
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-2">
-          Genesis of Aroham
-        </div>
-        <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading mb-10">
-          From Sisterhood to Sustained Impact
-        </h2>
+        <Reveal variant="up">
+          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-2">
+            Genesis of Aroham
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading mb-10">
+            From Sisterhood to Sustained Impact
+          </h2>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left Narrative Column */}
-          <div className="lg:col-span-7 space-y-6 text-aroham-body leading-relaxed text-sm sm:text-base">
+          <Reveal variant="right" delay={100} className="lg:col-span-7 space-y-6 text-aroham-body leading-relaxed text-sm sm:text-base">
             <p className="text-aroham-heading font-medium">
               <span className="float-left text-5xl font-serif font-bold text-aroham-dark pr-3 pt-1 leading-none">
                 A
@@ -252,10 +255,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 "From those first conversations to the formation of an organised initiative, Aroham has grown through the collective efforts and commitment of its alumnae. Today, Aroham Foundation continues to work towards its vision of helping students make informed academic and career decisions through guidance, mentorship, education and community engagement."
               </p>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right Cards & Visual Evidence */}
-          <div className="lg:col-span-5 space-y-6">
+          <Reveal variant="left" delay={180} className="lg:col-span-5 space-y-6">
             {/* Photo Card */}
             <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-soft border border-aroham-border">
               <div className="relative w-full">
@@ -309,7 +312,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -317,20 +320,22 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           FOUNDATIONAL TIMELINE (2025)
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
+        <Reveal variant="up" className="text-center max-w-xl mx-auto mb-12 space-y-2">
           <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
             Chronology of Growth
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
             Foundational Timeline (2025)
           </h2>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {milestones.map((item, idx) => (
-            <div
+            <Reveal
               key={idx}
-              className="bg-white rounded-2xl p-6 border border-aroham-border shadow-soft flex flex-col justify-between hover:shadow-elevated transition-all duration-200"
+              variant="up"
+              delay={idx * 90}
+              className="h-full bg-white rounded-2xl p-6 border border-aroham-border shadow-soft flex flex-col justify-between hover:shadow-elevated hover:-translate-y-1 transition-all duration-300"
             >
               <div className="space-y-3">
                 <span className="inline-block px-3 py-1 rounded-full bg-aroham-sage text-aroham-forest text-xs font-bold border border-aroham-border">
@@ -347,7 +352,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               <div className="pt-4 mt-4 border-t border-aroham-border text-[11px] font-semibold text-aroham-muted flex items-center gap-1.5">
                 <span>🏷 {item.tag}</span>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -356,18 +361,18 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           OUR GUIDING LIGHT: MISSION & VISION
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
+        <Reveal variant="up" className="text-center max-w-xl mx-auto mb-10 space-y-2">
           <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
             Purpose & Ambition
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
             Our Guiding Light
           </h2>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Mission Card */}
-          <div className="rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white shadow-soft flex flex-col justify-between space-y-6">
+          <Reveal variant="up" delay={0} className="h-full rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white shadow-soft flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
             <div className="space-y-4">
               <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
                 <Flag size={22} />
@@ -389,10 +394,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 <ArrowRight size={14} />
               </span>
             </div>
-          </div>
+          </Reveal>
 
           {/* Vision Card */}
-          <div className="rounded-3xl bg-gradient-to-br from-aroham-gold-gradient-start to-aroham-gold-gradient-end p-8 sm:p-12 text-aroham-heading shadow-soft flex flex-col justify-between space-y-6">
+          <Reveal variant="up" delay={140} className="h-full rounded-3xl bg-gradient-to-br from-aroham-gold-gradient-start to-aroham-gold-gradient-end p-8 sm:p-12 text-aroham-heading shadow-soft flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
             <div className="space-y-4">
               <div className="w-12 h-12 rounded-2xl bg-aroham-dark text-white flex items-center justify-center">
                 <Eye size={22} />
@@ -414,7 +419,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 <ArrowRight size={14} />
               </span>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

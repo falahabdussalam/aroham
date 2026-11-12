@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { InstagramIcon } from '../components/Icons';
 import { INITIAL_EVENTS } from '../admin/data/initialAdminData';
+import Reveal from '../components/Reveal';
 
 export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInvolved, events: propEvents }) {
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' = oldest to newest, 'desc' = newest to oldest
@@ -176,7 +177,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           ========================================================================= */}
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-3xl hero-reveal hero-reveal-1">
             <h1 className="text-4xl sm:text-5xl font-bold font-serif text-aroham-heading tracking-tight">
               Aroham Events & Guidance Sessions
             </h1>
@@ -187,7 +188,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           </div>
 
           {/* 3 Metric Pills */}
-          <div className="bg-white rounded-2xl p-5 border border-aroham-border shadow-soft flex items-center gap-8 shrink-0 self-start lg:self-center">
+          <div className="hero-reveal hero-reveal-2 bg-white rounded-2xl p-5 border border-aroham-border shadow-soft flex items-center gap-8 shrink-0 self-start lg:self-center transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
             <div>
               <div className="text-2xl sm:text-3xl font-bold font-serif text-aroham-dark">
                 {completedEvents.length}+
@@ -222,7 +223,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           UPCOMING EVENTS / CURRENT SCHEDULE
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-8">
+        <Reveal variant="up" className="flex items-center justify-between mb-8">
           <div>
             <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-1">
               Current Schedule
@@ -238,7 +239,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
               <span>Stay Tuned</span>
             )}
           </div>
-        </div>
+        </Reveal>
 
         {upcomingEvents.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -355,7 +356,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           PAST EVENTS & IMPACT MILESTONES (CHRONOLOGICAL ARCHIVE)
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <Reveal variant="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
             <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-1">
               Chronological Archive (2026)
@@ -380,7 +381,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
               {sortOrder === 'asc' ? 'Oldest → Newest' : 'Newest → Oldest'}
             </button>
           </div>
-        </div>
+        </Reveal>
 
         {/* Timeline Stack */}
         {sortedEvents.length > 0 ? (

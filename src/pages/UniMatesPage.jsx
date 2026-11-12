@@ -17,6 +17,7 @@ import {
   VolumeX
 } from 'lucide-react';
 import { INITIAL_MENTORS } from '../admin/data/initialAdminData';
+import Reveal from '../components/Reveal';
 
 export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, mentors: propMentors }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -111,7 +112,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-10 border-b border-aroham-border">
           {/* Left Text */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-6 hero-reveal hero-reveal-1">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-aroham-heading tracking-tight">
               Aroham UniMates
             </h1>
@@ -127,7 +128,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={scrollToDirectory}
-                className="px-6 py-3.5 bg-aroham-dark hover:bg-aroham-forest text-white text-sm font-semibold rounded-lg shadow transition-all duration-200 flex items-center gap-2 transform hover:-translate-y-0.5"
+                className="px-6 py-3.5 bg-aroham-dark hover:bg-aroham-forest text-white text-sm font-semibold rounded-lg shadow transition-all duration-300 flex items-center gap-2 transform hover:-translate-y-0.5 hover:scale-[1.02]"
               >
                 <span>Browse Mentors</span>
                 <span>↓</span>
@@ -278,7 +279,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           UNIMATES MENTORS DIRECTORY
           ========================================================================= */}
       <section id="mentors-directory" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <Reveal variant="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-1">
               Directory
@@ -293,7 +294,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-aroham-mint text-aroham-dark text-xs font-bold shrink-0 self-start sm:self-auto border border-aroham-border">
             <span>{filteredMentors.length} Mentors Listed</span>
           </div>
-        </div>
+        </Reveal>
 
         {/* Search Bar & Filter Tabs */}
         <div className="space-y-4 mb-8">

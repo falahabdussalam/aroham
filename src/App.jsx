@@ -314,7 +314,9 @@ export default function App() {
 
       {/* Active Page View */}
       <main className="flex-1">
-        {renderActivePage()}
+        <div key={activePage} className="animate-page-fade">
+          {renderActivePage()}
+        </div>
       </main>
 
       {/* Footer */}

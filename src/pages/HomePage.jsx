@@ -44,11 +44,6 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-7">
-          {/* Subtitle */}
-          <p className="text-[11px] sm:text-xs uppercase font-extrabold tracking-[0.25em] text-amber-300 drop-shadow-sm">
-            Aroham Foundation
-          </p>
-
           {/* Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-white leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-sm">
             Connected by Our Past, <br />

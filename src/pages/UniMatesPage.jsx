@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Search, 
-  Sparkles, 
   GraduationCap, 
   MapPin, 
   ArrowRight, 
@@ -113,11 +112,6 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-10 border-b border-aroham-border">
           {/* Left Text */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-aroham-amber-light text-aroham-gold text-xs font-bold tracking-wide uppercase">
-              <Sparkles size={13} />
-              <span>One-to-One Academic Mentorship</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-aroham-heading tracking-tight">
               Aroham UniMates
             </h1>
@@ -234,7 +228,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
 
               <div className="p-3.5 rounded-xl bg-aroham-sage/50 border border-aroham-border">
                 <div className="text-xs font-bold text-aroham-dark flex items-center gap-1.5">
-                  <Sparkles size={14} className="text-aroham-forest" />
+                  <CheckCircle2 size={14} className="text-aroham-forest" />
                   <span>Custom Matched</span>
                 </div>
                 <div className="text-[10px] text-aroham-muted mt-1">Subject-specific synergy</div>

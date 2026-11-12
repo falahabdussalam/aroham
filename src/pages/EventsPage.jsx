@@ -6,7 +6,6 @@ import {
   Video, 
   Users, 
   CheckCircle, 
-  Sparkles, 
   Bell, 
   Mail, 
   ArrowRight, 
@@ -178,11 +177,6 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
           <div className="space-y-4 max-w-3xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100/80 text-aroham-terracotta text-xs font-bold tracking-wide uppercase">
-              <span className="w-2 h-2 rounded-full bg-aroham-terracotta" />
-              <span>Knowledge Exchanges & Cohort Milestones</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl font-bold font-serif text-aroham-heading tracking-tight">
               Aroham Events & Guidance Sessions
             </h1>

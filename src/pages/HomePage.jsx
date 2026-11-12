@@ -2,7 +2,6 @@ import React from 'react';
 import { 
   ArrowRight, 
   ArrowUpRight, 
-  Sparkles, 
   Building2, 
   Users, 
   ShieldCheck, 
@@ -45,17 +44,6 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-7">
-          {/* Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-aroham-amber-light/95 backdrop-blur-sm text-aroham-gold text-[11px] sm:text-xs font-bold tracking-wide uppercase border border-amber-200/80 shadow-sm">
-              <Sparkles size={13} className="text-aroham-gold" />
-              <span>Women-Led Alumnae Initiative</span>
-            </div>
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-aroham-forest text-[11px] sm:text-xs font-bold tracking-wide uppercase border border-emerald-200/80 shadow-sm">
-              <span>Founded by Bolster Girls Campus Alumnae</span>
-            </div>
-          </div>
-
           {/* Subtitle */}
           <p className="text-[11px] sm:text-xs uppercase font-extrabold tracking-[0.25em] text-aroham-forest drop-shadow-sm">
             Aroham Foundation

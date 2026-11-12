@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle, GraduationCap, Building2, MapPin, Sparkles, Loader2, Mail } from 'lucide-react';
+import { X, CheckCircle, GraduationCap, Building2, MapPin, Loader2, Mail } from 'lucide-react';
 
 export default function RequestMatchModal({ isOpen, onClose, mentor, onApplyMentee }) {
   const [submitted, setSubmitted] = useState(false);
@@ -110,10 +110,6 @@ export default function RequestMatchModal({ isOpen, onClose, mentor, onApplyMent
           >
             <X size={20} />
           </button>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/20 text-xs font-semibold text-amber-300 mb-2 border border-amber-400/30">
-            <Sparkles size={12} />
-            <span>UniMates 1:1 Mentorship Matching</span>
-          </div>
           <h3 className="text-xl font-bold font-serif leading-snug">
             {mentor ? `Request 1:1 Match with ${mentor.name}` : 'Connect with an Alumna Mentor'}
           </h3>

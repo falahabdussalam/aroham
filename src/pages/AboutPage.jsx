@@ -173,7 +173,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
   ];
 
   return (
-    <div className="space-y-20 lg:space-y-28 pb-20 animate-fadeIn">
+    <div className="space-y-10 lg:space-y-14 pb-20 animate-fadeIn">
       {/* =========================================================================
           HERO SECTION (Full-bleed Banner like reference)
           ========================================================================= */}
@@ -189,7 +189,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
 
         {/* Banner Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 sm:pt-36 sm:pb-14">
-          <div className="space-y-3 max-w-4xl hero-reveal hero-reveal-1">
+          <div className="space-y-1 max-w-4xl hero-reveal hero-reveal-1">
             <h1 className="text-3xl sm:text-5xl font-semibold font-serif text-emerald-300 tracking-tight">
               About Us
             </h1>

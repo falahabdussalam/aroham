@@ -105,31 +105,30 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
   };
 
   return (
-    <div className="animate-fadeIn">
+    <div className="space-y-20 lg:space-y-28 pb-20 animate-fadeIn">
       {/* =========================================================================
-          HERO SECTION (LOGO GREEN)
+          HERO SECTION
           ========================================================================= */}
-      <section className="w-full bg-aroham-dark/95 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-10 border-b border-aroham-border">
           {/* Left Text */}
           <div className="lg:col-span-7 space-y-4 hero-reveal hero-reveal-1">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-serif text-white tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-serif text-aroham-heading tracking-tight">
               Aroham UniMates
             </h1>
 
-            <p className="text-base sm:text-lg italic font-serif text-emerald-200">
+            <p className="text-base sm:text-lg italic font-serif text-aroham-forest">
               Guidance from those who have been there. Support for those who are just beginning.
             </p>
 
-            <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-xl">
               Aroham UniMates is our one-to-one mentorship programme. It connects students with alumnae mentors for clear academic and career guidance.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={scrollToDirectory}
-                className="px-6 py-3.5 bg-aroham-amber hover:bg-amber-400 text-aroham-dark text-sm font-semibold rounded-lg shadow transition-all duration-300 flex items-center gap-2 transform hover:-translate-y-0.5 hover:scale-[1.02]"
+                className="px-6 py-3.5 bg-aroham-dark hover:bg-aroham-forest text-white text-sm font-semibold rounded-lg shadow transition-all duration-300 flex items-center gap-2 transform hover:-translate-y-0.5 hover:scale-[1.02]"
               >
                 <span>Browse Mentors</span>
                 <span>↓</span>
@@ -137,9 +136,9 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
 
               <button
                 onClick={onOpenGetInvolved}
-                className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold rounded-lg border border-white/25 backdrop-blur-sm shadow-sm transition-all duration-200 flex items-center gap-2"
+                className="px-6 py-3.5 bg-white hover:bg-aroham-sage text-aroham-dark text-sm font-semibold rounded-lg border border-aroham-border shadow-sm transition-all duration-200 flex items-center gap-2"
               >
-                <Users size={16} className="text-emerald-200" />
+                <Users size={16} className="text-aroham-forest" />
                 <span>Join the Community</span>
               </button>
             </div>
@@ -194,14 +193,12 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             </div>
           </div>
         </div>
-        </div>
       </section>
 
       {/* =========================================================================
-          PHILOSOPHY & LAUNCH MILESTONE CARDS (LOGO ORANGE)
+          PHILOSOPHY & LAUNCH MILESTONE CARDS
           ========================================================================= */}
-      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Mentorship Philosophy */}
           <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
@@ -278,14 +275,12 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             </div>
           </div>
         </div>
-        </div>
       </section>
 
       {/* =========================================================================
-          UNIMATES MENTORS DIRECTORY (LOGO GREEN)
+          UNIMATES MENTORS DIRECTORY
           ========================================================================= */}
-      <section id="mentors-directory" className="w-full bg-aroham-mint/85 py-16 sm:py-20 lg:py-24 scroll-mt-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="mentors-directory" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
         <Reveal variant="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
             <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
@@ -434,16 +429,14 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             </div>
           </div>
         )}
-        </div>
       </section>
 
       {/* =========================================================================
-          ACTIVITIES UNDER AROHAM UNIMATES (LOGO ORANGE)
+          ACTIVITIES UNDER AROHAM UNIMATES
           ========================================================================= */}
-      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 space-y-2">
-          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-terracotta">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
             Programs & Events
           </div>
           <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
@@ -509,16 +502,14 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             </div>
           </div>
         </div>
-        </div>
       </section>
 
       {/* =========================================================================
-          BE A PART OF AROHAM UNIMATES (LOGO GREEN)
+          BE A PART OF AROHAM UNIMATES
           ========================================================================= */}
-      <section className="w-full bg-aroham-mint/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
-          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-forest">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
             Get Connected
           </div>
           <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
@@ -576,7 +567,6 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               Join as Alumna Mentor
             </button>
           </div>
-        </div>
         </div>
       </section>
     </div>

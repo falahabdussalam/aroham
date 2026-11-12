@@ -173,7 +173,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
   ];
 
   return (
-    <div className="animate-fadeIn">
+    <div className="space-y-20 lg:space-y-28 pb-20 animate-fadeIn">
       {/* =========================================================================
           HERO SECTION (Full-bleed Banner like reference)
           ========================================================================= */}
@@ -202,10 +202,9 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
       </section>
 
       {/* =========================================================================
-          GENESIS OF AROHAM: FROM SISTERHOOD TO SUSTAINED IMPACT (LOGO ORANGE)
+          GENESIS OF AROHAM: FROM SISTERHOOD TO SUSTAINED IMPACT
           ========================================================================= */}
-      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up">
           <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading mb-10">
             From Sisterhood to Sustained Impact
@@ -286,16 +285,14 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             </div>
           </Reveal>
         </div>
-        </div>
       </section>
 
       {/* =========================================================================
-          FOUNDATIONAL TIMELINE (2025) (LOGO GREEN)
+          FOUNDATIONAL TIMELINE (2025)
           ========================================================================= */}
-      <section className="w-full bg-aroham-dark/95 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="text-center max-w-xl mx-auto mb-12 space-y-2">
-          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-white">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Foundational Timeline (2025)
           </h2>
         </Reveal>
@@ -328,14 +325,12 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             </Reveal>
           ))}
         </div>
-        </div>
       </section>
 
       {/* =========================================================================
-          OUR GUIDING LIGHT: MISSION & VISION (LOGO ORANGE)
+          OUR GUIDING LIGHT: MISSION & VISION
           ========================================================================= */}
-      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="text-center max-w-xl mx-auto mb-10 space-y-2">
           <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Our Guiding Light
@@ -383,14 +378,12 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             </div>
           </Reveal>
         </div>
-        </div>
       </section>
 
       {/* =========================================================================
-          OUR COMMITTEE (LOGO GREEN)
+          OUR COMMITTEE
           ========================================================================= */}
-      <section className="w-full bg-aroham-mint/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Our Committee
@@ -467,7 +460,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             </div>
           </div>
         )}
-        </div>
       </section>
     </div>
   );

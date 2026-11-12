@@ -93,89 +93,6 @@
   transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), opacity 140ms ease-out;
 }
 
-.scroll-overlay-section > :not(.section-texture-layer) {
-  position: relative;
-  z-index: 2;
-}
-
-/* Section Geometric Texture Layer (Boxes & Triangles with Float + Blink) */
-.section-texture-layer {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.section-texture-layer.theme-dark {
-  --tex-primary: rgba(167, 243, 208, 0.24);
-  --tex-accent: rgba(245, 166, 35, 0.28);
-}
-
-.section-texture-layer.theme-orange {
-  --tex-primary: rgba(148, 48, 27, 0.16);
-  --tex-accent: rgba(11, 59, 44, 0.15);
-}
-
-.section-texture-layer.theme-mint {
-  --tex-primary: rgba(19, 78, 58, 0.16);
-  --tex-accent: rgba(224, 148, 25, 0.22);
-}
-
-@keyframes textureFloatBlinkA {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-    opacity: 0.35;
-  }
-  50% {
-    transform: translate3d(8px, -12px, 0) rotate(12deg) scale(1.06);
-    opacity: 0.95;
-  }
-}
-
-@keyframes textureFloatBlinkB {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.96);
-    opacity: 0.9;
-  }
-  50% {
-    transform: translate3d(-10px, 10px, 0) rotate(-14deg) scale(1.04);
-    opacity: 0.25;
-  }
-}
-
-@keyframes textureTwinkle {
-  0%, 100% {
-    opacity: 0.15;
-    transform: scale(0.88) rotate(0deg);
-  }
-  45% {
-    opacity: 1;
-    transform: scale(1.08) rotate(8deg);
-  }
-  70% {
-    opacity: 0.3;
-    transform: scale(0.95) rotate(-4deg);
-  }
-}
-
-.tex-item {
-  position: absolute;
-  will-change: transform, opacity;
-}
-
-.tex-anim-a {
-  animation: textureFloatBlinkA 6.5s ease-in-out infinite;
-}
-
-.tex-anim-b {
-  animation: textureFloatBlinkB 8s ease-in-out infinite;
-}
-
-.tex-anim-blink {
-  animation: textureTwinkle 3.4s ease-in-out infinite;
-}
-
 /* Ambient Educational & Career Background Illustration Animations */
 @keyframes floatSlow {
   0%, 100% {
@@ -227,7 +144,6 @@
   .hero-reveal,
   .reveal,
   .scroll-overlay-section,
-  .tex-item,
   .animate-float-slow,
   .animate-float-reverse,
   .animate-float-drift {

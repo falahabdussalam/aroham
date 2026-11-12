@@ -171,64 +171,61 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
   });
 
   return (
-    <div className="animate-fadeIn">
+    <div className="space-y-20 lg:space-y-28 pb-20 animate-fadeIn">
       {/* =========================================================================
-          HERO SECTION (LOGO GREEN)
+          HERO SECTION
           ========================================================================= */}
-      <section className="w-full bg-aroham-dark/95 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+      <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
           <div className="space-y-2.5 max-w-3xl hero-reveal hero-reveal-1">
-            <h1 className="text-4xl sm:text-5xl font-semibold font-serif text-white tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-semibold font-serif text-aroham-heading tracking-tight">
               Aroham Events & Guidance Sessions
             </h1>
 
-            <p className="text-base sm:text-lg text-emerald-100/90 leading-relaxed">
+            <p className="text-base sm:text-lg text-aroham-body leading-relaxed">
               Empowering students through global education workshops, mentorship launches, and alumni meets.
             </p>
           </div>
 
           {/* 3 Metric Pills */}
-          <div className="hero-reveal hero-reveal-2 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 shadow-elevated flex items-center gap-8 shrink-0 self-start lg:self-center transition-all duration-300 hover:-translate-y-1 hover:bg-white/15">
+          <div className="hero-reveal hero-reveal-2 bg-white rounded-2xl p-5 border border-aroham-border shadow-soft flex items-center gap-8 shrink-0 self-start lg:self-center transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
             <div>
-              <div className="text-2xl sm:text-3xl font-semibold font-serif text-white">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-dark">
                 {completedEvents.length}+
               </div>
-              <div className="text-[10px] uppercase font-semibold tracking-wider text-emerald-200 mt-0.5">
+              <div className="text-[10px] uppercase font-semibold tracking-wider text-aroham-muted mt-0.5">
                 Sessions Completed
               </div>
             </div>
-            <div className="w-px h-10 bg-white/20" />
+            <div className="w-px h-10 bg-aroham-border" />
             <div>
-              <div className="text-2xl sm:text-3xl font-semibold font-serif text-white">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-dark">
                 160+
               </div>
-              <div className="text-[10px] uppercase font-semibold tracking-wider text-emerald-200 mt-0.5">
+              <div className="text-[10px] uppercase font-semibold tracking-wider text-aroham-muted mt-0.5">
                 Scholars Reached
               </div>
             </div>
-            <div className="w-px h-10 bg-white/20" />
+            <div className="w-px h-10 bg-aroham-border" />
             <div>
-              <div className="text-2xl sm:text-3xl font-semibold font-serif text-white">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-dark">
                 100%
               </div>
-              <div className="text-[10px] uppercase font-semibold tracking-wider text-emerald-200 mt-0.5">
+              <div className="text-[10px] uppercase font-semibold tracking-wider text-aroham-muted mt-0.5">
                 Alumnae Guided
               </div>
             </div>
           </div>
         </div>
-        </div>
       </section>
 
       {/* =========================================================================
-          UPCOMING EVENTS / CURRENT SCHEDULE (LOGO ORANGE)
+          UPCOMING EVENTS / CURRENT SCHEDULE
           ========================================================================= */}
-      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="flex items-center justify-between mb-8">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-terracotta mb-1">
+            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
               Current Schedule
             </div>
             <h2 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading">
@@ -353,17 +350,15 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             </div>
           </div>
         )}
-        </div>
       </section>
 
       {/* =========================================================================
-          PAST EVENTS & IMPACT MILESTONES (CHRONOLOGICAL ARCHIVE) (LOGO GREEN)
+          PAST EVENTS & IMPACT MILESTONES (CHRONOLOGICAL ARCHIVE)
           ========================================================================= */}
-      <section className="w-full bg-aroham-mint/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-forest mb-1">
+            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
               Chronological Archive (2026)
             </div>
             <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
@@ -560,14 +555,12 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             </p>
           </div>
         )}
-        </div>
       </section>
 
       {/* =========================================================================
-          PROPOSE A SESSION CALLOUT (LOGO ORANGE)
+          PROPOSE A SESSION CALLOUT
           ========================================================================= */}
-      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-elevated">
           <div className="space-y-2 max-w-xl text-center md:text-left">
             <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
@@ -584,7 +577,6 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             <Mail size={15} />
             <span>Propose a Session / Connect With Us</span>
           </a>
-        </div>
         </div>
       </section>
     </div>

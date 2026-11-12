@@ -176,33 +176,28 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
   return (
     <div className="space-y-20 lg:space-y-28 pb-20 animate-fadeIn">
       {/* =========================================================================
-          HERO SECTION
+          HERO SECTION (Full-bleed Banner like reference)
           ========================================================================= */}
-      <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
-          <div className="space-y-4 max-w-3xl hero-reveal hero-reveal-1">
-            <h1 className="text-4xl sm:text-5xl font-bold font-serif text-aroham-heading tracking-tight">
-              About Aroham Foundation
+      <section className="relative w-full min-h-[360px] sm:min-h-[430px] flex items-end overflow-hidden bg-aroham-dark">
+        {/* Background Image */}
+        <img
+          src={strategicGatheringImg}
+          alt="Aroham Foundation Alumnae Gathering"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-105"
+        />
+        {/* Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-aroham-dark/95 via-aroham-dark/70 to-aroham-dark/40" />
+
+        {/* Banner Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 sm:pt-36 sm:pb-14">
+          <div className="space-y-3 max-w-4xl hero-reveal hero-reveal-1">
+            <h1 className="text-3xl sm:text-5xl font-bold font-serif text-emerald-300 tracking-tight">
+              About Us
             </h1>
 
-            <p className="text-base sm:text-lg text-aroham-body leading-relaxed">
-              A women-led alumni initiative connecting students with opportunities through education, mentorship, and community support.
+            <p className="text-sm sm:text-base text-white/95 leading-relaxed">
+              Aroham Foundation is a women-led alumni initiative empowering students through mentorship, education, and community support. Rooted in the sisterhood of Bolster Girls Campus, we connect young learners with experienced alumnae worldwide. Together, we help students make confident academic choices and build brighter futures.
             </p>
-          </div>
-
-          {/* Rooted in Alma Mater badge */}
-          <div className="hero-reveal hero-reveal-2 bg-white rounded-2xl p-4 sm:p-5 border border-aroham-border shadow-soft flex items-center gap-4 shrink-0 self-start lg:self-center transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-            <div className="w-12 h-12 rounded-xl bg-aroham-dark text-white font-bold text-xs flex items-center justify-center tracking-wider">
-              BGC
-            </div>
-            <div>
-              <div className="text-[10px] uppercase font-bold tracking-[0.2em] text-aroham-muted">
-                Rooted in Alma Mater
-              </div>
-              <div className="text-base font-bold font-serif text-aroham-heading">
-                Bolster Girls Campus
-              </div>
-            </div>
           </div>
         </div>
       </section>

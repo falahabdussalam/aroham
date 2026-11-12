@@ -184,15 +184,34 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           QUOTE & TESTIMONIAL SECTION WITH DARK YELLOW WAVE BACKGROUND
           ========================================================================= */}
       <section className="relative w-full overflow-hidden">
-        {/* Top Organic Wave + Decorative Aroham Logo Watermark */}
+        {/* Top Organic Wave + Decorative Aroham Outline Logo */}
         <div className="relative w-full leading-none pointer-events-none select-none">
-          {/* Decorative Aroham Logo Watermark (Right Side overlapping wave line) */}
-          <img
-            src="/emblem.png"
-            alt=""
+          {/* Decorative Aroham Outline Emblem (Right Side overlapping wave line) */}
+          <svg
+            viewBox="0 0 140 200"
+            className="w-24 h-36 sm:w-32 sm:h-44 lg:w-36 lg:h-52 absolute right-6 sm:right-14 lg:right-24 -top-6 sm:-top-10 text-[#B47208]/25 z-0"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             aria-hidden="true"
-            className="w-28 h-28 sm:w-40 sm:h-40 lg:w-48 lg:h-48 object-contain absolute right-4 sm:right-12 lg:right-24 -top-4 sm:-top-8 opacity-[0.16] mix-blend-multiply z-0"
-          />
+          >
+            {/* Top Flame / Petal */}
+            <path d="M70 4 C58 18 54 30 55 43 C60 35 65 30 70 26 C75 30 80 35 85 43 C86 30 82 18 70 4 Z" />
+            {/* Upper-Left Crescent */}
+            <path d="M53 18 C42 36 44 62 58 84 C61 79 65 75 69 72 C55 54 50 36 53 18 Z" />
+            {/* Left Wing Hook */}
+            <path d="M4 44 C18 45 30 51 40 61 C31 56 24 57 24 63 C25 74 34 86 46 95 C44 98 42 101 40 104 C16 90 2 68 4 44 Z" />
+            {/* Main Sweeping Teal S-Ribbon Outline */}
+            <path d="M87 16 C97 44 95 72 74 96 C53 120 43 142 47 166 C50 180 56 190 64 196 C41 182 28 158 31 132 C34 108 50 90 70 72 C86 56 91 36 87 16 Z" />
+            {/* Right Wing to Lower-Center Ribbon Outline */}
+            <path d="M136 44 C122 45 110 51 100 61 C109 56 116 57 116 63 C114 78 100 94 82 108 C64 122 57 146 60 180 C52 160 51 134 62 114 C72 98 88 86 102 74 C112 65 124 54 136 44 Z" />
+            {/* Lower-Center Inner Curve */}
+            <path d="M79 126 C88 140 90 162 80 182 C83 166 80 148 73 135 C75 131 77 128 79 126 Z" />
+            {/* Lower-Right Crescent */}
+            <path d="M94 114 C114 138 116 174 78 196 C96 174 99 144 85 123 C88 120 91 117 94 114 Z" />
+          </svg>
 
           <svg
             viewBox="0 0 1440 130"

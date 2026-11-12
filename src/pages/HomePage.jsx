@@ -19,7 +19,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           HERO SECTION WITH AMBIENT BACKGROUND VIDEO
           ========================================================================= */}
       <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-14 pb-16 sm:pt-20 sm:pb-28 overflow-hidden bg-aroham-dark">
-        {/* Full-Fit Background Video with Aroham Dark (#0B3B2C) 50% Opacity Cover */}
+        {/* Full-Fit Background Video with Aroham Dark (#0B3B2C) 85% Opacity Cover */}
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <video
             autoPlay
@@ -39,8 +39,8 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
           </video>
-          {/* Same background color as Get Involved button (#0B3B2C) at 50% opacity */}
-          <div className="absolute inset-0 bg-aroham-dark/50 pointer-events-none" />
+          {/* Same background color as Get Involved button (#0B3B2C) at 85% opacity */}
+          <div className="absolute inset-0 bg-aroham-dark/85 pointer-events-none" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-7">

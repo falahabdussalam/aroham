@@ -345,9 +345,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 <Flag size={22} />
               </div>
               <div className="space-y-2">
-                <span className="block text-[11px] font-semibold uppercase tracking-widest text-emerald-300">
-                  Core Directive
-                </span>
                 <h3 className="text-3xl font-semibold font-serif">
                   Our Mission
                 </h3>
@@ -365,9 +362,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 <Eye size={22} />
               </div>
               <div className="space-y-2">
-                <span className="block text-[11px] font-semibold uppercase tracking-widest text-aroham-dark/80">
-                  North Star
-                </span>
                 <h3 className="text-3xl font-semibold font-serif">
                   Our Vision
                 </h3>

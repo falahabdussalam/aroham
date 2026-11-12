@@ -4,7 +4,6 @@ import { Menu, X, ShieldCheck } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, onOpenGetInvolved }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState(null);
 
   const navLinks = [
     { id: 'home', label: 'Home' },
@@ -27,32 +26,27 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
           <ArohamLogo size="header" onClick={() => handleNavClick('home')} />
         </div>
 
-        {/* Desktop Navigation Links with spring popup transition */}
-        <nav className="hidden md:flex items-center gap-1.5 lg:gap-2 p-1.5 rounded-2xl bg-aroham-sage/30 border border-aroham-border/40">
+        {/* Desktop Navigation Links with smooth underline transition */}
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => {
             const isActive = activePage === link.id;
-            const isHovered = hoveredLink === link.id;
 
             return (
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                onMouseEnter={() => setHoveredLink(link.id)}
-                onMouseLeave={() => setHoveredLink(null)}
-                className={`relative px-4 py-2 rounded-xl text-sm font-semibold no-underline transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform select-none ${
+                className={`group relative py-2 text-sm no-underline bg-transparent transition-colors duration-300 select-none ${
                   isActive
-                    ? 'bg-aroham-dark text-white shadow-soft -translate-y-0.5 scale-[1.02]'
-                    : isHovered
-                    ? 'bg-white text-aroham-dark shadow-elevated -translate-y-1 scale-105 border border-aroham-border'
-                    : 'text-aroham-body hover:text-aroham-dark bg-transparent border border-transparent'
+                    ? 'text-aroham-dark font-bold'
+                    : 'text-aroham-body hover:text-aroham-dark font-semibold'
                 }`}
               >
-                <span className="relative z-10 flex items-center gap-1.5">
-                  {link.label}
-                  {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse" />
-                  )}
-                </span>
+                <span className="relative z-10">{link.label}</span>
+                <span
+                  className={`absolute left-0 right-0 bottom-0 h-[2.5px] rounded-full bg-aroham-dark origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`}
+                />
               </button>
             );
           })}
@@ -91,20 +85,30 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#F4F8F5] border-b border-aroham-border px-4 pt-3 pb-6 space-y-2 animate-fadeIn">
-          {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => handleNavClick(link.id)}
-              className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 transform ${
-                activePage === link.id
-                  ? 'bg-aroham-dark text-white shadow-soft'
-                  : 'text-aroham-body hover:bg-white hover:text-aroham-dark hover:shadow-sm'
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
+        <div className="md:hidden bg-[#F4F8F5] border-b border-aroham-border px-4 pt-3 pb-6 space-y-1.5 animate-fadeIn">
+          {navLinks.map((link) => {
+            const isActive = activePage === link.id;
+            return (
+              <button
+                key={link.id}
+                onClick={() => handleNavClick(link.id)}
+                className={`group block w-full text-left px-2 py-2.5 text-sm bg-transparent transition-colors duration-200 ${
+                  isActive
+                    ? 'text-aroham-dark font-bold'
+                    : 'text-aroham-body hover:text-aroham-dark font-semibold'
+                }`}
+              >
+                <span className="relative inline-block pb-1">
+                  {link.label}
+                  <span
+                    className={`absolute left-0 right-0 bottom-0 h-[2.5px] rounded-full bg-aroham-dark origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                    }`}
+                  />
+                </span>
+              </button>
+            );
+          })}
           <div className="pt-2 flex flex-col gap-2">
             <button
               onClick={() => {

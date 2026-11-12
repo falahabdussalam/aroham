@@ -275,7 +275,7 @@ export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication 
                       <span>Connecting to arohamconnect@gmail.com...</span>
                     </>
                   ) : (
-                    <span>Join Aroham Network →</span>
+                    <span>Join Aroham Network</span>
                   )}
                 </button>
               </div>

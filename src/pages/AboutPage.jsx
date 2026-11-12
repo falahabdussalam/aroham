@@ -407,14 +407,14 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                   alt={member.name}
                   className="w-full h-full object-cover object-top md:group-hover:scale-105 transition-transform duration-300"
                 />
-                <span className={`absolute top-1.5 right-1.5 sm:top-2 sm:right-2 md:top-3 md:right-3 px-1.5 py-0.5 sm:px-2 md:px-2.5 rounded sm:rounded-md text-[7.5px] sm:text-[9px] md:text-[10px] font-semibold uppercase tracking-wider shadow leading-tight ${member.badgeColor}`}>
-                  {member.role}
-                </span>
               </div>
               <div className="p-2 sm:p-3 md:p-5 flex-1 flex flex-col justify-center">
                 <h4 className="text-[11px] sm:text-sm md:text-base font-semibold font-serif text-aroham-heading leading-snug line-clamp-1 sm:line-clamp-none">
                   {member.name}
                 </h4>
+                <p className="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-semibold tracking-wider text-aroham-forest mt-0.5 sm:mt-1 truncate">
+                  {member.role}
+                </p>
               </div>
             </div>
           ))}

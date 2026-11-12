@@ -112,7 +112,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-10 border-b border-aroham-border">
           {/* Left Text */}
-          <div className="lg:col-span-7 space-y-6 hero-reveal hero-reveal-1">
+          <div className="lg:col-span-7 space-y-4 hero-reveal hero-reveal-1">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-serif text-aroham-heading tracking-tight">
               Aroham UniMates
             </h1>
@@ -202,7 +202,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Mentorship Philosophy */}
           <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
                 Mentorship Philosophy
               </div>
@@ -251,12 +251,14 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-semibold tracking-wide uppercase border border-amber-400/30">
                 <span>🚩 Our Beginning</span>
               </div>
-              <h3 className="text-3xl font-semibold font-serif leading-snug">
-                Launched on 4 May 2026
-              </h3>
-              <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed pt-2">
-                Aroham UniMates began its journey with <strong className="text-white font-semibold">10 registered mentors</strong> and <strong className="text-white font-semibold">17 students</strong>. All 17 students were successfully matched with mentors, marking the beginning of a growing mentorship community.
-              </p>
+              <div className="space-y-2">
+                <h3 className="text-3xl font-semibold font-serif leading-snug">
+                  Launched on 4 May 2026
+                </h3>
+                <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+                  Aroham UniMates began its journey with <strong className="text-white font-semibold">10 registered mentors</strong> and <strong className="text-white font-semibold">17 students</strong>. All 17 students were successfully matched with mentors, marking the beginning of a growing mentorship community.
+                </p>
+              </div>
             </div>
 
             <div className="p-4 rounded-2xl bg-white/10 border border-white/10 space-y-2">
@@ -455,12 +457,14 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                 </span>
                 <span className="text-aroham-muted font-semibold">GCC Region</span>
               </div>
-              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
-                GCC Higher Education Guidance Session
-              </h3>
-              <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                A focused session on admissions, merit scholarships, and visa steps for top universities in the UAE, Qatar, and Saudi Arabia.
-              </p>
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
+                  GCC Higher Education Guidance Session
+                </h3>
+                <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                  A focused session on admissions, merit scholarships, and visa steps for top universities in the UAE, Qatar, and Saudi Arabia.
+                </p>
+              </div>
             </div>
 
             <div className="pt-4 border-t border-aroham-border flex items-center justify-between text-xs font-semibold text-aroham-forest">
@@ -480,12 +484,14 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                 </span>
                 <span className="text-aroham-muted font-semibold">United Kingdom</span>
               </div>
-              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
-                UK Higher Education Guidance Session
-              </h3>
-              <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                A practical workshop covering UCAS applications, personal statements, student housing, and Chevening or Commonwealth scholarships.
-              </p>
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
+                  UK Higher Education Guidance Session
+                </h3>
+                <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                  A practical workshop covering UCAS applications, personal statements, student housing, and Chevening or Commonwealth scholarships.
+                </p>
+              </div>
             </div>
 
             <div className="pt-4 border-t border-aroham-border flex items-center justify-between text-xs font-semibold text-aroham-forest">
@@ -518,12 +524,14 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-amber-300">
                 <GraduationCap size={24} />
               </div>
-              <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
-                Register as a Mentee
-              </h3>
-              <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-                Exploring higher education or preparing for university admissions? Connect with an alumna who has walked your path.
-              </p>
+              <div className="space-y-2">
+                <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
+                  Register as a Mentee
+                </h3>
+                <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+                  Exploring higher education or preparing for university admissions? Connect with an alumna who has walked your path.
+                </p>
+              </div>
             </div>
 
             <a
@@ -542,12 +550,14 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white">
                 <HeartHandshake size={24} />
               </div>
-              <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
-                Register as a Mentor
-              </h3>
-              <p className="text-xs sm:text-sm text-orange-100/90 leading-relaxed">
-                Are you a Bolster Girls Campus alumna studying or working in India or abroad? Share your experience and guide rising scholars.
-              </p>
+              <div className="space-y-2">
+                <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
+                  Register as a Mentor
+                </h3>
+                <p className="text-xs sm:text-sm text-orange-100/90 leading-relaxed">
+                  Are you a Bolster Girls Campus alumna studying or working in India or abroad? Share your experience and guide rising scholars.
+                </p>
+              </div>
             </div>
 
             <button

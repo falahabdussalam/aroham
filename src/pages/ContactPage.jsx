@@ -92,7 +92,7 @@ export default function ContactPage() {
           ========================================================================= */}
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
-          <div className="space-y-4 max-w-3xl hero-reveal hero-reveal-1">
+          <div className="space-y-3 max-w-3xl hero-reveal hero-reveal-1">
             <h1 className="text-4xl sm:text-5xl font-semibold font-serif text-aroham-heading tracking-tight">
               Get in Touch with Aroham Foundation
             </h1>
@@ -153,15 +153,17 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-2xl bg-aroham-mint flex items-center justify-center text-aroham-dark">
                 <Mail size={22} />
               </div>
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-aroham-gold block">
-                Formal & Academic Correspondence
-              </span>
-              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
-                Email Address
-              </h3>
-              <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                Direct inbox for institutional affiliations, scholarship inquiries, mentor volunteer dossiers, and media questions.
-              </p>
+              <div className="space-y-2">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-aroham-gold block">
+                  Formal & Academic Correspondence
+                </span>
+                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
+                  Email Address
+                </h3>
+                <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                  Direct inbox for institutional affiliations, scholarship inquiries, mentor volunteer dossiers, and media questions.
+                </p>
+              </div>
 
               <div className="p-4 rounded-2xl bg-aroham-sage/40 border border-aroham-border">
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-aroham-muted block">
@@ -321,7 +323,7 @@ export default function ContactPage() {
               <div className="text-[10px] uppercase font-semibold text-aroham-muted">
                 Alumnae-driven generational uplift
               </div>
-              <p className="text-xs text-aroham-body leading-relaxed pt-1">
+              <p className="text-xs text-aroham-body leading-relaxed">
                 Are you an alumna? Make sure to mention your graduation year or department in your note so our regional liaison can link you to your cohort's chapter.
               </p>
             </div>

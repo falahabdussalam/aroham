@@ -111,18 +111,20 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           {/* Pillar 1: Aroham Foundation */}
           <Reveal variant="up" delay={0}>
           <div className="h-full bg-white rounded-3xl p-8 sm:p-10 shadow-soft border border-aroham-border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-            <div className="space-y-5">
+            <div className="space-y-4">
               <div className="w-12 h-12 rounded-2xl bg-aroham-mint flex items-center justify-center text-aroham-dark">
                 <Building2 size={24} />
               </div>
 
-              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
-                Aroham Foundation
-              </h3>
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
+                  Aroham Foundation
+                </h3>
 
-              <p className="text-sm text-aroham-body leading-relaxed">
-                Founded by Bolster Girls Campus alumnae, this women-led non-profit connects graduates with students. Together, we build educational opportunities, guidance, and mentorship.
-              </p>
+                <p className="text-sm text-aroham-body leading-relaxed">
+                  Founded by Bolster Girls Campus alumnae, this women-led non-profit connects graduates with students. Together, we build educational opportunities, guidance, and mentorship.
+                </p>
+              </div>
 
               <ul className="space-y-3 pt-2 text-xs font-medium text-aroham-heading">
                 <li className="flex items-start gap-2">
@@ -145,18 +147,20 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           {/* Pillar 2: Aroham UniMates */}
           <Reveal variant="up" delay={140}>
           <div className="h-full bg-white rounded-3xl p-8 sm:p-10 shadow-soft border-t-4 border-t-aroham-terracotta border-x border-b border-aroham-border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-            <div className="space-y-5">
+            <div className="space-y-4">
               <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-aroham-gold">
                 <Users size={24} />
               </div>
 
-              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
-                Aroham UniMates
-              </h3>
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
+                  Aroham UniMates
+                </h3>
 
-              <p className="text-sm text-aroham-body leading-relaxed">
-                Aroham's one-to-one mentorship programme connects students with alumnae mentors for dedicated academic and career guidance.
-              </p>
+                <p className="text-sm text-aroham-body leading-relaxed">
+                  Aroham's one-to-one mentorship programme connects students with alumnae mentors for dedicated academic and career guidance.
+                </p>
+              </div>
 
               <ul className="space-y-3 pt-2 text-xs font-medium text-aroham-heading">
                 <li className="flex items-start gap-2">
@@ -229,7 +233,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
         {/* Dark Yellow Tinted Wave Body (flows seamlessly into Footer) */}
         <div className="bg-[rgba(180,114,8,0.16)] pb-16 sm:pb-24 pt-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="max-w-4xl mx-auto text-center space-y-4">
               <Reveal variant="up" delay={0}>
               <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading leading-tight max-w-2xl mx-auto">
                 "When one alumna rises, she extends a hand to ten more."

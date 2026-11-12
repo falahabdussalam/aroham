@@ -309,12 +309,14 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 <span className="inline-block px-3 py-1 rounded-full bg-aroham-sage text-aroham-forest text-xs font-semibold border border-aroham-border">
                   {item.date}
                 </span>
-                <h3 className="text-lg font-semibold font-serif text-aroham-heading">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-aroham-body leading-relaxed">
-                  {item.description}
-                </p>
+                <div className="space-y-1.5">
+                  <h3 className="text-lg font-semibold font-serif text-aroham-heading">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-aroham-body leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
 
               <div className="pt-4 mt-4 border-t border-aroham-border text-[11px] font-semibold text-aroham-muted flex items-center gap-1.5">
@@ -342,15 +344,17 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
                 <Flag size={22} />
               </div>
-              <span className="text-[11px] font-semibold uppercase tracking-widest text-emerald-300">
-                Core Directive
-              </span>
-              <h3 className="text-3xl font-semibold font-serif">
-                Our Mission
-              </h3>
-              <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed pt-2">
-                Build a global mentor network that guides young people—especially from underserved backgrounds—toward their academic and career goals.
-              </p>
+              <div className="space-y-2">
+                <span className="block text-[11px] font-semibold uppercase tracking-widest text-emerald-300">
+                  Core Directive
+                </span>
+                <h3 className="text-3xl font-semibold font-serif">
+                  Our Mission
+                </h3>
+                <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
+                  Build a global mentor network that guides young people—especially from underserved backgrounds—toward their academic and career goals.
+                </p>
+              </div>
             </div>
           </Reveal>
 
@@ -360,15 +364,17 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               <div className="w-12 h-12 rounded-2xl bg-aroham-dark text-white flex items-center justify-center">
                 <Eye size={22} />
               </div>
-              <span className="text-[11px] font-semibold uppercase tracking-widest text-aroham-dark/80">
-                North Star
-              </span>
-              <h3 className="text-3xl font-semibold font-serif">
-                Our Vision
-              </h3>
-              <p className="text-sm sm:text-base text-aroham-heading/90 leading-relaxed pt-2">
-                A world where every student has the guidance, opportunities, and support needed to build their future with confidence.
-              </p>
+              <div className="space-y-2">
+                <span className="block text-[11px] font-semibold uppercase tracking-widest text-aroham-dark/80">
+                  North Star
+                </span>
+                <h3 className="text-3xl font-semibold font-serif">
+                  Our Vision
+                </h3>
+                <p className="text-sm sm:text-base text-aroham-heading/90 leading-relaxed">
+                  A world where every student has the guidance, opportunities, and support needed to build their future with confidence.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>

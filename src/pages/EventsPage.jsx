@@ -177,7 +177,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           ========================================================================= */}
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
-          <div className="space-y-4 max-w-3xl hero-reveal hero-reveal-1">
+          <div className="space-y-2.5 max-w-3xl hero-reveal hero-reveal-1">
             <h1 className="text-4xl sm:text-5xl font-semibold font-serif text-aroham-heading tracking-tight">
               Aroham Events & Guidance Sessions
             </h1>
@@ -325,7 +325,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
               <h3 className="text-xl sm:text-2xl font-semibold font-serif text-aroham-heading">
                 No upcoming events at the moment. Stay connected for future updates.
               </h3>
-              <p className="text-xs sm:text-sm text-aroham-body max-w-md mx-auto pt-1 leading-relaxed">
+              <p className="text-xs sm:text-sm text-aroham-body max-w-md mx-auto leading-relaxed">
                 We organize higher education guidance sessions, alumnae roundtables, and university workshops dynamically throughout the academic year.
               </p>
             </div>
@@ -418,13 +418,15 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                   ))}
                 </div>
 
-                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
-                  {evt.title}
-                </h3>
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
+                    {evt.title}
+                  </h3>
 
-                <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                  {evt.description}
-                </p>
+                  <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                    {evt.description}
+                  </p>
+                </div>
 
                 {/* Specific Event Variants */}
 

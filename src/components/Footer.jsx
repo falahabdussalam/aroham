@@ -16,7 +16,7 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
           <div className="md:col-span-5 space-y-4">
             <ArohamLogo size="footer" textDark={false} onClick={() => handleNav('home')} />
             <p className="text-sm text-emerald-100/85 leading-relaxed max-w-sm pt-2">
-              Empowering women-led academic mentorship, lifelong alumni solidarity, and generational uplift across academic and career milestones.
+              Supporting women-led mentorship, alumni unity, and student growth across academic and career milestones.
             </p>
           </div>
 

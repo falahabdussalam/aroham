@@ -35,19 +35,19 @@ export default function ContactPage() {
   const faqs = [
     {
       question: 'How does mentorship matching work at Aroham?',
-      answer: 'Our Mentorship Council assesses your current academic discipline, intended majors, and geographical target (GCC, UK, India, etc.). We then pair you with an alumna mentor from Bolster Girls Campus who has directly studied in or navigated that specific academic track for personalized 1-on-1 guidance.'
+      answer: 'Our council reviews your academic field, goals, and preferred study region (GCC, UK, India, and more). We then match you with a Bolster Girls Campus alumna in that track for 1-on-1 guidance.'
     },
     {
       question: 'Who can join the UniMates initiative?',
-      answer: 'UniMates is open to all students (Classes 10–12, undergraduate aspirants, and current college students) seeking guidance. Mentorship roles are primarily anchored by alumnae of Bolster Girls Campus to sustain our distinctive generational sisterhood ethos.'
+      answer: 'Students in Classes 10–12, undergraduate applicants, and college students can join for guidance. Mentorship roles are led by Bolster Girls Campus alumnae.'
     },
     {
       question: 'How often are alumni meets and workshops organized?',
-      answer: 'We conduct live webinars and subject bootcamps quarterly, alongside our dedicated summer and winter guidance conclaves. In addition, registered UniMates students receive ongoing asynchronous guidance from their paired mentor.'
+      answer: 'We host live webinars and workshops every quarter, plus seasonal guidance meets. Registered UniMates students also receive ongoing support from their mentor.'
     },
     {
       question: 'Can organizations or companies partner with Aroham Foundation?',
-      answer: 'Yes! We actively collaborate with schools, university admissions offices, non-profits, and educational scholarship bodies to expand opportunities, conduct workshops, and provide career exposure to our rising scholars.'
+      answer: 'Yes. We partner with schools, universities, non-profits, and scholarship groups to host workshops and expand opportunities for students.'
     }
   ];
 
@@ -98,7 +98,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="text-base sm:text-lg text-aroham-body leading-relaxed">
-              Have questions about mentorship, upcoming events, or partnering with us? We'd love to connect. Every exchange builds a bridge for generations of ambitious scholars.
+              Questions about mentorship, events, or partnerships? Reach out to us. Every conversation helps build new paths for students.
             </p>
 
             <div className="flex flex-wrap items-center gap-6 pt-2 text-xs font-semibold text-aroham-forest">

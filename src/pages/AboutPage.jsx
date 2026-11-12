@@ -150,25 +150,25 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
     {
       date: '12–13 July 2025',
       title: 'The Inception',
-      description: 'Bolster Girls Campus Alumni Meet. Spontaneous alumnae dialogues spark the unanimous call for an organised guidance collective.',
+      description: 'At the Bolster Girls Campus Alumni Meet, alumnae agreed to form an organised guidance collective.',
       tag: 'Committee Initiated'
     },
     {
       date: '29 July 2025',
       title: 'Digital Network',
-      description: 'Launch of the official Aroham Instagram channel, reuniting distributed batches and amplifying student success stories.',
+      description: 'Launched the official Aroham Instagram page to reconnect batches and share student stories.',
       tag: 'Community Reach'
     },
     {
       date: 'Aug–Oct 2025',
       title: 'Identity Sealed',
-      description: 'Finalisation of Aroham\'s emblem, blossoming flame symbol, institutional values, and formal operational charters.',
+      description: 'Finalised the Aroham emblem, core values, and formal operating guidelines.',
       tag: 'Branding & Ethos'
     },
     {
       date: '25–29 Dec 2025',
       title: 'HiLite Mall Summit',
-      description: 'Five-day strategic roadmap meeting in Kozhikode formulating executive roles and UniMates campus onboarding plans.',
+      description: 'Held a five-day planning summit in Kozhikode to assign executive roles and launch UniMates.',
       tag: 'Future Realised'
     }
   ];
@@ -186,7 +186,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             </h1>
 
             <p className="text-base sm:text-lg text-aroham-body leading-relaxed">
-              A women-led alumni initiative that bridges the gap between students and opportunities through education, mentorship, and community development.
+              A women-led alumni initiative connecting students with opportunities through education, mentorship, and community support.
             </p>
           </div>
 
@@ -227,7 +227,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               <span className="float-left text-5xl font-serif font-bold text-aroham-dark pr-3 pt-1 leading-none">
                 A
               </span>
-              roham Foundation began with a shared vision among the alumnae of Bolster Girls Campus to stay connected and create meaningful opportunities for the generations that follow.
+              roham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
             </p>
 
             {/* Turning Point Callout */}
@@ -237,22 +237,22 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 <span>The Turning Point at Alumni Meet</span>
               </div>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                The idea took shape during the Bolster Girls Campus Alumni Meet held on 12–13 July 2025. What began as conversations among alumnae gradually developed into a collective initiative. An executive committee was formed, and the initial discussions and planning to bring this vision to life began.
+                The idea took shape at the Bolster Girls Campus Alumni Meet on 12–13 July 2025. Casual conversations quickly grew into a collective movement. An executive committee was formed, and formal planning began.
               </p>
             </div>
 
             <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-              As the idea evolved, efforts were made to establish a distinct identity for the organisation. Between August and October 2025, the name, logo, vision and mission of Aroham were finalised, giving direction to the initiative and shaping its purpose. The official Instagram page had already been created on 29 July 2025, providing a platform to connect with the wider alumni community.
+              From August to October 2025, the team finalised Aroham's name, logo, vision, and mission. Earlier, on 29 July 2025, the official Instagram page went live to unite the wider alumni network.
             </p>
 
             <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-              On 22 October 2025, Aroham launched its awareness campaign to introduce the initiative and its vision to a wider audience. This was followed by a strategic planning meeting held from 25–29 December 2025 at HiLite Mall, Kozhikode, where further discussions and planning helped shape the organisation's future direction.
+              On 22 October 2025, Aroham launched its awareness campaign to share its mission publicly. From 25–29 December 2025, a strategic planning summit at HiLite Mall, Kozhikode set the roadmap ahead.
             </p>
 
             {/* Dark green quote box */}
             <div className="p-6 rounded-2xl bg-aroham-dark text-white shadow-soft">
               <p className="text-xs sm:text-sm italic leading-relaxed text-emerald-100">
-                "From those first conversations to the formation of an organised initiative, Aroham has grown through the collective efforts and commitment of its alumnae. Today, Aroham Foundation continues to work towards its vision of helping students make informed academic and career decisions through guidance, mentorship, education and community engagement."
+                "From early conversations to an organised movement, Aroham grew through alumnae dedication. Today, we help students make confident academic and career choices through mentorship and education."
               </p>
             </div>
           </Reveal>
@@ -384,7 +384,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 Our Mission
               </h3>
               <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed pt-2">
-                We aim to build a global network of mentors who can guide young people, especially those from underprivileged backgrounds, towards achieving their academic and career aspirations.
+                Build a global mentor network that guides young people—especially from underserved backgrounds—toward their academic and career goals.
               </p>
             </div>
 
@@ -409,7 +409,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 Our Vision
               </h3>
               <p className="text-sm sm:text-base text-aroham-heading/90 leading-relaxed pt-2">
-                Aroham Foundation envisions a world where every child has access to the right guidance, opportunities, and support to shape their own future with confidence and fulfil their dreams.
+                A world where every student has the guidance, opportunities, and support needed to build their future with confidence.
               </p>
             </div>
 
@@ -436,7 +436,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               Our Committee
             </h2>
             <p className="text-sm text-aroham-body mt-1">
-              Executive Committee & Alumnae Leadership bringing diverse expertise across medicine, technology, academia, and social change.
+              Alumnae leaders bringing expertise in medicine, technology, academia, and social impact.
             </p>
           </div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-aroham-mint text-aroham-dark text-xs font-bold shrink-0 self-start sm:self-auto border border-aroham-border">

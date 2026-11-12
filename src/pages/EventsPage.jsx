@@ -365,7 +365,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
               Past Events & Impact Milestones
             </h2>
             <p className="text-sm text-aroham-body mt-1 max-w-xl">
-              A chronological timeline of transformative workshops, programs launched, and face-to-face mentorship assemblies organized by Aroham Foundation.
+              A timeline of workshops, launches, and mentorship sessions hosted by Aroham Foundation.
             </p>
           </div>
 
@@ -565,7 +565,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
               Have an idea for a guidance session at your institution?
             </h3>
             <p className="text-xs sm:text-sm text-emerald-100">
-              We collaborate with colleges, high schools, and student unions to host bespoke guidance assemblies and career bootcamps.
+              We partner with schools, colleges, and student unions to host guidance sessions and career workshops.
             </p>
           </div>
           <a

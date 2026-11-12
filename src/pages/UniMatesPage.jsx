@@ -122,7 +122,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             </p>
 
             <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-xl">
-              Aroham UniMates is a one-to-one student mentorship programme initiated by Aroham Foundation to connect students with alumnae mentors who can guide them in their academic and career journeys.
+              Aroham UniMates is our one-to-one mentorship programme. It connects students with alumnae mentors for clear academic and career guidance.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -210,10 +210,10 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                 Empowering decisions through lived experience
               </h2>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                Through personalised mentorship, students get the opportunity to interact with alumnae who share their experiences, knowledge and insights. The programme aims to help students explore different academic pathways, understand higher education opportunities and make informed decisions about their future.
+                Students connect directly with alumnae who share real insights and experience. This helps them explore study paths, understand higher education, and plan ahead with confidence.
               </p>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                Each student is connected with a mentor based on their areas of interest and the guidance they seek, creating a space where they can ask questions, gain clarity and learn from real experiences.
+                We match each student with a mentor based on their interests and goals. Together, they build a supportive space for honest questions and clarity.
               </p>
             </div>
 
@@ -288,7 +288,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               UniMates Mentors
             </h2>
             <p className="text-sm text-aroham-body mt-1">
-              Connect directly with verified Aroham alumnae currently thriving across international universities and respected global faculties.
+              Connect with verified Aroham alumnae studying and working across leading global universities.
             </p>
           </div>
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-aroham-mint text-aroham-dark text-xs font-bold shrink-0 self-start sm:self-auto border border-aroham-border">
@@ -441,7 +441,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             Activities Under Aroham UniMates
           </h2>
           <p className="text-sm text-aroham-body max-w-2xl">
-            As part of Aroham UniMates, Aroham Foundation conducts higher education guidance sessions to help students explore international study opportunities and make informed decisions about their academic future.
+            Under Aroham UniMates, we host guidance sessions to help students explore global study options and make informed academic choices.
           </p>
         </div>
 
@@ -459,7 +459,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                 GCC Higher Education Guidance Session
               </h3>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                An exhaustive symposium exploring admissions criteria, merit scholarships, and visa protocols for renowned universities across the United Arab Emirates, Qatar, and Saudi Arabia.
+                A focused session on admissions, merit scholarships, and visa steps for top universities in the UAE, Qatar, and Saudi Arabia.
               </p>
             </div>
 
@@ -484,7 +484,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                 UK Higher Education Guidance Session
               </h3>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                A deep-dive workshop unpacking the UCAS application ecosystem, personal statement crafting, accommodation navigating, and Chevening / Commonwealth grant landscapes.
+                A practical workshop covering UCAS applications, personal statements, student housing, and Chevening or Commonwealth scholarships.
               </p>
             </div>
 
@@ -522,7 +522,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                 Register as a Mentee
               </h3>
               <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-                Are you exploring higher education or preparing for competitive university admissions? Get connected with an alumna who has walked the exact path.
+                Exploring higher education or preparing for university admissions? Connect with an alumna who has walked your path.
               </p>
             </div>
 
@@ -546,7 +546,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                 Register as a Mentor
               </h3>
               <p className="text-xs sm:text-sm text-orange-100/90 leading-relaxed">
-                Are you an alumna of Bolster Girls Campus currently studying or working internationally or in India? Share your experience and illuminate the pathway for rising scholars.
+                Are you a Bolster Girls Campus alumna studying or working in India or abroad? Share your experience and guide rising scholars.
               </p>
             </div>
 

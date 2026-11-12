@@ -121,7 +121,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               </h3>
 
               <p className="text-sm text-aroham-body leading-relaxed">
-                Founded by Bolster Girls Campus alumnae, this non-profit, women-led organisation brings together alumnae to create educational opportunities, guidance, and mentorship for students.
+                Founded by Bolster Girls Campus alumnae, this women-led non-profit connects graduates with students. Together, we build educational opportunities, guidance, and mentorship.
               </p>
 
               <ul className="space-y-3 pt-2 text-xs font-medium text-aroham-heading">
@@ -155,7 +155,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               </h3>
 
               <p className="text-sm text-aroham-body leading-relaxed">
-                Aroham's one-to-one student mentorship programme, connecting students with alum mentors who offer guidance and support in their educational journeys.
+                Aroham's one-to-one mentorship programme connects students with alumnae mentors for dedicated academic and career guidance.
               </p>
 
               <ul className="space-y-3 pt-2 text-xs font-medium text-aroham-heading">
@@ -238,7 +238,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
               <Reveal variant="up" delay={100}>
               <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[820px] mx-auto text-justify">
-                Aroham Foundation bridges the transition from school corridors to global lecture halls. Our network of Bolster Girls Campus alumnae spans medicine, public policy, engineering, humanities, and social entrepreneurship, dedicated to nurturing each young woman's distinctive spark.
+                Aroham Foundation guides students from school corridors to global universities. Our Bolster Girls Campus alumnae work across medicine, policy, engineering, humanities, and social impact to help every young woman thrive.
               </p>
               </Reveal>
             </div>

@@ -415,9 +415,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 <h4 className="text-[11px] sm:text-sm md:text-base font-semibold font-serif text-aroham-heading leading-snug line-clamp-1 sm:line-clamp-none">
                   {member.name}
                 </h4>
-                <p className="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-semibold tracking-wider text-aroham-muted mt-0.5 sm:mt-1 truncate">
-                  {member.almaMater}
-                </p>
               </div>
             </div>
           ))}

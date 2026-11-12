@@ -3,8 +3,7 @@ import {
   ArrowRight, 
   Building2, 
   Users, 
-  BookOpen, 
-  Quote 
+  BookOpen 
 } from 'lucide-react';
 import Reveal from '../components/Reveal';
 
@@ -241,19 +240,6 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[820px] mx-auto text-justify">
                 Aroham Foundation bridges the transition from school corridors to global lecture halls. Our network of Bolster Girls Campus alumnae spans medicine, public policy, engineering, humanities, and social entrepreneurship, dedicated to nurturing each young woman's distinctive spark.
               </p>
-              </Reveal>
-
-              {/* Testimonial callout */}
-              <Reveal variant="scale" delay={180}>
-              <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft max-w-2xl mx-auto text-center space-y-2.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-                <Quote size={24} className="text-aroham-gold mx-auto opacity-70" />
-                <p className="text-xs sm:text-sm italic text-aroham-heading leading-relaxed">
-                  "Having a mentor who walked the very same halls gave me the certainty I needed to apply for national merit fellowships. UniMates changed my trajectory."
-                </p>
-                <span className="block text-[11px] font-bold text-aroham-muted uppercase tracking-wider">
-                  — Scholar Cohort '24
-                </span>
-              </div>
               </Reveal>
             </div>
           </div>

@@ -18,8 +18,8 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
       {/* =========================================================================
           HERO SECTION WITH AMBIENT BACKGROUND VIDEO
           ========================================================================= */}
-      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-14 pb-16 sm:pt-20 sm:pb-28 overflow-hidden">
-        {/* Full-Fit Background Video with 75% Opacity optimized for Mobile & Desktop */}
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center pt-14 pb-16 sm:pt-20 sm:pb-28 overflow-hidden bg-aroham-dark">
+        {/* Full-Fit Background Video with Aroham Dark (#0B3B2C) 75% Opacity Cover */}
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <video
             autoPlay
@@ -35,30 +35,30 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
                 el.play().catch(() => {});
               }
             }}
-            className="absolute inset-0 w-full h-full object-cover opacity-75"
+            className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
           </video>
-          {/* Subtle light overlay to blend smoothly into page styling while maintaining high contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F4F8F5]/85 via-[#F4F8F5]/70 to-[#F4F8F5] pointer-events-none" />
+          {/* Same background color as Get Involved button (#0B3B2C) at 75% opacity */}
+          <div className="absolute inset-0 bg-aroham-dark/75 pointer-events-none" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-7">
           {/* Subtitle */}
-          <p className="text-[11px] sm:text-xs uppercase font-extrabold tracking-[0.25em] text-aroham-forest drop-shadow-sm">
+          <p className="text-[11px] sm:text-xs uppercase font-extrabold tracking-[0.25em] text-amber-300 drop-shadow-sm">
             Aroham Foundation
           </p>
 
           {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-aroham-heading leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-sm">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-white leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-sm">
             Connected by Our Past, <br />
-            <span className="italic font-serif font-normal text-aroham-dark">
+            <span className="italic font-serif font-normal text-emerald-100">
               United by Our Future.
             </span>
           </h1>
 
           {/* Paragraph */}
-          <p className="text-sm sm:text-lg text-aroham-body font-medium leading-relaxed max-w-2xl mx-auto px-2 sm:px-0">
+          <p className="text-sm sm:text-lg text-emerald-50/90 font-medium leading-relaxed max-w-2xl mx-auto px-2 sm:px-0">
             Bringing generations together, turning shared experiences into opportunities, and guiding students towards a future filled with possibilities.
           </p>
 
@@ -74,7 +74,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
             <button
               onClick={() => setActivePage('about')}
-              className="w-full sm:w-auto px-6 py-3.5 bg-white/95 backdrop-blur-sm hover:bg-white text-aroham-dark text-sm font-semibold rounded-lg border border-aroham-border shadow-md hover:border-aroham-border-dark transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white/95 backdrop-blur-sm hover:bg-white text-aroham-dark text-sm font-semibold rounded-lg border border-white/30 shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2"
             >
               <BookOpen size={16} className="text-aroham-forest" />
               <span>Our Story</span>
@@ -82,28 +82,28 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           </div>
 
           {/* Metrics Row */}
-          <div className="grid grid-cols-3 gap-6 pt-6 max-w-xl mx-auto bg-white/75 backdrop-blur-md rounded-2xl p-5 border border-aroham-border/80 shadow-soft">
+          <div className="grid grid-cols-3 gap-6 pt-6 max-w-xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 shadow-elevated">
             <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
+              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-white">
                 {mentorsCount}+
               </div>
-              <div className="text-xs font-semibold text-aroham-muted mt-0.5">
+              <div className="text-xs font-semibold text-emerald-100/85 mt-0.5">
                 Alumnae Mentors
               </div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
+              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-white">
                 100%
               </div>
-              <div className="text-xs font-semibold text-aroham-muted mt-0.5">
+              <div className="text-xs font-semibold text-emerald-100/85 mt-0.5">
                 Student Match Rate
               </div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-aroham-dark">
+              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-white">
                 Global
               </div>
-              <div className="text-xs font-semibold text-aroham-muted mt-0.5">
+              <div className="text-xs font-semibold text-emerald-100/85 mt-0.5">
                 University Guidance
               </div>
             </div>

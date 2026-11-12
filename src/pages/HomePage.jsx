@@ -48,7 +48,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           </h1>
 
           {/* Paragraph */}
-          <p className="text-sm sm:text-lg text-emerald-50/90 font-medium leading-relaxed max-w-[800px] mx-auto px-2 sm:px-0 text-justify [text-align-last:center]">
+          <p className="text-sm sm:text-base text-emerald-50/90 font-medium leading-relaxed max-w-[740px] mx-auto px-2 sm:px-0 text-center sm:text-justify sm:[text-align-last:center]">
             Bringing generations together, turning shared experiences into opportunities, and guiding students towards a future filled with possibilities.
           </p>
 

@@ -86,22 +86,23 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="space-y-20 lg:space-y-28 pb-20 animate-fadeIn">
+    <div className="animate-fadeIn">
       {/* =========================================================================
-          HERO SECTION
+          HERO SECTION (LOGO GREEN)
           ========================================================================= */}
-      <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
+      <section className="w-full bg-aroham-dark/95 py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
           <div className="space-y-3 max-w-3xl hero-reveal hero-reveal-1">
-            <h1 className="text-4xl sm:text-5xl font-semibold font-serif text-aroham-heading tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-semibold font-serif text-white tracking-tight">
               Get in Touch with Aroham Foundation
             </h1>
 
-            <p className="text-base sm:text-lg text-aroham-body leading-relaxed">
+            <p className="text-base sm:text-lg text-emerald-100/90 leading-relaxed">
               Questions about mentorship, events, or partnerships? Reach out to us. Every conversation helps build new paths for students.
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 pt-2 text-xs font-semibold text-aroham-forest">
+            <div className="flex flex-wrap items-center gap-6 pt-2 text-xs font-semibold text-emerald-200">
               <div className="flex items-center gap-2">
                 <Clock size={16} />
                 <span>Typical Response: 24–48 Hours</span>
@@ -131,14 +132,16 @@ export default function ContactPage() {
             </span>
           </div>
         </div>
+        </div>
       </section>
 
       {/* =========================================================================
-          OFFICIAL CONTACT CHANNELS
+          OFFICIAL CONTACT CHANNELS (LOGO ORANGE)
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="mb-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-terracotta mb-1">
             Primary Inquiries
           </div>
           <h2 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading">
@@ -293,17 +296,19 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* =========================================================================
-          SEND AROHAM A DIRECT MESSAGE
+          SEND AROHAM A DIRECT MESSAGE (LOGO GREEN)
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-aroham-mint/85 py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Narrative Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
+              <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-forest">
                 Inquiry Center
               </div>
               <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
@@ -500,14 +505,16 @@ export default function ContactPage() {
             )}
           </div>
         </div>
+        </div>
       </section>
 
       {/* =========================================================================
-          FREQUENTLY ASKED QUESTIONS
+          FREQUENTLY ASKED QUESTIONS (LOGO ORANGE)
           ========================================================================= */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="text-center mb-10 space-y-2">
-          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-terracotta">
             Immediate Answers
           </div>
           <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
@@ -561,6 +568,7 @@ export default function ContactPage() {
           >
             arohamconnect@gmail.com
           </a>
+        </div>
         </div>
       </section>
     </div>

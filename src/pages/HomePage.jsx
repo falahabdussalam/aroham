@@ -9,7 +9,7 @@ import Reveal from '../components/Reveal';
 
 export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCount = 10 }) {
   return (
-    <div className="space-y-20 lg:space-y-28 animate-fadeIn">
+    <div className="animate-fadeIn">
       {/* =========================================================================
           HERO SECTION WITH AMBIENT BACKGROUND VIDEO
           ========================================================================= */}
@@ -104,9 +104,10 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
 
       {/* =========================================================================
-          TWO PILLARS CARDS
+          TWO PILLARS CARDS (LOGO ORANGE SECTION)
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-[#FEF3DC]/85 py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Pillar 1: Aroham Foundation */}
           <Reveal variant="up" delay={0}>
@@ -180,13 +181,14 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           </div>
           </Reveal>
         </div>
+        </div>
       </section>
 
 
       {/* =========================================================================
-          QUOTE & TESTIMONIAL SECTION WITH DARK YELLOW WAVE BACKGROUND
+          QUOTE & TESTIMONIAL SECTION WITH LOGO GREEN & WAVE BACKGROUND
           ========================================================================= */}
-      <section className="relative w-full overflow-hidden">
+      <section className="relative w-full overflow-hidden bg-aroham-mint/85">
         {/* Top Organic Wave + Decorative Aroham Outline Logo */}
         <div className="relative w-full pt-12 sm:pt-16 leading-none pointer-events-none select-none">
           {/* Decorative Aroham Outline Emblem (Full uncropped, right side overlapping wave) */}

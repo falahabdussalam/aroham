@@ -113,7 +113,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
             <UserPlus size={13} />
             <span>Aroham UniMates Directory</span>
           </div>
-          <h3 className="text-2xl font-bold font-serif leading-snug">
+          <h3 className="text-2xl font-semibold font-serif leading-snug">
             Add New Alumna Mentor
           </h3>
           <p className="text-xs text-emerald-100/90 mt-1">
@@ -145,14 +145,14 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
               ) : (
                 <div className="w-20 h-20 rounded-2xl bg-aroham-mint border-2 border-dashed border-aroham-border flex flex-col items-center justify-center text-aroham-dark/70 shadow-sm">
                   <Camera size={24} className="text-aroham-forest" />
-                  <span className="text-[10px] font-bold mt-1 text-aroham-dark">Add Photo</span>
+                  <span className="text-[10px] font-semibold mt-1 text-aroham-dark">Add Photo</span>
                 </div>
               )}
             </div>
 
             <div className="flex-1 space-y-2 text-center sm:text-left w-full">
               <div className="flex items-center justify-between">
-                <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider">
+                <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider">
                   Profile Picture (Optional)
                 </label>
                 {formData.image && (
@@ -211,7 +211,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Full Name */}
             <div>
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
                 Full Name *
               </label>
               <input
@@ -226,7 +226,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
 
             {/* University */}
             <div>
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
                 University / Institution *
               </label>
               <input
@@ -243,7 +243,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Major */}
             <div>
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
                 Degree / Major *
               </label>
               <input
@@ -258,7 +258,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
 
             {/* Location */}
             <div>
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
                 Location (City, Country) *
               </label>
               <input
@@ -275,7 +275,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Stream */}
             <div>
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
                 Academic Stream
               </label>
               <select
@@ -291,7 +291,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
 
             {/* Status */}
             <div>
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
                 Mentorship Availability Status
               </label>
               <select
@@ -309,7 +309,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Email */}
             <div>
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
                 Email Address (Confidential)
               </label>
               <input
@@ -323,7 +323,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
 
             {/* Phone */}
             <div>
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
                 Phone / WhatsApp (Optional)
               </label>
               <input
@@ -338,7 +338,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
 
           {/* Description */}
           <div>
-            <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
               Mentorship Focus & Guidance Description *
             </label>
             <textarea
@@ -362,7 +362,7 @@ export default function AddMentorModal({ isOpen, onClose, onAddMentor }) {
             </button>
             <button
               type="submit"
-              className="px-6 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold tracking-wide transition-all shadow hover:shadow-elevated flex items-center gap-1.5"
+              className="px-6 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-semibold tracking-wide transition-all shadow hover:shadow-elevated flex items-center gap-1.5"
             >
               <UserPlus size={15} />
               <span>Save & Publish Mentor</span>

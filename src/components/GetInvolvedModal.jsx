@@ -115,7 +115,7 @@ export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication 
           >
             <X size={20} />
           </button>
-          <h3 className="text-xl font-bold font-serif leading-snug">
+          <h3 className="text-xl font-semibold font-serif leading-snug">
             Get Involved with Aroham Foundation
           </h3>
           <p className="text-xs text-emerald-100 mt-1">
@@ -129,7 +129,7 @@ export default function GetInvolvedModal({ isOpen, onClose, onSubmitApplication 
               <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle size={36} />
               </div>
-              <h4 className="text-xl font-bold text-aroham-dark font-serif">
+              <h4 className="text-xl font-semibold text-aroham-dark font-serif">
                 Thank You for Stepping Forward!
               </h4>
               <p className="text-sm text-aroham-body max-w-sm mx-auto leading-relaxed">

@@ -61,7 +61,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-aroham-border shadow-soft">
         <div>
-          <h2 className="text-2xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-2xl font-semibold font-serif text-aroham-heading">
             Manage Events & Conclaves
           </h2>
           <p className="text-xs text-aroham-body mt-0.5">
@@ -71,7 +71,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
 
         <button
           onClick={() => setIsAddOpen(true)}
-          className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 shrink-0"
+          className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-semibold transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 shrink-0"
         >
           <CalendarPlus size={16} />
           <span>Schedule New Event</span>
@@ -87,7 +87,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between gap-2">
-                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${
+                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold border uppercase tracking-wider ${
                   evt.status === 'Upcoming'
                     ? 'bg-amber-100 text-aroham-gold border-amber-200'
                     : 'bg-emerald-50 text-aroham-forest border-emerald-200'
@@ -98,7 +98,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
                 <span className="text-[10px] font-mono text-aroham-muted">{evt.id}</span>
               </div>
 
-              <h3 className="text-xl font-bold font-serif text-aroham-heading leading-snug">
+              <h3 className="text-xl font-semibold font-serif text-aroham-heading leading-snug">
                 {evt.title}
               </h3>
 
@@ -127,7 +127,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
             <div className="pt-4 border-t border-aroham-border flex items-center justify-between text-xs">
               <button
                 onClick={() => onToggleEventStatus(evt.id)}
-                className="font-bold text-aroham-forest hover:underline flex items-center gap-1"
+                className="font-semibold text-aroham-forest hover:underline flex items-center gap-1"
               >
                 <span>Mark as {evt.status === 'Upcoming' ? 'Completed' : 'Upcoming'}</span>
               </button>
@@ -150,7 +150,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-aroham-dark/70 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white rounded-3xl p-5 sm:p-8 max-w-lg w-full max-h-[92vh] overflow-y-auto border border-aroham-border shadow-popup space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-aroham-border">
-              <h3 className="text-xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                 Schedule Guidance Event
               </h3>
               <button onClick={() => setIsAddOpen(false)} className="text-aroham-muted hover:text-aroham-dark">
@@ -160,7 +160,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
 
             <form onSubmit={handleCreate} className="space-y-4 text-xs">
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Event Title *</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Event Title *</label>
                 <input
                   type="text"
                   required
@@ -173,7 +173,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Date</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Date</label>
                   <input
                     type="text"
                     value={newEvent.date}
@@ -183,7 +183,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Time</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Time</label>
                   <input
                     type="text"
                     value={newEvent.time}
@@ -196,7 +196,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Platform / Venue</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Platform / Venue</label>
                   <input
                     type="text"
                     value={newEvent.platform}
@@ -206,7 +206,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Status</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Status</label>
                   <select
                     value={newEvent.status}
                     onChange={(e) => setNewEvent({ ...newEvent, status: e.target.value })}
@@ -219,7 +219,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
               </div>
 
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Registration Link (Optional)</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Registration Link (Optional)</label>
                 <input
                   type="url"
                   value={newEvent.link}
@@ -230,7 +230,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
               </div>
 
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Event Description & Key Topics</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Event Description & Key Topics</label>
                 <textarea
                   rows={3}
                   value={newEvent.details}
@@ -250,7 +250,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl font-bold"
+                  className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl font-semibold"
                 >
                   Publish Event
                 </button>
@@ -268,11 +268,11 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
               <Trash2 size={28} />
             </div>
             <div className="space-y-2">
-              <h3 className="text-xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                 Remove Event?
               </h3>
               <p className="text-sm text-aroham-body leading-relaxed">
-                Are you sure you want to remove <span className="font-bold text-aroham-dark">{eventToDelete.title}</span>?
+                Are you sure you want to remove <span className="font-semibold text-aroham-dark">{eventToDelete.title}</span>?
               </p>
               <p className="text-xs text-red-600 font-semibold bg-red-50 py-2 px-3 rounded-xl border border-red-100">
                 ⚠️ This will update the user website schedule immediately.
@@ -282,7 +282,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
               <button
                 type="button"
                 onClick={() => setEventToDelete(null)}
-                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-bold text-aroham-body hover:bg-aroham-sage transition-all"
+                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-semibold text-aroham-body hover:bg-aroham-sage transition-all"
               >
                 Cancel
               </button>
@@ -292,7 +292,7 @@ export default function ManageEvents({ events, onAddEvent, onDeleteEvent, onTogg
                   onDeleteEvent(eventToDelete.id);
                   setEventToDelete(null);
                 }}
-                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
+                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-semibold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
               >
                 <Trash2 size={14} />
                 <span>Yes, Remove</span>

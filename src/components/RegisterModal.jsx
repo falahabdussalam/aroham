@@ -38,7 +38,7 @@ export default function RegisterModal({ isOpen, onClose, eventTitle = "Next Guid
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-xs font-semibold text-emerald-200 mb-2 border border-white/10">
             <span>🔴 1 Live Event Scheduled</span>
           </div>
-          <h3 className="text-xl font-bold font-serif leading-snug">
+          <h3 className="text-xl font-semibold font-serif leading-snug">
             {eventTitle}
           </h3>
           <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-emerald-100">
@@ -61,7 +61,7 @@ export default function RegisterModal({ isOpen, onClose, eventTitle = "Next Guid
               <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle size={36} />
               </div>
-              <h4 className="text-xl font-bold text-aroham-dark font-serif">
+              <h4 className="text-xl font-semibold text-aroham-dark font-serif">
                 Seat Reserved Successfully!
               </h4>
               <p className="text-sm text-aroham-body max-w-sm mx-auto">

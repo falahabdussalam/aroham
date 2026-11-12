@@ -33,7 +33,7 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-aroham-border shadow-soft">
         <div>
-          <h2 className="text-2xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-2xl font-semibold font-serif text-aroham-heading">
             Network Applications
           </h2>
           <p className="text-xs text-aroham-body mt-0.5">
@@ -41,7 +41,7 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
           </p>
         </div>
 
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-aroham-mint text-aroham-dark text-xs font-bold border border-aroham-border">
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-aroham-mint text-aroham-dark text-xs font-semibold border border-aroham-border">
           <span>{applications.length} Submissions Logged</span>
         </div>
       </div>
@@ -85,11 +85,11 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
           >
             <div className="space-y-2 max-w-2xl">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="font-bold font-serif text-lg text-aroham-heading">
+                <span className="font-semibold font-serif text-lg text-aroham-heading">
                   {app.name}
                 </span>
 
-                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${
+                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold border uppercase tracking-wider ${
                   app.role === 'Alumna Mentor'
                     ? 'bg-amber-100 text-aroham-gold border-amber-200'
                     : app.role === 'Student Aspirant'
@@ -139,7 +139,7 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
               <select
                 value={app.status}
                 onChange={(e) => onUpdateApplicationStatus(app.id, e.target.value)}
-                className={`px-3 py-1 rounded-xl text-xs font-bold border focus:outline-none ${
+                className={`px-3 py-1 rounded-xl text-xs font-semibold border focus:outline-none ${
                   app.status === 'Approved'
                     ? 'bg-emerald-50 text-aroham-forest border-emerald-200'
                     : app.status === 'In Review'
@@ -189,11 +189,11 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
               <Trash2 size={28} />
             </div>
             <div className="space-y-2">
-              <h3 className="text-xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                 Delete Application?
               </h3>
               <p className="text-sm text-aroham-body leading-relaxed">
-                Are you sure you want to remove the application from <span className="font-bold text-aroham-dark">{appToDelete.name}</span> ({appToDelete.email})?
+                Are you sure you want to remove the application from <span className="font-semibold text-aroham-dark">{appToDelete.name}</span> ({appToDelete.email})?
               </p>
               <p className="text-xs text-red-600 font-semibold bg-red-50 py-2 px-3 rounded-xl border border-red-100">
                 ⚠️ This application entry will be permanently removed across all devices.
@@ -203,7 +203,7 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
               <button
                 type="button"
                 onClick={() => setAppToDelete(null)}
-                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-bold text-aroham-body hover:bg-aroham-sage transition-all"
+                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-semibold text-aroham-body hover:bg-aroham-sage transition-all"
               >
                 Cancel
               </button>
@@ -213,7 +213,7 @@ export default function ManageApplications({ applications, onUpdateApplicationSt
                   onDeleteApplication(appToDelete.id);
                   setAppToDelete(null);
                 }}
-                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
+                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-semibold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
               >
                 <Trash2 size={14} />
                 <span>Yes, Remove</span>

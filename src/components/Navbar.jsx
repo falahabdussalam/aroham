@@ -54,7 +54,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
                 onClick={() => handleNavClick(link.id)}
                 className={`group relative py-2 text-sm no-underline bg-transparent transition-colors duration-300 select-none ${
                   isActive
-                    ? 'text-aroham-dark font-bold'
+                    ? 'text-aroham-dark font-semibold'
                     : 'text-aroham-body hover:text-aroham-dark font-semibold'
                 }`}
               >
@@ -112,7 +112,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
                     onClick={() => handleNavClick(link.id)}
                     className={`group block w-full text-left px-2 py-2.5 text-sm bg-transparent transition-colors duration-200 ${
                       isActive
-                        ? 'text-aroham-dark font-bold'
+                        ? 'text-aroham-dark font-semibold'
                         : 'text-aroham-body hover:text-aroham-dark font-semibold'
                     }`}
                   >

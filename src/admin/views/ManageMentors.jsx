@@ -82,10 +82,10 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-aroham-border shadow-soft">
         <div>
           <div className="flex flex-wrap items-center gap-2.5">
-            <h2 className="text-2xl font-bold font-serif text-aroham-heading">
+            <h2 className="text-2xl font-semibold font-serif text-aroham-heading">
               Manage Mentors
             </h2>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-aroham-forest border border-emerald-200 text-[10px] font-bold tracking-wide">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-aroham-forest border border-emerald-200 text-[10px] font-semibold tracking-wide">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               Live Cloud Synced
             </span>
@@ -99,7 +99,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
           {onOpenSyncModal ? (
             <button
               onClick={onOpenSyncModal}
-              className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest border border-emerald-200 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
+              className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest border border-emerald-200 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
               title="Open cross-device sync options"
             >
               <RefreshCw size={14} className="text-aroham-forest" />
@@ -109,7 +109,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
             <button
               onClick={handleManualSync}
               disabled={isSyncing}
-              className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest border border-emerald-200 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
+              className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest border border-emerald-200 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-98"
               title="Force refresh data from cloud"
             >
               <RefreshCw size={14} className={isSyncing ? "animate-spin text-aroham-forest" : "text-aroham-forest"} />
@@ -119,7 +119,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
 
           <button
             onClick={onOpenAddMentor}
-            className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 shrink-0"
+            className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-semibold transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 shrink-0"
           >
             <UserPlus size={16} />
             <span>Add New Mentor</span>
@@ -141,7 +141,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
         </div>
 
         <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-          <span className="text-xs font-bold text-aroham-muted uppercase tracking-wider shrink-0 mr-1">
+          <span className="text-xs font-semibold text-aroham-muted uppercase tracking-wider shrink-0 mr-1">
             Filter Stream:
           </span>
           {streams.map((st) => (
@@ -176,19 +176,19 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                     className="w-12 h-12 rounded-xl object-cover border border-aroham-border shrink-0 shadow-sm"
                   />
                 ) : (
-                  <div className="w-12 h-12 rounded-xl bg-aroham-mint border border-aroham-border text-aroham-dark font-serif font-bold text-sm flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-aroham-mint border border-aroham-border text-aroham-dark font-serif font-semibold text-sm flex items-center justify-center shrink-0">
                     {mentor.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
                   </div>
                 )}
                 <div>
-                  <h4 className="font-bold font-serif text-aroham-heading text-base leading-snug">
+                  <h4 className="font-semibold font-serif text-aroham-heading text-base leading-snug">
                     {mentor.name}
                   </h4>
                   <div className="flex items-center gap-2 mt-0.5">
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-aroham-sage text-aroham-muted border border-aroham-border">
                       {mentor.id}
                     </span>
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${mentor.badgeColor}`}>
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${mentor.badgeColor}`}>
                       {mentor.status}
                     </span>
                   </div>
@@ -215,7 +215,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               <button
                 type="button"
                 onClick={() => setSelectedMentorDetails(mentor)}
-                className="py-2 px-2 bg-aroham-sage/60 hover:bg-aroham-sage text-aroham-dark rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 border border-aroham-border active:scale-95"
+                className="py-2 px-2 bg-aroham-sage/60 hover:bg-aroham-sage text-aroham-dark rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1 border border-aroham-border active:scale-95"
               >
                 <Eye size={13} />
                 <span>Details</span>
@@ -224,7 +224,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               <button
                 type="button"
                 onClick={() => setEditingMentor({ ...mentor })}
-                className="py-2 px-2 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 border border-emerald-200 active:scale-95"
+                className="py-2 px-2 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1 border border-emerald-200 active:scale-95"
               >
                 <Edit3 size={13} />
                 <span>Edit</span>
@@ -233,7 +233,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               <button
                 type="button"
                 onClick={() => setMentorToDelete(mentor)}
-                className="py-2 px-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 border border-red-200 active:scale-95"
+                className="py-2 px-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1 border border-red-200 active:scale-95"
               >
                 <Trash2 size={13} />
                 <span>Remove</span>
@@ -253,7 +253,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
       <div className="hidden md:block bg-white rounded-3xl border border-aroham-border shadow-soft overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="bg-[#F4F8F5] text-xs font-bold text-aroham-muted uppercase tracking-wider border-b border-aroham-border">
+            <thead className="bg-[#F4F8F5] text-xs font-semibold text-aroham-muted uppercase tracking-wider border-b border-aroham-border">
               <tr>
                 <th className="py-4 px-6">Mentor Info</th>
                 <th className="py-4 px-6">University & Degree</th>
@@ -275,12 +275,12 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                           className="w-10 h-10 rounded-xl object-cover border border-aroham-border shrink-0 shadow-sm"
                         />
                       ) : (
-                        <div className="w-10 h-10 rounded-xl bg-aroham-mint border border-aroham-border text-aroham-dark font-serif font-bold text-sm flex items-center justify-center shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-aroham-mint border border-aroham-border text-aroham-dark font-serif font-semibold text-sm flex items-center justify-center shrink-0">
                           {mentor.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
                         </div>
                       )}
                       <div>
-                        <div className="font-bold text-aroham-heading flex items-center gap-2">
+                        <div className="font-semibold text-aroham-heading flex items-center gap-2">
                           <span>{mentor.name}</span>
                           <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-aroham-sage text-aroham-muted border border-aroham-border">
                             {mentor.id}
@@ -314,7 +314,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
 
                   {/* Status */}
                   <td className="py-4 px-6">
-                    <span className={`inline-block px-2.5 py-1 rounded-full text-[11px] font-bold border ${mentor.badgeColor}`}>
+                    <span className={`inline-block px-2.5 py-1 rounded-full text-[11px] font-semibold border ${mentor.badgeColor}`}>
                       {mentor.status}
                     </span>
                   </td>
@@ -376,12 +376,12 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                     className="w-14 h-14 rounded-2xl object-cover border-2 border-aroham-forest shrink-0 shadow-sm"
                   />
                 ) : (
-                  <div className="w-14 h-14 rounded-2xl bg-aroham-mint text-aroham-dark font-bold font-serif flex items-center justify-center text-lg border border-aroham-border shrink-0 shadow-sm">
+                  <div className="w-14 h-14 rounded-2xl bg-aroham-mint text-aroham-dark font-semibold font-serif flex items-center justify-center text-lg border border-aroham-border shrink-0 shadow-sm">
                     {selectedMentorDetails.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
                   </div>
                 )}
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-aroham-heading">
+                  <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                     {selectedMentorDetails.name}
                   </h3>
                   <p className="text-xs font-mono text-aroham-muted">{selectedMentorDetails.id}</p>
@@ -398,7 +398,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
             {/* Profile Picture Management Card */}
             <div className="p-3.5 rounded-2xl bg-[#F4F8F5] border border-aroham-border space-y-2">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-aroham-dark uppercase tracking-wider flex items-center gap-1.5">
+                <span className="font-semibold text-aroham-dark uppercase tracking-wider flex items-center gap-1.5">
                   <Camera size={14} className="text-aroham-forest" />
                   <span>Profile Picture</span>
                 </span>
@@ -482,7 +482,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
 
             <div className="space-y-3 text-xs">
               <div className="p-3 bg-[#F4F8F5] rounded-xl border border-aroham-border space-y-1">
-                <div className="font-bold text-aroham-forest flex items-center gap-1.5">
+                <div className="font-semibold text-aroham-forest flex items-center gap-1.5">
                   <GraduationCap size={15} />
                   <span>{selectedMentorDetails.university}</span>
                 </div>
@@ -494,7 +494,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               </div>
 
               <div>
-                <span className="font-bold uppercase tracking-wider text-aroham-muted block mb-1">
+                <span className="font-semibold uppercase tracking-wider text-aroham-muted block mb-1">
                   Mentorship Focus:
                 </span>
                 <p className="text-aroham-body leading-relaxed bg-[#F4F8F5] p-3 rounded-xl border border-aroham-border">
@@ -504,12 +504,12 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
 
               <div className="grid grid-cols-2 gap-3 pt-1">
                 <div className="p-2.5 rounded-xl bg-[#F4F8F5] border border-aroham-border">
-                  <span className="text-[10px] uppercase font-bold text-aroham-muted block">Email:</span>
+                  <span className="text-[10px] uppercase font-semibold text-aroham-muted block">Email:</span>
                   <span className="font-semibold text-aroham-heading truncate block">{selectedMentorDetails.email}</span>
                 </div>
                 <div className="p-2.5 rounded-xl bg-[#F4F8F5] border border-aroham-border">
-                  <span className="text-[10px] uppercase font-bold text-aroham-muted block">Status:</span>
-                  <span className="font-bold text-aroham-forest block">{selectedMentorDetails.status}</span>
+                  <span className="text-[10px] uppercase font-semibold text-aroham-muted block">Status:</span>
+                  <span className="font-semibold text-aroham-forest block">{selectedMentorDetails.status}</span>
                 </div>
               </div>
             </div>
@@ -521,7 +521,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                   setEditingMentor({ ...selectedMentorDetails });
                   setSelectedMentorDetails(null);
                 }}
-                className="flex-1 py-2.5 bg-aroham-forest hover:bg-aroham-dark text-white rounded-xl text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"
+                className="flex-1 py-2.5 bg-aroham-forest hover:bg-aroham-dark text-white rounded-xl text-xs font-semibold transition-all shadow-sm flex items-center justify-center gap-1.5"
               >
                 <Edit3 size={14} />
                 <span>Edit Profile</span>
@@ -532,7 +532,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                 onClick={() => {
                   setMentorToDelete(selectedMentorDetails);
                 }}
-                className="py-2.5 px-3.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95"
+                className="py-2.5 px-3.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 active:scale-95"
               >
                 <Trash2 size={14} />
                 <span>Remove Mentor</span>
@@ -541,7 +541,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               <button
                 type="button"
                 onClick={() => setSelectedMentorDetails(null)}
-                className="px-4 py-2.5 border border-aroham-border text-aroham-dark rounded-xl text-xs font-bold hover:bg-aroham-sage transition-all"
+                className="px-4 py-2.5 border border-aroham-border text-aroham-dark rounded-xl text-xs font-semibold hover:bg-aroham-sage transition-all"
               >
                 Close
               </button>
@@ -560,7 +560,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                   <Edit3 size={16} />
                 </span>
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-aroham-heading">
+                  <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                     Edit Mentor Profile
                   </h3>
                   <p className="text-xs text-aroham-muted font-mono">{editingMentor.id}</p>
@@ -611,7 +611,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                       </button>
                     </div>
                   ) : (
-                    <div className="w-16 h-16 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-center text-aroham-dark font-serif font-bold text-base shadow-sm">
+                    <div className="w-16 h-16 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-center text-aroham-dark font-serif font-semibold text-base shadow-sm">
                       {(editingMentor.name || 'M').split(' ').map(n => n[0]).slice(0, 2).join('')}
                     </div>
                   )}
@@ -619,7 +619,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
 
                 <div className="flex-1 space-y-1.5 text-center sm:text-left w-full">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-aroham-dark uppercase">Profile Picture</span>
+                    <span className="font-semibold text-aroham-dark uppercase">Profile Picture</span>
                     {editingMentor.image && (
                       <button
                         type="button"
@@ -673,7 +673,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               {/* Name & University */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Full Name *</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Full Name *</label>
                   <input
                     type="text"
                     required
@@ -684,7 +684,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                 </div>
 
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">University / Institution *</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">University / Institution *</label>
                   <input
                     type="text"
                     required
@@ -698,7 +698,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               {/* Major & Stream */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Major / Degree *</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Major / Degree *</label>
                   <input
                     type="text"
                     required
@@ -709,7 +709,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                 </div>
 
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Discipline Stream</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Discipline Stream</label>
                   <select
                     value={editingMentor.stream}
                     onChange={(e) => setEditingMentor({ ...editingMentor, stream: e.target.value })}
@@ -725,7 +725,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               {/* Location & Status */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Location *</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Location *</label>
                   <input
                     type="text"
                     required
@@ -736,7 +736,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                 </div>
 
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Mentorship Status</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Mentorship Status</label>
                   <select
                     value={editingMentor.status}
                     onChange={(e) => setEditingMentor({ ...editingMentor, status: e.target.value })}
@@ -752,7 +752,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               {/* Email & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Contact Email</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Contact Email</label>
                   <input
                     type="email"
                     value={editingMentor.email || ''}
@@ -762,7 +762,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                 </div>
 
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Phone Number</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Phone Number</label>
                   <input
                     type="text"
                     value={editingMentor.phone || ''}
@@ -774,7 +774,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
 
               {/* Description */}
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Mentorship Overview & Focus *</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Mentorship Overview & Focus *</label>
                 <textarea
                   rows={3}
                   required
@@ -790,7 +790,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                   onClick={() => {
                     setMentorToDelete(editingMentor);
                   }}
-                  className="px-3.5 py-2 text-xs font-bold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl flex items-center gap-1.5 transition-colors active:scale-95"
+                  className="px-3.5 py-2 text-xs font-semibold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl flex items-center gap-1.5 transition-colors active:scale-95"
                 >
                   <Trash2 size={13} />
                   <span>Remove Mentor</span>
@@ -806,7 +806,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow"
+                    className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-semibold transition-all shadow"
                   >
                     Save Profile Changes
                   </button>
@@ -825,11 +825,11 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               <Trash2 size={28} />
             </div>
             <div className="space-y-2">
-              <h3 className="text-xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                 Remove Mentor Profile?
               </h3>
               <p className="text-sm text-aroham-body leading-relaxed">
-                Are you sure you want to remove <span className="font-bold text-aroham-dark">{mentorToDelete.name}</span> ({mentorToDelete.university})?
+                Are you sure you want to remove <span className="font-semibold text-aroham-dark">{mentorToDelete.name}</span> ({mentorToDelete.university})?
               </p>
               <p className="text-xs text-red-600 font-semibold bg-red-50 py-2 px-3 rounded-xl border border-red-100">
                 ⚠️ This mentor will be removed immediately from the live website and UniMates directory.
@@ -839,7 +839,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
               <button
                 type="button"
                 onClick={() => setMentorToDelete(null)}
-                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-bold text-aroham-body hover:bg-aroham-sage transition-all"
+                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-semibold text-aroham-body hover:bg-aroham-sage transition-all"
               >
                 Cancel
               </button>
@@ -855,7 +855,7 @@ export default function ManageMentors({ mentors, onDeleteMentor, onOpenAddMentor
                     setEditingMentor(null);
                   }
                 }}
-                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
+                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-semibold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
               >
                 <Trash2 size={14} />
                 <span>Yes, Remove</span>

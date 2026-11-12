@@ -22,7 +22,7 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
 
           {/* Col 2: Quick Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white">
               Quick Links
             </h4>
             <ul className="space-y-2 text-sm">
@@ -79,7 +79,7 @@ export default function Footer({ setActivePage, onOpenGetInvolved }) {
 
           {/* Col 3: Connect With Us */}
           <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white">
               Connect With Us
             </h4>
             <ul className="space-y-3 text-sm">

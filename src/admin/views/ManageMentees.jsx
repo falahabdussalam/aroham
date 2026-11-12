@@ -71,7 +71,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-aroham-border shadow-soft">
         <div>
-          <h2 className="text-2xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-2xl font-semibold font-serif text-aroham-heading">
             Manage Mentees
           </h2>
           <p className="text-xs text-aroham-body mt-0.5">
@@ -81,7 +81,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
 
         <button
           onClick={() => setIsAddOpen(true)}
-          className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 shrink-0"
+          className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-semibold transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 shrink-0"
         >
           <UserPlus size={16} />
           <span>Enroll New Mentee</span>
@@ -127,11 +127,11 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 text-aroham-gold font-bold font-serif text-sm flex items-center justify-center border border-amber-200 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 text-aroham-gold font-semibold font-serif text-sm flex items-center justify-center border border-amber-200 shrink-0">
                   {mentee.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
                 </div>
                 <div>
-                  <h4 className="font-bold font-serif text-aroham-heading text-base leading-snug">
+                  <h4 className="font-semibold font-serif text-aroham-heading text-base leading-snug">
                     {mentee.name}
                   </h4>
                   <div className="flex items-center gap-2 mt-0.5">
@@ -140,7 +140,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                     </span>
                     <button
                       onClick={() => onUpdateMenteeStatus(mentee.id, mentee.status === 'Active Match' ? 'Pending Match' : 'Active Match')}
-                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${
+                      className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${
                         mentee.status === 'Active Match'
                           ? 'bg-emerald-50 text-aroham-forest border-emerald-200'
                           : 'bg-amber-50 text-aroham-gold border-amber-200'
@@ -171,7 +171,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               <button
                 type="button"
                 onClick={() => setEditingMentee({ ...mentee })}
-                className="py-2 px-3 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-emerald-200 active:scale-95"
+                className="py-2 px-3 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 border border-emerald-200 active:scale-95"
               >
                 <Edit3 size={13} />
                 <span>Edit Profile</span>
@@ -180,7 +180,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               <button
                 type="button"
                 onClick={() => setMenteeToDelete(mentee)}
-                className="py-2 px-3 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-red-200 active:scale-95"
+                className="py-2 px-3 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 border border-red-200 active:scale-95"
               >
                 <Trash2 size={13} />
                 <span>Remove</span>
@@ -200,7 +200,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
       <div className="hidden md:block bg-white rounded-3xl border border-aroham-border shadow-soft overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="bg-[#F4F8F5] text-xs font-bold text-aroham-muted uppercase tracking-wider border-b border-aroham-border">
+            <thead className="bg-[#F4F8F5] text-xs font-semibold text-aroham-muted uppercase tracking-wider border-b border-aroham-border">
               <tr>
                 <th className="py-4 px-6">Student Scholar</th>
                 <th className="py-4 px-6">Target Specialization</th>
@@ -214,11 +214,11 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                 <tr key={mentee.id} className="hover:bg-aroham-sage/30 transition-colors">
                   <td className="py-4 px-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-amber-50 text-aroham-gold font-bold font-serif text-sm flex items-center justify-center border border-amber-200 shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-amber-50 text-aroham-gold font-semibold font-serif text-sm flex items-center justify-center border border-amber-200 shrink-0">
                         {mentee.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
                       </div>
                       <div>
-                        <div className="font-bold text-aroham-heading flex items-center gap-2">
+                        <div className="font-semibold text-aroham-heading flex items-center gap-2">
                           <span>{mentee.name}</span>
                           <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-aroham-sage text-aroham-muted border border-aroham-border">
                             {mentee.id}
@@ -256,7 +256,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                   <td className="py-4 px-6">
                     <button
                       onClick={() => onUpdateMenteeStatus(mentee.id, mentee.status === 'Active Match' ? 'Pending Match' : 'Active Match')}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border transition-transform active:scale-95 ${
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border transition-transform active:scale-95 ${
                         mentee.status === 'Active Match'
                           ? 'bg-emerald-50 text-aroham-forest border-emerald-200 hover:bg-emerald-100'
                           : 'bg-amber-50 text-aroham-gold border-amber-200 hover:bg-amber-100'
@@ -308,7 +308,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-aroham-dark/70 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-aroham-border shadow-popup space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-aroham-border">
-              <h3 className="text-xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                 Enroll Student Mentee
               </h3>
               <button onClick={() => setIsAddOpen(false)} className="text-aroham-muted hover:text-aroham-dark">
@@ -318,7 +318,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
 
             <form onSubmit={handleCreate} className="space-y-4 text-xs">
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Student Name *</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Student Name *</label>
                 <input
                   type="text"
                   required
@@ -330,7 +330,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               </div>
 
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Current School / College</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Current School / College</label>
                 <input
                   type="text"
                   value={newStudent.schoolOrCollege}
@@ -341,7 +341,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               </div>
 
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Target Major / Specialization *</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Target Major / Specialization *</label>
                 <input
                   type="text"
                   required
@@ -353,7 +353,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               </div>
 
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Assign Alumna Mentor</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Assign Alumna Mentor</label>
                 <select
                   value={newStudent.assignedMentorId}
                   onChange={(e) => setNewStudent({ ...newStudent, assignedMentorId: e.target.value })}
@@ -378,7 +378,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl font-bold"
+                  className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl font-semibold"
                 >
                   Enroll Mentee
                 </button>
@@ -398,7 +398,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                   <Edit3 size={16} />
                 </span>
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-aroham-heading">
+                  <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                     Edit Mentee Profile
                   </h3>
                   <p className="text-xs text-aroham-muted font-mono">{editingMentee.id}</p>
@@ -430,7 +430,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               className="space-y-4 text-xs"
             >
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Student Name *</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Student Name *</label>
                 <input
                   type="text"
                   required
@@ -441,7 +441,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               </div>
 
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Current School / College *</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Current School / College *</label>
                 <input
                   type="text"
                   required
@@ -452,7 +452,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               </div>
 
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Target Major / Specialization *</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Target Major / Specialization *</label>
                 <input
                   type="text"
                   required
@@ -464,7 +464,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Target Country</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Target Country</label>
                   <input
                     type="text"
                     value={editingMentee.targetCountry || ''}
@@ -474,7 +474,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                 </div>
 
                 <div>
-                  <label className="block font-bold text-aroham-dark uppercase mb-1">Mentorship Status</label>
+                  <label className="block font-semibold text-aroham-dark uppercase mb-1">Mentorship Status</label>
                   <select
                     value={editingMentee.status}
                     onChange={(e) => setEditingMentee({ ...editingMentee, status: e.target.value })}
@@ -487,7 +487,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               </div>
 
               <div>
-                <label className="block font-bold text-aroham-dark uppercase mb-1">Assigned Alumna Mentor</label>
+                <label className="block font-semibold text-aroham-dark uppercase mb-1">Assigned Alumna Mentor</label>
                 <select
                   value={editingMentee.assignedMentorId || ''}
                   onChange={(e) => {
@@ -517,7 +517,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                   onClick={() => {
                     setMenteeToDelete(editingMentee);
                   }}
-                  className="px-3.5 py-2 text-xs font-bold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl flex items-center gap-1.5 transition-colors active:scale-95"
+                  className="px-3.5 py-2 text-xs font-semibold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl flex items-center gap-1.5 transition-colors active:scale-95"
                 >
                   <Trash2 size={13} />
                   <span>Remove Student</span>
@@ -533,7 +533,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow"
+                    className="px-5 py-2 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-semibold transition-all shadow"
                   >
                     Save Mentee Changes
                   </button>
@@ -552,18 +552,18 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
               <Trash2 size={28} />
             </div>
             <div className="space-y-2">
-              <h3 className="text-xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-xl font-semibold font-serif text-aroham-heading">
                 Remove Student Record?
               </h3>
               <p className="text-sm text-aroham-body leading-relaxed">
-                Are you sure you want to remove <span className="font-bold text-aroham-dark">{menteeToDelete.name}</span> ({menteeToDelete.schoolOrCollege})?
+                Are you sure you want to remove <span className="font-semibold text-aroham-dark">{menteeToDelete.name}</span> ({menteeToDelete.schoolOrCollege})?
               </p>
             </div>
             <div className="flex items-center gap-3 pt-2">
               <button
                 type="button"
                 onClick={() => setMenteeToDelete(null)}
-                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-bold text-aroham-body hover:bg-aroham-sage transition-all"
+                className="flex-1 py-3 border border-aroham-border rounded-xl text-xs font-semibold text-aroham-body hover:bg-aroham-sage transition-all"
               >
                 Cancel
               </button>
@@ -576,7 +576,7 @@ export default function ManageMentees({ mentees, mentors, onUpdateMenteeStatus, 
                     setEditingMentee(null);
                   }
                 }}
-                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
+                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-semibold transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-95"
               >
                 <Trash2 size={14} />
                 <span>Yes, Remove</span>

@@ -138,12 +138,12 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
             <span className="p-2 rounded-xl bg-emerald-500/20 text-emerald-300">
               <Cloud size={20} />
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-300">
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-emerald-300">
               Cross-Device Synchronization
             </span>
           </div>
 
-          <h3 className="text-xl font-bold font-serif">
+          <h3 className="text-xl font-semibold font-serif">
             Sync Desktop & Mobile
           </h3>
           <p className="text-xs text-emerald-100/80 mt-1">
@@ -152,7 +152,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex border-b border-aroham-border bg-[#F4F8F5] p-2 gap-1.5 text-xs font-bold overflow-x-auto">
+        <div className="flex border-b border-aroham-border bg-[#F4F8F5] p-2 gap-1.5 text-xs font-semibold overflow-x-auto">
           <button
             onClick={() => setActiveTab('cloud')}
             className={`flex-1 py-2 px-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
@@ -223,7 +223,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
               <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 flex items-start gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mt-1 shrink-0" />
                 <div className="text-xs text-aroham-forest">
-                  <div className="font-bold text-sm text-aroham-heading mb-0.5">
+                  <div className="font-semibold text-sm text-aroham-heading mb-0.5">
                     Cloud Relay Active
                   </div>
                   Changes automatically sync every 2.5 seconds. You can also manually push or pull below.
@@ -234,7 +234,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                 <button
                   onClick={handlePushToCloud}
                   disabled={isProcessing}
-                  className="py-3 px-4 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-bold transition-all shadow flex flex-col items-center justify-center gap-1.5 active:scale-98"
+                  className="py-3 px-4 bg-aroham-dark hover:bg-aroham-forest text-white rounded-xl text-xs font-semibold transition-all shadow flex flex-col items-center justify-center gap-1.5 active:scale-98"
                 >
                   <CloudUpload size={20} />
                   <span>Push to Cloud</span>
@@ -244,7 +244,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                 <button
                   onClick={handlePullFromCloud}
                   disabled={isProcessing}
-                  className="py-3 px-4 bg-white hover:bg-emerald-50 text-aroham-dark border border-aroham-border rounded-xl text-xs font-bold transition-all shadow-sm flex flex-col items-center justify-center gap-1.5 active:scale-98"
+                  className="py-3 px-4 bg-white hover:bg-emerald-50 text-aroham-dark border border-aroham-border rounded-xl text-xs font-semibold transition-all shadow-sm flex flex-col items-center justify-center gap-1.5 active:scale-98"
                 >
                   <CloudDownload size={20} className="text-aroham-forest" />
                   <span>Pull from Cloud</span>
@@ -266,7 +266,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                   dbStatus?.mysql?.connected ? 'bg-sky-500 animate-pulse' : 'bg-amber-500'
                 }`} />
                 <div className="flex-1">
-                  <div className="font-bold text-sm text-aroham-heading flex items-center justify-between">
+                  <div className="font-semibold text-sm text-aroham-heading flex items-center justify-between">
                     <span>
                       {dbStatus?.mysql?.connected ? 'MySQL Live & Connected' : 'MySQL Inactive / Authentication Required'}
                     </span>
@@ -289,28 +289,28 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
               {dbStatus?.mysql?.connected && dbStatus.mysql.tables && (
                 <div className="grid grid-cols-4 gap-2">
                   <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
-                    <div className="text-base font-bold text-aroham-dark">
+                    <div className="text-base font-semibold text-aroham-dark">
                       {dbStatus.mysql.tables.mentors ?? 0}
                     </div>
-                    <div className="text-[10px] uppercase text-aroham-muted font-bold">Mentors</div>
+                    <div className="text-[10px] uppercase text-aroham-muted font-semibold">Mentors</div>
                   </div>
                   <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
-                    <div className="text-base font-bold text-aroham-dark">
+                    <div className="text-base font-semibold text-aroham-dark">
                       {dbStatus.mysql.tables.events ?? 0}
                     </div>
-                    <div className="text-[10px] uppercase text-aroham-muted font-bold">Events</div>
+                    <div className="text-[10px] uppercase text-aroham-muted font-semibold">Events</div>
                   </div>
                   <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
-                    <div className="text-base font-bold text-aroham-dark">
+                    <div className="text-base font-semibold text-aroham-dark">
                       {dbStatus.mysql.tables.mentees ?? 0}
                     </div>
-                    <div className="text-[10px] uppercase text-aroham-muted font-bold">Mentees</div>
+                    <div className="text-[10px] uppercase text-aroham-muted font-semibold">Mentees</div>
                   </div>
                   <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
-                    <div className="text-base font-bold text-aroham-dark">
+                    <div className="text-base font-semibold text-aroham-dark">
                       {dbStatus.mysql.tables.applications ?? 0}
                     </div>
-                    <div className="text-[10px] uppercase text-aroham-muted font-bold">Apps</div>
+                    <div className="text-[10px] uppercase text-aroham-muted font-semibold">Apps</div>
                   </div>
                 </div>
               )}
@@ -337,7 +337,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                     }
                   }}
                   disabled={isProcessing}
-                  className="w-full py-2.5 px-4 bg-sky-700 hover:bg-sky-800 text-white rounded-xl font-bold transition-all shadow flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 bg-sky-700 hover:bg-sky-800 text-white rounded-xl font-semibold transition-all shadow flex items-center justify-center gap-2"
                 >
                   <Database size={15} />
                   <span>Save All Current Data to MySQL</span>
@@ -345,7 +345,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
 
                 {/* Configuration Help Card */}
                 <div className="p-3 bg-[#F4F8F5] rounded-xl border border-aroham-border text-[11px] text-aroham-body space-y-1.5">
-                  <div className="font-bold text-aroham-heading flex items-center gap-1.5">
+                  <div className="font-semibold text-aroham-heading flex items-center gap-1.5">
                     <span>⚙️ MySQL Connection Settings (.env)</span>
                   </div>
                   <div className="font-mono bg-white p-2 rounded-lg border border-aroham-border text-[10px] text-slate-700 space-y-0.5">
@@ -367,12 +367,12 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
           {activeTab === 'copy' && (
             <div className="space-y-4 text-xs">
               <div className="space-y-2">
-                <label className="font-bold text-aroham-heading block">
+                <label className="font-semibold text-aroham-heading block">
                   1. Copy from this device:
                 </label>
                 <button
                   onClick={handleCopyData}
-                  className="w-full py-2.5 px-4 bg-aroham-sage hover:bg-aroham-mint text-aroham-dark rounded-xl font-bold transition-all border border-aroham-border flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 bg-aroham-sage hover:bg-aroham-mint text-aroham-dark rounded-xl font-semibold transition-all border border-aroham-border flex items-center justify-center gap-2"
                 >
                   {copied ? <Check size={16} className="text-emerald-700" /> : <Copy size={16} />}
                   <span>{copied ? 'Copied to Clipboard! ✓' : 'Copy Sync Code to Clipboard'}</span>
@@ -380,7 +380,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
               </div>
 
               <div className="pt-2 border-t border-aroham-border space-y-2">
-                <label className="font-bold text-aroham-heading block">
+                <label className="font-semibold text-aroham-heading block">
                   2. Or Paste Sync Code from other device:
                 </label>
                 <textarea
@@ -393,7 +393,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                 <button
                   onClick={handleApplyPasted}
                   disabled={isProcessing || !pasteData.trim()}
-                  className="w-full py-2.5 px-4 bg-aroham-forest hover:bg-aroham-dark text-white rounded-xl font-bold transition-all shadow flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-2.5 px-4 bg-aroham-forest hover:bg-aroham-dark text-white rounded-xl font-semibold transition-all shadow flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   <ClipboardPaste size={15} />
                   <span>Apply & Sync Device Now</span>
@@ -406,14 +406,14 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
           {activeTab === 'wifi' && (
             <div className="space-y-4 text-xs leading-relaxed text-aroham-body">
               <div className="p-4 rounded-2xl bg-white border border-aroham-border shadow-soft space-y-2">
-                <div className="font-bold text-aroham-heading flex items-center gap-2">
+                <div className="font-semibold text-aroham-heading flex items-center gap-2">
                   <Smartphone size={16} className="text-aroham-forest" />
                   <span>Open on Mobile (Same Wi-Fi Network)</span>
                 </div>
                 <p className="text-aroham-muted text-[11px]">
                   Ensure your phone is connected to the same Wi-Fi, then open this address in mobile Safari or Chrome:
                 </p>
-                <div className="p-2.5 bg-[#F4F8F5] rounded-xl font-mono font-bold text-aroham-dark select-all text-center border border-aroham-border">
+                <div className="p-2.5 bg-[#F4F8F5] rounded-xl font-mono font-semibold text-aroham-dark select-all text-center border border-aroham-border">
                   http://192.168.1.57:3000/#admin
                 </div>
               </div>
@@ -425,7 +425,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
         <div className="p-4 bg-[#F4F8F5] border-t border-aroham-border flex items-center justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 bg-aroham-dark text-white hover:bg-aroham-forest rounded-xl text-xs font-bold transition-all"
+            className="px-5 py-2 bg-aroham-dark text-white hover:bg-aroham-forest rounded-xl text-xs font-semibold transition-all"
           >
             Done
           </button>

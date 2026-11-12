@@ -60,7 +60,7 @@ export default function AdminLayout({
           {onOpenSyncModal && (
             <button
               onClick={onOpenSyncModal}
-              className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1 active:scale-95"
+              className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1 active:scale-95"
             >
               <Sparkles size={12} className="text-emerald-300" />
               <span>Sync</span>
@@ -90,7 +90,7 @@ export default function AdminLayout({
             {/* Brand Logo */}
             <div className="hidden lg:block pb-5 border-b border-white/10">
               <ArohamLogo size="header" textDark={false} onClick={onBackToSite} />
-              <div className="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold uppercase tracking-wider border border-emerald-500/30">
+              <div className="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-semibold uppercase tracking-wider border border-emerald-500/30">
                 <ShieldCheck size={12} />
                 <span>Executive Admin Console</span>
               </div>
@@ -103,7 +103,7 @@ export default function AdminLayout({
                   setMobileSidebarOpen(false);
                   onOpenAddMentor();
                 }}
-                className="w-full py-3 px-4 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-xl text-xs font-bold tracking-wide transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-98"
+                className="w-full py-3 px-4 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-xl text-xs font-semibold tracking-wide transition-all shadow hover:shadow-elevated flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-98"
               >
                 <UserPlus size={16} />
                 <span>+ Add New Mentor</span>
@@ -112,7 +112,7 @@ export default function AdminLayout({
 
             {/* Navigation Menu */}
             <nav className="space-y-1.5">
-              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300/80 px-3 pb-1">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-300/80 px-3 pb-1">
                 Main Administration
               </div>
 
@@ -123,7 +123,7 @@ export default function AdminLayout({
                   <button
                     key={item.id}
                     onClick={() => handleSelectTab(item.id)}
-                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                       isActive
                         ? 'bg-white text-aroham-dark shadow-soft scale-[1.01]'
                         : 'text-emerald-100/90 hover:bg-white/10 hover:text-white'
@@ -152,11 +152,11 @@ export default function AdminLayout({
 
             <div className="pt-2 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-amber-400 text-aroham-dark font-bold text-xs flex items-center justify-center font-serif">
+                <div className="w-8 h-8 rounded-full bg-amber-400 text-aroham-dark font-semibold text-xs flex items-center justify-center font-serif">
                   AC
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-white leading-tight">Admin Council</div>
+                  <div className="text-xs font-semibold text-white leading-tight">Admin Council</div>
                   <div className="text-[10px] text-emerald-300">Executive Access</div>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function AdminLayout({
           {/* Desktop Top Header */}
           <header className="hidden lg:flex items-center justify-between px-8 py-4 bg-white/90 backdrop-blur-md border-b border-aroham-border sticky top-0 z-30">
             <div className="flex items-center gap-3">
-              <h1 className="text-xl font-bold font-serif text-aroham-heading capitalize">
+              <h1 className="text-xl font-semibold font-serif text-aroham-heading capitalize">
                 {navItems.find(i => i.id === currentTab)?.label || 'Dashboard'}
               </h1>
               <span className="text-xs text-aroham-muted">• Aroham Foundation Hub</span>
@@ -197,7 +197,7 @@ export default function AdminLayout({
               {onOpenSyncModal && (
                 <button
                   onClick={onOpenSyncModal}
-                  className="px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border border-emerald-200 shadow-sm active:scale-98"
+                  className="px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-aroham-forest rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 border border-emerald-200 shadow-sm active:scale-98"
                   title="Sync data between mobile and desktop"
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -207,7 +207,7 @@ export default function AdminLayout({
 
               <button
                 onClick={onBackToSite}
-                className="px-4 py-2 bg-aroham-sage hover:bg-aroham-mint text-aroham-dark rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 border border-aroham-border"
+                className="px-4 py-2 bg-aroham-sage hover:bg-aroham-mint text-aroham-dark rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5 border border-aroham-border"
               >
                 <span>Live Website</span>
                 <ExternalLink size={13} className="text-aroham-forest" />

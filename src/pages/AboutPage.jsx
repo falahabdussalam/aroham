@@ -190,7 +190,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
         {/* Banner Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 sm:pt-36 sm:pb-14">
           <div className="space-y-3 max-w-4xl hero-reveal hero-reveal-1">
-            <h1 className="text-3xl sm:text-5xl font-bold font-serif text-emerald-300 tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-semibold font-serif text-emerald-300 tracking-tight">
               About Us
             </h1>
 
@@ -206,7 +206,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up">
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading mb-10">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading mb-10">
             From Sisterhood to Sustained Impact
           </h2>
         </Reveal>
@@ -215,7 +215,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           {/* Left Narrative Column */}
           <Reveal variant="right" delay={100} className="lg:col-span-7 space-y-6 text-aroham-body leading-relaxed text-sm sm:text-base">
             <p className="text-aroham-heading font-medium">
-              <span className="float-left text-5xl font-serif font-bold text-aroham-dark pr-3 pt-1 leading-none">
+              <span className="float-left text-5xl font-serif font-semibold text-aroham-dark pr-3 pt-1 leading-none">
                 A
               </span>
               roham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
@@ -223,7 +223,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
 
             {/* Turning Point Callout */}
             <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-aroham-gold uppercase tracking-wide">
+              <div className="flex items-center gap-2 text-xs font-semibold text-aroham-gold uppercase tracking-wide">
                 <Lightbulb size={16} />
                 <span>The Turning Point at Alumni Meet</span>
               </div>
@@ -267,18 +267,18 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             {/* 2 Stats row */}
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 rounded-2xl bg-aroham-mint border border-aroham-border">
-                <div className="text-3xl font-extrabold font-serif text-aroham-dark">
+                <div className="text-3xl font-semibold font-serif text-aroham-dark">
                   100%
                 </div>
-                <div className="text-xs font-bold uppercase tracking-wider text-aroham-forest mt-1">
+                <div className="text-xs font-semibold uppercase tracking-wider text-aroham-forest mt-1">
                   Alumnae Governed
                 </div>
               </div>
               <div className="p-6 rounded-2xl bg-aroham-amber-light border border-amber-200">
-                <div className="text-3xl font-extrabold font-serif text-aroham-gold">
+                <div className="text-3xl font-semibold font-serif text-aroham-gold">
                   4+
                 </div>
-                <div className="text-xs font-bold uppercase tracking-wider text-aroham-gold mt-1">
+                <div className="text-xs font-semibold uppercase tracking-wider text-aroham-gold mt-1">
                   Core Programs
                 </div>
               </div>
@@ -292,7 +292,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="text-center max-w-xl mx-auto mb-12 space-y-2">
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Foundational Timeline (2025)
           </h2>
         </Reveal>
@@ -306,10 +306,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               className="h-full bg-white rounded-2xl p-6 border border-aroham-border shadow-soft flex flex-col justify-between hover:shadow-elevated hover:-translate-y-1 transition-all duration-300"
             >
               <div className="space-y-3">
-                <span className="inline-block px-3 py-1 rounded-full bg-aroham-sage text-aroham-forest text-xs font-bold border border-aroham-border">
+                <span className="inline-block px-3 py-1 rounded-full bg-aroham-sage text-aroham-forest text-xs font-semibold border border-aroham-border">
                   {item.date}
                 </span>
-                <h3 className="text-lg font-bold font-serif text-aroham-heading">
+                <h3 className="text-lg font-semibold font-serif text-aroham-heading">
                   {item.title}
                 </h3>
                 <p className="text-xs text-aroham-body leading-relaxed">
@@ -330,7 +330,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="text-center max-w-xl mx-auto mb-10 space-y-2">
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Our Guiding Light
           </h2>
         </Reveal>
@@ -342,10 +342,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
                 <Flag size={22} />
               </div>
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-emerald-300">
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-emerald-300">
                 Core Directive
               </span>
-              <h3 className="text-3xl font-bold font-serif">
+              <h3 className="text-3xl font-semibold font-serif">
                 Our Mission
               </h3>
               <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed pt-2">
@@ -360,10 +360,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               <div className="w-12 h-12 rounded-2xl bg-aroham-dark text-white flex items-center justify-center">
                 <Eye size={22} />
               </div>
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-aroham-dark/80">
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-aroham-dark/80">
                 North Star
               </span>
-              <h3 className="text-3xl font-bold font-serif">
+              <h3 className="text-3xl font-semibold font-serif">
                 Our Vision
               </h3>
               <p className="text-sm sm:text-base text-aroham-heading/90 leading-relaxed pt-2">
@@ -379,7 +379,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Our Committee
           </h2>
         </div>
@@ -401,15 +401,15 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                   alt={member.name}
                   className="w-full h-full object-cover object-top md:group-hover:scale-105 transition-transform duration-300"
                 />
-                <span className={`absolute top-1.5 right-1.5 sm:top-2 sm:right-2 md:top-3 md:right-3 px-1.5 py-0.5 sm:px-2 md:px-2.5 rounded sm:rounded-md text-[7.5px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider shadow leading-tight ${member.badgeColor}`}>
+                <span className={`absolute top-1.5 right-1.5 sm:top-2 sm:right-2 md:top-3 md:right-3 px-1.5 py-0.5 sm:px-2 md:px-2.5 rounded sm:rounded-md text-[7.5px] sm:text-[9px] md:text-[10px] font-semibold uppercase tracking-wider shadow leading-tight ${member.badgeColor}`}>
                   {member.role}
                 </span>
               </div>
               <div className="p-2 sm:p-3 md:p-5 flex-1 flex flex-col justify-center">
-                <h4 className="text-[11px] sm:text-sm md:text-base font-bold font-serif text-aroham-heading leading-snug line-clamp-1 sm:line-clamp-none">
+                <h4 className="text-[11px] sm:text-sm md:text-base font-semibold font-serif text-aroham-heading leading-snug line-clamp-1 sm:line-clamp-none">
                   {member.name}
                 </h4>
-                <p className="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-bold tracking-wider text-aroham-muted mt-0.5 sm:mt-1 truncate">
+                <p className="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-semibold tracking-wider text-aroham-muted mt-0.5 sm:mt-1 truncate">
                   {member.almaMater}
                 </p>
               </div>

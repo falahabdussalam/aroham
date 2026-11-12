@@ -113,7 +113,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-10 border-b border-aroham-border">
           {/* Left Text */}
           <div className="lg:col-span-7 space-y-6 hero-reveal hero-reveal-1">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-aroham-heading tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold font-serif text-aroham-heading tracking-tight">
               Aroham UniMates
             </h1>
 
@@ -203,10 +203,10 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           {/* Mentorship Philosophy */}
           <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
+              <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
                 Mentorship Philosophy
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-aroham-heading">
+              <h2 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading">
                 Empowering decisions through lived experience
               </h2>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
@@ -220,7 +220,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             {/* 3 Pillars of Philosophy */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-aroham-border">
               <div className="p-3.5 rounded-xl bg-aroham-mint/50 border border-aroham-border">
-                <div className="text-xs font-bold text-aroham-dark flex items-center gap-1.5">
+                <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
                   <Lightbulb size={14} className="text-aroham-gold" />
                   <span>Unbiased Advice</span>
                 </div>
@@ -228,7 +228,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               </div>
 
               <div className="p-3.5 rounded-xl bg-aroham-sage/50 border border-aroham-border">
-                <div className="text-xs font-bold text-aroham-dark flex items-center gap-1.5">
+                <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
                   <CheckCircle2 size={14} className="text-aroham-forest" />
                   <span>Custom Matched</span>
                 </div>
@@ -236,7 +236,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               </div>
 
               <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200/80">
-                <div className="text-xs font-bold text-aroham-dark flex items-center gap-1.5">
+                <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
                   <ShieldCheck size={14} className="text-aroham-terracotta" />
                   <span>Safe Space</span>
                 </div>
@@ -248,10 +248,10 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           {/* Launched on 4 May 2026 Card */}
           <div className="lg:col-span-5 bg-gradient-to-br from-aroham-dark via-aroham-forest to-[#082C21] text-white rounded-3xl p-8 sm:p-10 shadow-elevated flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold tracking-wide uppercase border border-amber-400/30">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-semibold tracking-wide uppercase border border-amber-400/30">
                 <span>🚩 Our Beginning</span>
               </div>
-              <h3 className="text-3xl font-bold font-serif leading-snug">
+              <h3 className="text-3xl font-semibold font-serif leading-snug">
                 Launched on 4 May 2026
               </h3>
               <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed pt-2">
@@ -262,7 +262,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             <div className="p-4 rounded-2xl bg-white/10 border border-white/10 space-y-2">
               <div className="flex items-center justify-between text-xs font-semibold">
                 <span className="uppercase tracking-wider text-emerald-200 text-[10px]">Cohort 1 Placement</span>
-                <span className="text-amber-300 font-bold text-sm">17 / 17 Matched</span>
+                <span className="text-amber-300 font-semibold text-sm">17 / 17 Matched</span>
               </div>
               <div className="w-full h-2 bg-black/20 rounded-full overflow-hidden">
                 <div className="h-full bg-amber-400 rounded-full w-full" />
@@ -281,17 +281,17 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
       <section id="mentors-directory" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
         <Reveal variant="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-1">
+            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
               Directory
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+            <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
               UniMates Mentors
             </h2>
             <p className="text-sm text-aroham-body mt-1">
               Connect with verified Aroham alumnae studying and working across leading global universities.
             </p>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-aroham-mint text-aroham-dark text-xs font-bold shrink-0 self-start sm:self-auto border border-aroham-border">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-aroham-mint text-aroham-dark text-xs font-semibold shrink-0 self-start sm:self-auto border border-aroham-border">
             <span>{filteredMentors.length} Mentors Listed</span>
           </div>
         </Reveal>
@@ -310,7 +310,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           </div>
 
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-            <span className="text-xs font-bold text-aroham-muted uppercase tracking-wider shrink-0 mr-2">
+            <span className="text-xs font-semibold text-aroham-muted uppercase tracking-wider shrink-0 mr-2">
               Filter by academic stream:
             </span>
             {streams.map((stream) => (
@@ -348,12 +348,12 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                           className="w-12 h-12 rounded-2xl object-cover border border-aroham-border shrink-0"
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-center text-aroham-dark font-serif font-bold text-sm tracking-wider shrink-0 shadow-sm">
+                        <div className="w-12 h-12 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-center text-aroham-dark font-serif font-semibold text-sm tracking-wider shrink-0 shadow-sm">
                           {(mentor.name || 'M').split(' ').map(n => n[0]).slice(0, 2).join('')}
                         </div>
                       )}
                       <div>
-                        <h4 className="text-base font-bold font-serif text-aroham-heading">
+                        <h4 className="text-base font-semibold font-serif text-aroham-heading">
                           {mentor.name}
                         </h4>
                         <p className="text-xs font-medium text-aroham-forest">
@@ -363,7 +363,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                     </div>
                   </div>
 
-                  <div className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${mentor.badgeColor || 'bg-emerald-100 text-aroham-forest border-emerald-200'}`}>
+                  <div className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold border uppercase tracking-wider ${mentor.badgeColor || 'bg-emerald-100 text-aroham-forest border-emerald-200'}`}>
                     {mentor.status}
                   </div>
 
@@ -387,12 +387,12 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
 
                 {/* Footer CTA */}
                 <div className="pt-4 border-t border-aroham-border flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-aroham-muted uppercase tracking-wider">
+                  <span className="text-[11px] font-semibold text-aroham-muted uppercase tracking-wider">
                     ID: {mentor.id}
                   </span>
                   <button
                     onClick={() => onOpenRequestMatch(mentor)}
-                    className="text-xs font-bold text-aroham-forest hover:text-aroham-dark flex items-center gap-1 group transition-colors"
+                    className="text-xs font-semibold text-aroham-forest hover:text-aroham-dark flex items-center gap-1 group transition-colors"
                   >
                     <span>Request Match</span>
                     <span className="group-hover:translate-x-1 transition-transform">›</span>
@@ -406,7 +406,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
             <div className="w-14 h-14 rounded-2xl bg-aroham-mint text-aroham-dark flex items-center justify-center mx-auto shadow-sm">
               <Users size={26} />
             </div>
-            <h4 className="text-xl font-bold font-serif text-aroham-heading">
+            <h4 className="text-xl font-semibold font-serif text-aroham-heading">
               No mentors found
             </h4>
             <p className="text-xs sm:text-sm text-aroham-body max-w-md mx-auto leading-relaxed">
@@ -420,7 +420,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
                   setSearchQuery('');
                   setSelectedStream('All Disciplines');
                 }}
-                className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-bold rounded-xl transition-all shadow"
+                className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-semibold rounded-xl transition-all shadow"
               >
                 Reset Search & Filters
               </button>
@@ -434,10 +434,10 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 space-y-2">
-          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
             Programs & Events
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Activities Under Aroham UniMates
           </h2>
           <p className="text-sm text-aroham-body max-w-2xl">
@@ -450,12 +450,12 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           <div className="bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-5">
             <div className="space-y-4">
               <div className="flex items-center justify-between text-xs">
-                <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold font-bold border border-amber-200">
+                <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold font-semibold border border-amber-200">
                   ✔ Concluded Session
                 </span>
                 <span className="text-aroham-muted font-semibold">GCC Region</span>
               </div>
-              <h3 className="text-2xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
                 GCC Higher Education Guidance Session
               </h3>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
@@ -475,12 +475,12 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           <div className="bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-5">
             <div className="space-y-4">
               <div className="flex items-center justify-between text-xs">
-                <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold font-bold border border-amber-200">
+                <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold font-semibold border border-amber-200">
                   ✔ Concluded Session
                 </span>
                 <span className="text-aroham-muted font-semibold">United Kingdom</span>
               </div>
-              <h3 className="text-2xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
                 UK Higher Education Guidance Session
               </h3>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
@@ -503,10 +503,10 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
-          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
             Get Connected
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Be a Part of Aroham UniMates
           </h2>
         </div>
@@ -518,7 +518,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-amber-300">
                 <GraduationCap size={24} />
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-serif">
+              <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
                 Register as a Mentee
               </h3>
               <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
@@ -530,7 +530,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               href="https://forms.gle/JyFUEfFbERjRgUyD6"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow text-center block"
+              className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark rounded-lg text-xs font-semibold uppercase tracking-wider transition-all shadow text-center block"
             >
               Register as a Mentee
             </a>
@@ -542,7 +542,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white">
                 <HeartHandshake size={24} />
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold font-serif">
+              <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
                 Register as a Mentor
               </h3>
               <p className="text-xs sm:text-sm text-orange-100/90 leading-relaxed">
@@ -552,7 +552,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
 
             <button
               onClick={onOpenGetInvolved}
-              className="w-full py-3.5 bg-white hover:bg-orange-50 text-aroham-terracotta rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow"
+              className="w-full py-3.5 bg-white hover:bg-orange-50 text-aroham-terracotta rounded-lg text-xs font-semibold uppercase tracking-wider transition-all shadow"
             >
               Join as Alumna Mentor
             </button>

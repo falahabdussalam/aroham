@@ -93,7 +93,7 @@ export default function ContactPage() {
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
           <div className="space-y-4 max-w-3xl hero-reveal hero-reveal-1">
-            <h1 className="text-4xl sm:text-5xl font-bold font-serif text-aroham-heading tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-semibold font-serif text-aroham-heading tracking-tight">
               Get in Touch with Aroham Foundation
             </h1>
 
@@ -117,13 +117,13 @@ export default function ContactPage() {
           <div className="hero-reveal hero-reveal-2 bg-white rounded-full p-8 border border-aroham-border shadow-elevated flex flex-col items-center justify-center text-center shrink-0 w-52 h-52 self-start lg:self-center relative transition-transform duration-300 hover:scale-[1.03]">
             <div className="absolute inset-0 bg-gradient-to-tr from-amber-200/20 via-emerald-200/20 to-transparent rounded-full blur-xl -z-10" />
             <ArohamEmblem size={56} className="mx-auto" />
-            <span className="text-base font-bold font-serif text-aroham-heading mt-2">
+            <span className="text-base font-semibold font-serif text-aroham-heading mt-2">
               Aroham
             </span>
-            <span className="text-[9px] uppercase font-bold tracking-[0.2em] text-aroham-muted">
+            <span className="text-[9px] uppercase font-semibold tracking-[0.2em] text-aroham-muted">
               FOUNDATION
             </span>
-            <span className="text-[10px] uppercase font-extrabold tracking-wider text-aroham-forest mt-1.5">
+            <span className="text-[10px] uppercase font-semibold tracking-wider text-aroham-forest mt-1.5">
               Aroham Guild
             </span>
             <span className="text-[9px] text-aroham-muted">
@@ -138,10 +138,10 @@ export default function ContactPage() {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="mb-8">
-          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-1">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
             Primary Inquiries
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading">
             Official Contact Channels
           </h2>
         </Reveal>
@@ -153,10 +153,10 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-2xl bg-aroham-mint flex items-center justify-center text-aroham-dark">
                 <Mail size={22} />
               </div>
-              <span className="text-[10px] font-extrabold uppercase tracking-widest text-aroham-gold block">
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-aroham-gold block">
                 Formal & Academic Correspondence
               </span>
-              <h3 className="text-2xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
                 Email Address
               </h3>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
@@ -164,10 +164,10 @@ export default function ContactPage() {
               </p>
 
               <div className="p-4 rounded-2xl bg-aroham-sage/40 border border-aroham-border">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-aroham-muted block">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-aroham-muted block">
                   Direct Inbox
                 </span>
-                <span className="text-sm sm:text-base font-bold text-aroham-heading mt-0.5 block select-all">
+                <span className="text-sm sm:text-base font-semibold text-aroham-heading mt-0.5 block select-all">
                   arohamconnect@gmail.com
                 </span>
               </div>
@@ -175,7 +175,7 @@ export default function ContactPage() {
 
             <a
               href="mailto:arohamconnect@gmail.com"
-              className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-bold text-center transition-all shadow flex items-center justify-center gap-2"
+              className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-semibold text-center transition-all shadow flex items-center justify-center gap-2"
             >
               <span>Send us an Email</span>
               <ArrowUpRight size={15} />
@@ -191,15 +191,15 @@ export default function ContactPage() {
                     <InstagramIcon size={22} />
                   </div>
                   <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-aroham-gold block">
+                    <span className="text-[10px] font-semibold uppercase tracking-widest text-aroham-gold block">
                       Active Community Pulse
                     </span>
-                    <h3 className="text-2xl font-bold font-serif text-aroham-heading">
+                    <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
                       Instagram Community
                     </h3>
                   </div>
                 </div>
-                <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-aroham-amber-light text-aroham-gold border border-amber-200">
+                <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-aroham-amber-light text-aroham-gold border border-amber-200">
                   Daily Stories & Recaps
                 </span>
               </div>
@@ -225,7 +225,7 @@ export default function ContactPage() {
                   </div>
                   <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
                     <span className="truncate">
-                      <span className="text-aroham-gold font-bold">#UniMates</span> Campus Circles & Student Meetups
+                      <span className="text-aroham-gold font-semibold">#UniMates</span> Campus Circles & Student Meetups
                     </span>
                     <ArrowUpRight size={13} className="text-aroham-muted opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
                   </div>
@@ -246,7 +246,7 @@ export default function ContactPage() {
                   </div>
                   <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
                     <span className="truncate">
-                      <span className="text-aroham-forest font-bold">#Alumnae</span> Leadership Spotlight
+                      <span className="text-aroham-forest font-semibold">#Alumnae</span> Leadership Spotlight
                     </span>
                     <ArrowUpRight size={13} className="text-aroham-muted opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
                   </div>
@@ -267,7 +267,7 @@ export default function ContactPage() {
                   </div>
                   <div className="p-2.5 bg-white text-[11px] font-semibold text-aroham-heading truncate flex items-center justify-between">
                     <span className="truncate">
-                      <span className="text-aroham-terracotta font-bold">#Leadership</span> Executive Announcement Series
+                      <span className="text-aroham-terracotta font-semibold">#Leadership</span> Executive Announcement Series
                     </span>
                     <ArrowUpRight size={13} className="text-aroham-muted opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0 ml-1" />
                   </div>
@@ -276,14 +276,14 @@ export default function ContactPage() {
             </div>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs font-bold text-aroham-forest">
+              <span className="text-xs font-semibold text-aroham-forest">
                 @arohamfoundation
               </span>
               <a
                 href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto px-5 py-2.5 bg-aroham-amber text-aroham-dark hover:bg-amber-400 rounded-lg text-xs font-bold transition-all shadow flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto px-5 py-2.5 bg-aroham-amber text-aroham-dark hover:bg-amber-400 rounded-lg text-xs font-semibold transition-all shadow flex items-center justify-center gap-1.5"
               >
                 <span>Follow @arohamfoundation</span>
                 <ArrowUpRight size={14} />
@@ -301,10 +301,10 @@ export default function ContactPage() {
           {/* Left Narrative Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
-              <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
+              <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
                 Inquiry Center
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+              <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
                 Send Aroham a Direct Message
               </h2>
               <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
@@ -314,11 +314,11 @@ export default function ContactPage() {
 
             {/* Bolster Girls Campus Circle Box */}
             <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-aroham-forest">
+              <div className="flex items-center gap-2 text-xs font-semibold text-aroham-forest">
                 <GraduationCap size={18} className="text-aroham-gold" />
                 <span>Bolster Girls Campus Circle</span>
               </div>
-              <div className="text-[10px] uppercase font-bold text-aroham-muted">
+              <div className="text-[10px] uppercase font-semibold text-aroham-muted">
                 Alumnae-driven generational uplift
               </div>
               <p className="text-xs text-aroham-body leading-relaxed pt-1">
@@ -328,13 +328,13 @@ export default function ContactPage() {
 
             {/* Our Commitment Box */}
             <div className="p-6 rounded-2xl bg-aroham-dark text-white shadow-soft space-y-3">
-              <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-300">
+              <div className="text-[10px] uppercase font-semibold tracking-widest text-emerald-300">
                 Our Commitment
               </div>
               <p className="text-xs sm:text-sm italic leading-relaxed text-emerald-100">
                 "No young woman walks her collegiate or professional path unaccompanied. One conversation can alter a generation."
               </p>
-              <div className="text-[10px] uppercase font-bold tracking-wider text-amber-300">
+              <div className="text-[10px] uppercase font-semibold tracking-wider text-amber-300">
                 — Aroham Mentorship Council
               </div>
             </div>
@@ -344,7 +344,7 @@ export default function ContactPage() {
           <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft">
             <div className="mb-6 pb-4 border-b border-aroham-border flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-bold font-serif text-aroham-heading">
+                <h3 className="text-lg font-semibold font-serif text-aroham-heading">
                   Message Submission
                 </h3>
                 <p className="text-xs text-aroham-muted mt-0.5">
@@ -359,7 +359,7 @@ export default function ContactPage() {
                 <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle size={36} />
                 </div>
-                <h4 className="text-2xl font-bold font-serif text-aroham-heading">
+                <h4 className="text-2xl font-semibold font-serif text-aroham-heading">
                   Message Dispatched to arohamconnect@gmail.com
                 </h4>
                 <p className="text-sm text-aroham-body max-w-md mx-auto">
@@ -368,7 +368,7 @@ export default function ContactPage() {
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                   <a
                     href={`mailto:arohamconnect@gmail.com?subject=${encodeURIComponent(`[Aroham Contact] ${formData.subject || 'Website Inquiry'}`)}&body=${encodeURIComponent(`Full Name: ${formData.name}\nEmail: ${formData.email}\nAffiliation: ${formData.affiliation}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`)}`}
-                    className="px-6 py-2.5 bg-aroham-dark text-white rounded-lg text-xs font-bold hover:bg-aroham-forest transition-all flex items-center gap-1.5 shadow"
+                    className="px-6 py-2.5 bg-aroham-dark text-white rounded-lg text-xs font-semibold hover:bg-aroham-forest transition-all flex items-center gap-1.5 shadow"
                   >
                     <span>Open in Email App</span>
                     <ArrowUpRight size={14} />
@@ -384,7 +384,7 @@ export default function ContactPage() {
                         message: ''
                       });
                     }}
-                    className="px-6 py-2.5 bg-white border border-aroham-border text-aroham-dark rounded-lg text-xs font-bold hover:bg-aroham-sage/40 transition-all shadow-sm"
+                    className="px-6 py-2.5 bg-white border border-aroham-border text-aroham-dark rounded-lg text-xs font-semibold hover:bg-aroham-sage/40 transition-all shadow-sm"
                   >
                     Send Another Note
                   </button>
@@ -479,7 +479,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full sm:w-auto px-8 py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold transition-all shadow flex items-center justify-center gap-2 transform hover:-translate-y-0.5 disabled:opacity-75 disabled:cursor-not-allowed"
+                    className="w-full sm:w-auto px-8 py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-semibold transition-all shadow flex items-center justify-center gap-2 transform hover:-translate-y-0.5 disabled:opacity-75 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -505,10 +505,10 @@ export default function ContactPage() {
           ========================================================================= */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="text-center mb-10 space-y-2">
-          <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
             Immediate Answers
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Frequently Asked Questions
           </h2>
           <p className="text-sm text-aroham-body">
@@ -527,7 +527,7 @@ export default function ContactPage() {
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 text-sm font-bold text-aroham-heading hover:bg-aroham-sage/30 transition-colors"
+                  className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 text-sm font-semibold text-aroham-heading hover:bg-aroham-sage/30 transition-colors"
                 >
                   <span className="flex items-center gap-3">
                     <span className="text-aroham-gold">❓</span>
@@ -555,7 +555,7 @@ export default function ContactPage() {
           Still have a unique inquiry not listed here? Write directly to{' '}
           <a
             href="mailto:arohamconnect@gmail.com"
-            className="font-bold text-aroham-dark hover:underline"
+            className="font-semibold text-aroham-dark hover:underline"
           >
             arohamconnect@gmail.com
           </a>

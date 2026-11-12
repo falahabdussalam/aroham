@@ -110,7 +110,7 @@ export default function RequestMatchModal({ isOpen, onClose, mentor, onApplyMent
           >
             <X size={20} />
           </button>
-          <h3 className="text-xl font-bold font-serif leading-snug">
+          <h3 className="text-xl font-semibold font-serif leading-snug">
             {mentor ? `Request 1:1 Match with ${mentor.name}` : 'Connect with an Alumna Mentor'}
           </h3>
           {mentor && (
@@ -127,7 +127,7 @@ export default function RequestMatchModal({ isOpen, onClose, mentor, onApplyMent
               <div className="w-16 h-16 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle size={36} />
               </div>
-              <h4 className="text-xl font-bold text-aroham-dark font-serif">
+              <h4 className="text-xl font-semibold text-aroham-dark font-serif">
                 Match Request Submitted!
               </h4>
               <p className="text-sm text-aroham-body max-w-sm mx-auto">
@@ -150,7 +150,7 @@ export default function RequestMatchModal({ isOpen, onClose, mentor, onApplyMent
                   href="https://forms.gle/JyFUEfFbERjRgUyD6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark font-bold rounded-lg transition-colors shrink-0"
+                  className="px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark font-semibold rounded-lg transition-colors shrink-0"
                 >
                   Register as a Mentee ↗
                 </a>

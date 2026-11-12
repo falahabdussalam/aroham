@@ -40,7 +40,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-7">
           {/* Headline */}
-          <h1 className="hero-reveal hero-reveal-1 text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-white leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-sm">
+          <h1 className="hero-reveal hero-reveal-1 text-3xl sm:text-5xl lg:text-6xl font-semibold font-serif text-white leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-sm">
             Connected by Our Past, <br />
             <span className="italic font-serif font-normal text-emerald-100">
               United by Our Future.
@@ -75,7 +75,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           {/* Metrics Row */}
           <div className="hero-reveal hero-reveal-4 grid grid-cols-3 gap-6 pt-6 max-w-xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 shadow-elevated transition-all duration-300 hover:bg-white/15">
             <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-white">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-white">
                 {mentorsCount}+
               </div>
               <div className="text-xs font-semibold text-emerald-100/85 mt-0.5">
@@ -83,7 +83,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               </div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-white">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-white">
                 100%
               </div>
               <div className="text-xs font-semibold text-emerald-100/85 mt-0.5">
@@ -91,7 +91,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               </div>
             </div>
             <div>
-              <div className="text-2xl sm:text-3xl font-extrabold font-serif text-white">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-white">
                 Global
               </div>
               <div className="text-xs font-semibold text-emerald-100/85 mt-0.5">
@@ -116,7 +116,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
                 <Building2 size={24} />
               </div>
 
-              <h3 className="text-2xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
                 Aroham Foundation
               </h3>
 
@@ -150,7 +150,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
                 <Users size={24} />
               </div>
 
-              <h3 className="text-2xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
                 Aroham UniMates
               </h3>
 
@@ -231,7 +231,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center space-y-6">
               <Reveal variant="up" delay={0}>
-              <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading leading-tight max-w-2xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading leading-tight max-w-2xl mx-auto">
                 "When one alumna rises, she extends a hand to ten more."
               </h2>
               </Reveal>

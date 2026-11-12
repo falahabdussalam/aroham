@@ -65,12 +65,12 @@ export default function AdminLogin({ onLogin, onBackToSite }) {
             <ArohamEmblem size={44} className="mx-auto" />
           </div>
 
-          <div className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-aroham-sage text-aroham-forest text-[11px] font-bold uppercase tracking-wider border border-aroham-border">
+          <div className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-aroham-sage text-aroham-forest text-[11px] font-semibold uppercase tracking-wider border border-aroham-border">
             <Sparkles size={11} className="text-aroham-gold" />
             <span>Council Control Center</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-aroham-heading tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading tracking-tight">
             Admin Dashboard
           </h2>
 
@@ -87,7 +87,7 @@ export default function AdminLogin({ onLogin, onBackToSite }) {
 
         <form onSubmit={handleSubmit} className="relative z-10 space-y-4">
           <div>
-            <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider mb-1.5">
               Admin Email
             </label>
             <div className="relative">
@@ -105,7 +105,7 @@ export default function AdminLogin({ onLogin, onBackToSite }) {
 
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label className="block text-xs font-bold text-aroham-dark uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-aroham-dark uppercase tracking-wider">
                 Password
               </label>
               <button
@@ -141,7 +141,7 @@ export default function AdminLogin({ onLogin, onBackToSite }) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 bg-aroham-dark hover:bg-aroham-forest disabled:opacity-75 text-white rounded-xl text-sm font-bold shadow-soft hover:shadow-elevated transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full py-3.5 bg-aroham-dark hover:bg-aroham-forest disabled:opacity-75 text-white rounded-xl text-sm font-semibold shadow-soft hover:shadow-elevated transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
             >
               {loading ? 'Authenticating...' : 'Sign In to Dashboard →'}
             </button>
@@ -150,12 +150,12 @@ export default function AdminLogin({ onLogin, onBackToSite }) {
 
         {/* Quick hint box */}
         <div className="relative z-10 p-3.5 rounded-xl bg-aroham-mint/70 border border-aroham-border text-[11px] text-aroham-forest space-y-1">
-          <div className="font-bold flex items-center gap-1.5">
+          <div className="font-semibold flex items-center gap-1.5">
             <CheckCircle2 size={13} className="text-aroham-forest" />
             <span>Authorized Committee Credentials:</span>
           </div>
           <div className="text-aroham-body pl-4.5">
-            Login: <span className="font-mono font-bold text-aroham-dark">admin@aroham.org</span> • Password: <span className="font-mono font-bold text-aroham-dark">aroham2025</span>
+            Login: <span className="font-mono font-semibold text-aroham-dark">admin@aroham.org</span> • Password: <span className="font-mono font-semibold text-aroham-dark">aroham2025</span>
           </div>
         </div>
       </div>

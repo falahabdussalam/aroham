@@ -178,7 +178,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
       <section className="pt-6 sm:pt-12 lg:pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 border-b border-aroham-border">
           <div className="space-y-4 max-w-3xl hero-reveal hero-reveal-1">
-            <h1 className="text-4xl sm:text-5xl font-bold font-serif text-aroham-heading tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-semibold font-serif text-aroham-heading tracking-tight">
               Aroham Events & Guidance Sessions
             </h1>
 
@@ -190,28 +190,28 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           {/* 3 Metric Pills */}
           <div className="hero-reveal hero-reveal-2 bg-white rounded-2xl p-5 border border-aroham-border shadow-soft flex items-center gap-8 shrink-0 self-start lg:self-center transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
             <div>
-              <div className="text-2xl sm:text-3xl font-bold font-serif text-aroham-dark">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-dark">
                 {completedEvents.length}+
               </div>
-              <div className="text-[10px] uppercase font-bold tracking-wider text-aroham-muted mt-0.5">
+              <div className="text-[10px] uppercase font-semibold tracking-wider text-aroham-muted mt-0.5">
                 Sessions Completed
               </div>
             </div>
             <div className="w-px h-10 bg-aroham-border" />
             <div>
-              <div className="text-2xl sm:text-3xl font-bold font-serif text-aroham-dark">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-dark">
                 160+
               </div>
-              <div className="text-[10px] uppercase font-bold tracking-wider text-aroham-muted mt-0.5">
+              <div className="text-[10px] uppercase font-semibold tracking-wider text-aroham-muted mt-0.5">
                 Scholars Reached
               </div>
             </div>
             <div className="w-px h-10 bg-aroham-border" />
             <div>
-              <div className="text-2xl sm:text-3xl font-bold font-serif text-aroham-dark">
+              <div className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-dark">
                 100%
               </div>
-              <div className="text-[10px] uppercase font-bold tracking-wider text-aroham-muted mt-0.5">
+              <div className="text-[10px] uppercase font-semibold tracking-wider text-aroham-muted mt-0.5">
                 Alumnae Guided
               </div>
             </div>
@@ -225,14 +225,14 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="flex items-center justify-between mb-8">
           <div>
-            <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-1">
+            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
               Current Schedule
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-aroham-heading">
+            <h2 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading">
               Upcoming Events
             </h2>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-aroham-forest border border-emerald-200 text-xs font-bold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-aroham-forest border border-emerald-200 text-xs font-semibold">
             {upcomingEvents.length > 0 ? (
               <span>📋 {upcomingEvents.length} Event{upcomingEvents.length > 1 ? 's' : ''} Scheduled</span>
             ) : (
@@ -250,7 +250,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
               >
                 <div className="space-y-4">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold text-xs font-bold border border-amber-200">
+                    <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold text-xs font-semibold border border-amber-200">
                       {event.tag || event.type || '⚡ Registration Open'}
                     </span>
                     {event.platform && (
@@ -262,7 +262,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                   </div>
 
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold font-serif text-aroham-heading">
+                    <h3 className="text-xl sm:text-2xl font-semibold font-serif text-aroham-heading">
                       {event.title || event.name}
                     </h3>
                     <p className="text-xs sm:text-sm text-aroham-body leading-relaxed mt-2">
@@ -274,14 +274,14 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                     <div className="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-aroham-mint/50 border border-aroham-border text-xs">
                       {event.date && (
                         <div>
-                          <span className="text-[10px] uppercase font-bold text-aroham-muted block">Date</span>
-                          <span className="font-bold text-aroham-heading mt-0.5 block">{event.date}</span>
+                          <span className="text-[10px] uppercase font-semibold text-aroham-muted block">Date</span>
+                          <span className="font-semibold text-aroham-heading mt-0.5 block">{event.date}</span>
                         </div>
                       )}
                       {event.time && (
                         <div>
-                          <span className="text-[10px] uppercase font-bold text-aroham-muted block">Time</span>
-                          <span className="font-bold text-aroham-heading mt-0.5 block">{event.time}</span>
+                          <span className="text-[10px] uppercase font-semibold text-aroham-muted block">Time</span>
+                          <span className="font-semibold text-aroham-heading mt-0.5 block">{event.time}</span>
                         </div>
                       )}
                     </div>
@@ -294,7 +294,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                       href={event.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-bold text-center transition-all shadow flex items-center justify-center gap-2"
+                      className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-semibold text-center transition-all shadow flex items-center justify-center gap-2"
                     >
                       <span>{event.linkText || 'Register for Event'}</span>
                       <ArrowUpRight size={14} />
@@ -302,7 +302,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                   ) : (
                     <button
                       onClick={() => onOpenRegister(event.title || event.name)}
-                      className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-bold text-center transition-all shadow flex items-center justify-center gap-2"
+                      className="w-full py-3 bg-aroham-dark hover:bg-aroham-forest text-white rounded-lg text-xs font-semibold text-center transition-all shadow flex items-center justify-center gap-2"
                     >
                       <span>{event.linkText || 'Register for Event'}</span>
                       <ArrowRight size={14} />
@@ -319,10 +319,10 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             </div>
 
             <div className="space-y-2">
-              <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold">
+              <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
                 Schedule Status
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold font-serif text-aroham-heading">
+              <h3 className="text-xl sm:text-2xl font-semibold font-serif text-aroham-heading">
                 No upcoming events at the moment. Stay connected for future updates.
               </h3>
               <p className="text-xs sm:text-sm text-aroham-body max-w-md mx-auto pt-1 leading-relaxed">
@@ -335,14 +335,14 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                 href="https://www.instagram.com/arohamfoundation?xtok=MWFnYWYyMDkwcHdpeQ=="
                 target="_blank"
                 rel="noreferrer"
-                className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-bold rounded-lg transition-all shadow flex items-center gap-2"
+                className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-xs font-semibold rounded-lg transition-all shadow flex items-center gap-2"
               >
                 <InstagramIcon size={14} />
                 <span>Follow on Instagram</span>
               </a>
               <button
                 onClick={onOpenGetInvolved}
-                className="px-5 py-2.5 bg-white hover:bg-aroham-sage text-aroham-dark border border-aroham-border text-xs font-bold rounded-lg transition-all shadow-sm flex items-center gap-1.5"
+                className="px-5 py-2.5 bg-white hover:bg-aroham-sage text-aroham-dark border border-aroham-border text-xs font-semibold rounded-lg transition-all shadow-sm flex items-center gap-1.5"
               >
                 <Mail size={14} />
                 <span>Stay Connected / Get Involved</span>
@@ -358,10 +358,10 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="text-xs font-extrabold uppercase tracking-[0.25em] text-aroham-gold mb-1">
+            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
               Chronological Archive (2026)
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading">
+            <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
               Past Events & Impact Milestones
             </h2>
             <p className="text-sm text-aroham-body mt-1 max-w-xl">
@@ -393,10 +393,10 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
             >
               {/* Left Date Column */}
               <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-start gap-3 lg:gap-1 border-b lg:border-b-0 lg:border-r border-aroham-border pb-4 lg:pb-0 lg:pr-6 shrink-0">
-                <span className="text-xs uppercase font-extrabold tracking-wider text-aroham-muted">
+                <span className="text-xs uppercase font-semibold tracking-wider text-aroham-muted">
                   {evt.month}
                 </span>
-                <span className="text-4xl sm:text-5xl font-extrabold font-serif text-aroham-dark">
+                <span className="text-4xl sm:text-5xl font-semibold font-serif text-aroham-dark">
                   {evt.day}
                 </span>
                 <div className="text-[11px] font-semibold text-aroham-forest/80 pt-1">
@@ -411,14 +411,14 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                   {evt.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2.5 py-0.5 rounded-full bg-aroham-amber-light text-aroham-gold text-[11px] font-bold border border-amber-200"
+                      className="px-2.5 py-0.5 rounded-full bg-aroham-amber-light text-aroham-gold text-[11px] font-semibold border border-amber-200"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="text-2xl font-bold font-serif text-aroham-heading">
+                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
                   {evt.title}
                 </h3>
 
@@ -431,7 +431,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                 {/* Panelists card for Event 1 */}
                 {evt.panelists && (
                   <div className="p-4 rounded-2xl bg-aroham-sage/40 border border-aroham-border space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-aroham-dark block">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-aroham-dark block">
                       Guest Speakers & Alumnae Panelists
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -449,21 +449,21 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                 {evt.launchStats && (
                   <div className="grid grid-cols-2 gap-4 max-w-md pt-2">
                     <div className="p-4 rounded-xl bg-aroham-mint/60 border border-aroham-border flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-aroham-dark text-white font-bold text-sm flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-aroham-dark text-white font-semibold text-sm flex items-center justify-center">
                         {evt.launchStats.students}
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-aroham-dark">Student Registrations</div>
+                        <div className="text-xs font-semibold text-aroham-dark">Student Registrations</div>
                         <div className="text-[10px] text-aroham-muted">{evt.launchStats.studentLabel}</div>
                       </div>
                     </div>
 
                     <div className="p-4 rounded-xl bg-aroham-amber-light border border-amber-200 flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-aroham-gold text-white font-bold text-sm flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-aroham-gold text-white font-semibold text-sm flex items-center justify-center">
                         {evt.launchStats.mentors}
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-aroham-dark">Matched Alumni Mentors</div>
+                        <div className="text-xs font-semibold text-aroham-dark">Matched Alumni Mentors</div>
                         <div className="text-[10px] text-aroham-muted">{evt.launchStats.mentorLabel}</div>
                       </div>
                     </div>
@@ -475,15 +475,15 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                   <div className="space-y-4 pt-2">
                     <div className="p-3.5 rounded-xl bg-white border border-aroham-border flex items-center justify-between max-w-md shadow-sm">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-aroham-dark text-white font-bold text-xs flex items-center justify-center">
+                        <div className="w-9 h-9 rounded-full bg-aroham-dark text-white font-semibold text-xs flex items-center justify-center">
                           {evt.speaker.initials}
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-aroham-heading">{evt.speaker.name}</div>
+                          <div className="text-xs font-semibold text-aroham-heading">{evt.speaker.name}</div>
                           <div className="text-[10px] text-aroham-muted">{evt.speaker.affiliation}</div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-bold text-aroham-forest bg-aroham-mint px-2 py-0.5 rounded-full border border-aroham-border">
+                      <span className="text-[10px] font-semibold text-aroham-forest bg-aroham-mint px-2 py-0.5 rounded-full border border-aroham-border">
                         {evt.speaker.tag}
                       </span>
                     </div>
@@ -512,16 +512,16 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                   <div className="p-4 rounded-xl bg-aroham-mint/40 border border-aroham-border flex items-center justify-between max-w-lg">
                     <div className="flex items-center gap-3">
                       <div className="flex -space-x-2">
-                        <span className="w-8 h-8 rounded-full bg-aroham-dark text-white text-[10px] font-bold flex items-center justify-center border-2 border-white">M1</span>
-                        <span className="w-8 h-8 rounded-full bg-aroham-forest text-white text-[10px] font-bold flex items-center justify-center border-2 border-white">M2</span>
-                        <span className="w-8 h-8 rounded-full bg-aroham-gold text-white text-[10px] font-bold flex items-center justify-center border-2 border-white">+7</span>
+                        <span className="w-8 h-8 rounded-full bg-aroham-dark text-white text-[10px] font-semibold flex items-center justify-center border-2 border-white">M1</span>
+                        <span className="w-8 h-8 rounded-full bg-aroham-forest text-white text-[10px] font-semibold flex items-center justify-center border-2 border-white">M2</span>
+                        <span className="w-8 h-8 rounded-full bg-aroham-gold text-white text-[10px] font-semibold flex items-center justify-center border-2 border-white">+7</span>
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-aroham-heading">{evt.onGroundMentors.count} {evt.onGroundMentors.label}</div>
+                        <div className="text-xs font-semibold text-aroham-heading">{evt.onGroundMentors.count} {evt.onGroundMentors.label}</div>
                         <div className="text-[10px] text-aroham-muted">{evt.onGroundMentors.sub}</div>
                       </div>
                     </div>
-                    <span className="text-[10px] font-bold text-aroham-forest bg-white px-2.5 py-1 rounded-full border border-aroham-border">
+                    <span className="text-[10px] font-semibold text-aroham-forest bg-white px-2.5 py-1 rounded-full border border-aroham-border">
                       {evt.onGroundMentors.tag}
                     </span>
                   </div>
@@ -561,7 +561,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-elevated">
           <div className="space-y-2 max-w-xl text-center md:text-left">
-            <h3 className="text-2xl sm:text-3xl font-bold font-serif">
+            <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
               Have an idea for a guidance session at your institution?
             </h3>
             <p className="text-xs sm:text-sm text-emerald-100">
@@ -570,7 +570,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           </div>
           <a
             href="mailto:arohamconnect@gmail.com?subject=Proposal%20for%20Guidance%20Session%20%2F%20Collaboration"
-            className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-bold tracking-wide transition-all shadow shrink-0 inline-flex items-center justify-center gap-2"
+            className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-semibold tracking-wide transition-all shadow shrink-0 inline-flex items-center justify-center gap-2"
           >
             <Mail size={15} />
             <span>Propose a Session / Connect With Us</span>

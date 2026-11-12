@@ -1,9 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ArohamLogo from './ArohamLogo';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, onOpenGetInvolved }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Prevent background page scrolling while mobile menu popup is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') setMobileMenuOpen(false);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { id: 'home', label: 'Home' },
@@ -74,44 +91,56 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Floating Popup Menu (overlays in front of all pages without pushing content) */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#F4F8F5] border-b border-aroham-border px-4 pt-3 pb-6 space-y-1.5 animate-fadeIn">
-          {navLinks.map((link) => {
-            const isActive = activePage === link.id;
-            return (
-              <button
-                key={link.id}
-                onClick={() => handleNavClick(link.id)}
-                className={`group block w-full text-left px-2 py-2.5 text-sm bg-transparent transition-colors duration-200 ${
-                  isActive
-                    ? 'text-aroham-dark font-bold'
-                    : 'text-aroham-body hover:text-aroham-dark font-semibold'
-                }`}
-              >
-                <span className="relative inline-block pb-1">
-                  {link.label}
-                  <span
-                    className={`absolute left-0 right-0 bottom-0 h-[2.5px] rounded-full bg-aroham-dark origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+        <>
+          {/* Dimmed backdrop overlay */}
+          <div
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 top-20 sm:top-24 z-40 bg-aroham-dark/35 backdrop-blur-sm md:hidden animate-fadeIn"
+            aria-hidden="true"
+          />
+
+          {/* Floating Popup Panel */}
+          <div className="md:hidden absolute top-full left-0 right-0 z-50 px-4 pt-2">
+            <div className="bg-[#F4F8F5] rounded-2xl border border-aroham-border shadow-popup px-4 pt-3 pb-5 space-y-1.5 animate-popup">
+              {navLinks.map((link) => {
+                const isActive = activePage === link.id;
+                return (
+                  <button
+                    key={link.id}
+                    onClick={() => handleNavClick(link.id)}
+                    className={`group block w-full text-left px-2 py-2.5 text-sm bg-transparent transition-colors duration-200 ${
+                      isActive
+                        ? 'text-aroham-dark font-bold'
+                        : 'text-aroham-body hover:text-aroham-dark font-semibold'
                     }`}
-                  />
-                </span>
-              </button>
-            );
-          })}
-          <div className="pt-2 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenGetInvolved();
-              }}
-              className="w-full py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-xl font-semibold text-sm text-center shadow-soft hover:shadow-elevated transition-all duration-200"
-            >
-              Get Involved
-            </button>
+                  >
+                    <span className="relative inline-block pb-1">
+                      {link.label}
+                      <span
+                        className={`absolute left-0 right-0 bottom-0 h-[2.5px] rounded-full bg-aroham-dark origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                          isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                        }`}
+                      />
+                    </span>
+                  </button>
+                );
+              })}
+              <div className="pt-2 flex flex-col gap-2">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenGetInvolved();
+                  }}
+                  className="w-full py-3 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-xl font-semibold text-sm text-center shadow-soft hover:shadow-elevated transition-all duration-200"
+                >
+                  Get Involved
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

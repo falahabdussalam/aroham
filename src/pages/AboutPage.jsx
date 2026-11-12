@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import strategicGatheringImg from '../assets/strategic_gathering.jpg';
+import aboutHeroImg from '../assets/about_hero.jpg';
 import Reveal from '../components/Reveal';
 import { 
   Flag, 
@@ -178,15 +179,15 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
       {/* =========================================================================
           HERO SECTION (Full-bleed Banner like reference)
           ========================================================================= */}
-      <section className="relative w-full min-h-[360px] sm:min-h-[430px] flex items-end overflow-hidden bg-aroham-dark">
+      <section className="relative w-full min-h-[380px] sm:min-h-[460px] flex items-end overflow-hidden bg-aroham-dark">
         {/* Background Image */}
         <img
-          src={strategicGatheringImg}
-          alt="Aroham Foundation Alumnae Gathering"
-          className="absolute inset-0 w-full h-full object-cover object-center scale-105"
+          src={aboutHeroImg}
+          alt="Aroham Foundation Alumnae and UniMates Team"
+          className="absolute inset-0 w-full h-full object-cover object-[center_55%]"
         />
         {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-aroham-dark/95 via-aroham-dark/70 to-aroham-dark/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-aroham-dark/95 via-aroham-dark/55 to-aroham-dark/25" />
 
         {/* Banner Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 sm:pt-36 sm:pb-14">

@@ -1,14 +1,10 @@
 import React from 'react';
 import { 
   ArrowRight, 
-  ArrowUpRight, 
   Building2, 
   Users, 
-  ShieldCheck, 
   BookOpen, 
-  Quote, 
-  TrendingUp, 
-  Mail 
+  Quote 
 } from 'lucide-react';
 
 export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCount = 10 }) {
@@ -179,102 +175,32 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
 
       {/* =========================================================================
-          QUOTE & MENTORSHIP GROWTH MAP
+          QUOTE & TESTIMONIAL SECTION
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          {/* Left Quote Section */}
-          <div className="lg:col-span-7 space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading leading-tight">
-              "When one alumna rises, she extends a hand to ten more."
-            </h2>
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h2 className="text-3xl sm:text-4xl font-bold font-serif text-aroham-heading leading-tight max-w-2xl mx-auto">
+            "When one alumna rises, she extends a hand to ten more."
+          </h2>
 
-            <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-xl">
-              Aroham Foundation bridges the transition from school corridors to global lecture halls. Our network of Bolster Girls Campus alumnae spans medicine, public policy, engineering, humanities, and social entrepreneurship, dedicated to nurturing each young woman's distinctive spark.
+          <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-3xl mx-auto">
+            Aroham Foundation bridges the transition from school corridors to global lecture halls.{' '}
+            <br className="hidden md:inline" />
+            Our network of Bolster Girls Campus alumnae spans medicine, public policy, engineering, humanities,{' '}
+            <br className="hidden md:inline" />
+            and social entrepreneurship, dedicated to nurturing each young woman's distinctive spark.
+          </p>
+
+          {/* Testimonial callout */}
+          <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft max-w-2xl mx-auto text-center space-y-2.5">
+            <Quote size={24} className="text-aroham-gold mx-auto opacity-70" />
+            <p className="text-xs sm:text-sm italic text-aroham-heading leading-relaxed">
+              "Having a mentor who walked the very same halls gave me the certainty I needed to apply for national merit fellowships. UniMates changed my trajectory."
             </p>
-
-            {/* Testimonial callout */}
-            <div className="p-5 rounded-2xl bg-white border border-aroham-border shadow-soft flex items-start gap-4 max-w-xl">
-              <Quote size={28} className="text-aroham-gold shrink-0 mt-1 opacity-70" />
-              <div>
-                <p className="text-xs sm:text-sm italic text-aroham-heading leading-relaxed">
-                  "Having a mentor who walked the very same halls gave me the certainty I needed to apply for national merit fellowships. UniMates changed my trajectory."
-                </p>
-                <span className="block text-[11px] font-bold text-aroham-muted uppercase tracking-wider mt-2">
-                  — Scholar Cohort '24
-                </span>
-              </div>
-            </div>
+            <span className="block text-[11px] font-bold text-aroham-muted uppercase tracking-wider">
+              — Scholar Cohort '24
+            </span>
           </div>
-
-          {/* Right Mentorship Growth Map Card */}
-          <div className="lg:col-span-5">
-            <div className="bg-white rounded-3xl p-8 shadow-soft border border-aroham-border space-y-6">
-              <div>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-bold font-serif text-aroham-heading">
-                    Mentorship Growth Map
-                  </h3>
-                  <TrendingUp size={18} className="text-aroham-forest" />
-                </div>
-                <p className="text-xs text-aroham-body mt-1">
-                  Distribution of student guidance pathways across universities and career tracks.
-                </p>
-              </div>
-
-              {/* Progress bars */}
-              <div className="space-y-4">
-                {/* STEM */}
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-semibold text-aroham-heading">
-                    <span>STEM & Technology Advancements</span>
-                    <span>42%</span>
-                  </div>
-                  <div className="w-full h-2.5 bg-aroham-sage rounded-full overflow-hidden">
-                    <div className="h-full bg-aroham-dark rounded-full w-[42%]" />
-                  </div>
-                </div>
-
-                {/* Humanities & Law */}
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-semibold text-aroham-heading">
-                    <span>Humanities, Law & Public Policy</span>
-                    <span>34%</span>
-                  </div>
-                  <div className="w-full h-2.5 bg-aroham-sage rounded-full overflow-hidden">
-                    <div className="h-full bg-aroham-gold rounded-full w-[34%]" />
-                  </div>
-                </div>
-
-                {/* Medicine & Biology */}
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-semibold text-aroham-heading">
-                    <span>Medicine, Healthcare & Biology</span>
-                    <span>24%</span>
-                  </div>
-                  <div className="w-full h-2.5 bg-aroham-sage rounded-full overflow-hidden">
-                    <div className="h-full bg-aroham-terracotta rounded-full w-[24%]" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Card Footer */}
-              <div className="pt-4 border-t border-aroham-border flex items-center justify-between text-xs">
-                <span className="flex items-center gap-1.5 text-aroham-forest font-semibold">
-                  <ShieldCheck size={15} />
-                  <span>100% Volunteer Driven</span>
-                </span>
-                <button
-                  onClick={() => setActivePage('about')}
-                  className="font-semibold text-aroham-dark hover:underline"
-                >
-                  Read Impact Report
-                </button>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
     </div>

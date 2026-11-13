@@ -50,8 +50,8 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isScrolled
-          ? 'pt-2.5 sm:pt-3.5 px-3 sm:px-6 lg:px-8 bg-transparent pointer-events-none'
-          : 'pt-0 px-0 bg-[#F4F8F5]/90 backdrop-blur-md border-b border-aroham-border/60 pointer-events-auto'
+          ? 'pt-2.5 sm:pt-3.5 px-3 sm:px-6 lg:px-8 bg-transparent border-b-0 border-transparent backdrop-blur-none shadow-none pointer-events-none'
+          : 'pt-0 px-0 bg-[#F4F8F5]/90 backdrop-blur-md border-b border-aroham-border/60 shadow-none pointer-events-auto'
       }`}
     >
       <div

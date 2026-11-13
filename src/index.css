@@ -88,6 +88,7 @@
 
 /* Hollow Outline Title Typography (Outline only, no inner fill) */
 .text-outline-title {
+  font-family: 'Poppins', sans-serif !important;
   color: transparent !important;
   -webkit-text-stroke: 1.5px #0D2B22;
   text-stroke: 1.5px #0D2B22;

@@ -34,6 +34,7 @@ export default {
         sans: ['"Montserrat"', 'sans-serif'],
         serif: ['"Montserrat"', 'sans-serif'],
         montserrat: ['"Montserrat"', 'sans-serif'],
+        poppins: ['"Poppins"', 'sans-serif'],
       },
       boxShadow: {
         'soft': '0 4px 20px -2px rgba(11, 59, 44, 0.05), 0 2px 6px -1px rgba(11, 59, 44, 0.03)',

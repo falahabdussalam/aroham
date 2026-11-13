@@ -37,10 +37,16 @@ const MOSAIC_TILES = (() => {
 
 export default function AboutMosaicBanner() {
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#F59E0B] shadow-elevated">
+    <section className="relative w-full overflow-hidden shadow-elevated">
+      {/* Background Gradient Layer with 75% Opacity on Mobile */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#F59E0B] opacity-75 sm:opacity-100 pointer-events-none" 
+        aria-hidden="true" 
+      />
+
       {/* Background Soft Glow Accents */}
       <div 
-        className="absolute top-1/2 right-[15%] -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-amber-300/25 blur-3xl pointer-events-none -z-0" 
+        className="absolute top-1/2 right-[15%] -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-amber-300/25 blur-3xl pointer-events-none z-0" 
         aria-hidden="true" 
       />
 

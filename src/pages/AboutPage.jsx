@@ -216,15 +216,15 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Narrative Column */}
-          <Reveal variant="right" delay={100} className="lg:col-span-6 flex flex-col justify-between space-y-4 sm:space-y-5 text-aroham-body text-sm sm:text-base tracking-tight">
+          <Reveal variant="right" delay={100} className="lg:col-span-6 flex flex-col justify-start space-y-3 sm:space-y-3.5 text-aroham-body text-sm sm:text-base tracking-tight">
             <p className="text-base sm:text-lg text-aroham-heading font-medium leading-relaxed tracking-tight">
               Aroham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
             </p>
 
             {/* Turning Point Callout - Modern Glassmorphic Milestone Card */}
-            <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-6 bg-gradient-to-br from-amber-50/70 via-white to-amber-100/30 border border-amber-200/90 shadow-soft hover:shadow-elevated hover:border-amber-400 transition-all duration-500 hover:-translate-y-1">
+            <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl p-4 sm:p-5 bg-gradient-to-br from-amber-50/70 via-white to-amber-100/30 border border-amber-200/90 shadow-soft hover:shadow-elevated hover:border-amber-400 transition-all duration-500 hover:-translate-y-1">
               {/* Dynamic Light Sweep / Shine Overlay Effect */}
               <div 
                 className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
@@ -264,9 +264,9 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </Reveal>
 
           {/* Right Image Column - Perfectly Aligned in Same Position and Height */}
-          <Reveal variant="left" delay={180} className="lg:col-span-6 flex flex-col h-full">
-            <div className="group relative h-full min-h-[340px] sm:min-h-[420px] p-2.5 sm:p-3 bg-white rounded-2xl sm:rounded-3xl shadow-soft hover:shadow-elevated border border-slate-200/90 transition-all duration-500 hover:-translate-y-1 overflow-hidden flex flex-col">
-              <div className="relative flex-1 w-full h-full min-h-[320px] sm:min-h-[400px] overflow-hidden rounded-xl sm:rounded-2xl bg-slate-100">
+          <Reveal variant="left" delay={180} className="lg:col-span-6 flex flex-col justify-center">
+            <div className="group relative w-full h-[320px] sm:h-[360px] lg:h-[380px] p-2.5 sm:p-3 bg-white rounded-2xl sm:rounded-3xl shadow-soft hover:shadow-elevated border border-slate-200/90 transition-all duration-500 hover:-translate-y-1 overflow-hidden flex flex-col">
+              <div className="relative flex-1 w-full h-full overflow-hidden rounded-xl sm:rounded-2xl bg-slate-100">
                 {/* Dynamic Light Sweep / Shine Overlay Effect */}
                 <div 
                   className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"

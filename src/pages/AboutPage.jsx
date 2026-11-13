@@ -207,7 +207,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal variant="up" className="mb-3 sm:mb-4">
-          <h2 className="text-3xl sm:text-4xl font-semibold font-poppins text-outline-title tracking-wider">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-montserrat text-aroham-heading tracking-tight">
             From Sisterhood to Sustained Impact
           </h2>
         </Reveal>

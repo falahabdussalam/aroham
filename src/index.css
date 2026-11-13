@@ -86,22 +86,6 @@
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-/* Hollow Outline Title Typography (Outline only, no inner fill) */
-.text-outline-title {
-  font-family: 'Poppins', sans-serif !important;
-  color: transparent !important;
-  -webkit-text-stroke: 1.5px #0D2B22;
-  text-stroke: 1.5px #0D2B22;
-  letter-spacing: 0.04em;
-}
-
-@media (min-width: 640px) {
-  .text-outline-title {
-    -webkit-text-stroke: 1.8px #0D2B22;
-    text-stroke: 1.8px #0D2B22;
-    letter-spacing: 0.05em;
-  }
-}
 
 /* Bidirectional Scroll Overlay & Pull-Up / Push-Down Section Transitions */
 .scroll-overlay-section {

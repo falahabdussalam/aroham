@@ -218,13 +218,13 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Left Narrative Column */}
-          <Reveal variant="right" delay={100} className="lg:col-span-6 flex flex-col justify-between space-y-5 text-aroham-body leading-relaxed text-sm sm:text-base">
-            <p className="text-base sm:text-lg text-aroham-heading font-medium leading-relaxed">
+          <Reveal variant="right" delay={100} className="lg:col-span-6 flex flex-col justify-between space-y-4 sm:space-y-5 text-aroham-body text-sm sm:text-base tracking-tight">
+            <p className="text-base sm:text-lg text-aroham-heading font-medium leading-relaxed tracking-tight">
               Aroham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
             </p>
 
             {/* Turning Point Callout - Modern Glassmorphic Milestone Card */}
-            <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-7 bg-gradient-to-br from-amber-50/70 via-white to-amber-100/30 border border-amber-200/90 shadow-soft hover:shadow-elevated hover:border-amber-400 transition-all duration-500 hover:-translate-y-1">
+            <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-6 bg-gradient-to-br from-amber-50/70 via-white to-amber-100/30 border border-amber-200/90 shadow-soft hover:shadow-elevated hover:border-amber-400 transition-all duration-500 hover:-translate-y-1">
               {/* Dynamic Light Sweep / Shine Overlay Effect */}
               <div 
                 className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
@@ -248,17 +248,17 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               {/* Card Content */}
               <div className="relative z-10">
                 {/* Narrative Text with Refined Typography */}
-                <p className="text-xs sm:text-sm text-aroham-heading leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-aroham-heading leading-relaxed font-normal tracking-tight">
                   The idea took shape at the <strong className="font-semibold text-aroham-dark">Bolster Girls Campus Alumni Meet</strong> on 12–13 July 2025. Casual conversations quickly grew into a collective movement. An executive committee was formed, and formal planning began.
                 </p>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+            <p className="text-xs sm:text-sm text-aroham-body leading-relaxed tracking-tight">
               From August to October 2025, the team finalised Aroham's name, logo, vision, and mission. Earlier, on 29 July 2025, the official Instagram page went live to unite the wider alumni network.
             </p>
 
-            <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+            <p className="text-xs sm:text-sm text-aroham-body leading-relaxed tracking-tight">
               On 22 October 2025, Aroham launched its awareness campaign to share its mission publicly. From 25–29 December 2025, a strategic planning summit at HiLite Mall, Kozhikode set the roadmap ahead.
             </p>
           </Reveal>

@@ -9,7 +9,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
   // Monitor scroll position to apply curved glassmorphic floating header
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -47,24 +47,18 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
   };
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isScrolled
-          ? 'pt-2.5 sm:pt-3.5 px-3 sm:px-6 lg:px-8 bg-transparent border-b-0 border-transparent backdrop-blur-none shadow-none pointer-events-none'
-          : 'pt-0 px-0 bg-[#F4F8F5]/90 backdrop-blur-md border-b border-aroham-border/60 shadow-none pointer-events-auto'
-      }`}
-    >
+    <header className="sticky top-0 z-50 w-full pt-2.5 sm:pt-3.5 px-3 sm:px-6 lg:px-8 bg-transparent border-none backdrop-blur-none pointer-events-none transition-all duration-300">
       <div
-        className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto ${
+        className={`max-w-7xl mx-auto h-16 sm:h-[4.25rem] px-5 sm:px-8 rounded-2xl sm:rounded-full flex items-center justify-between pointer-events-auto transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled
-            ? 'h-16 sm:h-[4.25rem] px-5 sm:px-8 rounded-2xl sm:rounded-full bg-white/80 backdrop-blur-xl border border-white/80 shadow-[0_12px_36px_-6px_rgba(13,43,34,0.1),0_4px_12px_-2px_rgba(13,43,34,0.05)] ring-1 ring-emerald-950/5'
-            : 'h-20 sm:h-24 px-4 sm:px-6 lg:px-8 rounded-none bg-transparent border-transparent shadow-none ring-0'
+            ? 'bg-white/85 backdrop-blur-xl border border-white/80 shadow-[0_12px_36px_-6px_rgba(13,43,34,0.12),0_4px_12px_-2px_rgba(13,43,34,0.05)] ring-1 ring-emerald-950/5'
+            : 'bg-transparent border border-transparent shadow-none ring-0'
         }`}
       >
         {/* Brand with hover popup transition & adaptive scroll scale */}
         <div
-          className={`transform transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            isScrolled ? 'scale-[0.92] sm:scale-95 origin-left' : 'scale-100 origin-left'
+          className={`transform transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            isScrolled ? 'scale-[0.93] sm:scale-95 origin-left' : 'scale-100 origin-left'
           } hover:scale-105 active:scale-95`}
         >
           <ArohamLogo size="header" onClick={() => handleNavClick('home')} />
@@ -100,9 +94,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={onOpenGetInvolved}
-            className={`px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-sm font-semibold shadow-soft hover:shadow-elevated transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform hover:-translate-y-0.5 hover:scale-105 active:scale-95 active:translate-y-0 flex items-center gap-1.5 ${
-              isScrolled ? 'rounded-full' : 'rounded-xl'
-            }`}
+            className="px-5 py-2.5 bg-aroham-dark hover:bg-aroham-forest text-white text-sm font-semibold rounded-full shadow-soft hover:shadow-elevated transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform hover:-translate-y-0.5 hover:scale-105 active:scale-95 active:translate-y-0 flex items-center gap-1.5"
           >
             <span>Get Involved</span>
           </button>
@@ -112,7 +104,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
         <div className="md:hidden flex items-center gap-2">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl text-aroham-dark hover:bg-white hover:shadow-soft transition-all duration-200 transform hover:scale-105 active:scale-95"
+            className="p-2 rounded-xl text-aroham-dark hover:bg-white/80 hover:shadow-soft transition-all duration-200 transform hover:scale-105 active:scale-95"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -131,11 +123,7 @@ export default function Navbar({ activePage, setActivePage, onOpenGetInvolved })
           />
 
           {/* Floating Popup Panel */}
-          <div
-            className={`md:hidden absolute top-full left-0 right-0 z-50 transition-all duration-300 pointer-events-auto ${
-              isScrolled ? 'px-3 sm:px-6 pt-2' : 'px-4 pt-2'
-            }`}
-          >
+          <div className="md:hidden absolute top-full left-0 right-0 z-50 pointer-events-auto px-3 sm:px-6 pt-2">
             <div className="bg-white/95 backdrop-blur-xl rounded-2xl border border-white/80 shadow-popup px-4 pt-3 pb-5 space-y-1.5 animate-popup">
               {navLinks.map((link) => {
                 const isActive = activePage === link.id;

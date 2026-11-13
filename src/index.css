@@ -136,6 +136,46 @@
   will-change: transform;
 }
 
+/* Slowly Blinking Digital Mosaic Tile Animations (About Page Center Banner) */
+@keyframes mosaicTilePulseSlow {
+  0%, 100% {
+    opacity: 0.16;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.92;
+    transform: scale(1.05);
+  }
+}
+
+.mosaic-box-1 {
+  animation: mosaicTilePulseSlow 4.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
+.mosaic-box-2 {
+  animation: mosaicTilePulseSlow 5.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
+.mosaic-box-3 {
+  animation: mosaicTilePulseSlow 3.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
+.mosaic-box-4 {
+  animation: mosaicTilePulseSlow 6.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -144,6 +184,10 @@
   .hero-reveal,
   .reveal,
   .scroll-overlay-section,
+  .mosaic-box-1,
+  .mosaic-box-2,
+  .mosaic-box-3,
+  .mosaic-box-4,
   .animate-float-slow,
   .animate-float-reverse,
   .animate-float-drift {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import strategicGatheringImg from '../assets/strategic_gathering.jpg';
 import aboutHeroImg from '../assets/about_hero.jpg';
 import Reveal from '../components/Reveal';
+import AboutMosaicBanner from '../components/AboutMosaicBanner';
 import { 
   Flag, 
   Eye, 
@@ -326,6 +327,11 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ))}
         </div>
       </section>
+
+      {/* =========================================================================
+          CENTER QUOTE BANNER WITH ORANGE MOSAIC BACKGROUND
+          ========================================================================= */}
+      <AboutMosaicBanner />
 
       {/* =========================================================================
           OUR GUIDING LIGHT: MISSION & VISION

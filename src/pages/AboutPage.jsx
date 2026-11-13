@@ -260,15 +260,30 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
 
           {/* Right Cards & Visual Evidence */}
           <Reveal variant="left" delay={180} className="lg:col-span-5 space-y-6">
-            {/* Photo Card */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-soft border border-aroham-border">
-              <div className="relative w-full">
+            {/* Gallery-Framed Photo Card */}
+            <div className="group relative p-2 sm:p-2.5 bg-white rounded-2xl sm:rounded-3xl shadow-soft hover:shadow-elevated border border-slate-200/90 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[4/3] bg-slate-100">
+                {/* Dynamic Light Sweep / Shine Overlay Effect */}
+                <div 
+                  className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                  aria-hidden="true"
+                />
+
+                {/* Main Photo with Smooth Hover Zoom */}
                 <img
                   src={strategicGatheringImg}
-                  alt="Bolster Summer Camp & Aroham Gathering"
-                  className="w-full h-auto object-cover block"
+                  alt="Aroham Alumnae Academic & Career Guidance Session"
+                  className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
                 />
-                <span className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 px-2.5 sm:px-3 py-1 rounded-full bg-aroham-dark/85 text-white text-[10px] sm:text-[11px] font-medium backdrop-blur-sm shadow-sm">
+
+                {/* Subtle Bottom Vignette Gradient */}
+                <div 
+                  className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none z-10"
+                  aria-hidden="true"
+                />
+
+                {/* Location / Event Badge Pill */}
+                <span className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 z-20 px-3 py-1.5 rounded-full bg-aroham-dark/90 text-white text-[11px] sm:text-xs font-medium backdrop-blur-md border border-white/20 shadow-md">
                   📍 Bolster Girls Campus, Kerala
                 </span>
               </div>

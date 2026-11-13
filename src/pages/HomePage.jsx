@@ -1,9 +1,9 @@
 import React from 'react';
-import { 
-  ArrowRight, 
-  Building2, 
-  Users, 
-  BookOpen 
+import {
+  ArrowRight,
+  Building2,
+  Users,
+  BookOpen
 } from 'lucide-react';
 import Reveal from '../components/Reveal';
 
@@ -27,7 +27,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
                 el.muted = true;
                 el.setAttribute('playsinline', '');
                 el.setAttribute('webkit-playsinline', '');
-                el.play().catch(() => {});
+                el.play().catch(() => { });
               }
             }}
             className="absolute inset-0 w-full h-full object-cover"
@@ -110,7 +110,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {/* Pillar 1: Aroham Foundation */}
           <Reveal variant="up" delay={0} className="h-full">
-            <div 
+            <div
               role="button"
               tabIndex={0}
               onClick={() => setActivePage('about')}
@@ -118,19 +118,19 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               className="group relative h-full rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-white via-[#FAFBF9] to-emerald-50/40 border border-emerald-950/10 shadow-soft hover:shadow-elevated hover:border-emerald-600/40 transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-pointer"
             >
               {/* Dynamic Light Sweep / Shine Overlay Effect */}
-              <div 
+              <div
                 className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
                 aria-hidden="true"
               />
 
               {/* Ambient Radial Glow on Hover */}
-              <div 
+              <div
                 className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-emerald-400/15 blur-3xl opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
                 aria-hidden="true"
               />
 
               {/* Subtle Decorative Background Watermark */}
-              <div 
+              <div
                 className="pointer-events-none absolute -bottom-6 -right-6 text-emerald-900/[0.04] group-hover:text-emerald-900/[0.08] group-hover:scale-110 group-hover:-rotate-3 transition-all duration-700 z-0 select-none"
                 aria-hidden="true"
               >
@@ -187,11 +187,10 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
                 </ul>
               </div>
 
-              {/* Bottom Interactive Action Footer */}
-              <div className="relative z-10 mt-8 pt-5 border-t border-emerald-950/10 flex items-center justify-between text-xs sm:text-sm font-semibold text-aroham-forest group-hover:text-emerald-700 transition-colors">
-                <span className="tracking-wide">Explore Foundation Story & Ethos</span>
-                <div className="w-9 h-9 rounded-full bg-emerald-100/60 border border-emerald-200/80 text-aroham-forest flex items-center justify-center group-hover:bg-aroham-forest group-hover:text-white group-hover:translate-x-1 transition-all duration-300 shadow-xs">
-                  <ArrowRight size={16} strokeWidth={2.2} />
+              {/* Bottom Action Button */}
+              <div className="relative z-10 mt-8 pt-5 border-t border-emerald-950/10 flex items-center justify-end">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-aroham-dark to-emerald-900 text-white shadow-soft group-hover:shadow-elevated group-hover:scale-105 group-hover:from-emerald-700 group-hover:to-emerald-800 transition-all duration-300 flex items-center justify-center border border-white/20 group-hover:ring-4 group-hover:ring-emerald-500/20">
+                  <ArrowRight size={20} strokeWidth={2.2} className="group-hover:translate-x-0.5 transition-transform duration-300" />
                 </div>
               </div>
             </div>
@@ -199,7 +198,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
           {/* Pillar 2: Aroham UniMates */}
           <Reveal variant="up" delay={140} className="h-full">
-            <div 
+            <div
               role="button"
               tabIndex={0}
               onClick={() => setActivePage('unimates')}
@@ -207,19 +206,19 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               className="group relative h-full rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-white via-[#FAF8F5] to-amber-50/40 border border-amber-950/10 shadow-soft hover:shadow-elevated hover:border-amber-600/40 transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-pointer"
             >
               {/* Dynamic Light Sweep / Shine Overlay Effect */}
-              <div 
+              <div
                 className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
                 aria-hidden="true"
               />
 
               {/* Ambient Radial Glow on Hover */}
-              <div 
+              <div
                 className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-amber-400/15 blur-3xl opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
                 aria-hidden="true"
               />
 
               {/* Subtle Decorative Background Watermark */}
-              <div 
+              <div
                 className="pointer-events-none absolute -bottom-6 -right-6 text-amber-900/[0.04] group-hover:text-amber-900/[0.08] group-hover:scale-110 group-hover:rotate-3 transition-all duration-700 z-0 select-none"
                 aria-hidden="true"
               >
@@ -276,11 +275,10 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
                 </ul>
               </div>
 
-              {/* Bottom Interactive Action Footer */}
-              <div className="relative z-10 mt-8 pt-5 border-t border-amber-950/10 flex items-center justify-between text-xs sm:text-sm font-semibold text-aroham-gold group-hover:text-amber-700 transition-colors">
-                <span className="tracking-wide">Explore 1:1 Mentorship Journey</span>
-                <div className="w-9 h-9 rounded-full bg-amber-100/60 border border-amber-200/80 text-aroham-gold flex items-center justify-center group-hover:bg-aroham-gold group-hover:text-white group-hover:translate-x-1 transition-all duration-300 shadow-xs">
-                  <ArrowRight size={16} strokeWidth={2.2} />
+              {/* Bottom Action Button */}
+              <div className="relative z-10 mt-8 pt-5 border-t border-amber-950/10 flex items-center justify-end">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-aroham-gold to-amber-600 text-white shadow-soft group-hover:shadow-elevated group-hover:scale-105 group-hover:from-amber-500 group-hover:to-amber-600 transition-all duration-300 flex items-center justify-center border border-white/20 group-hover:ring-4 group-hover:ring-amber-500/20">
+                  <ArrowRight size={20} strokeWidth={2.2} className="group-hover:translate-x-0.5 transition-transform duration-300" />
                 </div>
               </div>
             </div>
@@ -341,15 +339,15 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center space-y-4">
               <Reveal variant="up" delay={0}>
-              <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading leading-tight max-w-2xl mx-auto">
-                "When one alumna rises, she extends a hand to ten more."
-              </h2>
+                <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading leading-tight max-w-2xl mx-auto">
+                  "When one alumna rises, she extends a hand to ten more."
+                </h2>
               </Reveal>
 
               <Reveal variant="up" delay={100}>
-              <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[760px] mx-auto text-center">
-                Aroham Foundation guides students from school corridors to global universities. Our Bolster Girls Campus alumnae work across medicine, policy, engineering, humanities, and social impact to help every young woman thrive.
-              </p>
+                <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[760px] mx-auto text-center">
+                  Aroham Foundation guides students from school corridors to global universities. Our Bolster Girls Campus alumnae work across medicine, policy, engineering, humanities, and social impact to help every young woman thrive.
+                </p>
               </Reveal>
             </div>
           </div>

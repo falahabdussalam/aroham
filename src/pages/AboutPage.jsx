@@ -13,6 +13,7 @@ import {
   Heart,
   Sparkles,
   Calendar,
+  ArrowUpRight,
   X
 } from 'lucide-react';
 
@@ -488,39 +489,78 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           OUR COMMITTEE
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
+        <Reveal variant="up" className="mb-8 sm:mb-10">
+          <h2 className="text-3xl sm:text-4xl font-semibold font-montserrat text-aroham-heading tracking-tight">
             Our Committee
           </h2>
-        </div>
+          <p className="text-sm sm:text-base text-aroham-body mt-2 max-w-2xl tracking-tight">
+            Dedicated Bolster Girls Campus alumnae steering Aroham's academic guidance, community initiatives, and sustainable impact.
+          </p>
+        </Reveal>
 
-        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3.5 lg:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5 lg:gap-6">
           {committee.map((member, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-aroham-border shadow-soft group hover:shadow-elevated transition-all duration-200 flex flex-col justify-between"
-            >
-              <div 
-                className="relative aspect-[4/5] sm:h-64 md:h-72 w-full overflow-hidden bg-aroham-sage cursor-pointer shrink-0"
-                onClick={() => {
-                  setSelectedPoster(member);
-                }}
+            <Reveal key={member.id || idx} variant="up" delay={Math.min(idx * 50, 350)}>
+              <div
+                onClick={() => setSelectedPoster(member)}
+                className="group relative bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 hover:border-aroham-forest/35 shadow-soft hover:shadow-elevated transition-all duration-500 ease-out hover:-translate-y-1.5 cursor-pointer flex flex-col overflow-hidden h-full"
               >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover object-top md:group-hover:scale-105 transition-transform duration-300"
-                />
+                {/* Image Container with Subtle Vignette & Natural Hover Scale */}
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-100 shrink-0">
+                  <div 
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" 
+                    aria-hidden="true"
+                  />
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 ease-out block"
+                  />
+
+                  {/* Role Category Pill */}
+                  <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-20">
+                    <span className={`inline-flex items-center px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium tracking-tight shadow-xs backdrop-blur-md ${
+                      member.role === 'President'
+                        ? 'bg-aroham-dark/95 text-white'
+                        : member.role === 'General Secretary'
+                        ? 'bg-aroham-forest/95 text-white'
+                        : member.role === 'Finance Secretary'
+                        ? 'bg-[#c28424]/95 text-white'
+                        : 'bg-white/90 text-aroham-heading border border-slate-200/80'
+                    }`}>
+                      {member.role}
+                    </span>
+                  </div>
+
+                  {/* Desktop Hover Affordance */}
+                  <div className="absolute bottom-3 right-3 z-20 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-aroham-heading text-xs font-medium shadow-md backdrop-blur-sm">
+                    <Eye size={13} className="text-aroham-forest" />
+                    <span>View Poster</span>
+                  </div>
+                </div>
+
+                {/* Member Details */}
+                <div className="p-3.5 sm:p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-sm sm:text-base md:text-lg font-semibold font-montserrat text-aroham-heading tracking-tight group-hover:text-aroham-forest transition-colors duration-200 leading-snug">
+                      {member.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-medium text-aroham-forest/90 mt-0.5 tracking-tight">
+                      {member.role}
+                    </p>
+                  </div>
+
+                  {/* Footer Attribution & Action Indicator */}
+                  <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-xs text-aroham-body/75">
+                    <span className="truncate text-[11px] sm:text-xs tracking-tight">Bolster Alumnae</span>
+                    <div className="w-6 h-6 rounded-full bg-slate-50 group-hover:bg-aroham-forest group-hover:text-white text-aroham-body flex items-center justify-center transition-all duration-300 shrink-0">
+                      <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="p-2 sm:p-3 md:p-5 flex-1 flex flex-col justify-center">
-                <h4 className="text-[11px] sm:text-sm md:text-base font-semibold font-serif text-aroham-heading leading-snug line-clamp-1 sm:line-clamp-none">
-                  {member.name}
-                </h4>
-                <p className="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-semibold tracking-wider text-aroham-forest mt-0.5 sm:mt-1 truncate">
-                  {member.role}
-                </p>
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 

@@ -139,16 +139,9 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
               {/* Card Main Body */}
               <div className="relative z-10 space-y-6">
-                {/* Top Badge & Icon Row */}
-                <div className="flex items-center justify-between gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-100/60 text-aroham-dark border border-emerald-200/80 shadow-xs flex items-center justify-center group-hover:bg-aroham-dark group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    <Building2 size={26} strokeWidth={2.2} />
-                  </div>
-
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-emerald-50 text-aroham-forest border border-emerald-200/70 shadow-2xs">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-                    Non-Profit
-                  </span>
+                {/* Top Icon */}
+                <div className="w-14 h-14 rounded-2xl bg-emerald-100/60 text-aroham-dark border border-emerald-200/80 shadow-xs flex items-center justify-center group-hover:bg-aroham-dark group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Building2 size={26} strokeWidth={2.2} />
                 </div>
 
                 {/* Headings & Narrative */}
@@ -235,16 +228,9 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
               {/* Card Main Body */}
               <div className="relative z-10 space-y-6">
-                {/* Top Badge & Icon Row */}
-                <div className="flex items-center justify-between gap-4">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-100/60 text-aroham-gold border border-amber-200/80 shadow-xs flex items-center justify-center group-hover:bg-aroham-gold group-hover:text-white group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
-                    <Users size={26} strokeWidth={2.2} />
-                  </div>
-
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-amber-50 text-aroham-gold border border-amber-200/70 shadow-2xs">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
-                    Mentorship Hub
-                  </span>
+                {/* Top Icon */}
+                <div className="w-14 h-14 rounded-2xl bg-amber-100/60 text-aroham-gold border border-amber-200/80 shadow-xs flex items-center justify-center group-hover:bg-aroham-gold group-hover:text-white group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
+                  <Users size={26} strokeWidth={2.2} />
                 </div>
 
                 {/* Headings & Narrative */}

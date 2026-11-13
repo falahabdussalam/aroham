@@ -12,7 +12,7 @@ import {
   Award, 
   TrendingUp,
   Heart,
-  Lightbulb,
+  Sparkles,
   X
 } from 'lucide-react';
 
@@ -219,15 +219,61 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               Aroham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
             </p>
 
-            {/* Turning Point Callout */}
-            <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft space-y-2 border-l-4 border-l-aroham-gold">
-              <div className="flex items-center gap-2 text-xs font-semibold text-aroham-gold uppercase tracking-wide">
-                <Lightbulb size={16} />
-                <span>The Turning Point at Alumni Meet</span>
+            {/* Turning Point Callout - Modern Glassmorphic Milestone Card */}
+            <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-7 bg-gradient-to-br from-amber-50/70 via-white to-amber-100/30 border border-amber-200/90 shadow-soft hover:shadow-elevated hover:border-amber-400 transition-all duration-500 hover:-translate-y-1">
+              {/* Dynamic Light Sweep / Shine Overlay Effect */}
+              <div 
+                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                aria-hidden="true"
+              />
+
+              {/* Ambient Radial Glow on Hover */}
+              <div 
+                className="pointer-events-none absolute -top-16 -right-16 w-64 h-64 rounded-full bg-amber-400/20 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+                aria-hidden="true"
+              />
+
+              {/* Subtle Decorative Background Watermark */}
+              <div 
+                className="pointer-events-none absolute -bottom-4 -right-4 text-amber-900/[0.04] group-hover:text-amber-900/[0.08] group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 z-0 select-none"
+                aria-hidden="true"
+              >
+                <Sparkles size={110} strokeWidth={1.2} />
               </div>
-              <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                The idea took shape at the Bolster Girls Campus Alumni Meet on 12–13 July 2025. Casual conversations quickly grew into a collective movement. An executive committee was formed, and formal planning began.
-              </p>
+
+              {/* Card Content */}
+              <div className="relative z-10 space-y-4">
+                {/* Header Tag Pill with Pulsing Dot */}
+                <div className="flex items-center justify-between gap-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100/80 text-amber-900 border border-amber-300/80 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
+                    <span>The Turning Point • 12–13 July 2025</span>
+                  </div>
+
+                  <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-amber-800/80 uppercase tracking-wider">
+                    <Calendar size={13} className="text-amber-600" />
+                    Alumni Meet
+                  </span>
+                </div>
+
+                {/* Narrative Text with Refined Typography */}
+                <p className="text-xs sm:text-sm text-aroham-heading leading-relaxed font-normal">
+                  The idea took shape at the <strong className="font-semibold text-aroham-dark">Bolster Girls Campus Alumni Meet</strong> on 12–13 July 2025. Casual conversations quickly grew into a collective movement. An executive committee was formed, and formal planning began.
+                </p>
+
+                {/* Micro-Badges Row */}
+                <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-amber-200/60 text-[11px] font-medium text-amber-900/80">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/80 border border-amber-200/70 shadow-2xs">
+                    📍 Bolster Girls Campus
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/80 border border-amber-200/70 shadow-2xs">
+                    🌱 Executive Committee
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/80 border border-amber-200/70 shadow-2xs">
+                    ✨ Collective Movement
+                  </span>
+                </div>
+              </div>
             </div>
 
             <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">

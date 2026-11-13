@@ -447,18 +447,31 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {/* Card 1: GCC Session */}
-          <div className="bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-5">
-            <div className="space-y-4">
+          <div className="group relative bg-gradient-to-br from-white via-[#FAFBF9] to-emerald-50/40 rounded-3xl p-8 border border-emerald-950/10 shadow-soft hover:shadow-elevated hover:border-emerald-600/40 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between space-y-6 overflow-hidden">
+            {/* Dynamic Light Sweep / Shine Overlay Effect */}
+            <div 
+              className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+              aria-hidden="true"
+            />
+
+            {/* Ambient Radial Glow on Hover */}
+            <div 
+              className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-emerald-400/15 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+              aria-hidden="true"
+            />
+
+            <div className="relative z-10 space-y-4">
               <div className="flex items-center justify-between text-xs">
-                <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold font-semibold border border-amber-200">
-                  ✔ Concluded Session
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-aroham-forest font-semibold border border-emerald-200/80 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                  Concluded Session
                 </span>
-                <span className="text-aroham-muted font-semibold">GCC Region</span>
+                <span className="text-aroham-muted font-semibold tracking-wide uppercase text-[11px]">GCC Region</span>
               </div>
               <div className="space-y-2">
-                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
+                <h3 className="text-2xl font-semibold font-serif text-aroham-heading group-hover:text-aroham-forest transition-colors duration-300">
                   GCC Higher Education Guidance Session
                 </h3>
                 <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
@@ -467,25 +480,38 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               </div>
             </div>
 
-            <div className="pt-4 border-t border-aroham-border flex items-center justify-between text-xs font-semibold text-aroham-forest">
+            <div className="relative z-10 pt-4 border-t border-emerald-950/10 flex items-center justify-between text-xs font-semibold text-aroham-forest">
               <span className="flex items-center gap-1.5">
-                <Calendar size={14} /> 18 April 2026
+                <Calendar size={14} className="text-aroham-forest" /> 18 April 2026
               </span>
-              <span>Virtual Webinar</span>
+              <span className="px-2.5 py-0.5 rounded-md bg-emerald-100/60 text-aroham-dark">Virtual Webinar</span>
             </div>
           </div>
 
           {/* Card 2: UK Session */}
-          <div className="bg-white rounded-3xl p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-5">
-            <div className="space-y-4">
+          <div className="group relative bg-gradient-to-br from-white via-[#FAF8F5] to-amber-50/40 rounded-3xl p-8 border border-amber-950/10 shadow-soft hover:shadow-elevated hover:border-amber-600/40 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between space-y-6 overflow-hidden">
+            {/* Dynamic Light Sweep / Shine Overlay Effect */}
+            <div 
+              className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+              aria-hidden="true"
+            />
+
+            {/* Ambient Radial Glow on Hover */}
+            <div 
+              className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-amber-400/15 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+              aria-hidden="true"
+            />
+
+            <div className="relative z-10 space-y-4">
               <div className="flex items-center justify-between text-xs">
-                <span className="px-3 py-1 rounded-full bg-amber-100 text-aroham-gold font-semibold border border-amber-200">
-                  ✔ Concluded Session
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-aroham-gold font-semibold border border-amber-200/80 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                  Concluded Session
                 </span>
-                <span className="text-aroham-muted font-semibold">United Kingdom</span>
+                <span className="text-aroham-muted font-semibold tracking-wide uppercase text-[11px]">United Kingdom</span>
               </div>
               <div className="space-y-2">
-                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
+                <h3 className="text-2xl font-semibold font-serif text-aroham-heading group-hover:text-aroham-gold transition-colors duration-300">
                   UK Higher Education Guidance Session
                 </h3>
                 <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
@@ -494,11 +520,11 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
               </div>
             </div>
 
-            <div className="pt-4 border-t border-aroham-border flex items-center justify-between text-xs font-semibold text-aroham-forest">
+            <div className="relative z-10 pt-4 border-t border-amber-950/10 flex items-center justify-between text-xs font-semibold text-aroham-gold">
               <span className="flex items-center gap-1.5">
-                <Calendar size={14} /> 10 May 2026
+                <Calendar size={14} className="text-aroham-gold" /> 10 May 2026
               </span>
-              <span>Virtual Interactive Panel</span>
+              <span className="px-2.5 py-0.5 rounded-md bg-amber-100/60 text-amber-900">Virtual Interactive Panel</span>
             </div>
           </div>
         </div>

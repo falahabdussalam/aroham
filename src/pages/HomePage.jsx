@@ -104,80 +104,200 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
 
 
       {/* =========================================================================
-          TWO PILLARS CARDS
+          TWO PILLARS CARDS (MODERN INTERACTIVE GLASS CARDS WITH OVERLAY ANIMATIONS)
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {/* Pillar 1: Aroham Foundation */}
-          <Reveal variant="up" delay={0}>
-          <div className="h-full bg-white rounded-3xl p-8 sm:p-10 shadow-soft border border-aroham-border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-aroham-mint flex items-center justify-center text-aroham-dark">
-                <Building2 size={24} />
+          <Reveal variant="up" delay={0} className="h-full">
+            <div 
+              role="button"
+              tabIndex={0}
+              onClick={() => setActivePage('about')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActivePage('about'); } }}
+              className="group relative h-full rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-white via-[#FAFBF9] to-emerald-50/40 border border-emerald-950/10 shadow-soft hover:shadow-elevated hover:border-emerald-600/40 transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-pointer"
+            >
+              {/* Dynamic Light Sweep / Shine Overlay Effect */}
+              <div 
+                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                aria-hidden="true"
+              />
+
+              {/* Ambient Radial Glow on Hover */}
+              <div 
+                className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-emerald-400/15 blur-3xl opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+                aria-hidden="true"
+              />
+
+              {/* Subtle Decorative Background Watermark */}
+              <div 
+                className="pointer-events-none absolute -bottom-6 -right-6 text-emerald-900/[0.04] group-hover:text-emerald-900/[0.08] group-hover:scale-110 group-hover:-rotate-3 transition-all duration-700 z-0 select-none"
+                aria-hidden="true"
+              >
+                <Building2 size={160} strokeWidth={1} />
               </div>
 
-              <div className="space-y-2">
-                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
-                  Aroham Foundation
-                </h3>
+              {/* Card Main Body */}
+              <div className="relative z-10 space-y-6">
+                {/* Top Badge & Icon Row */}
+                <div className="flex items-center justify-between gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-100/60 text-aroham-dark border border-emerald-200/80 shadow-xs flex items-center justify-center group-hover:bg-aroham-dark group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <Building2 size={26} strokeWidth={2.2} />
+                  </div>
 
-                <p className="text-sm text-aroham-body leading-relaxed">
-                  Founded by Bolster Girls Campus alumnae, this women-led non-profit connects graduates with students. Together, we build educational opportunities, guidance, and mentorship.
-                </p>
+                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-emerald-50 text-aroham-forest border border-emerald-200/70 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                    Non-Profit
+                  </span>
+                </div>
+
+                {/* Headings & Narrative */}
+                <div className="space-y-2.5">
+                  <h3 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading tracking-tight group-hover:text-aroham-forest transition-colors duration-300 inline-block relative">
+                    Aroham Foundation
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-gradient-to-r from-aroham-forest to-emerald-400 rounded-full" />
+                  </h3>
+
+                  <p className="text-sm sm:text-base text-aroham-body leading-relaxed">
+                    Founded by Bolster Girls Campus alumnae, this women-led non-profit connects graduates with students. Together, we build educational opportunities, guidance, and mentorship.
+                  </p>
+                </div>
+
+                {/* Interactive Feature List Items with Overlay Animation */}
+                <ul className="space-y-2.5 pt-2">
+                  <li className="group/item relative overflow-hidden rounded-xl p-3 -mx-3 transition-all duration-300 hover:bg-white/80 hover:shadow-xs hover:translate-x-1.5 border border-transparent hover:border-emerald-100/80 flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-lg bg-emerald-100/70 text-aroham-forest flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-aroham-forest group-hover/item:text-white transition-colors duration-200">
+                      <ArrowRight size={13} strokeWidth={2.5} className="group-hover/item:translate-x-0.5 transition-transform" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-aroham-heading group-hover/item:text-aroham-dark transition-colors">
+                      Generational support networks spanning global institutions
+                    </span>
+                  </li>
+
+                  <li className="group/item relative overflow-hidden rounded-xl p-3 -mx-3 transition-all duration-300 hover:bg-white/80 hover:shadow-xs hover:translate-x-1.5 border border-transparent hover:border-emerald-100/80 flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-lg bg-emerald-100/70 text-aroham-forest flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-aroham-forest group-hover/item:text-white transition-colors duration-200">
+                      <ArrowRight size={13} strokeWidth={2.5} className="group-hover/item:translate-x-0.5 transition-transform" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-aroham-heading group-hover/item:text-aroham-dark transition-colors">
+                      Career readiness, scholarship grants & academic resources
+                    </span>
+                  </li>
+
+                  <li className="group/item relative overflow-hidden rounded-xl p-3 -mx-3 transition-all duration-300 hover:bg-white/80 hover:shadow-xs hover:translate-x-1.5 border border-transparent hover:border-emerald-100/80 flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-lg bg-emerald-100/70 text-aroham-forest flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-aroham-forest group-hover/item:text-white transition-colors duration-200">
+                      <ArrowRight size={13} strokeWidth={2.5} className="group-hover/item:translate-x-0.5 transition-transform" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-aroham-heading group-hover/item:text-aroham-dark transition-colors">
+                      Cultivating leadership and self-determination in young women
+                    </span>
+                  </li>
+                </ul>
               </div>
 
-              <ul className="space-y-3 pt-2 text-xs font-medium text-aroham-heading">
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-forest shrink-0 mt-0.5" />
-                  <span>Generational support networks spanning global institutions</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-forest shrink-0 mt-0.5" />
-                  <span>Career readiness, scholarship grants & academic resources</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-forest shrink-0 mt-0.5" />
-                  <span>Cultivating leadership and self-determination in young women</span>
-                </li>
-              </ul>
+              {/* Bottom Interactive Action Footer */}
+              <div className="relative z-10 mt-8 pt-5 border-t border-emerald-950/10 flex items-center justify-between text-xs sm:text-sm font-semibold text-aroham-forest group-hover:text-emerald-700 transition-colors">
+                <span className="tracking-wide">Explore Foundation Story & Ethos</span>
+                <div className="w-9 h-9 rounded-full bg-emerald-100/60 border border-emerald-200/80 text-aroham-forest flex items-center justify-center group-hover:bg-aroham-forest group-hover:text-white group-hover:translate-x-1 transition-all duration-300 shadow-xs">
+                  <ArrowRight size={16} strokeWidth={2.2} />
+                </div>
+              </div>
             </div>
-          </div>
           </Reveal>
 
           {/* Pillar 2: Aroham UniMates */}
-          <Reveal variant="up" delay={140}>
-          <div className="h-full bg-white rounded-3xl p-8 sm:p-10 shadow-soft border-t-4 border-t-aroham-terracotta border-x border-b border-aroham-border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-aroham-gold">
-                <Users size={24} />
+          <Reveal variant="up" delay={140} className="h-full">
+            <div 
+              role="button"
+              tabIndex={0}
+              onClick={() => setActivePage('unimates')}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActivePage('unimates'); } }}
+              className="group relative h-full rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-white via-[#FAF8F5] to-amber-50/40 border border-amber-950/10 shadow-soft hover:shadow-elevated hover:border-amber-600/40 transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-pointer"
+            >
+              {/* Dynamic Light Sweep / Shine Overlay Effect */}
+              <div 
+                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                aria-hidden="true"
+              />
+
+              {/* Ambient Radial Glow on Hover */}
+              <div 
+                className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-amber-400/15 blur-3xl opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+                aria-hidden="true"
+              />
+
+              {/* Subtle Decorative Background Watermark */}
+              <div 
+                className="pointer-events-none absolute -bottom-6 -right-6 text-amber-900/[0.04] group-hover:text-amber-900/[0.08] group-hover:scale-110 group-hover:rotate-3 transition-all duration-700 z-0 select-none"
+                aria-hidden="true"
+              >
+                <Users size={160} strokeWidth={1} />
               </div>
 
-              <div className="space-y-2">
-                <h3 className="text-2xl font-semibold font-serif text-aroham-heading">
-                  Aroham UniMates
-                </h3>
+              {/* Card Main Body */}
+              <div className="relative z-10 space-y-6">
+                {/* Top Badge & Icon Row */}
+                <div className="flex items-center justify-between gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-100/60 text-aroham-gold border border-amber-200/80 shadow-xs flex items-center justify-center group-hover:bg-aroham-gold group-hover:text-white group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300">
+                    <Users size={26} strokeWidth={2.2} />
+                  </div>
 
-                <p className="text-sm text-aroham-body leading-relaxed">
-                  Aroham's one-to-one mentorship programme connects students with alumnae mentors for dedicated academic and career guidance.
-                </p>
+                  <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-amber-50 text-aroham-gold border border-amber-200/70 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
+                    Mentorship Hub
+                  </span>
+                </div>
+
+                {/* Headings & Narrative */}
+                <div className="space-y-2.5">
+                  <h3 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading tracking-tight group-hover:text-aroham-gold transition-colors duration-300 inline-block relative">
+                    Aroham UniMates
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-gradient-to-r from-aroham-gold to-orange-400 rounded-full" />
+                  </h3>
+
+                  <p className="text-sm sm:text-base text-aroham-body leading-relaxed">
+                    Aroham's one-to-one mentorship programme connects students with alumnae mentors for dedicated academic and career guidance.
+                  </p>
+                </div>
+
+                {/* Interactive Feature List Items with Overlay Animation */}
+                <ul className="space-y-2.5 pt-2">
+                  <li className="group/item relative overflow-hidden rounded-xl p-3 -mx-3 transition-all duration-300 hover:bg-white/80 hover:shadow-xs hover:translate-x-1.5 border border-transparent hover:border-amber-100/80 flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-lg bg-amber-100/70 text-aroham-gold flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-aroham-gold group-hover/item:text-white transition-colors duration-200">
+                      <ArrowRight size={13} strokeWidth={2.5} className="group-hover/item:translate-x-0.5 transition-transform" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-aroham-heading group-hover/item:text-aroham-dark transition-colors">
+                      Personalised matches tailored to field of study and interests
+                    </span>
+                  </li>
+
+                  <li className="group/item relative overflow-hidden rounded-xl p-3 -mx-3 transition-all duration-300 hover:bg-white/80 hover:shadow-xs hover:translate-x-1.5 border border-transparent hover:border-amber-100/80 flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-lg bg-amber-100/70 text-aroham-gold flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-aroham-gold group-hover/item:text-white transition-colors duration-200">
+                      <ArrowRight size={13} strokeWidth={2.5} className="group-hover/item:translate-x-0.5 transition-transform" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-aroham-heading group-hover/item:text-aroham-dark transition-colors">
+                      Ongoing academic tracking, application reviews, and mock sessions
+                    </span>
+                  </li>
+
+                  <li className="group/item relative overflow-hidden rounded-xl p-3 -mx-3 transition-all duration-300 hover:bg-white/80 hover:shadow-xs hover:translate-x-1.5 border border-transparent hover:border-amber-100/80 flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-lg bg-amber-100/70 text-aroham-gold flex items-center justify-center shrink-0 mt-0.5 group-hover/item:bg-aroham-gold group-hover/item:text-white transition-colors duration-200">
+                      <ArrowRight size={13} strokeWidth={2.5} className="group-hover/item:translate-x-0.5 transition-transform" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-aroham-heading group-hover/item:text-aroham-dark transition-colors">
+                      Safe, empathetic space to navigate campus life & ambitions
+                    </span>
+                  </li>
+                </ul>
               </div>
 
-              <ul className="space-y-3 pt-2 text-xs font-medium text-aroham-heading">
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-terracotta shrink-0 mt-0.5" />
-                  <span>Personalised matches tailored to field of study and interests</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-terracotta shrink-0 mt-0.5" />
-                  <span>Ongoing academic tracking, application reviews, and mock sessions</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <ArrowRight size={14} strokeWidth={2.25} className="text-aroham-terracotta shrink-0 mt-0.5" />
-                  <span>Safe, empathetic space to navigate campus life & ambitions</span>
-                </li>
-              </ul>
+              {/* Bottom Interactive Action Footer */}
+              <div className="relative z-10 mt-8 pt-5 border-t border-amber-950/10 flex items-center justify-between text-xs sm:text-sm font-semibold text-aroham-gold group-hover:text-amber-700 transition-colors">
+                <span className="tracking-wide">Explore 1:1 Mentorship Journey</span>
+                <div className="w-9 h-9 rounded-full bg-amber-100/60 border border-amber-200/80 text-aroham-gold flex items-center justify-center group-hover:bg-aroham-gold group-hover:text-white group-hover:translate-x-1 transition-all duration-300 shadow-xs">
+                  <ArrowRight size={16} strokeWidth={2.2} />
+                </div>
+              </div>
             </div>
-          </div>
           </Reveal>
         </div>
       </section>

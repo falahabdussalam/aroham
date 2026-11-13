@@ -333,37 +333,95 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {/* Mission Card */}
-          <Reveal variant="up" delay={0} className="h-full rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white shadow-soft flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30">
-                <Flag size={22} />
+          <Reveal variant="up" delay={0} className="h-full">
+            <div className="group relative h-full rounded-3xl bg-gradient-to-br from-aroham-dark via-[#0c3327] to-[#08261c] p-8 sm:p-12 text-white shadow-soft hover:shadow-elevated border border-emerald-500/20 hover:border-emerald-400/40 flex flex-col justify-between space-y-6 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+              {/* Dynamic Light Sweep / Shine Overlay Effect */}
+              <div 
+                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                aria-hidden="true"
+              />
+
+              {/* Ambient Radial Glow on Hover */}
+              <div 
+                className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-emerald-400/20 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+                aria-hidden="true"
+              />
+
+              {/* Subtle Decorative Background Watermark */}
+              <div 
+                className="pointer-events-none absolute -bottom-6 -right-6 text-white/[0.04] group-hover:text-white/[0.08] group-hover:scale-110 group-hover:-rotate-6 transition-all duration-700 z-0 select-none"
+                aria-hidden="true"
+              >
+                <Flag size={160} strokeWidth={1} />
               </div>
-              <div className="space-y-2">
-                <h3 className="text-3xl font-semibold font-serif">
-                  Our Mission
-                </h3>
-                <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
-                  Build a global mentor network that guides young people—especially from underserved backgrounds—toward their academic and career goals.
-                </p>
+
+              <div className="relative z-10 space-y-5">
+                <div className="flex items-center justify-between">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30 group-hover:bg-amber-400 group-hover:text-aroham-dark group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-xs">
+                    <Flag size={24} strokeWidth={2.2} />
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-white/10 text-emerald-200 border border-white/15">
+                    Core Directive
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-3xl font-semibold font-serif inline-block relative">
+                    Our Mission
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-gradient-to-r from-amber-400 to-amber-200 rounded-full mt-1" />
+                  </h3>
+                  <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
+                    Build a global mentor network that guides young people—especially from underserved backgrounds—toward their academic and career goals.
+                  </p>
+                </div>
               </div>
             </div>
           </Reveal>
 
           {/* Vision Card */}
-          <Reveal variant="up" delay={140} className="h-full rounded-3xl bg-gradient-to-br from-aroham-gold-gradient-start to-aroham-gold-gradient-end p-8 sm:p-12 text-aroham-heading shadow-soft flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-aroham-dark text-white flex items-center justify-center">
-                <Eye size={22} />
+          <Reveal variant="up" delay={140} className="h-full">
+            <div className="group relative h-full rounded-3xl bg-gradient-to-br from-aroham-gold-gradient-start via-[#d69830] to-aroham-gold-gradient-end p-8 sm:p-12 text-aroham-heading shadow-soft hover:shadow-elevated border border-amber-300/60 hover:border-amber-400 flex flex-col justify-between space-y-6 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+              {/* Dynamic Light Sweep / Shine Overlay Effect */}
+              <div 
+                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                aria-hidden="true"
+              />
+
+              {/* Ambient Radial Glow on Hover */}
+              <div 
+                className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-amber-200/40 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+                aria-hidden="true"
+              />
+
+              {/* Subtle Decorative Background Watermark */}
+              <div 
+                className="pointer-events-none absolute -bottom-6 -right-6 text-aroham-heading/[0.04] group-hover:text-aroham-heading/[0.08] group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 z-0 select-none"
+                aria-hidden="true"
+              >
+                <Eye size={160} strokeWidth={1} />
               </div>
-              <div className="space-y-2">
-                <h3 className="text-3xl font-semibold font-serif">
-                  Our Vision
-                </h3>
-                <p className="text-sm sm:text-base text-aroham-heading/90 leading-relaxed">
-                  A world where every student has the guidance, opportunities, and support needed to build their future with confidence.
-                </p>
+
+              <div className="relative z-10 space-y-5">
+                <div className="flex items-center justify-between">
+                  <div className="w-14 h-14 rounded-2xl bg-aroham-dark text-white flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-xs">
+                    <Eye size={24} strokeWidth={2.2} />
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-black/10 text-aroham-heading border border-black/10">
+                    North Star
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-3xl font-semibold font-serif inline-block relative">
+                    Our Vision
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-gradient-to-r from-aroham-dark to-emerald-900 rounded-full mt-1" />
+                  </h3>
+                  <p className="text-sm sm:text-base text-aroham-heading/90 leading-relaxed font-medium">
+                    A world where every student has the guidance, opportunities, and support needed to build their future with confidence.
+                  </p>
+                </div>
               </div>
             </div>
           </Reveal>

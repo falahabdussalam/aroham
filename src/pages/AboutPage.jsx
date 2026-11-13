@@ -12,6 +12,8 @@ import {
   TrendingUp,
   Heart,
   Sparkles,
+  Calendar,
+  ArrowUpRight,
   X
 } from 'lucide-react';
 
@@ -147,24 +149,28 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
 
   const milestones = [
     {
+      step: '01',
       date: '12–13 July 2025',
       title: 'The Inception',
       description: 'At the Bolster Girls Campus Alumni Meet, alumnae agreed to form an organised guidance collective.',
       tag: 'Committee Initiated'
     },
     {
+      step: '02',
       date: '29 July 2025',
       title: 'Digital Network',
       description: 'Launched the official Aroham Instagram page to reconnect batches and share student stories.',
       tag: 'Community Reach'
     },
     {
+      step: '03',
       date: 'Aug–Oct 2025',
       title: 'Identity Sealed',
       description: 'Finalised the Aroham emblem, core values, and formal operating guidelines.',
       tag: 'Branding & Ethos'
     },
     {
+      step: '04',
       date: '25–29 Dec 2025',
       title: 'HiLite Mall Summit',
       description: 'Held a five-day planning summit in Kozhikode to assign executive roles and launch UniMates.',
@@ -332,24 +338,63 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               key={idx}
               variant="up"
               delay={idx * 90}
-              className="h-full bg-white rounded-2xl p-6 border border-aroham-border shadow-soft flex flex-col justify-between hover:shadow-elevated hover:-translate-y-1 transition-all duration-300"
+              className="h-full"
             >
-              <div className="space-y-3">
-                <span className="inline-block px-3 py-1 rounded-full bg-aroham-sage text-aroham-forest text-xs font-semibold border border-aroham-border">
-                  {item.date}
-                </span>
-                <div className="space-y-1.5">
-                  <h3 className="text-lg font-semibold font-serif text-aroham-heading">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-aroham-body leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
+              <div className="group relative h-full rounded-2xl sm:rounded-3xl p-6 sm:p-7 bg-white/95 backdrop-blur-sm border border-slate-200/90 shadow-soft hover:shadow-elevated hover:border-emerald-600/30 transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between overflow-hidden">
+                {/* Dynamic Light Sweep / Shine Overlay Effect */}
+                <div 
+                  className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                  aria-hidden="true"
+                />
 
-              <div className="pt-4 mt-4 border-t border-aroham-border text-[11px] font-semibold text-aroham-muted flex items-center gap-1.5">
-                <span>🏷 {item.tag}</span>
+                {/* Ambient Radial Glow on Hover */}
+                <div 
+                  className="pointer-events-none absolute -top-16 -right-16 w-44 h-44 rounded-full bg-emerald-500/[0.08] blur-2xl opacity-40 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+                  aria-hidden="true"
+                />
+
+                {/* Watermark Milestone Number in Corner */}
+                <div 
+                  className="pointer-events-none absolute -bottom-3 -right-2 text-6xl font-serif font-bold text-slate-900/[0.04] group-hover:text-emerald-900/[0.08] group-hover:scale-110 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-all duration-500 select-none z-0"
+                  aria-hidden="true"
+                >
+                  {item.step}
+                </div>
+
+                <div className="relative z-10 space-y-4">
+                  {/* Top Bar with Date Badge and Step Indicator */}
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-aroham-forest text-xs font-semibold border border-emerald-100/90 shadow-2xs group-hover:bg-aroham-forest group-hover:text-white transition-colors duration-300">
+                      <Calendar size={12} strokeWidth={2.2} />
+                      {item.date}
+                    </span>
+                    <span className="text-[11px] font-mono font-semibold tracking-wider text-slate-400 group-hover:text-aroham-forest transition-colors">
+                      #{item.step}
+                    </span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <div className="space-y-2">
+                    <h3 className="text-lg sm:text-xl font-semibold font-serif text-aroham-heading tracking-tight group-hover:text-aroham-dark transition-colors inline-block relative">
+                      {item.title}
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-gradient-to-r from-aroham-forest to-emerald-400 rounded-full mt-0.5" />
+                    </h3>
+                    <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Footer Metadata */}
+                <div className="relative z-10 pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <div className="inline-flex items-center gap-2 text-aroham-muted group-hover:text-aroham-forest transition-colors font-medium text-[11px]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform" />
+                    <span>{item.tag}</span>
+                  </div>
+                  <div className="w-6 h-6 rounded-lg bg-slate-100/80 text-slate-400 flex items-center justify-center group-hover:bg-emerald-100 group-hover:text-aroham-forest group-hover:translate-x-0.5 transition-all">
+                    <ArrowUpRight size={13} strokeWidth={2.5} />
+                  </div>
+                </div>
               </div>
             </Reveal>
           ))}

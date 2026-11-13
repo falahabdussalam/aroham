@@ -282,6 +282,11 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
       </section>
 
       {/* =========================================================================
+          QUOTE BANNER WITH ORANGE MOSAIC BACKGROUND
+          ========================================================================= */}
+      <AboutMosaicBanner />
+
+      {/* =========================================================================
           FOUNDATIONAL TIMELINE (2025)
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -320,11 +325,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           ))}
         </div>
       </section>
-
-      {/* =========================================================================
-          CENTER QUOTE BANNER WITH ORANGE MOSAIC BACKGROUND
-          ========================================================================= */}
-      <AboutMosaicBanner />
 
       {/* =========================================================================
           OUR GUIDING LIGHT: MISSION & VISION

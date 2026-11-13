@@ -504,24 +504,14 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 onClick={() => setSelectedPoster(member)}
                 className="group relative bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 hover:border-aroham-forest/35 shadow-soft hover:shadow-elevated transition-all duration-500 ease-out hover:-translate-y-1.5 cursor-pointer flex flex-col overflow-hidden h-full"
               >
-                {/* Image Container with Subtle Vignette & Natural Hover Scale */}
+                {/* Image Container with Natural Hover Scale */}
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-100 shrink-0">
-                  <div 
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" 
-                    aria-hidden="true"
-                  />
                   <img
                     src={member.image}
                     alt={member.name}
                     loading="lazy"
                     className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 ease-out block"
                   />
-
-                  {/* Desktop Hover Affordance */}
-                  <div className="absolute bottom-3 right-3 z-20 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 text-aroham-heading text-xs font-medium shadow-md backdrop-blur-sm">
-                    <Eye size={13} className="text-aroham-forest" />
-                    <span>View Poster</span>
-                  </div>
                 </div>
 
                 {/* Member Details */}

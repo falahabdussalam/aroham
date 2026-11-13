@@ -88,8 +88,8 @@ export default function AboutMosaicBanner() {
       {/* Main Quote Content on Left */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <Reveal variant="up" className="max-w-2xl sm:max-w-3xl space-y-4">
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-semibold font-serif text-white leading-tight sm:leading-[1.18] tracking-tight drop-shadow-sm">
-            Every child deserves not just an education, but the freedom to dream and achieve.
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold font-serif text-white leading-relaxed tracking-tight drop-shadow-sm">
+            "From early conversations to an organised movement, Aroham grew through alumnae dedication. Today, we help students make confident academic and career choices through mentorship and education."
           </h2>
 
           <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-amber-100/90 pt-2">

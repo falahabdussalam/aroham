@@ -240,13 +240,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
               On 22 October 2025, Aroham launched its awareness campaign to share its mission publicly. From 25–29 December 2025, a strategic planning summit at HiLite Mall, Kozhikode set the roadmap ahead.
             </p>
-
-            {/* Dark green quote box */}
-            <div className="p-6 rounded-2xl bg-aroham-dark text-white shadow-soft">
-              <p className="text-xs sm:text-sm italic leading-relaxed text-emerald-100">
-                "From early conversations to an organised movement, Aroham grew through alumnae dedication. Today, we help students make confident academic and career choices through mentorship and education."
-              </p>
-            </div>
           </Reveal>
 
           {/* Right Cards & Visual Evidence */}

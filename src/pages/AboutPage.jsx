@@ -13,7 +13,6 @@ import {
   Heart,
   Sparkles,
   Calendar,
-  ArrowUpRight,
   X
 } from 'lucide-react';
 
@@ -382,17 +381,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                     <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
                       {item.description}
                     </p>
-                  </div>
-                </div>
-
-                {/* Footer Metadata */}
-                <div className="relative z-10 pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <div className="inline-flex items-center gap-2 text-aroham-muted group-hover:text-aroham-forest transition-colors font-medium text-[11px]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform" />
-                    <span>{item.tag}</span>
-                  </div>
-                  <div className="w-6 h-6 rounded-lg bg-slate-100/80 text-slate-400 flex items-center justify-center group-hover:bg-emerald-100 group-hover:text-aroham-forest group-hover:translate-x-0.5 transition-all">
-                    <ArrowUpRight size={13} strokeWidth={2.5} />
                   </div>
                 </div>
               </div>

@@ -241,7 +241,7 @@ export default function HomePage({ setActivePage, onOpenGetInvolved, mentorsCoun
               </Reveal>
 
               <Reveal variant="up" delay={100}>
-              <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[820px] mx-auto text-justify">
+              <p className="text-sm sm:text-base text-aroham-body leading-relaxed max-w-[760px] mx-auto text-center">
                 Aroham Foundation guides students from school corridors to global universities. Our Bolster Girls Campus alumnae work across medicine, policy, engineering, humanities, and social impact to help every young woman thrive.
               </p>
               </Reveal>

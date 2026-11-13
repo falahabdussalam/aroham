@@ -84,10 +84,10 @@ const PAGE_LAYOUTS = {
     { Icon: OpenBookIllustration, pos: 'bottom-28 left-[5%]', size: 'w-24 h-24 sm:w-28 sm:h-28', color: 'text-aroham-terracotta/10', anim: 'animate-float-drift' },
   ],
   about: [
-    { Icon: OpenBookIllustration, pos: 'top-[460px] left-[2%]', size: 'w-24 h-24 sm:w-32 sm:h-32', color: 'text-aroham-forest/10', anim: 'animate-float-slow' },
-    { Icon: GraduationCapIllustration, pos: 'top-[640px] right-[3%]', size: 'w-28 h-28 sm:w-36 sm:h-36', color: 'text-aroham-gold/15', anim: 'animate-float-reverse' },
-    { Icon: CompassDirectionIllustration, pos: 'bottom-[340px] left-[3%]', size: 'w-24 h-24 sm:w-32 sm:h-32', color: 'text-aroham-terracotta/10', anim: 'animate-float-drift' },
-    { Icon: CareerBriefcaseIllustration, pos: 'bottom-24 right-[4%]', size: 'w-24 h-24 sm:w-28 sm:h-28', color: 'text-aroham-forest/10', anim: 'animate-float-slow' },
+    { Icon: OpenBookIllustration, pos: 'top-[700px] left-[1%]', size: 'w-20 h-20 sm:w-28 sm:h-28', color: 'text-aroham-forest/[0.07]', anim: 'animate-float-slow' },
+    { Icon: GraduationCapIllustration, pos: 'top-[960px] right-[2%]', size: 'w-24 h-24 sm:w-32 sm:h-32', color: 'text-aroham-gold/[0.09]', anim: 'animate-float-reverse' },
+    { Icon: CompassDirectionIllustration, pos: 'bottom-[340px] left-[2%]', size: 'w-24 h-24 sm:w-30 sm:h-30', color: 'text-aroham-terracotta/[0.08]', anim: 'animate-float-drift' },
+    { Icon: CareerBriefcaseIllustration, pos: 'bottom-24 right-[3%]', size: 'w-20 h-20 sm:w-26 sm:h-26', color: 'text-aroham-forest/[0.07]', anim: 'animate-float-slow' },
   ],
   unimates: [
     { Icon: GlobalStudyIllustration, pos: 'top-24 right-[4%]', size: 'w-28 h-28 sm:w-36 sm:h-36', color: 'text-aroham-forest/10', anim: 'animate-float-slow' },

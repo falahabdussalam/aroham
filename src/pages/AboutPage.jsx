@@ -206,24 +206,24 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           GENESIS OF AROHAM: FROM SISTERHOOD TO SUSTAINED IMPACT
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal variant="up">
-          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading mb-10">
+        <Reveal variant="up" className="mb-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
+            Our Genesis
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             From Sisterhood to Sustained Impact
           </h2>
         </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left Narrative Column */}
-          <Reveal variant="right" delay={100} className="lg:col-span-7 space-y-6 text-aroham-body leading-relaxed text-sm sm:text-base">
-            <p className="text-aroham-heading font-medium">
-              <span className="float-left text-5xl font-serif font-semibold text-aroham-dark pr-3 pt-1 leading-none">
-                A
-              </span>
-              roham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
+          <Reveal variant="right" delay={100} className="lg:col-span-7 space-y-5 text-aroham-body leading-relaxed text-sm sm:text-base">
+            <p className="text-base sm:text-lg text-aroham-heading font-medium leading-relaxed">
+              Aroham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
             </p>
 
             {/* Turning Point Callout */}
-            <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft space-y-2">
+            <div className="p-6 rounded-2xl bg-white border border-aroham-border shadow-soft space-y-2 border-l-4 border-l-aroham-gold">
               <div className="flex items-center gap-2 text-xs font-semibold text-aroham-gold uppercase tracking-wide">
                 <Lightbulb size={16} />
                 <span>The Turning Point at Alumni Meet</span>

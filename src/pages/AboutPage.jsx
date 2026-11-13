@@ -7,7 +7,6 @@ import {
   Flag, 
   Eye, 
   MapPin, 
-  Calendar, 
   Users, 
   Award, 
   TrendingUp,
@@ -242,37 +241,11 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               </div>
 
               {/* Card Content */}
-              <div className="relative z-10 space-y-4">
-                {/* Header Tag Pill with Pulsing Dot */}
-                <div className="flex items-center justify-between gap-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100/80 text-amber-900 border border-amber-300/80 shadow-2xs">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
-                    <span>The Turning Point • 12–13 July 2025</span>
-                  </div>
-
-                  <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-amber-800/80 uppercase tracking-wider">
-                    <Calendar size={13} className="text-amber-600" />
-                    Alumni Meet
-                  </span>
-                </div>
-
+              <div className="relative z-10">
                 {/* Narrative Text with Refined Typography */}
                 <p className="text-xs sm:text-sm text-aroham-heading leading-relaxed font-normal">
                   The idea took shape at the <strong className="font-semibold text-aroham-dark">Bolster Girls Campus Alumni Meet</strong> on 12–13 July 2025. Casual conversations quickly grew into a collective movement. An executive committee was formed, and formal planning began.
                 </p>
-
-                {/* Micro-Badges Row */}
-                <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-amber-200/60 text-[11px] font-medium text-amber-900/80">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/80 border border-amber-200/70 shadow-2xs">
-                    📍 Bolster Girls Campus
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/80 border border-amber-200/70 shadow-2xs">
-                    🌱 Executive Committee
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/80 border border-amber-200/70 shadow-2xs">
-                    ✨ Collective Movement
-                  </span>
-                </div>
               </div>
             </div>
 

@@ -86,6 +86,20 @@
   transform: translate3d(0, 0, 0) scale(1);
 }
 
+/* Hollow Outline Title Typography (Outline only, no inner fill) */
+.text-outline-title {
+  color: transparent !important;
+  -webkit-text-stroke: 1.5px #0D2B22;
+  text-stroke: 1.5px #0D2B22;
+}
+
+@media (min-width: 640px) {
+  .text-outline-title {
+    -webkit-text-stroke: 1.8px #0D2B22;
+    text-stroke: 1.8px #0D2B22;
+  }
+}
+
 /* Bidirectional Scroll Overlay & Pull-Up / Push-Down Section Transitions */
 .scroll-overlay-section {
   position: relative;

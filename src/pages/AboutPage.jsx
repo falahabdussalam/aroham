@@ -211,9 +211,9 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Left Narrative Column */}
-          <Reveal variant="right" delay={100} className="lg:col-span-6 space-y-5 text-aroham-body leading-relaxed text-sm sm:text-base">
+          <Reveal variant="right" delay={100} className="lg:col-span-6 flex flex-col justify-between space-y-5 text-aroham-body leading-relaxed text-sm sm:text-base">
             <p className="text-base sm:text-lg text-aroham-heading font-medium leading-relaxed">
               Aroham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
             </p>
@@ -258,11 +258,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             </p>
           </Reveal>
 
-          {/* Right Cards & Visual Evidence */}
-          <Reveal variant="left" delay={180} className="lg:col-span-6 space-y-6">
-            {/* Gallery-Framed Photo Card */}
-            <div className="group relative p-2.5 sm:p-3 bg-white rounded-2xl sm:rounded-3xl shadow-soft hover:shadow-elevated border border-slate-200/90 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
-              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[4/3] bg-slate-100">
+          {/* Right Image Column - Perfectly Aligned in Same Position and Height */}
+          <Reveal variant="left" delay={180} className="lg:col-span-6 flex flex-col h-full">
+            <div className="group relative h-full min-h-[340px] sm:min-h-[420px] p-2.5 sm:p-3 bg-white rounded-2xl sm:rounded-3xl shadow-soft hover:shadow-elevated border border-slate-200/90 transition-all duration-500 hover:-translate-y-1 overflow-hidden flex flex-col">
+              <div className="relative flex-1 w-full h-full min-h-[320px] sm:min-h-[400px] overflow-hidden rounded-xl sm:rounded-2xl bg-slate-100">
                 {/* Dynamic Light Sweep / Shine Overlay Effect */}
                 <div 
                   className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
@@ -277,28 +276,39 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                 />
               </div>
             </div>
-
-            {/* 2 Stats row */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-6 rounded-2xl bg-aroham-mint border border-aroham-border">
-                <div className="text-3xl font-semibold font-serif text-aroham-dark">
-                  100%
-                </div>
-                <div className="text-xs font-semibold uppercase tracking-wider text-aroham-forest mt-1">
-                  Alumnae Governed
-                </div>
-              </div>
-              <div className="p-6 rounded-2xl bg-aroham-amber-light border border-amber-200">
-                <div className="text-3xl font-semibold font-serif text-aroham-gold">
-                  4+
-                </div>
-                <div className="text-xs font-semibold uppercase tracking-wider text-aroham-gold mt-1">
-                  Core Programs
-                </div>
-              </div>
-            </div>
           </Reveal>
         </div>
+
+        {/* Stats Row - Spanning cleanly across below the story */}
+        <Reveal variant="up" delay={220} className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="p-6 rounded-2xl bg-aroham-mint border border-aroham-border flex items-center justify-between shadow-2xs hover:shadow-soft transition-all duration-300">
+            <div>
+              <div className="text-3xl font-semibold font-serif text-aroham-dark">
+                100%
+              </div>
+              <div className="text-xs font-semibold uppercase tracking-wider text-aroham-forest mt-1">
+                Alumnae Governed
+              </div>
+            </div>
+            <div className="w-12 h-12 rounded-xl bg-white/70 border border-emerald-200/60 flex items-center justify-center text-aroham-forest">
+              <Users size={22} />
+            </div>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-aroham-amber-light border border-amber-200 flex items-center justify-between shadow-2xs hover:shadow-soft transition-all duration-300">
+            <div>
+              <div className="text-3xl font-semibold font-serif text-aroham-gold">
+                4+
+              </div>
+              <div className="text-xs font-semibold uppercase tracking-wider text-aroham-gold mt-1">
+                Core Programs
+              </div>
+            </div>
+            <div className="w-12 h-12 rounded-xl bg-white/70 border border-amber-300/60 flex items-center justify-center text-aroham-gold">
+              <Award size={22} />
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* =========================================================================

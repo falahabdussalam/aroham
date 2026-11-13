@@ -206,10 +206,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           GENESIS OF AROHAM: FROM SISTERHOOD TO SUSTAINED IMPACT
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal variant="up" className="mb-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold mb-1">
-            Our Genesis
-          </div>
+        <Reveal variant="up" className="mb-3 sm:mb-4">
           <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             From Sisterhood to Sustained Impact
           </h2>

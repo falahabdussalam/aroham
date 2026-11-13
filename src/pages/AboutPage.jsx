@@ -211,9 +211,9 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left Narrative Column */}
-          <Reveal variant="right" delay={100} className="lg:col-span-7 space-y-5 text-aroham-body leading-relaxed text-sm sm:text-base">
+          <Reveal variant="right" delay={100} className="lg:col-span-6 space-y-5 text-aroham-body leading-relaxed text-sm sm:text-base">
             <p className="text-base sm:text-lg text-aroham-heading font-medium leading-relaxed">
               Aroham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
             </p>
@@ -259,9 +259,9 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </Reveal>
 
           {/* Right Cards & Visual Evidence */}
-          <Reveal variant="left" delay={180} className="lg:col-span-5 space-y-6">
+          <Reveal variant="left" delay={180} className="lg:col-span-6 space-y-6">
             {/* Gallery-Framed Photo Card */}
-            <div className="group relative p-2 sm:p-2.5 bg-white rounded-2xl sm:rounded-3xl shadow-soft hover:shadow-elevated border border-slate-200/90 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+            <div className="group relative p-2.5 sm:p-3 bg-white rounded-2xl sm:rounded-3xl shadow-soft hover:shadow-elevated border border-slate-200/90 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
               <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[4/3] bg-slate-100">
                 {/* Dynamic Light Sweep / Shine Overlay Effect */}
                 <div 
@@ -275,17 +275,6 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                   alt="Aroham Alumnae Academic & Career Guidance Session"
                   className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
                 />
-
-                {/* Subtle Bottom Vignette Gradient */}
-                <div 
-                  className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none z-10"
-                  aria-hidden="true"
-                />
-
-                {/* Location / Event Badge Pill */}
-                <span className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 z-20 px-3 py-1.5 rounded-full bg-aroham-dark/90 text-white text-[11px] sm:text-xs font-medium backdrop-blur-md border border-white/20 shadow-md">
-                  📍 Bolster Girls Campus, Kerala
-                </span>
               </div>
             </div>
 

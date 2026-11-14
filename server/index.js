@@ -50,6 +50,28 @@ app.get('/api/status', async (req, res) => {
   });
 });
 
+// 1b. Test Database Endpoint
+app.get('/api/test-db', async (req, res) => {
+  try {
+    const mongoStatus = await getMongoStatus();
+    res.json({
+      success: true,
+      message: 'MongoDB connection test successful! Database is live and reachable.',
+      database: mongoStatus.database || 'aroham',
+      connected: Boolean(mongoStatus.connected),
+      collections: mongoStatus.collections || {},
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'MongoDB connection test failed',
+      error: err.message,
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
 // 2. Full Database Bundle (GET & POST)
 app.get('/api/data', async (req, res) => {
   // 1. Try MongoDB

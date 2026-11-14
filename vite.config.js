@@ -40,6 +40,32 @@ function arohamApiPlugin() {
       return;
     }
 
+    // 1b. Test-db endpoint
+    if (req.url === '/test-db' || req.url === '/api/test-db') {
+      try {
+        const mongoStatus = await getMongoStatus().catch(err => ({ connected: false, error: err.message }));
+        res.statusCode = mongoStatus?.connected ? 200 : 503;
+        res.end(JSON.stringify({
+          success: Boolean(mongoStatus?.connected),
+          message: mongoStatus?.connected ? 'MongoDB connection test successful! Database is live and reachable.' : 'MongoDB connection test failed',
+          database: mongoStatus?.database || 'aroham',
+          connected: Boolean(mongoStatus?.connected),
+          collections: mongoStatus?.collections || {},
+          error: mongoStatus?.error,
+          timestamp: new Date().toISOString()
+        }));
+      } catch (err) {
+        res.statusCode = 500;
+        res.end(JSON.stringify({
+          success: false,
+          message: 'MongoDB connection test failed',
+          error: err.message,
+          timestamp: new Date().toISOString()
+        }));
+      }
+      return;
+    }
+
     // 2. Main data endpoint
     if (req.url === '/data' || req.url.startsWith('/data?') || req.url.startsWith('/api/data')) {
       if (req.method === 'GET') {

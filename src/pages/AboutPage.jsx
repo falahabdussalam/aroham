@@ -194,7 +194,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
 
         {/* Banner Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10 sm:pt-36 sm:pb-14">
-          <div className="space-y-1 max-w-4xl hero-reveal hero-reveal-1">
+          <Reveal variant="up" className="space-y-1 max-w-4xl">
             <h1 className="text-3xl sm:text-5xl font-semibold font-serif text-emerald-300 tracking-tight">
               About Us
             </h1>
@@ -202,7 +202,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
             <p className="text-sm sm:text-base text-white/95 leading-relaxed">
               Aroham Foundation is a women-led alumni initiative empowering students through mentorship, education, and community support. Rooted in the sisterhood of Bolster Girls Campus, we connect young learners with experienced alumnae worldwide. Together, we help students make confident academic choices and build brighter futures.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -218,7 +218,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Narrative Column */}
-          <Reveal variant="right" delay={100} className="lg:col-span-6 flex flex-col justify-start space-y-3 sm:space-y-3.5 text-aroham-body text-sm sm:text-base tracking-tight">
+          <Reveal variant="up" delay={80} className="lg:col-span-6 flex flex-col justify-start space-y-3 sm:space-y-3.5 text-aroham-body text-sm sm:text-base tracking-tight">
             <p className="text-base sm:text-lg text-aroham-heading font-medium leading-relaxed tracking-tight">
               Aroham Foundation began with a shared goal among Bolster Girls Campus alumnae: stay connected and create lasting opportunities for future students.
             </p>
@@ -264,7 +264,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           </Reveal>
 
           {/* Right Image Column - Perfectly Aligned in Same Position and Height */}
-          <Reveal variant="left" delay={180} className="lg:col-span-6 flex flex-col justify-center">
+          <Reveal variant="up" delay={140} className="lg:col-span-6 flex flex-col justify-center">
             <div className="group relative w-full h-[320px] sm:h-[360px] lg:h-[380px] p-2.5 sm:p-3 bg-white rounded-2xl sm:rounded-3xl shadow-soft hover:shadow-elevated border border-slate-200/90 transition-all duration-500 hover:-translate-y-1 overflow-hidden flex flex-col">
               <div className="relative flex-1 w-full h-full overflow-hidden rounded-xl sm:rounded-2xl bg-slate-100">
                 {/* Dynamic Light Sweep / Shine Overlay Effect */}
@@ -398,7 +398,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
               {/* Left Image with Large Rounded Corners */}
-              <Reveal variant="right" className="lg:col-span-5 order-1">
+              <Reveal variant="up" className="lg:col-span-5 order-1">
                 <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white border border-emerald-900/10">
                   <img
                     src={bolsterVisionImg}
@@ -410,7 +410,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               </Reveal>
 
               {/* Right Text */}
-              <Reveal variant="left" delay={120} className="lg:col-span-7 order-2 space-y-3 sm:space-y-4">
+              <Reveal variant="up" delay={100} className="lg:col-span-7 order-2 space-y-3 sm:space-y-4">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
                   Our Vision
                 </h2>
@@ -427,7 +427,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
               {/* Left Text */}
-              <Reveal variant="right" delay={120} className="lg:col-span-5 order-2 lg:order-1 space-y-3 sm:space-y-4">
+              <Reveal variant="up" delay={80} className="lg:col-span-5 order-2 lg:order-1 space-y-3 sm:space-y-4">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
                   Our Mission
                 </h2>
@@ -437,7 +437,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               </Reveal>
 
               {/* Right Image with Large Rounded Corners */}
-              <Reveal variant="left" className="lg:col-span-7 order-1 lg:order-2">
+              <Reveal variant="up" delay={140} className="lg:col-span-7 order-1 lg:order-2">
                 <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white border border-slate-200/80">
                   <img
                     src={bolsterMissionImg}

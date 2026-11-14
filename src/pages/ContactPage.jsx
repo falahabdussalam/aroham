@@ -185,7 +185,8 @@ export default function ContactPage() {
           </Reveal>
 
           {/* Instagram Community Card */}
-          <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
+          <Reveal variant="up" delay={140} className="lg:col-span-7 flex flex-col">
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6 h-full">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -292,6 +293,7 @@ export default function ContactPage() {
               </a>
             </div>
           </div>
+        </Reveal>
         </div>
       </section>
 
@@ -301,7 +303,7 @@ export default function ContactPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Narrative Column */}
-          <div className="lg:col-span-5 space-y-6">
+          <Reveal variant="up" className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
               <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
                 Inquiry Center
@@ -340,10 +342,11 @@ export default function ContactPage() {
                 — Aroham Mentorship Council
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right Interactive Form Column */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft">
+          <Reveal variant="up" delay={120} className="lg:col-span-7">
+            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft h-full">
             <div className="mb-6 pb-4 border-b border-aroham-border flex items-center justify-between">
               <div>
                 <h3 className="text-lg font-semibold font-serif text-aroham-heading">
@@ -498,7 +501,8 @@ export default function ContactPage() {
                 </div>
               </form>
             )}
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

@@ -201,79 +201,83 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Mentorship Philosophy */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6">
-            <div className="space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
-                Mentorship Philosophy
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading">
-                Empowering decisions through lived experience
-              </h2>
-              <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                Students connect directly with alumnae who share real insights and experience. This helps them explore study paths, understand higher education, and plan ahead with confidence.
-              </p>
-              <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                We match each student with a mentor based on their interests and goals. Together, they build a supportive space for honest questions and clarity.
-              </p>
-            </div>
-
-            {/* 3 Pillars of Philosophy */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-aroham-border">
-              <div className="p-3.5 rounded-xl bg-aroham-mint/50 border border-aroham-border">
-                <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
-                  <Lightbulb size={14} className="text-aroham-gold" />
-                  <span>Unbiased Advice</span>
+          <Reveal variant="up" className="lg:col-span-7 h-full">
+            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-aroham-border shadow-soft flex flex-col justify-between space-y-6 h-full">
+              <div className="space-y-3">
+                <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
+                  Mentorship Philosophy
                 </div>
-                <div className="text-[10px] text-aroham-muted mt-1">Lived alumna narratives</div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-aroham-sage/50 border border-aroham-border">
-                <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
-                  <CheckCircle2 size={14} className="text-aroham-forest" />
-                  <span>Custom Matched</span>
-                </div>
-                <div className="text-[10px] text-aroham-muted mt-1">Subject-specific synergy</div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200/80">
-                <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
-                  <ShieldCheck size={14} className="text-aroham-terracotta" />
-                  <span>Safe Space</span>
-                </div>
-                <div className="text-[10px] text-aroham-muted mt-1">Supportive open dialogue</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Launched on 4 May 2026 Card */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-aroham-dark via-aroham-forest to-[#082C21] text-white rounded-3xl p-8 sm:p-10 shadow-elevated flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-semibold tracking-wide uppercase border border-amber-400/30">
-                <span>🚩 Our Beginning</span>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-3xl font-semibold font-serif leading-snug">
-                  Launched on 4 May 2026
-                </h3>
-                <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-                  Aroham UniMates began its journey with <strong className="text-white font-semibold">10 registered mentors</strong> and <strong className="text-white font-semibold">17 students</strong>. All 17 students were successfully matched with mentors, marking the beginning of a growing mentorship community.
+                <h2 className="text-2xl sm:text-3xl font-semibold font-serif text-aroham-heading">
+                  Empowering decisions through lived experience
+                </h2>
+                <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                  Students connect directly with alumnae who share real insights and experience. This helps them explore study paths, understand higher education, and plan ahead with confidence.
+                </p>
+                <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                  We match each student with a mentor based on their interests and goals. Together, they build a supportive space for honest questions and clarity.
                 </p>
               </div>
-            </div>
 
-            <div className="p-4 rounded-2xl bg-white/10 border border-white/10 space-y-2">
-              <div className="flex items-center justify-between text-xs font-semibold">
-                <span className="uppercase tracking-wider text-emerald-200 text-[10px]">Cohort 1 Placement</span>
-                <span className="text-amber-300 font-semibold text-sm">17 / 17 Matched</span>
-              </div>
-              <div className="w-full h-2 bg-black/20 rounded-full overflow-hidden">
-                <div className="h-full bg-amber-400 rounded-full w-full" />
-              </div>
-              <div className="text-[10px] text-emerald-100/80 pt-1">
-                100% successful student-mentor cohort pairing achieved in inaugural launch.
+              {/* 3 Pillars of Philosophy */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-aroham-border">
+                <div className="p-3.5 rounded-xl bg-aroham-mint/50 border border-aroham-border">
+                  <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
+                    <Lightbulb size={14} className="text-aroham-gold" />
+                    <span>Unbiased Advice</span>
+                  </div>
+                  <div className="text-[10px] text-aroham-muted mt-1">Lived alumna narratives</div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-aroham-sage/50 border border-aroham-border">
+                  <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
+                    <CheckCircle2 size={14} className="text-aroham-forest" />
+                    <span>Custom Matched</span>
+                  </div>
+                  <div className="text-[10px] text-aroham-muted mt-1">Subject-specific synergy</div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200/80">
+                  <div className="text-xs font-semibold text-aroham-dark flex items-center gap-1.5">
+                    <ShieldCheck size={14} className="text-aroham-terracotta" />
+                    <span>Safe Space</span>
+                  </div>
+                  <div className="text-[10px] text-aroham-muted mt-1">Supportive open dialogue</div>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
+
+          {/* Launched on 4 May 2026 Card */}
+          <Reveal variant="up" delay={120} className="lg:col-span-5 h-full">
+            <div className="bg-gradient-to-br from-aroham-dark via-aroham-forest to-[#082C21] text-white rounded-3xl p-8 sm:p-10 shadow-elevated flex flex-col justify-between space-y-6 h-full">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-semibold tracking-wide uppercase border border-amber-400/30">
+                  <span>🚩 Our Beginning</span>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-3xl font-semibold font-serif leading-snug">
+                    Launched on 4 May 2026
+                  </h3>
+                  <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+                    Aroham UniMates began its journey with <strong className="text-white font-semibold">10 registered mentors</strong> and <strong className="text-white font-semibold">17 students</strong>. All 17 students were successfully matched with mentors, marking the beginning of a growing mentorship community.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/10 border border-white/10 space-y-2">
+                <div className="flex items-center justify-between text-xs font-semibold">
+                  <span className="uppercase tracking-wider text-emerald-200 text-[10px]">Cohort 1 Placement</span>
+                  <span className="text-amber-300 font-semibold text-sm">17 / 17 Matched</span>
+                </div>
+                <div className="w-full h-2 bg-black/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-amber-400 rounded-full w-full" />
+                </div>
+                <div className="text-[10px] text-emerald-100/80 pt-1">
+                  100% successful student-mentor cohort pairing achieved in inaugural launch.
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -435,7 +439,7 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           ACTIVITIES UNDER AROHAM UNIMATES
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 space-y-2">
+        <Reveal variant="up" className="mb-10 space-y-2">
           <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
             Programs & Events
           </div>
@@ -445,88 +449,92 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           <p className="text-sm text-aroham-body max-w-2xl">
             Under Aroham UniMates, we host guidance sessions to help students explore global study options and make informed academic choices.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {/* Card 1: GCC Session */}
-          <div className="group relative bg-gradient-to-br from-white via-[#FAFBF9] to-emerald-50/40 rounded-3xl p-8 border border-emerald-950/10 shadow-soft hover:shadow-elevated hover:border-emerald-600/40 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between space-y-6 overflow-hidden">
-            {/* Dynamic Light Sweep / Shine Overlay Effect */}
-            <div 
-              className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
-              aria-hidden="true"
-            />
+          <Reveal variant="up" delay={80} className="h-full">
+            <div className="group relative bg-gradient-to-br from-white via-[#FAFBF9] to-emerald-50/40 rounded-3xl p-8 border border-emerald-950/10 shadow-soft hover:shadow-elevated hover:border-emerald-600/40 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between space-y-6 overflow-hidden h-full">
+              {/* Dynamic Light Sweep / Shine Overlay Effect */}
+              <div 
+                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                aria-hidden="true"
+              />
 
-            {/* Ambient Radial Glow on Hover */}
-            <div 
-              className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-emerald-400/15 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
-              aria-hidden="true"
-            />
+              {/* Ambient Radial Glow on Hover */}
+              <div 
+                className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-emerald-400/15 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+                aria-hidden="true"
+              />
 
-            <div className="relative z-10 space-y-4">
-              <div className="flex items-center justify-between text-xs">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-aroham-forest font-semibold border border-emerald-200/80 shadow-2xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                  Concluded Session
+              <div className="relative z-10 space-y-4">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-aroham-forest font-semibold border border-emerald-200/80 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                    Concluded Session
+                  </span>
+                  <span className="text-aroham-muted font-semibold tracking-wide uppercase text-[11px]">GCC Region</span>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-semibold font-serif text-aroham-heading group-hover:text-aroham-forest transition-colors duration-300">
+                    GCC Higher Education Guidance Session
+                  </h3>
+                  <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                    A focused session on admissions, merit scholarships, and visa steps for top universities in the UAE, Qatar, and Saudi Arabia.
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative z-10 pt-4 border-t border-emerald-950/10 flex items-center justify-between text-xs font-semibold text-aroham-forest">
+                <span className="flex items-center gap-1.5">
+                  <Calendar size={14} className="text-aroham-forest" /> 18 April 2026
                 </span>
-                <span className="text-aroham-muted font-semibold tracking-wide uppercase text-[11px]">GCC Region</span>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl font-semibold font-serif text-aroham-heading group-hover:text-aroham-forest transition-colors duration-300">
-                  GCC Higher Education Guidance Session
-                </h3>
-                <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                  A focused session on admissions, merit scholarships, and visa steps for top universities in the UAE, Qatar, and Saudi Arabia.
-                </p>
+                <span className="px-2.5 py-0.5 rounded-md bg-emerald-100/60 text-aroham-dark">Virtual Webinar</span>
               </div>
             </div>
-
-            <div className="relative z-10 pt-4 border-t border-emerald-950/10 flex items-center justify-between text-xs font-semibold text-aroham-forest">
-              <span className="flex items-center gap-1.5">
-                <Calendar size={14} className="text-aroham-forest" /> 18 April 2026
-              </span>
-              <span className="px-2.5 py-0.5 rounded-md bg-emerald-100/60 text-aroham-dark">Virtual Webinar</span>
-            </div>
-          </div>
+          </Reveal>
 
           {/* Card 2: UK Session */}
-          <div className="group relative bg-gradient-to-br from-white via-[#FAF8F5] to-amber-50/40 rounded-3xl p-8 border border-amber-950/10 shadow-soft hover:shadow-elevated hover:border-amber-600/40 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between space-y-6 overflow-hidden">
-            {/* Dynamic Light Sweep / Shine Overlay Effect */}
-            <div 
-              className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
-              aria-hidden="true"
-            />
+          <Reveal variant="up" delay={160} className="h-full">
+            <div className="group relative bg-gradient-to-br from-white via-[#FAF8F5] to-amber-50/40 rounded-3xl p-8 border border-amber-950/10 shadow-soft hover:shadow-elevated hover:border-amber-600/40 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between space-y-6 overflow-hidden h-full">
+              {/* Dynamic Light Sweep / Shine Overlay Effect */}
+              <div 
+                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
+                aria-hidden="true"
+              />
 
-            {/* Ambient Radial Glow on Hover */}
-            <div 
-              className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-amber-400/15 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
-              aria-hidden="true"
-            />
+              {/* Ambient Radial Glow on Hover */}
+              <div 
+                className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-amber-400/15 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
+                aria-hidden="true"
+              />
 
-            <div className="relative z-10 space-y-4">
-              <div className="flex items-center justify-between text-xs">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-aroham-gold font-semibold border border-amber-200/80 shadow-2xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
-                  Concluded Session
+              <div className="relative z-10 space-y-4">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-aroham-gold font-semibold border border-amber-200/80 shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                    Concluded Session
+                  </span>
+                  <span className="text-aroham-muted font-semibold tracking-wide uppercase text-[11px]">United Kingdom</span>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-semibold font-serif text-aroham-heading group-hover:text-aroham-gold transition-colors duration-300">
+                    UK Higher Education Guidance Session
+                  </h3>
+                  <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
+                    A practical workshop covering UCAS applications, personal statements, student housing, and Chevening or Commonwealth scholarships.
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative z-10 pt-4 border-t border-amber-950/10 flex items-center justify-between text-xs font-semibold text-aroham-gold">
+                <span className="flex items-center gap-1.5">
+                  <Calendar size={14} className="text-aroham-gold" /> 10 May 2026
                 </span>
-                <span className="text-aroham-muted font-semibold tracking-wide uppercase text-[11px]">United Kingdom</span>
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl font-semibold font-serif text-aroham-heading group-hover:text-aroham-gold transition-colors duration-300">
-                  UK Higher Education Guidance Session
-                </h3>
-                <p className="text-xs sm:text-sm text-aroham-body leading-relaxed">
-                  A practical workshop covering UCAS applications, personal statements, student housing, and Chevening or Commonwealth scholarships.
-                </p>
+                <span className="px-2.5 py-0.5 rounded-md bg-amber-100/60 text-amber-900">Virtual Interactive Panel</span>
               </div>
             </div>
-
-            <div className="relative z-10 pt-4 border-t border-amber-950/10 flex items-center justify-between text-xs font-semibold text-aroham-gold">
-              <span className="flex items-center gap-1.5">
-                <Calendar size={14} className="text-aroham-gold" /> 10 May 2026
-              </span>
-              <span className="px-2.5 py-0.5 rounded-md bg-amber-100/60 text-amber-900">Virtual Interactive Panel</span>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -534,65 +542,69 @@ export default function UniMatesPage({ onOpenRequestMatch, onOpenGetInvolved, me
           BE A PART OF AROHAM UNIMATES
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
+        <Reveal variant="up" className="text-center max-w-xl mx-auto mb-10 space-y-2">
           <div className="text-xs font-semibold uppercase tracking-[0.25em] text-aroham-gold">
             Get Connected
           </div>
           <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
             Be a Part of Aroham UniMates
           </h2>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Mentee Student Card */}
-          <div className="rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white shadow-soft flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-amber-300">
-                <GraduationCap size={24} />
+          <Reveal variant="up" delay={80} className="h-full">
+            <div className="rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white shadow-soft flex flex-col justify-between space-y-6 h-full">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-amber-300">
+                  <GraduationCap size={24} />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
+                    Register as a Mentee
+                  </h3>
+                  <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+                    Exploring higher education or preparing for university admissions? Connect with an alumna who has walked your path.
+                  </p>
+                </div>
               </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
-                  Register as a Mentee
-                </h3>
-                <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-                  Exploring higher education or preparing for university admissions? Connect with an alumna who has walked your path.
-                </p>
-              </div>
-            </div>
 
-            <a
-              href="https://forms.gle/JyFUEfFbERjRgUyD6"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark rounded-lg text-xs font-semibold uppercase tracking-wider transition-all shadow text-center block"
-            >
-              Register as a Mentee
-            </a>
-          </div>
+              <a
+                href="https://forms.gle/JyFUEfFbERjRgUyD6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-aroham-dark rounded-lg text-xs font-semibold uppercase tracking-wider transition-all shadow text-center block"
+              >
+                Register as a Mentee
+              </a>
+            </div>
+          </Reveal>
 
           {/* Mentor Alumna Card */}
-          <div className="rounded-3xl bg-aroham-terracotta p-8 sm:p-12 text-white shadow-soft flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white">
-                <HeartHandshake size={24} />
+          <Reveal variant="up" delay={160} className="h-full">
+            <div className="rounded-3xl bg-aroham-terracotta p-8 sm:p-12 text-white shadow-soft flex flex-col justify-between space-y-6 h-full">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white">
+                  <HeartHandshake size={24} />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
+                    Register as a Mentor
+                  </h3>
+                  <p className="text-xs sm:text-sm text-orange-100/90 leading-relaxed">
+                    Are you a Bolster Girls Campus alumna studying or working in India or abroad? Share your experience and guide rising scholars.
+                  </p>
+                </div>
               </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
-                  Register as a Mentor
-                </h3>
-                <p className="text-xs sm:text-sm text-orange-100/90 leading-relaxed">
-                  Are you a Bolster Girls Campus alumna studying or working in India or abroad? Share your experience and guide rising scholars.
-                </p>
-              </div>
-            </div>
 
-            <button
-              onClick={onOpenGetInvolved}
-              className="w-full py-3.5 bg-white hover:bg-orange-50 text-aroham-terracotta rounded-lg text-xs font-semibold uppercase tracking-wider transition-all shadow"
-            >
-              Join as Alumna Mentor
-            </button>
-          </div>
+              <button
+                onClick={onOpenGetInvolved}
+                className="w-full py-3.5 bg-white hover:bg-orange-50 text-aroham-terracotta rounded-lg text-xs font-semibold uppercase tracking-wider transition-all shadow"
+              >
+                Join as Alumna Mentor
+              </button>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

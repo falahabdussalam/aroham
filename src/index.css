@@ -63,27 +63,49 @@
 .hero-reveal-3 { animation-delay: 320ms; }
 .hero-reveal-4 { animation-delay: 440ms; }
 
-/* Scroll-Triggered Reveal System (IntersectionObserver + CSS) */
+/* =========================================================================
+   BIDIRECTIONAL SCROLL REVEAL SYSTEM (Hardware Accelerated)
+   - Scroll Down: elements float gracefully from down to up (↑)
+   - Scroll Up Return: elements return gracefully from up to down (↓)
+   ========================================================================= */
 .reveal {
   opacity: 0;
   filter: blur(8px);
   transition-property: opacity, transform, filter;
-  transition-duration: 0.65s;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-duration: 0.75s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 
-.reveal-up { transform: translateY(22px); }
-.reveal-down { transform: translateY(-22px); }
-.reveal-left { transform: translateX(24px); }
-.reveal-right { transform: translateX(-24px); }
-.reveal-scale { transform: scale(0.94); }
-.reveal-blur { transform: translateY(8px); }
+/* Waiting below viewport: ready to rise UP into place */
+.reveal.reveal-below,
+.reveal-up.reveal-below {
+  transform: translate3d(0, 44px, 0);
+  opacity: 0;
+  filter: blur(8px);
+}
 
+/* Waiting above viewport: ready to glide DOWN into place */
+.reveal.reveal-above,
+.reveal-up.reveal-above {
+  transform: translate3d(0, -44px, 0);
+  opacity: 0;
+  filter: blur(8px);
+}
+
+/* Default fallbacks */
+.reveal-up:not(.reveal-above) { transform: translate3d(0, 44px, 0); }
+.reveal-down:not(.reveal-below) { transform: translate3d(0, -44px, 0); }
+.reveal-left { transform: translate3d(36px, 0, 0); }
+.reveal-right { transform: translate3d(-36px, 0, 0); }
+.reveal-scale { transform: scale(0.94); }
+.reveal-blur { transform: translate3d(0, 16px, 0); }
+
+/* Fully visible state when inside viewport */
 .reveal.is-visible {
-  opacity: 1;
-  filter: blur(0px);
-  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
 }
 
 

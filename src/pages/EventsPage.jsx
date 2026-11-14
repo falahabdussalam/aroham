@@ -386,11 +386,11 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
         {/* Timeline Stack */}
         {sortedEvents.length > 0 ? (
           <div className="space-y-8">
-          {sortedEvents.map((evt) => (
-            <div
-              key={evt.id}
-              className="bg-white rounded-3xl p-6 sm:p-10 border border-aroham-border shadow-soft grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start hover:shadow-elevated transition-all duration-200"
-            >
+          {sortedEvents.map((evt, idx) => (
+            <Reveal key={evt.id} variant="up" delay={Math.min(idx * 60, 240)}>
+              <div
+                className="bg-white rounded-3xl p-6 sm:p-10 border border-aroham-border shadow-soft grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start hover:shadow-elevated transition-all duration-200"
+              >
               {/* Left Date Column */}
               <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-start gap-3 lg:gap-1 border-b lg:border-b-0 lg:border-r border-aroham-border pb-4 lg:pb-0 lg:pr-6 shrink-0">
                 <span className="text-xs uppercase font-semibold tracking-wider text-aroham-muted">
@@ -543,6 +543,7 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
                 )}
               </div>
             </div>
+          </Reveal>
           ))}
           </div>
         ) : (
@@ -561,23 +562,25 @@ export default function EventsPage({ setActivePage, onOpenRegister, onOpenGetInv
           PROPOSE A SESSION CALLOUT
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-elevated">
-          <div className="space-y-2 max-w-xl text-center md:text-left">
-            <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
-              Have an idea for a guidance session at your institution?
-            </h3>
-            <p className="text-xs sm:text-sm text-emerald-100">
-              We partner with schools, colleges, and student unions to host guidance sessions and career workshops.
-            </p>
+        <Reveal variant="up">
+          <div className="rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-elevated">
+            <div className="space-y-2 max-w-xl text-center md:text-left">
+              <h3 className="text-2xl sm:text-3xl font-semibold font-serif">
+                Have an idea for a guidance session at your institution?
+              </h3>
+              <p className="text-xs sm:text-sm text-emerald-100">
+                We partner with schools, colleges, and student unions to host guidance sessions and career workshops.
+              </p>
+            </div>
+            <a
+              href="mailto:arohamconnect@gmail.com?subject=Proposal%20for%20Guidance%20Session%20%2F%20Collaboration"
+              className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-semibold tracking-wide transition-all shadow shrink-0 inline-flex items-center justify-center gap-2"
+            >
+              <Mail size={15} />
+              <span>Propose a Session / Connect With Us</span>
+            </a>
           </div>
-          <a
-            href="mailto:arohamconnect@gmail.com?subject=Proposal%20for%20Guidance%20Session%20%2F%20Collaboration"
-            className="px-6 py-3.5 bg-aroham-terracotta hover:bg-aroham-terracotta-dark text-white rounded-lg text-xs font-semibold tracking-wide transition-all shadow shrink-0 inline-flex items-center justify-center gap-2"
-          >
-            <Mail size={15} />
-            <span>Propose a Session / Connect With Us</span>
-          </a>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

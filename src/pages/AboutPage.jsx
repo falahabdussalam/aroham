@@ -488,13 +488,10 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           OUR COMMITTEE
           ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal variant="up" className="mb-8 sm:mb-10">
+        <Reveal variant="up" className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl font-semibold font-montserrat text-aroham-heading tracking-tight">
             Our Committee
           </h2>
-          <p className="text-sm sm:text-base text-aroham-body mt-2 max-w-2xl tracking-tight">
-            Dedicated Bolster Girls Campus alumnae steering Aroham's academic guidance, community initiatives, and sustainable impact.
-          </p>
         </Reveal>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5 lg:gap-6">

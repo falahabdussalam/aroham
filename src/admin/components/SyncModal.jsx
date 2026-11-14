@@ -166,15 +166,15 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
           </button>
 
           <button
-            onClick={() => setActiveTab('mysql')}
+            onClick={() => setActiveTab('mongodb')}
             className={`flex-1 py-2 px-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 whitespace-nowrap ${
-              activeTab === 'mysql'
+              activeTab === 'mongodb'
                 ? 'bg-white text-aroham-dark shadow-sm'
                 : 'text-aroham-muted hover:text-aroham-dark'
             }`}
           >
-            <Database size={14} className={activeTab === 'mysql' ? 'text-sky-600' : ''} />
-            <span>🐬 MySQL Database</span>
+            <Database size={14} className={activeTab === 'mongodb' ? 'text-emerald-600' : ''} />
+            <span>🍃 MongoDB Database</span>
           </button>
 
           <button
@@ -254,21 +254,21 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
             </div>
           )}
 
-          {/* TAB: MySQL Database */}
-          {activeTab === 'mysql' && (
+          {/* TAB: MongoDB Database */}
+          {activeTab === 'mongodb' && (
             <div className="space-y-4 text-xs">
               <div className={`p-4 rounded-2xl border flex items-start gap-3 ${
-                dbStatus?.mysql?.connected 
-                  ? 'bg-sky-50/80 border-sky-300' 
+                dbStatus?.mongodb?.connected 
+                  ? 'bg-emerald-50/80 border-emerald-300' 
                   : 'bg-amber-50/80 border-amber-300'
               }`}>
                 <span className={`w-3 h-3 rounded-full mt-0.5 shrink-0 ${
-                  dbStatus?.mysql?.connected ? 'bg-sky-500 animate-pulse' : 'bg-amber-500'
+                  dbStatus?.mongodb?.connected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'
                 }`} />
                 <div className="flex-1">
                   <div className="font-semibold text-sm text-aroham-heading flex items-center justify-between">
                     <span>
-                      {dbStatus?.mysql?.connected ? 'MySQL Live & Connected' : 'MySQL Inactive / Authentication Required'}
+                      {dbStatus?.mongodb?.connected ? 'MongoDB Live & Connected' : 'MongoDB Inactive / Waiting for Connection'}
                     </span>
                     <button
                       onClick={checkDbStatus}
@@ -278,37 +278,37 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                     </button>
                   </div>
                   <p className="text-[11px] text-aroham-body mt-0.5">
-                    {dbStatus?.mysql?.connected
-                      ? `Database: "${dbStatus.mysql.database || 'aroham'}" on ${dbStatus.mysql.host}:${dbStatus.mysql.port} (User: ${dbStatus.mysql.user})`
-                      : (dbStatus?.mysql?.message || 'Set MYSQL_PASSWORD in your .env file to enable MySQL.')}
+                    {dbStatus?.mongodb?.connected
+                      ? `Database: "${dbStatus.mongodb.database || 'aroham'}" (${dbStatus.mongodb.uri})`
+                      : (dbStatus?.mongodb?.message || 'Set MONGODB_URI in your .env file to connect to MongoDB.')}
                   </p>
                 </div>
               </div>
 
-              {/* MySQL Tables stats grid */}
-              {dbStatus?.mysql?.connected && dbStatus.mysql.tables && (
+              {/* MongoDB Collections stats grid */}
+              {dbStatus?.mongodb?.connected && dbStatus.mongodb.collections && (
                 <div className="grid grid-cols-4 gap-2">
                   <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
                     <div className="text-base font-semibold text-aroham-dark">
-                      {dbStatus.mysql.tables.mentors ?? 0}
+                      {dbStatus.mongodb.collections.mentors ?? 0}
                     </div>
                     <div className="text-[10px] uppercase text-aroham-muted font-semibold">Mentors</div>
                   </div>
                   <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
                     <div className="text-base font-semibold text-aroham-dark">
-                      {dbStatus.mysql.tables.events ?? 0}
+                      {dbStatus.mongodb.collections.events ?? 0}
                     </div>
                     <div className="text-[10px] uppercase text-aroham-muted font-semibold">Events</div>
                   </div>
                   <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
                     <div className="text-base font-semibold text-aroham-dark">
-                      {dbStatus.mysql.tables.mentees ?? 0}
+                      {dbStatus.mongodb.collections.mentees ?? 0}
                     </div>
                     <div className="text-[10px] uppercase text-aroham-muted font-semibold">Mentees</div>
                   </div>
                   <div className="p-2.5 bg-[#F4F8F5] rounded-xl text-center border border-aroham-border">
                     <div className="text-base font-semibold text-aroham-dark">
-                      {dbStatus.mysql.tables.applications ?? 0}
+                      {dbStatus.mongodb.collections.applications ?? 0}
                     </div>
                     <div className="text-[10px] uppercase text-aroham-muted font-semibold">Apps</div>
                   </div>
@@ -320,7 +320,7 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                 <button
                   onClick={async () => {
                     setIsProcessing(true);
-                    setStatusMsg({ type: 'info', text: 'Saving all collections to MySQL...' });
+                    setStatusMsg({ type: 'info', text: 'Saving all collections to MongoDB...' });
                     try {
                       const mentors = JSON.parse(localStorage.getItem('aroham_mentors') || '[]');
                       const events = JSON.parse(localStorage.getItem('aroham_events') || '[]');
@@ -328,35 +328,34 @@ export default function SyncModal({ isOpen, onClose, onDataUpdated }) {
                       const applications = JSON.parse(localStorage.getItem('aroham_applications') || '[]');
                       await saveLiveDatabase({ mentors, events, mentees, applications });
                       await checkDbStatus();
-                      setStatusMsg({ type: 'success', text: 'All data successfully saved into MySQL tables!' });
+                      setStatusMsg({ type: 'success', text: 'All data successfully saved into MongoDB collections!' });
                       onDataUpdated && onDataUpdated();
                     } catch (err) {
-                      setStatusMsg({ type: 'error', text: 'MySQL save failed: ' + err.message });
+                      setStatusMsg({ type: 'error', text: 'MongoDB save failed: ' + err.message });
                     } finally {
                       setIsProcessing(false);
                     }
                   }}
                   disabled={isProcessing}
-                  className="w-full py-2.5 px-4 bg-sky-700 hover:bg-sky-800 text-white rounded-xl font-semibold transition-all shadow flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-semibold transition-all shadow flex items-center justify-center gap-2"
                 >
                   <Database size={15} />
-                  <span>Save All Current Data to MySQL</span>
+                  <span>Save All Current Data to MongoDB</span>
                 </button>
 
                 {/* Configuration Help Card */}
                 <div className="p-3 bg-[#F4F8F5] rounded-xl border border-aroham-border text-[11px] text-aroham-body space-y-1.5">
                   <div className="font-semibold text-aroham-heading flex items-center gap-1.5">
-                    <span>⚙️ MySQL Connection Settings (.env)</span>
+                    <span>⚙️ MongoDB Connection Settings (.env)</span>
                   </div>
                   <div className="font-mono bg-white p-2 rounded-lg border border-aroham-border text-[10px] text-slate-700 space-y-0.5">
-                    <div>MYSQL_HOST=127.0.0.1</div>
-                    <div>MYSQL_PORT=3306</div>
-                    <div>MYSQL_USER=root</div>
-                    <div>MYSQL_PASSWORD=&lt;your_password&gt;</div>
-                    <div>MYSQL_DATABASE=aroham</div>
+                    <div># Local MongoDB (Compass / Service):</div>
+                    <div>MONGODB_URI=mongodb://127.0.0.1:27017/aroham</div>
+                    <div className="pt-1"># Or MongoDB Atlas Cloud:</div>
+                    <div>MONGODB_URI=mongodb+srv://&lt;user&gt;:&lt;password&gt;@cluster0.mongodb.net/aroham</div>
                   </div>
                   <p className="text-[10px] text-aroham-muted">
-                    Supports local MySQL (MySQL 8.0, XAMPP, WAMP) or Cloud MySQL (PlanetScale, AWS RDS, GCP Cloud SQL). Run <code className="bg-white px-1 py-0.5 rounded border border-aroham-border">npm run seed:mysql</code> to seed initial data.
+                    Supports local MongoDB or cloud MongoDB Atlas. Run <code className="bg-white px-1 py-0.5 rounded border border-aroham-border">npm run seed:mongodb</code> to seed initial data.
                   </p>
                 </div>
               </div>

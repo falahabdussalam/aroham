@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
-import { getMysqlAllData, saveMysqlAllData, getMysqlStatus } from './server/mysql.js';
+import { getMongoAllData, saveMongoAllData, getMongoStatus } from './server/mongodb.js';
 
 function arohamApiPlugin() {
   const dbPath = path.resolve(__dirname, 'src/admin/data/aroham_db.json');
@@ -19,15 +19,16 @@ function arohamApiPlugin() {
       return;
     }
 
-    // 1. Status endpoint: returns MySQL status
+    // 1. Status endpoint: returns MongoDB status
     if (req.url === '/status' || req.url === '/api/status') {
       try {
-        const mysqlStatus = await getMysqlStatus().catch(err => ({ connected: false, error: err.message }));
+        const mongoStatus = await getMongoStatus().catch(err => ({ connected: false, error: err.message }));
 
         const response = {
-          connected: Boolean(mysqlStatus?.connected),
-          active: mysqlStatus?.connected ? 'mysql' : 'json_backup',
-          mysql: mysqlStatus
+          connected: Boolean(mongoStatus?.connected),
+          active: mongoStatus?.connected ? 'mongodb' : 'json_backup',
+          mongodb: mongoStatus,
+          mysql: { connected: false, message: 'MySQL disconnected. Active database: MongoDB' }
         };
 
         res.statusCode = 200;
@@ -42,16 +43,16 @@ function arohamApiPlugin() {
     // 2. Main data endpoint
     if (req.url === '/data' || req.url.startsWith('/data?') || req.url.startsWith('/api/data')) {
       if (req.method === 'GET') {
-        // Attempt MySQL query first
+        // Attempt MongoDB query first
         try {
-          const mysqlData = await getMysqlAllData();
-          if (mysqlData && Array.isArray(mysqlData.mentors)) {
+          const mongoData = await getMongoAllData();
+          if (mongoData && Array.isArray(mongoData.mentors)) {
             res.statusCode = 200;
-            res.end(JSON.stringify(mysqlData));
+            res.end(JSON.stringify(mongoData));
             return;
           }
         } catch (err) {
-          console.warn('[Vite API] MySQL read fallback:', err.message);
+          console.warn('[Vite API] MongoDB read fallback:', err.message);
         }
 
         // Fallback to local JSON file
@@ -95,12 +96,12 @@ function arohamApiPlugin() {
               if (Array.isArray(parsed.applications)) parsed.applications = parsed.applications.filter(a => a && !dSet.has(String(a.id)));
             }
 
-            // 1. Save to MySQL
-            let mysqlResult = null;
+            // 1. Save to MongoDB
+            let mongoResult = null;
             try {
-              mysqlResult = await saveMysqlAllData(parsed);
-            } catch (myErr) {
-              console.warn('[Vite API] MySQL save error:', myErr.message);
+              mongoResult = await saveMongoAllData(parsed);
+            } catch (mErr) {
+              console.warn('[Vite API] MongoDB save error:', mErr.message);
             }
 
             // 2. Mirror clean state to JSON file on disk
@@ -113,8 +114,8 @@ function arohamApiPlugin() {
             res.statusCode = 200;
             res.end(JSON.stringify({
               success: true,
-              mysql: mysqlResult?.success ?? false,
-              database: mysqlResult?.success ? 'mysql' : 'json_backup',
+              mongodb: mongoResult?.success ?? false,
+              database: mongoResult?.success ? 'mongodb' : 'json_backup',
               timestamp: new Date().toISOString()
             }));
           } catch (err) {

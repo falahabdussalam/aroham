@@ -5,17 +5,22 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import {
-  connectToMysql,
-  getMysqlAllData,
-  saveMysqlAllData,
-  getMysqlStatus,
-  seedMysqlDatabase
-} from './mysql.js';
-
-dotenv.config();
+  connectToMongoDB,
+  getMongoAllData,
+  saveMongoAllData,
+  getMongoStatus,
+  seedMongoDatabase
+} from './mongodb.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Load standard .env then override with .env.local if present
+dotenv.config();
+const envLocalPath = path.resolve(__dirname, '../.env.local');
+if (fs.existsSync(envLocalPath)) {
+  dotenv.config({ path: envLocalPath, override: true });
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -33,22 +38,24 @@ if (fs.existsSync(distPath)) {
 // REST API ROUTES
 // -------------------------------------------------------------
 
-// 1. Health & Database Status (MySQL)
+// 1. Health & Database Status (MongoDB)
 app.get('/api/status', async (req, res) => {
-  const mysqlStatus = await getMysqlStatus().catch(e => ({ connected: false, error: e.message }));
+  const mongoStatus = await getMongoStatus().catch(e => ({ connected: false, error: e.message }));
   res.json({
-    connected: Boolean(mysqlStatus?.connected),
-    active: mysqlStatus?.connected ? 'mysql' : 'json_backup',
-    mysql: mysqlStatus
+    connected: Boolean(mongoStatus?.connected),
+    active: mongoStatus?.connected ? 'mongodb' : 'json_backup',
+    mongodb: mongoStatus,
+    // Backward compatibility for existing UI checks
+    mysql: { connected: false, message: 'MySQL disconnected. Active database: MongoDB' }
   });
 });
 
 // 2. Full Database Bundle (GET & POST)
 app.get('/api/data', async (req, res) => {
-  // 1. Try MySQL
-  const mysqlData = await getMysqlAllData();
-  if (mysqlData && Array.isArray(mysqlData.mentors)) {
-    return res.json(mysqlData);
+  // 1. Try MongoDB
+  const mongoData = await getMongoAllData();
+  if (mongoData && Array.isArray(mongoData.mentors)) {
+    return res.json(mongoData);
   }
 
   // 2. Fallback to local JSON disk file
@@ -82,7 +89,7 @@ app.post('/api/data', async (req, res) => {
     if (Array.isArray(payload.applications)) payload.applications = payload.applications.filter(a => a && !dSet.has(String(a.id)));
   }
 
-  const mysqlRes = await saveMysqlAllData(payload).catch(e => ({ success: false, error: e.message }));
+  const mongoRes = await saveMongoAllData(payload).catch(e => ({ success: false, error: e.message }));
 
   // Mirror to JSON disk backup
   try {
@@ -92,21 +99,21 @@ app.post('/api/data', async (req, res) => {
 
   res.json({
     success: true,
-    mysql: mysqlRes?.success ?? false,
-    database: mysqlRes?.success ? 'mysql' : 'json_backup',
+    mongodb: mongoRes?.success ?? false,
+    database: mongoRes?.success ? 'mongodb' : 'json_backup',
     timestamp: new Date().toISOString()
   });
 });
 
-// 3. Database Re-seed Endpoint
-app.post('/api/seed/mysql', async (req, res) => {
-  const result = await seedMysqlDatabase();
+// 3. Database Re-seed Endpoints
+app.post(['/api/seed/mongodb', '/api/seed/mysql'], async (req, res) => {
+  const result = await seedMongoDatabase();
   res.json(result);
 });
 
 // 4. Mentors Endpoints
 app.get('/api/mentors', async (req, res) => {
-  const all = await getMysqlAllData();
+  const all = await getMongoAllData();
   if (all && all.mentors) return res.json(all.mentors);
   
   // Fallback to local JSON
@@ -131,5 +138,5 @@ app.get('*', (req, res) => {
 // Start Server
 app.listen(PORT, '0.0.0.0', async () => {
   console.log(`[Aroham Server] Listening on http://0.0.0.0:${PORT}`);
-  await connectToMysql();
+  await connectToMongoDB();
 });

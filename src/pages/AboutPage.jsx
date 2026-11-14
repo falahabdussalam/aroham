@@ -414,7 +414,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                   Our Vision
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed font-normal max-w-xl tracking-tight">
-                  A world where every child has the right to dream, learn, and achieve their full potential, irrespective of their circumstances.
+                  Aroham Foundation envisions a world where every child has access to the right guidance, opportunities, and support to shape their own future with confidence and fulfil their dreams.
                 </p>
               </Reveal>
             </div>
@@ -431,7 +431,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
                   Our Mission
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed font-normal max-w-xl tracking-tight">
-                  To create opportunities for children from economically and socially marginalized backgrounds by offering accessible, inclusive, and transformative educational experiences.
+                  We aim to build a global network of mentors who can guide young people, especially those from underprivileged backgrounds, towards achieving their academic and career aspirations.
                 </p>
               </Reveal>
 

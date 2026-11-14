@@ -4,8 +4,6 @@ import aboutHeroImg from '../assets/about_hero.jpg';
 import Reveal from '../components/Reveal';
 import AboutMosaicBanner from '../components/AboutMosaicBanner';
 import { 
-  Flag, 
-  Eye, 
   MapPin, 
   Users, 
   Award, 
@@ -390,97 +388,66 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
       </section>
 
       {/* =========================================================================
-          OUR GUIDING LIGHT: MISSION & VISION
+          OUR VISION SECTION (Pale Tinted Soft Green Background)
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal variant="up" className="text-center max-w-xl mx-auto mb-10 space-y-2">
-          <h2 className="text-3xl sm:text-4xl font-semibold font-serif text-aroham-heading">
-            Our Guiding Light
-          </h2>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {/* Mission Card */}
-          <Reveal variant="up" delay={0} className="h-full">
-            <div className="group relative h-full rounded-3xl bg-aroham-dark p-8 sm:p-12 text-white shadow-soft hover:shadow-elevated border border-emerald-500/20 hover:border-emerald-400/40 flex flex-col justify-between space-y-6 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-              {/* Dynamic Light Sweep / Shine Overlay Effect */}
-              <div 
-                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
-                aria-hidden="true"
-              />
-
-              {/* Ambient Radial Glow on Hover */}
-              <div 
-                className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-emerald-400/20 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
-                aria-hidden="true"
-              />
-
-              {/* Subtle Decorative Background Watermark */}
-              <div 
-                className="pointer-events-none absolute -bottom-6 -right-6 text-white/[0.04] group-hover:text-white/[0.08] group-hover:scale-110 group-hover:-rotate-6 transition-all duration-700 z-0 select-none"
-                aria-hidden="true"
-              >
-                <Flag size={160} strokeWidth={1} />
+      <section className="w-full bg-[#ecf7e7] py-14 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+            {/* Left Image with Large Rounded Corners */}
+            <Reveal variant="right" className="lg:col-span-5 order-1">
+              <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white">
+                <img
+                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80"
+                  alt="Our Vision - Student learning and aspiring"
+                  loading="lazy"
+                  onError={(e) => { e.currentTarget.src = aboutHeroImg; }}
+                  className="w-full h-[280px] sm:h-[340px] lg:h-[380px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
+                />
               </div>
+            </Reveal>
 
-              <div className="relative z-10 space-y-5">
-                <div className="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center border border-amber-500/30 group-hover:bg-amber-400 group-hover:text-aroham-dark group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-xs">
-                  <Flag size={24} strokeWidth={2.2} />
-                </div>
+            {/* Right Text */}
+            <Reveal variant="left" delay={120} className="lg:col-span-7 order-2 space-y-3 sm:space-y-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
+                Our Vision
+              </h2>
+              <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed font-normal max-w-xl tracking-tight">
+                A world where every child has the right to dream, learn, and achieve their full potential, irrespective of their circumstances.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
-                <div className="space-y-3">
-                  <h3 className="text-3xl font-semibold font-serif inline-block relative">
-                    Our Mission
-                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-amber-400 rounded-full mt-1" />
-                  </h3>
-                  <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
-                    Build a global mentor network that guides young people—especially from underserved backgrounds—toward their academic and career goals.
-                  </p>
-                </div>
+      {/* =========================================================================
+          OUR MISSION SECTION (Crisp White Background)
+          ========================================================================= */}
+      <section className="w-full bg-white py-14 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+            {/* Left Text */}
+            <Reveal variant="right" delay={120} className="lg:col-span-7 order-2 lg:order-1 space-y-3 sm:space-y-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
+                Our Mission
+              </h2>
+              <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed font-normal max-w-xl tracking-tight">
+                To create opportunities for children from economically and socially marginalized backgrounds by offering accessible, inclusive, and transformative educational experiences.
+              </p>
+            </Reveal>
+
+            {/* Right Image with Large Rounded Corners */}
+            <Reveal variant="left" className="lg:col-span-5 order-1 lg:order-2">
+              <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white">
+                <img
+                  src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
+                  alt="Our Mission - Inclusive educational experiences and mentorship"
+                  loading="lazy"
+                  onError={(e) => { e.currentTarget.src = strategicGatheringImg; }}
+                  className="w-full h-[280px] sm:h-[340px] lg:h-[380px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
+                />
               </div>
-            </div>
-          </Reveal>
-
-          {/* Vision Card */}
-          <Reveal variant="up" delay={140} className="h-full">
-            <div className="group relative h-full rounded-3xl bg-[#d69830] p-8 sm:p-12 text-aroham-heading shadow-soft hover:shadow-elevated border border-amber-400/50 hover:border-amber-400 flex flex-col justify-between space-y-6 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-              {/* Dynamic Light Sweep / Shine Overlay Effect */}
-              <div 
-                className="pointer-events-none absolute -inset-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out z-20"
-                aria-hidden="true"
-              />
-
-              {/* Ambient Radial Glow on Hover */}
-              <div 
-                className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-amber-200/40 blur-3xl opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 z-0"
-                aria-hidden="true"
-              />
-
-              {/* Subtle Decorative Background Watermark */}
-              <div 
-                className="pointer-events-none absolute -bottom-6 -right-6 text-aroham-heading/[0.04] group-hover:text-aroham-heading/[0.08] group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 z-0 select-none"
-                aria-hidden="true"
-              >
-                <Eye size={160} strokeWidth={1} />
-              </div>
-
-              <div className="relative z-10 space-y-5">
-                <div className="w-14 h-14 rounded-2xl bg-aroham-dark text-white flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-xs">
-                  <Eye size={24} strokeWidth={2.2} />
-                </div>
-
-                <div className="space-y-3">
-                  <h3 className="text-3xl font-semibold font-serif inline-block relative">
-                    Our Vision
-                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-aroham-dark rounded-full mt-1" />
-                  </h3>
-                  <p className="text-sm sm:text-base text-aroham-heading/90 leading-relaxed font-medium">
-                    A world where every student has the guidance, opportunities, and support needed to build their future with confidence.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 

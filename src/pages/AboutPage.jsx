@@ -388,68 +388,69 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
       </section>
 
       {/* =========================================================================
-          OUR VISION SECTION (Pale Tinted Soft Green Background)
+          OUR VISION & MISSION BLOCK (Seamless Full-Width Transition)
           ========================================================================= */}
-      <section className="w-full bg-[#ecf7e7] py-14 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
-            {/* Left Image with Large Rounded Corners */}
-            <Reveal variant="right" className="lg:col-span-5 order-1">
-              <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white">
-                <img
-                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80"
-                  alt="Our Vision - Student learning and aspiring"
-                  loading="lazy"
-                  onError={(e) => { e.currentTarget.src = aboutHeroImg; }}
-                  className="w-full h-[280px] sm:h-[340px] lg:h-[380px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
-                />
-              </div>
-            </Reveal>
+      <div className="w-full !mt-10 lg:!mt-14">
+        {/* OUR VISION SECTION (Pale Tinted Soft Green Background) */}
+        <section className="w-full bg-[#ecf7e7] py-12 sm:py-16 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+              {/* Left Image with Large Rounded Corners */}
+              <Reveal variant="right" className="lg:col-span-5 order-1">
+                <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white">
+                  <img
+                    src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80"
+                    alt="Our Vision - Student learning and aspiring"
+                    loading="lazy"
+                    onError={(e) => { e.currentTarget.src = aboutHeroImg; }}
+                    className="w-full h-[280px] sm:h-[340px] lg:h-[380px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
+                  />
+                </div>
+              </Reveal>
 
-            {/* Right Text */}
-            <Reveal variant="left" delay={120} className="lg:col-span-7 order-2 space-y-3 sm:space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
-                Our Vision
-              </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed font-normal max-w-xl tracking-tight">
-                A world where every child has the right to dream, learn, and achieve their full potential, irrespective of their circumstances.
-              </p>
-            </Reveal>
+              {/* Right Text */}
+              <Reveal variant="left" delay={120} className="lg:col-span-7 order-2 space-y-3 sm:space-y-4">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
+                  Our Vision
+                </h2>
+                <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed font-normal max-w-xl tracking-tight">
+                  A world where every child has the right to dream, learn, and achieve their full potential, irrespective of their circumstances.
+                </p>
+              </Reveal>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* =========================================================================
-          OUR MISSION SECTION (Crisp White Background)
-          ========================================================================= */}
-      <section className="w-full bg-white py-14 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
-            {/* Left Text */}
-            <Reveal variant="right" delay={120} className="lg:col-span-7 order-2 lg:order-1 space-y-3 sm:space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
-                Our Mission
-              </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed font-normal max-w-xl tracking-tight">
-                To create opportunities for children from economically and socially marginalized backgrounds by offering accessible, inclusive, and transformative educational experiences.
-              </p>
-            </Reveal>
+        {/* OUR MISSION SECTION (Crisp White Background - Seamless 0px Gap with Vision) */}
+        <section className="w-full bg-white py-12 sm:py-16 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+              {/* Left Text */}
+              <Reveal variant="right" delay={120} className="lg:col-span-7 order-2 lg:order-1 space-y-3 sm:space-y-4">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
+                  Our Mission
+                </h2>
+                <p className="text-base sm:text-lg lg:text-xl text-slate-700 leading-relaxed font-normal max-w-xl tracking-tight">
+                  To create opportunities for children from economically and socially marginalized backgrounds by offering accessible, inclusive, and transformative educational experiences.
+                </p>
+              </Reveal>
 
-            {/* Right Image with Large Rounded Corners */}
-            <Reveal variant="left" className="lg:col-span-5 order-1 lg:order-2">
-              <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white">
-                <img
-                  src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
-                  alt="Our Mission - Inclusive educational experiences and mentorship"
-                  loading="lazy"
-                  onError={(e) => { e.currentTarget.src = strategicGatheringImg; }}
-                  className="w-full h-[280px] sm:h-[340px] lg:h-[380px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
-                />
-              </div>
-            </Reveal>
+              {/* Right Image with Large Rounded Corners */}
+              <Reveal variant="left" className="lg:col-span-5 order-1 lg:order-2">
+                <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white">
+                  <img
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
+                    alt="Our Mission - Inclusive educational experiences and mentorship"
+                    loading="lazy"
+                    onError={(e) => { e.currentTarget.src = strategicGatheringImg; }}
+                    className="w-full h-[280px] sm:h-[340px] lg:h-[380px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
+                  />
+                </div>
+              </Reveal>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* =========================================================================
           OUR COMMITTEE

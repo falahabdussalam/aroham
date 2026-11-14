@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import strategicGatheringImg from '../assets/strategic_gathering.jpg';
 import aboutHeroImg from '../assets/about_hero.jpg';
 import bolsterVisionImg from '../assets/bolster_vision.jpg';
+import bolsterMissionImg from '../assets/bolster_mission.jpg';
 import Reveal from '../components/Reveal';
 import AboutMosaicBanner from '../components/AboutMosaicBanner';
 import { 
@@ -426,7 +427,7 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
               {/* Left Text */}
-              <Reveal variant="right" delay={120} className="lg:col-span-7 order-2 lg:order-1 space-y-3 sm:space-y-4">
+              <Reveal variant="right" delay={120} className="lg:col-span-5 order-2 lg:order-1 space-y-3 sm:space-y-4">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-montserrat text-[#4fa827] tracking-tight">
                   Our Mission
                 </h2>
@@ -436,14 +437,13 @@ export default function AboutPage({ setActivePage, onOpenGetInvolved }) {
               </Reveal>
 
               {/* Right Image with Large Rounded Corners */}
-              <Reveal variant="left" className="lg:col-span-5 order-1 lg:order-2">
+              <Reveal variant="left" className="lg:col-span-7 order-1 lg:order-2">
                 <div className="group relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 bg-white border border-slate-200/80">
                   <img
-                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80"
-                    alt="Our Mission - Inclusive educational experiences and mentorship"
+                    src={bolsterMissionImg}
+                    alt="Aroham mentees and mentors community gathering"
                     loading="lazy"
-                    onError={(e) => { e.currentTarget.src = strategicGatheringImg; }}
-                    className="w-full h-[340px] sm:h-[400px] lg:h-[460px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
+                    className="w-full aspect-[16/9] object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out block"
                   />
                 </div>
               </Reveal>
